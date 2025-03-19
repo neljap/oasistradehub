@@ -54,14 +54,14 @@ const DashbaordPg = () => {
                 <p>{data?.verified ? "Verified": "You're not verified"}</p>
             </div>
         </div>  
-        <div className="border border-neutral-100 flex flex-row justify-between items-center px-6 py-4 rounded-xl mt-4 dark:bg-[#2a3042]">
+        <div className="border border-neutral-100 grid grid-cols-1 md:grid-cols-2 justify-between items-center px-6 py-4 rounded-xl mt-4 dark:bg-[#2a3042]">
             <div className="flex flex-row items-center gap-2">
                 <div className="text-primary bg-primary bg-opacity-5 rounded-full p-2">
                     <FaBars />
                 </div>
                 <p>Account Balance ${data ? data?.tAmount : 0}</p>
             </div>
-            <div className="flex flex-row gap-4 ">
+            <div className="flex flex-col md:flex-row gap-4 ">
                 <Link to="/user/withdraw">
                 <button className="text-primary rounded-lg py-2 px-4 bg-opacity-5 bg-primary flex flex-row gap-2 items-center font-[500]"> <FaBars /> Withdrawal</button>
                 </Link>

@@ -3,7 +3,7 @@ import { authImg } from "../../assets"
 import { useEffect, useState } from "react"
 import { AiFillEyeInvisible } from "react-icons/ai"
 import { IoEyeOutline } from "react-icons/io5"
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 import { toast } from "react-toastify"
 import axios from "axios"
 
@@ -15,7 +15,7 @@ const RegisterPage = () => {
     const [eyeVisiblePass, setEyeVisiblePass] = useState(false);
     const [eyeVisibleCPass, setEyeVisibleCPass] = useState(false);
     const [formLoading, setFormLoading] = useState(false);
-    const [recapState, setRecapState] = useState(null);
+    // const [recapState, setRecapState] = useState(null);
 
     const navigate = useNavigate();
 
@@ -35,10 +35,11 @@ const RegisterPage = () => {
         });
         setFormLoading(false);
       }
-       else if(recapState == null){
-      toast.info("Confirm that you're not a robot", {position: "bottom-left"})
-      return;
-       }else{
+      //  else if(recapState == null){
+      // toast.info("Confirm that you're not a robot", {position: "bottom-left"})
+      // return;
+      //  }
+       else{
         await axios.post("https://oaserver.onrender.com/api/user/register", {email, fullname, password});
         toast.success("Registration Successfully, Login to get started", {position: "bottom-left"});
         navigate("/login");
@@ -90,7 +91,7 @@ const RegisterPage = () => {
                 </div>
               </div>
               <div>
-              <ReCAPTCHA sitekey="6LfSrWIqAAAAAAl5wjTLViZc_d0cDrHb9_V92smx" onChange={(val : any) => setRecapState(val)} />
+              {/* <ReCAPTCHA sitekey="6LfSrWIqAAAAAAl5wjTLViZc_d0cDrHb9_V92smx" onChange={(val : any) => setRecapState(val)} /> */}
             </div>
               <button className="bg-second py-2 w-full text-white rounded border border-black">{formLoading ? "Submitting.." : "Submit"}</button>
               </form>
