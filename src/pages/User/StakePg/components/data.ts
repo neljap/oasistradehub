@@ -1,4 +1,4 @@
-import { ADACoin, BTCoin, DOGECoin, ETHCoin, SOLCoin, TRXCoin, USDTCoin } from "../../../../assets";
+import { ADACoin, AdobeStock, AmazonStock, AppleStock, AUDUSDImg, BTCoin, CHFJPYImg, DOGECoin, ETHCoin, EURGBPImg, EURJPYImg, GoogleStock, NetflixStock, NikeStock, SOLCoin, TelsaStock, TRXCoin, USDCADImg, USDTCoin } from "../../../../assets";
 
 export const StakingData = [
     {
@@ -56,5 +56,96 @@ export const StakingData = [
         roi: "2% - 9%",
         price: "$0.235",
         icon: TRXCoin
+    }
+]
+
+export const StockStakePg = [
+    {
+        id: 1,
+        stock: "Apple",
+        sign: "AAPL",
+        roi: "5% - 12%",
+        icon: AppleStock
+    },
+    {
+        id: 2,
+        stock: "Adobe",
+        sign: "ADBE",
+        roi: "4% - 10%",
+        icon: AdobeStock
+    },
+    {
+        id: 3,
+        stock: "Google",
+        sign: "GOOGL",
+        roi: "4% - 9%",
+        icon: GoogleStock
+    },
+    {
+        id: 4,
+        stock: "Netflix",
+        sign: "NFLX",
+        roi: "4% - 9%",
+        icon: NetflixStock
+    },
+    {
+        id: 5,
+        stock: "Nike",
+        sign: "NKE",
+        roi: "2% - 9%",
+        icon: NikeStock
+    },
+    {
+        id: 6,
+        stock: "Telsa",
+        sign: "TSLA",
+        roi: "2% - 9%",
+        icon: TelsaStock
+    },
+    {
+        id: 7,
+        stock: "Amazon",
+        sign: "AMZN",
+        roi: "2% - 9%",
+        icon: AmazonStock
+    }
+]
+
+
+export const CurrencyStakePg = [
+    {
+        id: 1,
+        name: "CHF~JPY",
+        sign: "CHFJPY",
+        roi: "5% - 12%",
+        icon: CHFJPYImg
+    },
+    {
+        id: 2,
+        name: "EUR~JPY",
+        sign: "EURJPY",
+        roi: "4% - 10%",
+        icon: EURJPYImg
+    },
+    {
+        id: 3,
+        name: "AUD~USD",
+        sign: "AUDUSD",
+        roi: "4% - 9%",
+        icon: AUDUSDImg
+    },
+    {
+        id: 4,
+        name: "EUR~GBP",
+        sign: "EURGBP",
+        roi: "4% - 9%",
+        icon: EURGBPImg
+    },
+    {
+        id: 5,
+        name: "USD~CAD",
+        sign: "USDCAD",
+        roi: "2% - 9%",
+        icon: USDCADImg
     }
 ]

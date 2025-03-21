@@ -4,15 +4,14 @@ import {
   FaCommentAlt,
   FaShoppingBag,
   FaTh,
-  FaThList,
   FaTimes,
   FaUserAlt,
 } from "react-icons/fa";
 import {
     FaBars,
-  FaDollarSign,
   FaMarker,
   FaMoon,
+  FaPeopleGroup,
   FaSun,
 } from "react-icons/fa6";
 import { IoLogOutSharp } from "react-icons/io5";
@@ -31,6 +30,12 @@ import {
 } from "../../assets";
 import { DarkLightContext } from "../../app/DarkLightTheme";
 import LogoText from "../components/LogoText";
+import {  HiMiniClipboardDocumentList } from "react-icons/hi2";
+import { AiOutlineGlobal } from "react-icons/ai";
+import { IoIosCash } from "react-icons/io";
+import { SiBitcoincash } from "react-icons/si";
+import { HiCash } from "react-icons/hi";
+import { MdVerified } from "react-icons/md";
 // import Cookies from 'js-cookie';
 
 const UserNavLinks = ({ children }: any) => {
@@ -55,57 +60,57 @@ const UserNavLinks = ({ children }: any) => {
     {
       path: "/user/dashboard",
       name: "Dashboard",
-      icon: <FaTh />,
+      icon: <FaTh size={24} />,
     },
     {
       path: "/user/markets",
       name: "Live Markets",
-      icon: <FaUserAlt />,
+      icon: <AiOutlineGlobal size={24}  />
     },
     {
       path: "/user/stake",
       name: "Stake",
-      icon: <FaShoppingBag />,
+      icon: <FaShoppingBag size={24} />,
     },
     {
       path: "/user/deposit",
       name: "Deposit",
-      icon: <FaThList />,
+      icon: <IoIosCash size={24} />
     },
     {
       path: "/user/experts",
       name: "Trading Experts",
-      icon: <FaCommentAlt />,
+      icon: <HiMiniClipboardDocumentList size={24} />
     },
     {
       path: "/user/withdraw",
       name: "Withdraw",
-      icon: <FaCommentAlt />,
+      icon: <HiCash size={24}  />
     },
     {
       path: "/user/subscriptions",
       name: "Subscriptions",
-      icon: <FaCommentAlt />,
+      icon: <FaCommentAlt size={24} />,
     },
     {
       path: "/user/purchase-crypto",
       name: "Purchase Crypto",
-      icon: <FaCommentAlt />,
+      icon: <SiBitcoincash size={24} />
     },
     {
       path: "/user/account",
       name: "Account",
-      icon: <FaDollarSign />,
+      icon: <FaUserAlt size={24} />,
     },
     {
       path: "/user/verification",
       name: "Verification",
-      icon: <FaUserAlt />,
+      icon: <MdVerified size={24}  />
     },
     {
       path: "/user/support",
       name: "Support",
-      icon: <FaMarker />,
+      icon: <FaPeopleGroup size={24}  />
     },
   ];
 
@@ -148,10 +153,10 @@ const UserNavLinks = ({ children }: any) => {
   };
 
   const activeLink =
-    "flex flex-row gap-5 px-6 py-2 justify-start items-center bg-blue-200 text-[#0052FF] rounded-xl mt-2";
+    "flex flex-row gap-3 px-6 py-2 justify-start items-center bg-blue-200 text-[#0052FF] rounded-xl mt-2";
 
   const normalLink =
-    "flex flex-row gap-5 px-6 py-2 justify-start items-center hover:bg-blue-50 rounded-xl text-neutral-500 mt-2";
+    "flex flex-row gap-3 px-6 py-2 justify-start items-center hover:bg-blue-50 rounded-xl text-neutral-500 mt-2";
 
   return (
     <div className="">
@@ -271,9 +276,9 @@ const UserNavLinks = ({ children }: any) => {
               className={({ isActive }) => (isActive ? activeLink : normalLink)}
             >
               <div className="icon">{item.icon}</div>
-              <p className="font-[600] font-[Jost] dark:text-white text-gray-600">
+              <span className="font-[600] font-[Jost] dark:text-white text-gray-600">
                 {item.name}
-              </p>
+              </span>
             </NavLink>
           ))}
           <div className="flex gap-4 ps-5 cursor-pointer">

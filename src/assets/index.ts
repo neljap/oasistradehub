@@ -64,3 +64,8 @@ export {default as venmoImg} from "./venmo.jpg";
 export {default as bankwithdrawalImg} from "./bank-withdrawal.svg";
 export {default as custoneImg} from "./fotos-O9NaLIFdhuQ-unsplash.jpg";
 export {default as custwoImg} from "./miltiadis-fragkidis-ub21SU8DA_8-unsplash.jpg";
+export {default as CHFJPYImg} from "./CHFJPY (1).svg";
+export {default as EURJPYImg} from "./EURJPY (1).svg";
+export {default as AUDUSDImg} from "./AUDUSD (1).svg";
+export {default as EURGBPImg} from "./EURGBP (1).svg";
+export {default as USDCADImg} from "./USDCAD (1).svg";

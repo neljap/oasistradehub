@@ -86,7 +86,7 @@ const VerificationPg = () => {
           </div>
           {/* ID-Verify Form */}
           <div>
-            {idValue == 0 && (
+            {idValue > 0 && (
            <form action="">
             <div className="grid grid-cols-1 md:grid-cols-2 justify-start items-center gap-4 pt-2">
               <div className="flex flex-col gap-1 justify-start items-start">

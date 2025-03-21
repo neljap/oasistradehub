@@ -14,32 +14,32 @@ const LiveReading = () => {
         <p>Live</p>
         <p>0</p>
         <p>{num}</p>
-        <p>2.4% from last second</p>
+        <p className="text-green-800 font-[500]">2.4% from last second</p>
       </div>
       <div className="border border-neutral-200 rounded-xl bg-white p-4">
-        <p>Live</p>
-        <p>0</p>
-        <p>2.4% from last second</p>
+        <p className="font-[500]">Last Profit</p>
+        <p className="font-[600] text-xl py-2">$0</p>
+        <p className="text-green-800 font-[500]">2.4% from last second</p>
       </div>
       <div className="border border-neutral-200 rounded-xl bg-white p-4">
-        <p>Live</p>
-        <p>0</p>
-        <p>2.4% from last second</p>
+        <p className="font-[500]">Balance</p>
+        <p className="font-[600] text-xl py-2">0</p>
+        <p className="text-green-800 font-[500]">2.4% from last second</p>
       </div>
       <div className="border border-neutral-200 rounded-xl bg-white p-4">
-        <p>Live</p>
-        <p>0</p>
-        <p>2.4% from last second</p>
+        <p className="font-[500]">Trade</p>
+        <p className="font-[600] text-xl py-2">0</p>
+        <p className="text-green-800 font-[500]">2.4% from last second</p>
       </div>
       <div className="border border-neutral-200 rounded-xl bg-white p-4">
-        <p>Live</p>
-        <p>0</p>
-        <p>2.4% from last second</p>
+        <p className="font-[500]">Total Won</p>
+        <p className="font-[600] text-xl py-2">0</p>
+        <p className="text-green-800 font-[500]">2.4% from last second</p>
       </div>
       <div className="border border-neutral-200 rounded-xl bg-white p-4">
-        <p>Live</p>
-        <p>0</p>
-        <p>2.4% from last second</p>
+        <p className="font-[500]">Total Loss</p>
+        <p className="font-[600] text-xl py-2">0</p>
+        <p className="text-green-800 font-[500]">2.4% from last second</p>
       </div>
     </div>
   );

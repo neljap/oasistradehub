@@ -14,6 +14,7 @@ import WithdrawPg from './WithdrawPg/WithdrawPg'
 import VerificationPg from './VerificationPg/VerificationPg'
 import TradeChartPg from './MarketPg/components/TradeChartPg'
 import UpdateWalletPg from './WithdrawPg/UpdateWalletPg'
+import {  ForexTdChart, StockTdChart } from './MarketPg/components'
 
 const UserRoutes = () => {
   return (
@@ -32,9 +33,9 @@ const UserRoutes = () => {
             <Route path='withdraw' element={<WithdrawPg />} />
             <Route path='verification' element={<VerificationPg />} />
             <Route path='update-wallet' element={<UpdateWalletPg />} />
-            <Route path='markets/trade/crypto/:coin' element={<TradeChartPg />} />
-            <Route path='markets/trade/stock/:currency' element={<TradeChartPg />} />
-            <Route path='markets/trade/stock/:stock' element={<TradeChartPg />} />
+            <Route path='markets/trade/crypto/:coin/:obj' element={<TradeChartPg />} />
+            <Route path='markets/trade/stock/:coin/:obj' element={<StockTdChart />} />
+            <Route path='markets/trade/forex/:currency/:obj' element={<ForexTdChart />} />
         </Routes>
     </UserNavLinks>
   )

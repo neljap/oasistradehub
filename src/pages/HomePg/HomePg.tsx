@@ -48,7 +48,7 @@ const HomePg = () => {
       const StockSection = () => {
           return(
               <div className="w-full h-full">
-                <iframe src="https://s.tradingview.com/embed-widget/forex-cross-rates/?locale=en#%7B%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%2C%22currencies%22%3A%5B%22EUR%22%2C%22USD%22%2C%22JPY%22%2C%22GBP%22%2C%22CHF%22%2C%22AUD%22%2C%22CAD%22%2C%22NZD%22%2C%22CNY%22%5D%2C%22isTransparent%22%3Atrue%2C%22colorTheme%22%3A%22dark%22%2C%22utm_source%22%3A%22www.account.deepmargins.com%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22forex-cross-rates%22%2C%22page-uri%22%3A%22www.account.deepmargins.com%2Foverview%22%7D" className="w-full h-full"></iframe>
+                <iframe src="https://s.tradingview.com/embed-widget/symbol-overview/?locale=en#%7B%22symbols%22%3A%5B%5B%22Apple%22%2C%22AAPL%7C1M%22%5D%2C%5B%22Google%22%2C%22GOOGL%7C1D%22%5D%2C%5B%22Microsoft%22%2C%22MSFT%7C1D%22%5D%2C%5B%22BINANCE%3ARNDRUSDT%7C1D%22%5D%5D%2C%22width%22%3A%22100%25%22%2C%22height%22%3A%22500px%22%2C%22colorTheme%22%3A%22light%22%2C%22gridLineColor%22%3A%22%232A2E39%22%2C%22fontColor%22%3A%22%23787B86%22%2C%22scalePosition%22%3A%22right%22%2C%22scaleMode%22%3A%22Normal%22%2C%22chartType%22%3A%22area%22%2C%22lineColor%22%3A%22%231976D2%22%2C%22topColor%22%3A%22rgba(55%2C%20166%2C%20239%2C%200.15)%22%2C%22fontFamily%22%3A%22-apple-system%2C%20BlinkMacSystemFont%2C%20Trebuchet%20MS%2C%20Roboto%2C%20Ubuntu%2C%20sans-serif%22%2C%22fontSize%22%3A%2210%22%2C%22valuesTracking%22%3A%221%22%2C%22changeMode%22%3A%22price-and-percent%22%2C%22lineWidth%22%3A2%2C%22isTransparent%22%3Atrue%2C%22maLineColor%22%3A%22%232962FF%22%2C%22maLineWidth%22%3A1%2C%22maLength%22%3A9%2C%22page-uri%22%3A%22www.apmbroker.com%2Fdashboard%22%2C%22utm_source%22%3A%22www.apmbroker.com%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22symbol-overview%22%7D" className="w-full h-full"></iframe>
               </div>
           )
       }
@@ -289,11 +289,11 @@ const HomePg = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-start">
           <div className="flex flex-col gap-4">
-           <div className={`rounded p-2 bg-[#ffffff] ${markSet == 0 ? "bg-primary bg-opacity-15" : "bg-[#ffffff]"}`} onClick={() => setMarkSet(0)}>
+           <div className={`rounded p-2 cursor-pointer bg-[#ffffff] ${markSet == 0 ? "bg-primary bg-opacity-15" : "bg-[#ffffff]"}`} onClick={() => setMarkSet(0)}>
             <div className="rounded bg-[#ededed] p-2">
             <div className="flex flex-row items-center">
               <FaBaby />
-              <p>Cryptocurrency</p>
+              <p>Foreign Exchange</p>
             </div>
             <p className="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tenetur eligendi qui, ex quod minus obcaecati explicabo voluptate repellendus adipisci.</p>
             <div>
@@ -307,11 +307,11 @@ const HomePg = () => {
             </div>
             </div>
           </div>
-          <div className={`rounded p-2 bg-[#ffffff] ${markSet == 1 ? "bg-primary bg-opacity-15" : "bg-[#ffffff]"}`} onClick={() => setMarkSet(1)}>
+          <div className={`rounded p-2 cursor-pointer bg-[#ffffff] ${markSet == 1 ? "bg-primary bg-opacity-15" : "bg-[#ffffff]"}`} onClick={() => setMarkSet(1)}>
             <div className="rounded bg-[#ededed] p-2">
             <div className="flex flex-row items-center">
               <FaBaby />
-              <p>Cryptocurrency</p>
+              <p>Stock Market</p>
             </div>
             <p className="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt tenetur eligendi qui, ex quod minus obcaecati explicabo voluptate repellendus adipisci.</p>
             <div>
@@ -325,7 +325,7 @@ const HomePg = () => {
             </div>
             </div>
           </div>
-          <div className={`rounded p-2 bg-[#ffffff] ${markSet == 2 ? "bg-primary bg-opacity-15" : "bg-[#ffffff]"}`} onClick={() => setMarkSet(2)}>
+          <div className={`rounded p-2 cursor-pointer bg-[#ffffff] ${markSet == 2 ? "bg-primary bg-opacity-15" : "bg-[#ffffff]"}`} onClick={() => setMarkSet(2)}>
             <div className="rounded bg-[#ededed] p-2">
             <div className="flex flex-row items-center">
               <FaBaby />
