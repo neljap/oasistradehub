@@ -15,6 +15,7 @@ import {
 } from "../../../assets";
 import { LiveReading } from "../ui";
 import { RxDropdownMenu } from "react-icons/rx";
+import { Link } from "react-router-dom";
 
 const DepositPg = () => {
   const [bwValue, setBwValue] = useState<any>(null);
@@ -32,6 +33,8 @@ const DepositPg = () => {
   const [mmModal, setMmModal] = useState(false);
   const [mpOptions, setMpOptions] = useState(false);
   // const handleW
+
+  
 
   return (
     <div>
@@ -54,9 +57,12 @@ const DepositPg = () => {
             </div>
 
             <div>
-              <button className="py-2 px-4 rounded-xl text-primary bg-primary bg-opacity-20">
+              <Link to="/user/subscriptions">
+              <button className="py-2 px-4 rounded-xl hover:bg-primary hover:text-white transition-all ease-in-out duration-[1s] text-primary bg-primary bg-opacity-20">
                 Purchase Plan
               </button>
+              </Link>
+              
             </div>
           </div>
           <div className="w-full flex flex-row justify-between items-center border border-neutral-200 shadow rounded-lg py-4 px-4">
@@ -83,9 +89,9 @@ const DepositPg = () => {
                 <div className="mx-auto">
                   <div className="flex flex-row items-center justify-center gap-2">
                     <FaBars />
-                    <p>Crypto</p>
+                    <p className="text-xl font-[500]">Crypto</p>
                   </div>
-                  <p>Deposits Using Crypto</p>
+                  <p className="font-[400]">Deposits Using Crypto</p>
                 </div>
                 <div className="relative">
                   <div
@@ -169,13 +175,13 @@ const DepositPg = () => {
                     <div className="px-4 py-2 border border-neutral-200 hover:border-primary rounded-lg shadow-sm flex flex-row justify-between items-center">
                       <p>
                         {cryptValue == 1
-                          ? 1
+                          ? "bc1qhjqmuht400vpcz0wrdnj76mrfetnms4n0r3s3m"
                           : cryptValue == 2
-                          ? 2
+                          ? "0x31c29387a851b68A85F24a6A7d1df0DB4494FD91"
                           : cryptValue == 3
-                          ? 3
+                          ? "TAWCzZ2aGToj6QWr1vXnnUV9wxQHLQK5qn"
                           : cryptValue == 4
-                          ? 4
+                          ? "TAWCzZ2aGToj6QWr1vXnnUV9wxQHLQK5qn"
                           : ""}
                       </p>{" "}
                       <RxDropdownMenu />
@@ -193,7 +199,7 @@ const DepositPg = () => {
                   {cryptValue > 0 && cyptInput ? (
                     <div>
                       <button
-                        className="w-full rounded-lg py-3 text-white bg-primary"
+                        className="w-full hover:bg-opacity-20 border hover:border-primary transition-all ease-in-out duration-[1s] hover:text-primary font-[600] rounded-lg py-3 text-white bg-primary"
                         onClick={() => setCryptModal(true)}
                       >
                         Confirm{" "}
@@ -223,20 +229,20 @@ const DepositPg = () => {
                     <FaTimes size={18} />
                   </div>
                   <p className="font-[500] text-lg">
-                    Confirm 10.00234 Deposit of Tether To Get $10
+                    Confirm $ {cyptInput} Deposit of {cryptValue == 1 ? "Bitcoin" : cryptValue == 2 ? "Ethereum" : cryptValue == 3 ? "Tron" : "Tether USDT"}
                   </p>
                   <div className="w-full">
-                    <p className="font-[500] py-2">Tether Deposit Address</p>
+                    <p className="font-[500] py-2">{cryptValue == 1 ? "Bitcoin" : cryptValue == 2 ? "Ethereum" : cryptValue == 3 ? "Tron" : "Tether USDT"} Deposit Address</p>
                     <div className="px-4 w-full py-2 border border-neutral-200 hover:border-primary rounded-lg shadow-sm flex flex-row justify-between items-center">
                       <p>
                         {cryptValue == 1
-                          ? 1
+                          ? "bc1qhjqmuht400vpcz0wrdnj76mrfetnms4n0r3s3m"
                           : cryptValue == 2
-                          ? 2
+                          ? "0x31c29387a851b68A85F24a6A7d1df0DB4494FD91"
                           : cryptValue == 3
-                          ? 3
+                          ? "TAWCzZ2aGToj6QWr1vXnnUV9wxQHLQK5qn"
                           : cryptValue == 4
-                          ? 4
+                          ? "TAWCzZ2aGToj6QWr1vXnnUV9wxQHLQK5qn"
                           : ""}
                       </p>{" "}
                       <div className="cursor-pointer">
@@ -249,7 +255,7 @@ const DepositPg = () => {
                     {cyptCDeposit ? (
                      <div>
                       <p>Upload Deposit Proof (Screenshot)</p>
-                      <div className="px-4 w-full py-2 border border-neutral-200 hover:border-primary rounded-lg shadow-sm flex flex-row justify-between items-center">
+                      <div className="px-4 w-full py-6 cursor-pointer border border-neutral-200 hover:border-primary rounded-lg shadow-sm flex flex-row justify-between items-center">
                         <FaTimes />
                         <p>Click Here To Upload Screenshot Of Transaction</p>
                       </div>
@@ -272,7 +278,7 @@ const DepositPg = () => {
                         you're in a secure area for quick and safe deposits.
                       </p>
                     </div>
-                    <button className="w-full rounded-lg py-2 shadow bg-primary text-white" onClick={() => setCyptCDeposit(true)}>
+                    <button className="w-full transition-all ease-in-out duration-[1s] hover:bg-white hover:text-primary hover:border-primary border rounded-lg py-2 shadow bg-primary text-white" onClick={() => setCyptCDeposit(true)}>
                       Confirm Deposit
                     </button> 
                       </div>
@@ -418,7 +424,7 @@ const DepositPg = () => {
                   {mmValue > 0 && mmInput ? (
                     <div>
                       <button
-                        className="w-full rounded-lg py-3 text-white bg-primary"
+                        className="w-full transition-all ease-in-out duration-[1s] hover:text-primary hover:bg-opacity-20 border font-[600] hover:border-primary rounded-lg py-3 text-white bg-primary"
                         onClick={() => setMmModal(true)}
                       >
                         Deposit with{" "}
@@ -491,7 +497,7 @@ const DepositPg = () => {
                     </div>
                   </div>
                   <button
-                    className="w-full rounded-lg py-2 shadow bg-primary text-white"
+                    className="w-full transition-all ease-in-out duration-[1s] hover:bg-opacity-20 hover:text-primary rounded-lg py-2 shadow bg-primary text-white"
                     onClick={() => setMmModal(false)}
                   >
                     Got it!!
@@ -520,7 +526,7 @@ const DepositPg = () => {
               />
               {bwValue && (
                 <button
-                  className="w-full rounded-lg py-3 text-white bg-primary"
+                  className="w-full transition-all ease-in-out duration-[1s] hover:bg-opacity-20 border hover:border-primary hover:text-primary font-[600] rounded-lg py-3 text-white bg-primary"
                   onClick={() => setBwModal(true)}
                 >
                   Deposit with Bank Wire
@@ -545,7 +551,7 @@ const DepositPg = () => {
                       below for more info
                     </p>
                   </div>
-                  <button className="w-full rounded-lg py-2 shadow bg-primary text-white">
+                  <button className="w-full hover:bg-opacity-20 hover:text-primary transition-all ease-in-out duration-[1s] font-[600] hover:border-primary border rounded-lg py-2 shadow bg-primary text-white">
                     Continue
                   </button>
                 </div>

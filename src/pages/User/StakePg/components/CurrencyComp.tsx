@@ -3,15 +3,26 @@ import { FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { StakeContext } from "../../../../app/StakeContext";
 import { FaAngleDown } from "react-icons/fa6";
+import { CurrencyStakePg } from "../../../../utils/AppData";
 
 
 const CurrencyComp = () => {
   const [stakeOpen, setStakeOpen] = useState(false);
     const [stakeNum, setStakeNum] = useState(0);
     const [stakingdrop, setStakingdrop] = useState(false);
+    const [stakingSetNum] = useState(0);
+    // const [sCardModal, setSCardModal] = useState(null);
+    // const [inputModal, setInputModal] = useState<any>(null);
 
     const {inputStkCurrency, handleStkCurrency, filteredStkCurrency} = useContext(StakeContext);
 
+    console.log("staking", stakingSetNum);
+    
+      CurrencyStakePg.find((item) => item.id == stakingSetNum);
+
+    // const handleStake = () => {
+
+    // }
   return (
     <div>
       <div className="my-4">
@@ -25,8 +36,8 @@ const CurrencyComp = () => {
           <div className="flex flex-row gap-2">
             <img src={item.icon} alt="" className="w-12" />
             <div>
-              <p>{item.coin}</p>
-              <p>BTC</p>
+              <p className="font-[500]">{item.name}</p>
+              <p className="font-[400] text-sm text-neutral-700">{item.sign}</p>
             </div>
           </div>
           <div className="bg-neutral-200 py-1 px-2 rounded-lg">
@@ -48,7 +59,7 @@ const CurrencyComp = () => {
         </div>
         </div>
   
-          <button className="bg-primary w-full text-white py-3 rounded-xl" onClick={() => setStakeOpen(true)}>Stake Bitcoin</button>
+          <button className="bg-primary w-full text-white py-3 rounded-xl" onClick={() => setStakeOpen(true)}>Stake {item.name}</button>
         </div>
           
         </div>
@@ -136,7 +147,8 @@ const CurrencyComp = () => {
                   </div> */}
               </div>
           </div>)}
-          </div></div>
+          </div>
+        </div>
   )
 }
 

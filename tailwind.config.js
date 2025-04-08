@@ -16,12 +16,14 @@ export default {
       },
       backgroundImage: {
         statbg: "url('assets/man-laptop-dark-office-1-1066px.webp')",
-        herobgone: "url('assets/aset-homepage-2.png')",
+        herobgone: "url('assets/uuundulat.svg')",
         herobgtwo: "url('assets/aset-homepage-4.png')",
+        trustbg: "url('assets/clas-bg.png')",
+        trustaset: "url('assets/trust-asset.png')"
       },
       colors: {
         primary: "#0052FF",
-        second: "#006466",
+        second: "#0052FF",
       },
       container: {
         center: true,

@@ -13,10 +13,11 @@ const WithdrawPg = () => {
             </Link>
           </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 justify-start items-center p-8 w-full">
-        <WithdrawCard />
-        <WithdrawCard />
-        <WithdrawCard />
-        <WithdrawCard />
+        <WithdrawCard wMode="Bank Withdrawl" minWd='1.00' maxWd='1,000,000' chgWd='13%' duraWd='1'/>
+        <WithdrawCard wMode="Bitcoin" minWd='1.00' maxWd='1,000,000' chgWd='13%' duraWd='1'/>
+        <WithdrawCard wMode="Ethereum" minWd='1.00' maxWd='1,000,000' chgWd='13%' duraWd='1'/>
+        <WithdrawCard wMode="USDT" minWd='1.00' maxWd='1,000,000' chgWd='13%' duraWd='1'/>
+        <WithdrawCard wMode="Litecoin" minWd='1.00' maxWd='1,000,000' chgWd='13%' duraWd='1'/>
       </div>
         </div>
       </div>

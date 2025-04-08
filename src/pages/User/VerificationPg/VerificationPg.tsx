@@ -9,8 +9,8 @@ const VerificationPg = () => {
       <div className="container">
         <div className="shadow-md rounded-lg border border-neutral-200 py-10 px-4">
           <div className="flex flex-col gap-4 pb-4">
-          <h2>ID Verification</h2>
-          <p>
+          <h2 className="font-[600] text-xl">ID Verification</h2>
+          <p className="font-[500]">
             Your Personal info/ID for verification will be processed and
             verified
           </p>  

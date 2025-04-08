@@ -31,7 +31,7 @@ const Footer = () => {
   return (
     <div className="bg-black">
         <div className="container">
-            <div className="grid grid-cols-1 md:grid-cols-3 justify-start items-center gap-6 py-6 mx-0 md:mx-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 justify-start items-center gap-6 py-6 mx-0 md:mx-16">
               
             <div className="text-white col-span-2">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-2 md:py-6">

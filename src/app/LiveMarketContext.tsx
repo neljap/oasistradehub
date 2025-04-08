@@ -7,6 +7,14 @@ export const LiveMarketProvider = ({ children }: any) => {
   const [allTrades, setAllTrades] = useState<any>([]);
   const [section, setSection] = useState<any>(0);
 
+
+  // Add to Market
+  // const addToMarket = () => {
+    setAllTrades(allTrades.push())
+  // }
+
+  console.log("allTrades", allTrades)
+
   // Live Market (Crypto)
   const [inputMktQuery, setInputMktQuery] = useState("");
   const handleMktCrypto = (e: any) => {

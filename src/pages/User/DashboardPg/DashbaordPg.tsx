@@ -1,10 +1,10 @@
 import { BiDollarCircle } from "react-icons/bi"
 import { CiCloudRainbow } from "react-icons/ci"
 import { FaBars, FaCloudMoonRain, FaTrademark } from "react-icons/fa6"
-import { emptyboxdash } from "../../../assets"
 import { Link } from "react-router-dom"
 import { useContext, useEffect } from "react"
 import { AuthContext } from "../../../app/AuthContext"
+import { CurrentPlanCard } from "../ui"
 
 
 const DashbaordPg = () => {
@@ -61,7 +61,7 @@ const DashbaordPg = () => {
                 </div>
                 <p>Account Balance ${data ? data?.tAmount : 0}</p>
             </div>
-            <div className="flex flex-col md:flex-row gap-4 ">
+            <div className="flex flex-col md:flex-row gap-4">
                 <Link to="/user/withdraw">
                 <button className="text-primary rounded-lg py-2 px-4 bg-opacity-5 bg-primary flex flex-row gap-2 items-center font-[500]"> <FaBars /> Withdrawal</button>
                 </Link>
@@ -94,38 +94,7 @@ const DashbaordPg = () => {
             ))}
             
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-            <div className="flex flex-row justify-between items-center bg-neutral-50 border border-neutral-300 p-2 rounded-xl">
-                <div className="flex flex-row items-center gap-2">
-                 <div className="rounded-full p-2 bg-primary bg-opacity-5">
-                  <img src={emptyboxdash} alt="" className="w-8 h-8"/>  
-                </div> 
-                <div className="leading-5">
-                    <p>Current Plan</p>
-                    <p>No Plan</p>
-                </div>  
-                </div>
-                
-                <div>
-                    <button className="px-4 py-2 text-primary bg-primary bg-opacity-5 rounded-xl ">Purchase Plan</button>
-                </div>
-            </div>
-            <div className="flex flex-row justify-between items-center bg-neutral-50 border border-neutral-300 p-2 rounded-xl">
-                <div className="flex flex-row items-center gap-2">
-                 <div className="rounded-full p-2 bg-primary bg-opacity-5">
-                  <img src={emptyboxdash} alt="" className="w-8 h-8"/>  
-                </div> 
-                <div className="leading-5">
-                    <p>Plan Bonus</p>
-                    <p>$0</p>
-                </div>  
-                </div>
-                
-                <div>
-                   
-                </div>
-            </div>
-        </div>
+        <CurrentPlanCard />
         <div className="flex flex-row justify-between items-center mt-4">
             <p>My Assets</p>
             <button className="bg-primary text-white px-4 py-2 rounded-xl">Deposits</button>

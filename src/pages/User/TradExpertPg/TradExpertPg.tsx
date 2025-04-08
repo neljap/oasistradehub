@@ -188,7 +188,7 @@ const TradExpertPg = () => {
                       </div>
                     </div>
                     <div className="flex flex-row justify-center items-center py-4">
-                      <button className="bg-primary text-white rounded-lg shadow py-2 px-3">Copy Trader Strategy</button>
+                      <button className="bg-primary text-white rounded-lg shadow py-2 px-3 hover:text-primary hover:bg-opacity-20 border hover:border-primary font-[500] transition-all ease-in-out duration-[1s]">Copy Trader Strategy</button>
                     </div>
                 </div>  
               ))}

@@ -17,7 +17,7 @@ const StakePg = () => {
 
   return (
     <div className="container">
-    <p>Staking</p>
+    <p className="font-[500] text-xl">Staking</p>
     <p>Lock up asset for a given period for a certain percentage to earn more</p>
     <div className="flex flex-row items-center gap-4 mt-4">
       <div className={`px-3 py-1 shadow font-[500] rounded-lg cursor-pointer ${stakeSection == 0? 'bg-neutral-200' : ''} text-neutral-700`} onClick={() => setStakeSection(0)}>Crypto</div>

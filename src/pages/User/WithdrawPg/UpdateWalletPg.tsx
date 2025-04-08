@@ -17,16 +17,21 @@ const UpdateWalletPg = () => {
       <div className="container">
         <p className="font-[500] py-4">UPDATE WITHDRAWAL WALLET</p>
         <div className="rounded-lg shadow-lg">
-          <div className=" flex flex-row items-center py-4 gap-4 px-8">
+          <div className=" grid grid-cols-1 md:grid-cols-2 justify-start items-start py-4 px-8 gap-2 md:gap-4">
+            <div className="flex flex-row gap-4 justify-start items-center">
             <Link to="/user/withdraw">
-            <button className="py-2 px-4 rounded-lg text-white bg-red-500 shadow flex flex-row gap-1 items-center">
+            <button className="py-1 md:py-2 px-2 md:px-4 transition-all duration-[1s] ease-in-out hover:bg-opacity-20 border hover:border-red-500 hover:text-red-500 text-sm md:text-md font-[600] rounded-lg text-white bg-red-500 shadow flex flex-row gap-1 items-center">
               <BiArrowFromLeft color="white" /> Back
             </button>
             </Link>
-            
-            <button className="py-2 px-4 rounded-lg text-white bg-primary shadow flex flex-row gap-1 items-center">
+            <div>
+           <button className="py-1 md:py-2 px-2 md:px-4 text-sm md:text-md rounded-lg text-white bg-primary shadow flex flex-row gap-1 items-center">
               <BiArrowFromLeft color="white" /> Withdraw to Bank
-            </button>
+            </button>    
+            </div>
+             
+            </div>
+            
             <button className="py-2 px-4 rounded-lg text-white bg-primary shadow flex flex-row gap-1 items-center">
               <BiArrowFromLeft color="white" /> Connect wallet for instant
               Withdrawal

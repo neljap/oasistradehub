@@ -615,6 +615,7 @@ export const StakingData = [
         sign: "BTC",
         roi: "5% - 12%",
         price: "$99,090",
+        priceNum: 99090,
         icon: BTCoin
     },
     {
@@ -623,6 +624,7 @@ export const StakingData = [
         sign: "ETH",
         roi: "4% - 10%",
         price: "$3,062.14",
+        priceNum: 3062.14,
         icon: ETHCoin
     },
     {
@@ -631,6 +633,7 @@ export const StakingData = [
         sign: "SOL",
         roi: "4% - 9%",
         price: "$226.42",
+        priceNum: 226.42,
         icon: SOLCoin
     },
     {
@@ -639,6 +642,7 @@ export const StakingData = [
         sign: "DOGE",
         roi: "4% - 9%",
         price: "$0.312",
+        priceNum: 0.312,
         icon: DOGECoin
     },
     {
@@ -647,6 +651,7 @@ export const StakingData = [
         sign: "ADA",
         roi: "2% - 9%",
         price: "$0.878",
+        priceNum: 0.878,
         icon: ADACoin
     },
     {
@@ -655,6 +660,7 @@ export const StakingData = [
         sign: "USDT",
         roi: "2% - 9%",
         price: "$1",
+        priceNum: 1,
         icon: USDTCoin
     },
     {
@@ -663,6 +669,7 @@ export const StakingData = [
         sign: "TRX",
         roi: "2% - 9%",
         price: "$0.235",
+        priceNum: 0.235,
         icon: TRXCoin
     }
 ]
@@ -673,49 +680,56 @@ export const StockStakePg = [
         stock: "Apple",
         sign: "AAPL",
         roi: "5% - 12%",
-        icon: AppleStock
+        icon: AppleStock,
+        priceNum: 1.04
     },
     {
         id: 2,
         stock: "Adobe",
         sign: "ADBE",
         roi: "4% - 10%",
-        icon: AdobeStock
+        icon: AdobeStock,
+        priceNum: 1.04
     },
     {
         id: 3,
         stock: "Google",
         sign: "GOOGL",
         roi: "4% - 9%",
-        icon: GoogleStock
+        icon: GoogleStock,
+        priceNum: 1.04
     },
     {
         id: 4,
         stock: "Netflix",
         sign: "NFLX",
         roi: "4% - 9%",
-        icon: NetflixStock
+        icon: NetflixStock,
+        priceNum: 1.02
     },
     {
         id: 5,
         stock: "Nike",
         sign: "NKE",
         roi: "2% - 9%",
-        icon: NikeStock
+        icon: NikeStock,
+        priceNum: 1.02
     },
     {
         id: 6,
         stock: "Telsa",
         sign: "TSLA",
         roi: "2% - 9%",
-        icon: TelsaStock
+        icon: TelsaStock,
+        priceNum: 1.02
     },
     {
         id: 7,
         stock: "Amazon",
         sign: "AMZN",
         roi: "2% - 9%",
-        icon: AmazonStock
+        icon: AmazonStock,
+        priceNum: 1.02
     }
 ]
 

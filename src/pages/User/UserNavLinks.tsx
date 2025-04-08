@@ -15,7 +15,7 @@ import {
   FaSun,
 } from "react-icons/fa6";
 import { IoLogOutSharp } from "react-icons/io5";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   ADACoin,
   BTCoin,
@@ -36,7 +36,8 @@ import { IoIosCash } from "react-icons/io";
 import { SiBitcoincash } from "react-icons/si";
 import { HiCash } from "react-icons/hi";
 import { MdVerified } from "react-icons/md";
-// import Cookies from 'js-cookie';
+import Cookies from 'js-cookie';
+import { toast } from "react-toastify";
 
 const UserNavLinks = ({ children }: any) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -45,6 +46,8 @@ const UserNavLinks = ({ children }: any) => {
   const [figValue, setFigValue] = useState<any>(null);
   const { setTheme, systemTheme, theme } = useContext(DarkLightContext);
   const [isMobOpen, setIsMobOpen] = useState(false);
+
+  const navigate = useNavigate()
 
   const themeBox = () => {
     const currentTheme = theme === "system" ? systemTheme : theme;
@@ -148,9 +151,15 @@ const UserNavLinks = ({ children }: any) => {
   ];
 
   const logOutFunc = () => {
-    try {
-    } catch (error) {}
-  };
+    try{  
+      Cookies.remove("token");
+      setLogoutModal(false);
+      navigate("/");
+      toast.info("Log Out Successfully", {position: "bottom-left"})
+    }catch(err: any){
+      toast.error(err.code, { position: "bottom-left" });
+    }
+  }
 
   const activeLink =
     "flex flex-row gap-3 px-6 py-2 justify-start items-center bg-blue-200 text-[#0052FF] rounded-xl mt-2";
@@ -160,6 +169,7 @@ const UserNavLinks = ({ children }: any) => {
 
   return (
     <div className="">
+      {/* TopNav */}
       <div className="fixed w-full px-6 md:px-12 h-16 bg-white dark:bg-[#2a3042] dark:text-white shadow-lg flex flex-row items-center justify-between z-30">
         <div>
             
@@ -246,11 +256,11 @@ const UserNavLinks = ({ children }: any) => {
             </div>
           </div>
 
-          <div className="flex flex-row gap-2 items-center px-2 md:px-3 py-1 md:py-2 shadow rounded-md md:rounded-xl cursor-pointer text-primary bg-primary bg-opacity-5">
+          <div className="flex flex-row gap-2 items-center transition-all duration-[1s] ease-in-out   px-2 md:px-3 py-1 md:py-2 shadow rounded-md md:rounded-xl cursor-pointer text-primary bg-primary bg-opacity-5 hover:bg-opacity-95 hover:text-white">
             <BiBellPlus size={22} /> <p className="font-[500] hidden md:block">Notifications</p>
           </div>
           <div
-            className="p-2 shadow rounded-full bg-primary bg-opacity-5 cursor-pointer"
+            className="p-2 shadow rounded-full bg-primary bg-opacity-5 cursor-pointer hover:bg-opacity-95 transition-all ease-in-out duration-[1s] hover:text-white"
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}
           >
             {themeBox()}
@@ -274,6 +284,7 @@ const UserNavLinks = ({ children }: any) => {
               to={item.path}
               key={index}
               className={({ isActive }) => (isActive ? activeLink : normalLink)}
+              onClick={() => window.scrollTo(0, 0)}
             >
               <div className="icon">{item.icon}</div>
               <span className="font-[600] font-[Jost] dark:text-white text-gray-600">
@@ -281,7 +292,7 @@ const UserNavLinks = ({ children }: any) => {
               </span>
             </NavLink>
           ))}
-          <div className="flex gap-4 ps-5 cursor-pointer">
+          <div className="flex gap-4 ps-5 cursor-pointer" onClick={() => setLogoutModal(true)}>
             <IoLogOutSharp size={32} color="black" />
             <p className=" font-[600] font-[Jost] text-neutral-500">Logout</p>
           </div>
@@ -363,8 +374,8 @@ const UserNavLinks = ({ children }: any) => {
             </Link>
           </p> 
             ))}
-            <div className='ps-3 cursor-pointer' >   
-                <p className=' font-[600] font-[Jost]'>Logout</p>
+            <div className='ps-3 cursor-pointer' onClick={() => setLogoutModal(true)}>   
+                <p className=' font-[600] font-[Jost]' >Logout</p>
                </div>
         </div>
         </div>
