@@ -1,5 +1,9 @@
 import { FaMapLocationDot, FaMarker } from "react-icons/fa6"
-import { cryptoxavantimg, daytradequeenimg, elonmuskimg, forexempressimg, forexqueenximg, jbravoimg, lucha$traderimg, optionsproimg, optionswizardimg, protraderximg, pyramidmysticimg, rosscameron, sambatraderimg, swingkingimg, swingmasterimg } from "../../../assets";
+import { cryptoxavantimg, daytradequeenimg, elonmuskimg, forexempressimg, forexqueenximg, jbravoimg, 
+  // lucha$traderimg, 
+  optionsproimg, optionswizardimg, protraderximg, 
+  // pyramidmysticimg, 
+  rosscameron, sambatraderimg, swingkingimg, swingmasterimg } from "../../../assets";
 import { useState } from "react";
 
 
@@ -117,7 +121,7 @@ const TradExpertPg = () => {
       title: "Cairo",
       subdash: ["1.2k", "7.6", "BTC"],
       tradValue: [270, 10, 22.3, 80],
-      img: pyramidmysticimg
+      img: "https://res.cloudinary.com/dr6a80sph/image/upload/v1744201972/g4mewz2fiymnvn21ytr8.png"
     },
     {
       id: 15, 
@@ -125,7 +129,7 @@ const TradExpertPg = () => {
       title: "Mexico City",
       subdash: ["1.1k", "7", "MXN"],
       tradValue: [310, 14, 17.9, 67],
-      img: lucha$traderimg
+      img: "https://res.cloudinary.com/dr6a80sph/image/upload/v1744201972/ck80yz61ocsfcd5kcycr.png"
     }
   ]
 

@@ -42,8 +42,9 @@ const Footer = () => {
                   </div>
                   <div>
                     <h2 className="font-[500] text-md md:text-xl">{item.title}</h2>
-                    <div>{item.text.map((ind)=> (
-                      <p className="text-sm font-[500]">{ind}</p>
+                    <div>
+                      {item.text.map((ind, index)=> (
+                      <p className="text-sm font-[500]" key={index}>{ind}</p>
 
                     ))}</div>
                     {/* <div>

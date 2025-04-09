@@ -9,7 +9,9 @@ import { motion, PanInfo, useMotionValue, useTransform } from "framer-motion";
 //   FiLayout,
 // } from "react-icons/fi";
 // import { FaBarsProgress } from "react-icons/fa6";
-import { custoneImg, custwoImg } from "../../assets";
+import { 
+  // custoneImg, 
+  custwoImg } from "../../assets";
 
 
 export interface CarouselItem {
@@ -34,13 +36,13 @@ const DEFAULT_ITEMS: CarouselItem[] = [
     title: "John Doe",
     description: "Cool text animations for your projects.",
     id: 1,
-    icon: custoneImg as any
+    icon: "https://res.cloudinary.com/dr6a80sph/image/upload/v1744201967/cbsljjzbvdgtngq2x3ep.jpg"
   },
   {
     title: "Becky James",
     description: "Smooth animations for your projects.",
     id: 2,
-    icon: custoneImg as any
+    icon: "https://res.cloudinary.com/dr6a80sph/image/upload/v1744201967/cbsljjzbvdgtngq2x3ep.jpg"
   },
   {
     title: "Vythnia Jones",
@@ -52,7 +54,7 @@ const DEFAULT_ITEMS: CarouselItem[] = [
     title: "Olivia Fred",
     description: "Beautiful backgrounds and patterns for your projects.",
     id: 4,
-    icon: custoneImg as any
+    icon: "https://res.cloudinary.com/dr6a80sph/image/upload/v1744201967/cbsljjzbvdgtngq2x3ep.jpg"
   },
   {
     title: "Joshua Nat",

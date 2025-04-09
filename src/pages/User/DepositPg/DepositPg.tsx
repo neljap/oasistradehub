@@ -5,7 +5,7 @@ import {
   ADACoin,
   BTCoin,
   cashappImg,
-  curplanImg,
+  // curplanImg,
   ETHCoin,
   paypalImg,
   planbonusImg,
@@ -48,7 +48,7 @@ const DepositPg = () => {
           <div className="w-full flex flex-row justify-between items-center border border-neutral-200 shadow rounded-lg py-4 px-4">
             <div className="flex flex-row gap-4 items-center">
               <div className="bg-neutral-200 rounded-full p-2">
-                <img src={curplanImg} alt="" className="w-8" />
+                <img src="https://res.cloudinary.com/dr6a80sph/image/upload/v1744201966/te8p7hiijaxoaiu1aven.png" alt="" className="w-8" />
               </div>
               <div>
                 <p className="text-sm">Current Plan</p>{" "}

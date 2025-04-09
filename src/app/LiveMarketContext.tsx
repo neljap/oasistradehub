@@ -10,7 +10,7 @@ export const LiveMarketProvider = ({ children }: any) => {
 
   // Add to Market
   // const addToMarket = () => {
-    setAllTrades(allTrades.push())
+    // setAllTrades(allTrades.push())
   // }
 
   console.log("allTrades", allTrades)

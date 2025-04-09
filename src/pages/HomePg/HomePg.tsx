@@ -3,15 +3,15 @@ import {
   aboutusTwo,
   applestoreImg,
   CardAssetsImg,
-  earth20Img,
+  // earth20Img,
   expltradecom,
   expltradecpt,
   expltradeetf,
   expltradefx,
   expltradequit,
-  expltradestk,
-  foxhubImg,
-  goldlineImg,
+  // expltradestk,
+  // foxhubImg,
+  // goldlineImg,
   gplaystoreImg,
   herobgone,
   herobgtwo,
@@ -26,8 +26,8 @@ import {
   solayticImg,
   TopAset2Img,
   wwaImg,
-  wwoImg1,
-  wwoImg2,
+  // wwoImg1,
+  // wwoImg2,
   wwoImg3,
   wwoImg4,
   wwoImg5,
@@ -141,7 +141,7 @@ const HomePg = () => {
     {
       id: 4,
       title: "Stock",
-      img: expltradestk
+      img: "https://res.cloudinary.com/dr6a80sph/image/upload/v1744201969/j4lplfrn8xhkcd7d2ezs.png"
     },
     {
       id: 5,
@@ -159,12 +159,12 @@ const HomePg = () => {
     {
       id: 1,
       title: "Tailored Strategies",
-      img: wwoImg1,
+      img: "https://res.cloudinary.com/dr6a80sph/image/upload/v1744201969/rjlzqyjwx0qixt4tjav1.png",
     },
     {
       id: 2,
       title: "Advanced Trading Tools",
-      img: wwoImg2,
+      img: "https://res.cloudinary.com/dr6a80sph/image/upload/v1744201966/w7jfvdaki6bfzhrhvcmi.png",
     },
     {
       id: 3,
@@ -252,9 +252,9 @@ const HomePg = () => {
         <div className="w-full md:w-2/3 mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 justify-center items-center gap-4 md:gap-8 py-4">
                 <img src={muzicaImg} alt="" />
-                <img src={goldlineImg} alt="" />
-                <img src={foxhubImg} alt="" />
-                <img src={earth20Img} alt="" />
+                <img src="https://res.cloudinary.com/dr6a80sph/image/upload/v1744201967/kme2fsx6umap7n7yqjmo.png" alt="" />
+                <img src="https://res.cloudinary.com/dr6a80sph/image/upload/v1744201966/dk49qlcppaietu9ajriz.png" alt="" />
+                <img src="https://res.cloudinary.com/dr6a80sph/image/upload/v1744201966/spbers12bhnqbodetrar.png" alt="" />
 
         </div>
         <div className="hidden md:grid grid-cols-2 md:grid-cols-4 justify-center items-center gap-4 md:gap-8 py-4">
