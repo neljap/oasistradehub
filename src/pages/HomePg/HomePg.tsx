@@ -35,6 +35,7 @@ import {
 } from "../../assets";
 import { FaBaby } from "react-icons/fa6";
 import {
+  useRef,
   // useContext,
   useState,
 } from "react";
@@ -60,6 +61,47 @@ const HomePg = () => {
   const [isFmLoading, setIsFmLoading] = useState(false);
 
   const storeappImg = [applestoreImg, gplaystoreImg, microsoftImg]
+
+  const AboutRef = useRef<any>(null)
+
+  const scrollToAbout = () => {
+    AboutRef.current?.scrollIntoView({
+      behavior: 'smooth'
+    })
+  }
+
+  // Package
+  const PackRef = useRef<any>(null)
+
+  const scrollToPack = () => {
+    PackRef.current?.scrollIntoView({
+      behavior: 'smooth'
+    })
+  }
+
+  const TestfyRef = useRef<any>(null)
+
+  const scrollToTestfy = () => {
+    TestfyRef.current?.scrollIntoView({
+      behavior: 'smooth'
+    })
+  }
+
+  const ContactRef = useRef<any>(null)
+
+  const scrollToContact = () => {
+    ContactRef.current?.scrollIntoView({
+      behavior: 'smooth'
+    })
+  }
+
+  const TradeRef = useRef<any>(null)
+
+  const scrollToTrade = () => {
+    TradeRef.current?.scrollIntoView({
+      behavior: 'smooth'
+    })
+  }
 
   const handleForm = async (e: any) => {
     e.preventDefault();
@@ -199,11 +241,11 @@ const HomePg = () => {
     <div>
       <div className="bg-black text-white">
         <div className="">
-          <Navbar />
+          <Navbar AboutRef={scrollToAbout} PackRef={scrollToPack} Testfy={scrollToTestfy} ContactRef={scrollToContact} TradeRef={scrollToTrade} />
           {/* Herosection */}
           <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center bg-black text-white pt-16 bg-herobgone bg-center bg-no-repeat bg-cover">
-            <div className="flex flex-col gap-6 px-12 ">
-              <h2 className="text-xl md:text-5xl font-[600]">
+            <div className="flex flex-col gap-6 px-12 text-center md:text-start">
+              <h2 className="text-3xl md:text-5xl font-[600]">
                 Unlock Your Trading Success
               </h2>
               <p className="font-[500]">
@@ -269,7 +311,7 @@ const HomePg = () => {
       </div>
       
       {/* WHO WE ARE */}
-      <div>
+      <div ref={AboutRef}>
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-12 md:py-24">
             <div className="col-span-2">
@@ -335,7 +377,7 @@ const HomePg = () => {
           <div className="container">
             <div className="py-24">
               <div className="mx-auto border border=white text-center rounded-lg  bg-transparent w-full md:w-1/3 h-56 flex flex-col justify-evenly items-center px-4">
-                <h3 className="text-xl md:text-2xl">
+                <h3 className="text-2xl md:text-4xl">
                   Start Trading Today and Unlock Your Financial Potential.
                 </h3>
                 <p className="text-gray-800">
@@ -461,7 +503,7 @@ const HomePg = () => {
         </div>
       </div>
       {/* WHAT WE OFFER */}
-      <div className="bg-[#ededed] py-24">
+      <div className="bg-[#ededed] py-24" ref={TradeRef}>
         <div className="container">
           <div className="flex flex-col gap-1 md:gap-3 pb-8 w-full md:w-1/2 mx-auto">
             <p className="text-center text-second text-lg font-[500]">
@@ -658,7 +700,7 @@ const HomePg = () => {
         
       </div>
       {/* Contact Section */}
-      <div className="container py-12">
+      <div className="container py-12" ref={ContactRef}>
         <div className="w-full md:w-1/2 mx-auto text-center py-12">
           <h3 className="text-2xl font-[500]">Contact Us</h3>
           <p className="text-sm">
@@ -739,7 +781,7 @@ const HomePg = () => {
         </div>
       </div>
       {/* Pricing Section */}
-      <div className="bg-[#f5f5f5]">
+      <div className="bg-[#f5f5f5]" ref={PackRef}>
         <div className="container py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-start items-start">
             <div>
@@ -832,7 +874,7 @@ const HomePg = () => {
       </div>
 
       {/* Testimontials */}
-      <div className="container py-12">
+      <div className="container py-12" ref={TestfyRef}>
         <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center">
           <div className="flex flex-col gap-2">
             <p className="text-primary font-[500]">TESTIMONIALS</p>

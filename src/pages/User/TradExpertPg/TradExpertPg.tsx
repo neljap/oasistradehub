@@ -14,6 +14,7 @@ const TradExpertPg = () => {
     {
       id: 1,
       name: "J Bravo",
+      names: "JBravo",
       title: "Bakerfield",
       subdash: ["1.2k", "8.2", "AAPL"],
       tradValue: [300, 12, 20.5, 82],
@@ -22,6 +23,7 @@ const TradExpertPg = () => {
     {
       id: 2,
       name: "Elon Musk",
+      names: "ElonMusk",
       title: "Hidden",
       subdash: ["1.2k", "8.2", "TSLA"],
       tradValue: [713, 12, 20.5, 95],
@@ -30,6 +32,7 @@ const TradExpertPg = () => {
     {
       id: 3,
       name: "Ross Cameron",
+      names: "rosscameron",
       title: "Armada",
       subdash: ["1.2k", "8.2", "AAPL"],
       tradValue: [300, 17, 20.5, 91],
@@ -38,6 +41,7 @@ const TradExpertPg = () => {
     {
       id: 4,
       name: "ProTraderX",
+      names: "protraderX",
       title: "New York",
       subdash: ["1.2k", "8.2", "AAPL"],
       tradValue: [300, 12, 20.5, 75],
@@ -46,6 +50,7 @@ const TradExpertPg = () => {
     {
       id: 5,
       name: "SwingMaster",
+      names: "swingmaster",
       title: "Los Angeles",
       subdash: ["0.8k", "6.5", "GOOGL"],
       tradValue: [450, 8, 15.2, 62],
@@ -54,6 +59,7 @@ const TradExpertPg = () => {
     {
       id: 6,
       name: "OptionsPro",
+      names: "optionspro",
       title: "London",
       subdash: ["1.5k", "7.1", "TSLA"],
       tradValue: [250, 18, 23.7, 81],
@@ -62,6 +68,7 @@ const TradExpertPg = () => {
     {
       id: 7,
       name: "OptionsWizard",
+      names: "optionswizard",
       title: "Seattle",
       subdash: ["0.8k", "8", "AMZN"],
       tradValue: [270, 14, 17.6, 70],
@@ -70,6 +77,7 @@ const TradExpertPg = () => {
     {
       id: 8,
       name: "DayTradeQueen",
+      names: "daytradequeen",
       title: "Singapore",
       subdash: ["1.3k", "7.3", "NFLX"],
       tradValue: [290, 11, 22, 76],
@@ -78,6 +86,7 @@ const TradExpertPg = () => {
     {
       id: 9,
       name: "SwingKing", 
+      names: "swingking", 
       title: "Philadelphia",
       subdash: ["0.9k", "6.6", "AAPL"],
       tradValue: [360, 13, 16.4, 64],
@@ -86,6 +95,7 @@ const TradExpertPg = () => {
     {
       id: 10,
       name: "ForexqueenX",
+      names: "forexqueenx",
       title: "Berlin",
       subdash: ["1.4k", "7.7", "EURUSD"],
       tradValue: [330, 17, 20.2, 72],
@@ -94,6 +104,7 @@ const TradExpertPg = () => {
     {
       id: 11,
       name: "Forex Empress",
+      names: "forexempress",
       title: "Tokyo",
       subdash: ["1.1k", "7.8", "JPY"],
       tradValue: [280, 9, 21.5, 78],
@@ -102,6 +113,7 @@ const TradExpertPg = () => {
     {
       id: 12,
       name: "Cryptoxavant",
+      names: "cryptoxavant",
       title: "Mumbai",
       subdash: ["0.9k", "6.4", "INR"],
       tradValue: [320, 16, 18.7, 65],
@@ -110,6 +122,7 @@ const TradExpertPg = () => {
     {
       id: 13,
       name: "Samba_trader",
+      names: "Samba_trader",
       title: "Sao Paulo",
       subdash: ["1.0k", "7.1", "BRL"],
       tradValue: [340, 12, 20.1, 73],
@@ -118,6 +131,7 @@ const TradExpertPg = () => {
     {
       id: 14,
       name: "Pyramidmystic",
+      names: "pyramidmystic",
       title: "Cairo",
       subdash: ["1.2k", "7.6", "BTC"],
       tradValue: [270, 10, 22.3, 80],
@@ -126,6 +140,7 @@ const TradExpertPg = () => {
     {
       id: 15, 
       name: "Lucha$Trader",
+      names: "lucha$trader",
       title: "Mexico City",
       subdash: ["1.1k", "7", "MXN"],
       tradValue: [310, 14, 17.9, 67],
@@ -133,7 +148,7 @@ const TradExpertPg = () => {
     }
   ]
 
-  const filterTradPert = TradingEx.filter((filTrad) => filTrad.name.toLocaleUpperCase().indexOf(inputTradEx.toLocaleLowerCase()) !== -1)
+  const filterTradPert = TradingEx.filter((filTrad) => filTrad.names.toLocaleUpperCase().indexOf(inputTradEx.toLocaleLowerCase()) !== -1)
 
   return (
     <div>

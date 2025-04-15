@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { toast } from "react-toastify";
+import { AuthContext } from "../../../app/AuthContext";
 
 const SupportPg = () => {
   const [subLoading, setSubLoading] = useState(false);
@@ -10,17 +11,26 @@ const SupportPg = () => {
   const [category, setCategory] = useState("")
 
   const catValue = ["select","mywallet", "verification", "others"]
+  const {data} = useContext(AuthContext);
 
   const handleSupport = async(e: any) => {
     e.preventDefault()
     setSubLoading(true);
+    let userid = data._id
     try {
-      console.log(subject, category, message)
-      await axios.post("http://localhost:3030/api/user/support", {})
+      console.log(subject, category, message, userid)
+
+      const res = await axios.post("http://localhost:3030/api/user/support", {userid, subject, category, message})
+      if(res){
+        toast.success("Received, Our team will get back to you, shortly", {position: "bottom-left"})
+      }
     } catch (error) {
       toast.error(`Support Error: ${error}`, {position: "bottom-left"})
     }finally{
-      setSubLoading(false)
+      setSubLoading(false);
+      setCategory("");
+      setSubject("");
+      setMessage("");
     }
   };
 

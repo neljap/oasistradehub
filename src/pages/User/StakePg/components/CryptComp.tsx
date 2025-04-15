@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa6";
 import { StakeContext } from "../../../../app/StakeContext";
 import { StakingData } from "../../../../utils/AppData";
+import { useAppDispatch } from "../../../../app/hook";
+import { stakeAdded } from "../../../../features/stakeSlice";
 // import axios from "axios";
 // import { AuthContext } from "../../../../app/AuthContext";
 
@@ -19,8 +21,8 @@ const CryptComp = () => {
   const { inputStkCrypto, handleStkCrypto, filteredStkCrypto } =
     useContext(StakeContext);
   // const { data } = useContext(AuthContext);
-  const {allStakings, setAllStakings} = useContext(StakeContext);
-
+  // const {allStakings, setAllStakings} = useContext(StakeContext);
+  const dispatch = useAppDispatch()
   console.log("staking", stakingSetNum);
 
   const singleStake = StakingData.find((item) => item.id == stakingSetNum);
@@ -63,6 +65,7 @@ const CryptComp = () => {
         : 0;
 
     let staked = { sAmount, sSign, sCoin, sDuration, sROI, sRPC };
+    
 
     try {
       // const res = await axios.post(
@@ -70,13 +73,19 @@ const CryptComp = () => {
       //   { userid: data._id, staked }
       // );
       // console.log("res", res);
-      if(allStakings.length > 0){
-       setAllStakings(allStakings.push(staked)) 
-      }else{
-        setAllStakings([...allStakings, allStakings.push(staked)])
-      }
-      
-      console.log("staking", allStakings)
+      // if(allStakings.length > 0){
+      //  setAllStakings(allStakings.push(staked)) 
+      // }else{
+      //   setAllStakings([...allStakings, allStakings.push(staked)])
+      // }
+      let asset = sSign;
+      let amount = sAmount
+      let duration = sDuration
+      let returns = sRPC
+      let totalreturn = sROI
+      let status = 'locked'
+      console.log("staking", staked)
+      dispatch(stakeAdded(asset,  amount, duration, returns, totalreturn, status ))
     } catch (error) {
       console.log("error", error);
     } finally {
@@ -127,7 +136,7 @@ const CryptComp = () => {
               </div>
 
               <button
-                className="bg-primary w-full text-white py-3 rounded-xl"
+                className="bg-primary transition-all ease-in-out duration-[1s] hover:bg-opacity-10 hover:text-primary hover:border-primary border font-[600] w-full text-white py-3 rounded-xl"
                 onClick={() => {
                   setStakeOpen(true);
                   setStakingSetNum(item.id);

@@ -48,8 +48,9 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="bg-second h-screen px-28 my-auto py-12">
-        <div className="my-auto rounded bg-white grid grid-cols-1 md:grid-cols-3">
+    <div className="bg-second h-screen px-0 md:px-28 my-auto py-12">
+      <div className="container">
+       <div className="my-auto rounded bg-white grid grid-cols-1 md:grid-cols-3">
             <div className="py-6 px-10 flex flex-col gap-3">
               <div className="flex flex-row items-center justify-between">
                 <Link to="/" className="text-second font-[600] text-xl">OasisTradeHub</Link>
@@ -90,7 +91,7 @@ const LoginPage = () => {
               </div>
               
             </div>
-            <div className="col-span-2 bg-[#3c39aa] py-6">
+            <div className="col-span-2 bg-[#3c39aa] py-6 hidden md:block">
               <div className="w-1/2 mx-auto text-white text-center">
               <p className="font-[500] text-2xl">Welcome to Oasis Trade Hub</p>
               <p className="leading-5 font-[500]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia neque vero natus, laborum quisquam aliquam.</p>
@@ -106,7 +107,9 @@ const LoginPage = () => {
                 
               </div>
             </div>
-        </div>
+        </div> 
+      </div>
+        
     </div>
   )
 }

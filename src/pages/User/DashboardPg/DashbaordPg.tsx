@@ -61,6 +61,8 @@ const DashbaordPg = () => {
                 </div>
                 <p>Account Balance ${data ? data?.tAmount : 0}</p>
             </div>
+            <div className="flex flex-row justify-between items-center">
+                <div></div>
             <div className="flex flex-col md:flex-row gap-4">
                 <Link to="/user/withdraw">
                 <button className="text-primary rounded-lg py-2 px-4 bg-opacity-5 bg-primary flex flex-row gap-2 items-center font-[500]"> <FaBars /> Withdrawal</button>
@@ -69,6 +71,8 @@ const DashbaordPg = () => {
                 <button className="text-white rounded-lg py-2 px-4 bg-primary flex flex-row gap-2 items-center font-[500]"><FaBars /> Deposit</button>
                 </Link>
             </div> 
+            </div>
+            
         </div>
         <div className="border border-neutral-100 px-6 py-4 rounded-xl mt-4 flex flex-row items-center justify-center gap-4">
         <div className="text-primary bg-primary bg-opacity-5 rounded-full p-2 w-fit">
