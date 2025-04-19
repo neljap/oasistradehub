@@ -109,7 +109,7 @@ const Navbar = ({AboutRef, PackRef, Testfy, ContactRef, TradeRef}: NavRefTypes) 
         </div>
      
     </div>
-    <ResponsiveNav showMenu={showMenu} setShowMenu={setShowMenu}  />   
+    <ResponsiveNav showMenu={showMenu} AboutRef={AboutRef} PackRef={PackRef} Testfy={Testfy} ContactRef={ContactRef} TradeRef={TradeRef} setShowMenu={setShowMenu}  />   
     </div>
     
   )

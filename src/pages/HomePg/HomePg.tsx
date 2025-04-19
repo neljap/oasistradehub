@@ -43,10 +43,11 @@ import {
 // import { DarkLightContext } from "../../app/DarkLightTheme";
 import { ExploreCard, Footer, Navbar } from "../components";
 import { SiTransmission } from "react-icons/si";
-import Carousel from "../components/TestCarousel";
+// import Carousel from "../components/TestCarousel";
 import axios from "axios";
 import { IoCheckmark } from "react-icons/io5";
 import CountUp from "./components/CountUpCounter";
+import { TestyCard } from "../components/TestyCard";
 const HomePg = () => {
   // const [changebg, setChangebg] = useState(false);
 
@@ -168,32 +169,39 @@ const HomePg = () => {
     {
       id: 1,
       title: "Forex",
-      img: expltradefx
+      img: expltradefx,
+      text: "Explore our Forex trading solutions—real-time data, low spreads, expert tools, and secure platforms for global currency trading."
     },
     {
       id: 2,
       title: "Cryptocurrency",
-      img: expltradecpt
+      img: expltradecpt,
+      text: "Explore our cryptocurrency trading solutions—secure platforms, real-time data, low fees, and expert tools for digital asset trading."
     },
     {
       id: 3,
       title: "Equity",
-      img: expltradequit
+      img: expltradequit,
+      text: "Explore our trading solutions—built on equality, ensuring fair access, opportunities, and tools for every trader to succeed globally."
+
     },
     {
       id: 4,
       title: "Stock",
-      img: "https://res.cloudinary.com/dr6a80sph/image/upload/v1744201969/j4lplfrn8xhkcd7d2ezs.png"
+      img: "https://res.cloudinary.com/dr6a80sph/image/upload/v1744201969/j4lplfrn8xhkcd7d2ezs.png",
+      text: "Explore our stock trading solutions—real-time insights, diverse markets, advanced tools, and secure platforms for smart equity investments."
     },
     {
       id: 5,
       title: "ETF",
-      img: expltradeetf
+      img: expltradeetf,
+      text: "Explore our ETF trading solutions—diversified portfolios, low-cost access, real-time tracking, and smart tools for strategic investment growth."
     },
     {
       id: 6,
       title: "Commodity",
-      img: expltradecom
+      img: expltradecom,
+      text: "Explore our commodity trading solutions—gain access to gold, oil, and more with real-time data, low fees, and security."
     }
   ]
 
@@ -202,38 +210,44 @@ const HomePg = () => {
       id: 1,
       title: "Tailored Strategies",
       img: "https://res.cloudinary.com/dr6a80sph/image/upload/v1744201969/rjlzqyjwx0qixt4tjav1.png",
+      text: "We provide personalized trading and investment strategies, designed to meet your unique financial goals and risk tolerance."
     },
     {
       id: 2,
       title: "Advanced Trading Tools",
       img: "https://res.cloudinary.com/dr6a80sph/image/upload/v1744201966/w7jfvdaki6bfzhrhvcmi.png",
+      text: "Our advanced trading tools offer real-time analysis, automation, and customization to enhance your strategic trading decisions and maximize profits."
     },
     {
       id: 3,
       title: "Expert Financial Advice",
       img: wwoImg3,
+      text: "Our expert financial advisors provide personalized insights and strategies to help you navigate markets and grow wealth confidently."
     },
     {
       id: 4,
       title: "Robust Risk Management",
       img: wwoImg4,
+      text: "We implement robust risk management strategies, protecting your investments through advanced tools and proactive market analysis."
     },
     {
       id: 5,
       title: "Educational Resources",
       img: wwoImg5,
+      text: "Our educational resources empower traders with knowledge, helping them develop strategic trading skills for informed decision-making and success."
     },
     {
       id: 6,
       title: "Conprehensive Market Analysis",
       img: wwoImg6,
+      text: "Our comprehensive market analysis provides in-depth insights, helping you make informed, strategic decisions in dynamic trading environments."
     },
   ];
   const weAreData = [
-    "Deep Assets Details",
-    "Dynamic Portfolio Tracking",
-    "Smart Notifications",
-    "Multi Asset Tracking",
+    "Experienced Professionals",
+    "Client-Focused",
+    "Innovative Solutions",
+    "Trustworthy & Transparent",
   ];
 
 
@@ -246,12 +260,10 @@ const HomePg = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center bg-black text-white pt-16 bg-herobgone bg-center bg-no-repeat bg-cover">
             <div className="flex flex-col gap-6 px-12 text-center md:text-start">
               <h2 className="text-3xl md:text-5xl font-[600]">
-                Unlock Your Trading Success
+              Smart Trading, Secure Investments, Your Wealth Grows Faster
               </h2>
               <p className="font-[500]">
-                In commodo purus parturient nam sagittis convallis mollis
-                dictumst montes vitae pellentesque scelerisque per neque curae
-                integer hendrerit congue ad aenean
+              Join our trusted trading and investment platform designed for beginners and experts. Access real-time market data, secure transactions, and smart tools to grow your portfolio and achieve financial freedom today.
               </p>
               <div className="grid grid-cols-1 md:flex md:flex-row gap-2 md:gap-6 items-center ">
                 <button className="bg-second border hover:border-primary hover:bg-transparent hover:text-primary font-[500] transition-all ease-in-out duration-[1s] rounded py-2 px-4 text-white">
@@ -348,11 +360,10 @@ const HomePg = () => {
             <div className="flex flex-col gap-4">
               <p className="text-second font-[500]">WHO WE ARE</p>
               <h3 className="text-3xl font-[600] text-gray-800">
-                Leading the Way in Global Trading
+              Passionate Experts Driving Financial Growth Forward
               </h3>
               <p className="text-gray-800">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Accusamus, laborum perferendis earum delectus nisi maiores?
+              We are a team of passionate financial experts dedicated to empowering individuals through smart trading, investing, and wealth management solutions.
               </p>
               <div className="flex flex-col gap-2">
                 {weAreData.map((item, index) => (
@@ -467,9 +478,7 @@ const HomePg = () => {
               Your Success is Our Priority
             </h2>
             <p className="text-gray-800">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis
-              impedit earum eum quaerat? Officia hic molestiae repellat sequi
-              aliquam? Officia.
+            Our values drive everything we do—integrity, innovation, trust, excellence, growth, and commitment to your financial success.
             </p>
             <div className="flex flex-col gap-4">
               <div className="flex flex-row gap-2 justify-start items-start">
@@ -479,9 +488,7 @@ const HomePg = () => {
                 <div>
                   <h3 className="text-2xl font-[500]">Our Vision</h3>
                   <p className="text-gray-800">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea
-                    quos porro molestias adipisci corrupti perferendis eligendi.
-                    Magni eos cumque animi?
+                  To become the leading platform empowering individuals worldwide to achieve financial freedom through smart trading and investment solutions.
                   </p>
                 </div>
               </div>
@@ -492,9 +499,7 @@ const HomePg = () => {
                 <div>
                   <h3 className="text-2xl font-[500]">Our Mission</h3>
                   <p className="text-gray-800">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea
-                    quos porro molestias adipisci corrupti perferendis eligendi.
-                    Magni eos cumque animi?
+                  Our mission is to deliver secure, innovative, and accessible trading and investment solutions that empower individuals to build lasting wealth.
                   </p>
                 </div>
               </div>
@@ -526,9 +531,7 @@ const HomePg = () => {
                 </div>
                 <h3 className="text-xl">{item.title}</h3>
                 <p className="leading-5 text-md">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aspernatur libero aliquam saepe quibusdam dolor voluptatum
-                  incidunt, sint minus assumenda quia.
+                 {item.text}
                 </p>
                 <div>
                   <button className="bg-second text-white px-4 py-2 rounded">
@@ -564,9 +567,7 @@ const HomePg = () => {
           <div className="w-full md:w-1/2 text-center flex flex-col gap-4 mx-auto py-12">
             <h3 className="text-2xl md:text-4xl">Explore Trading Solutions</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-              reiciendis magnam ullam aperiam tenetur. Veniam quae consequuntur
-              quo reiciendis vitae.
+            Explore our comprehensive trading solutions tailored for every investor, offering advanced tools, personalized strategies, and expert insights to help you achieve your financial goals with confidence.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-start">
@@ -577,15 +578,13 @@ const HomePg = () => {
                 }`}
                 onClick={() => setMarkSet(0)}
               >
-                <div className="rounded bg-[#ededed] p-2">
+                <div className="rounded bg-[#ededed] p-2 flex flex-col gap-2">
                   <div className="flex flex-row items-center">
                     <FaBaby />
-                    <p>Foreign Exchange</p>
+                    <p className="font-[500] text-lg md:text-2xl">Foreign Exchange</p>
                   </div>
                   <p className="text-sm">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Incidunt tenetur eligendi qui, ex quod minus obcaecati
-                    explicabo voluptate repellendus adipisci.
+                  Our foreign exchange services offer real-time market data, advanced tools, and expert insights to help you navigate global currency trading effectively.
                   </p>
                   <div>
                     <p>Exchange:</p>
@@ -604,15 +603,13 @@ const HomePg = () => {
                 }`}
                 onClick={() => setMarkSet(1)}
               >
-                <div className="rounded bg-[#ededed] p-2">
+                <div className="rounded bg-[#ededed] p-2 flex flex-col gap-2">
                   <div className="flex flex-row items-center">
                     <FaBaby />
-                    <p>Stock Market</p>
+                    <p className="font-[500] text-lg md:text-2xl">Stock Market</p>
                   </div>
                   <p className="text-sm">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Incidunt tenetur eligendi qui, ex quod minus obcaecati
-                    explicabo voluptate repellendus adipisci.
+                  Our stock market services provide real-time data, expert analysis, and strategic insights to help you make informed investment decisions.
                   </p>
                   <div>
                     <p>Exchange:</p>
@@ -631,15 +628,13 @@ const HomePg = () => {
                 }`}
                 onClick={() => setMarkSet(2)}
               >
-                <div className="rounded bg-[#ededed] p-2">
+                <div className="rounded bg-[#ededed] p-2 flex flex-col gap-2">
                   <div className="flex flex-row items-center">
                     <FaBaby />
-                    <p>Cryptocurrency</p>
+                    <p className="font-[500] text-lg md:text-2xl">Cryptocurrency</p>
                   </div>
                   <p className="text-sm">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Incidunt tenetur eligendi qui, ex quod minus obcaecati
-                    explicabo voluptate repellendus adipisci.
+                  Our cryptocurrency services offer secure trading, real-time market insights, and expert guidance to help you navigate the digital currency landscape confidently.
                   </p>
                   <div>
                     <p>Exchange:</p>
@@ -661,125 +656,17 @@ const HomePg = () => {
         <div className="container py-12">
           <div className="w-full md:w-1/2 text-center flex flex-col gap-4 justify-center items-center mx-auto">
           <h4 className="font-[600] text-4xl">Explore Our Trading Solutions</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+          <p>Explore our comprehensive trading solutions tailored for every investor, offering advanced tools, personalized strategies, and expert insights to help you achieve your financial goals with confidence.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 justify-center items-center py-12 px-0 md:px-8">
             {Explotrade.map((item: any) => (
-           <ExploreCard key={item.id} title={item.title} img={item.img}/>   
+           <ExploreCard key={item.id} title={item.title} img={item.img} text={item.text}/>   
             ))}
             
           </div>
         </div>
       </div>
-      {/* Play Store */}
-      <div>
-        <div className="container">
-          <div className="px-0 md:px-8 pt-24">
-        <div className="grid relative grid-cols-1 md:grid-cols-2 justify-center items-center gap-4 md:gap-8 bg-[#2f2f2f] text-white  rounded-xl">
-            <div className="pl-8">
-              
-              {/* absolute -top-32  */}
-              <img src={playstoreImg} alt="" className="
-              w-[550px] mx-auto" />
-            </div>
-            <div className="flex flex-col gap-8 justify-start items-start">
-              <h3 className="text-3xl md:text-5xl">Trade Seamlessly on Any Device, Anytime</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-              <div className="grid grid-cols-3 justify-center items-center gap-4 me-12">
-                {storeappImg.map((item, index) => (
-                  <div key={index} className="w-full">
-                    <img src={item} alt="" className="w-full"/>
-                  </div>
-                ))}
-              </div>
-            </div>
-        </div>      
-          </div>
-        
-        </div>
-        
-      </div>
-      {/* Contact Section */}
-      <div className="container py-12" ref={ContactRef}>
-        <div className="w-full md:w-1/2 mx-auto text-center py-12">
-          <h3 className="text-2xl font-[500]">Contact Us</h3>
-          <p className="text-sm">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-            natus in nesciunt exercitationem repellendus error numquam nostrum
-            cumque, maxime eius laudantium quaerat quibusdam? Inventore,
-            recusandae!
-          </p>
-        </div>
-        <div className="w-full md:w-2/3 rounded-xl shadow-xl bg-[#ededed] grid grid-cols-1 md:grid-cols-3 mx-auto">
-          <form className="p-4 col-span-2" onSubmit={handleForm}>
-            <h3 className="py-4 text-xl font-[600]">Send Us a Message</h3>
-
-            <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="flex flex-col gap-1">
-                <label className="text-lg font-[500]">Full Name</label>
-                <input
-                  type="text"
-                  value={fullname}
-                  required
-                  onChange={(e) => setFullname(e.target.value)}
-                  className="w-full p-1 outline-none rounded-lg  border-black border"
-                />
-              </div>
-              <div className="flex flex-col gap-1">
-                <label className="text-lg font-[500]">Email Address</label>
-                <input
-                  type="email"
-                  value={email}
-                  required
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full p-1 outline-1 outline-primary rounded-lg focus:border-primary border-black border"
-                />
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="flex flex-col gap-1">
-                <label className="text-lg font-[500]">Subject</label>
-                <input
-                  type="text"
-                  value={subject}
-                  required
-                  onChange={(e) => setSubject(e.target.value)}
-                  className="w-full p-1 outline-1 outline-primary rounded-lg focus:border-primary border-black border"
-                />
-              </div>
-              <div className="flex flex-col gap-1">
-                <label className="text-lg font-[500]">Phone Number</label>
-                <input
-                  type="number"
-                  value={phone}
-                  required
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="w-full p-1 outline-1 outline-primary rounded-lg focus:border-primary border-black border"
-                />
-              </div>
-            </div>
-            <div className="flex flex-col gap-1 pt-2">
-              <label className="text-lg font-[500]">Message</label>
-              <textarea
-                name=""
-                id=""
-                className="h-60 w-full rounded p-2"
-                value={message}
-                required
-                onChange={(e) => setMessage(e.target.value)}
-              ></textarea>
-            </div>
-            <div className="pt-6 pb-2 float-end">
-              <button className="py-2 px-4 text-white bg-primary rounded-lg ">
-                {isFmLoading ? "Sending..." : "Send"}
-              </button>
-            </div>
-          </form>
-          <div className="bg-primary rounded-tr-xl rounded-br-xl hidden md:block">
-            <h2 className="text-center text-white pt-8">Oasis Trade Hub</h2>
-          </div>
-        </div>
-      </div>
+      
       {/* Pricing Section */}
       <div className="bg-[#f5f5f5]" ref={PackRef}>
         <div className="container py-12">
@@ -872,9 +759,118 @@ const HomePg = () => {
           </div>
         </div>
       </div>
+      
+      {/* Contact Section */}
+      <div className="container py-12" ref={ContactRef}>
+        <div className="w-full md:w-1/2 mx-auto text-center py-12">
+          <h3 className="text-2xl font-[500]">Contact Us</h3>
+          <p className="text">
+          Our support team is ready to assist you with trading inquiries, solutions, and personalized guidance anytime.
+          </p>
+        </div>
+        <div className="w-full md:w-2/3 rounded-xl shadow-xl bg-[#ededed] grid grid-cols-1 md:grid-cols-3 mx-auto">
+          <form className="p-4 col-span-2" onSubmit={handleForm}>
+            <h3 className="py-4 text-xl font-[600]">Send Us a Message</h3>
+
+            <div className="grid grid-cols-2 gap-4 pt-2">
+              <div className="flex flex-col gap-1">
+                <label className="text-lg font-[500]">Full Name</label>
+                <input
+                  type="text"
+                  value={fullname}
+                  required
+                  onChange={(e) => setFullname(e.target.value)}
+                  className="w-full p-1 outline-none rounded-lg  border-black border"
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label className="text-lg font-[500]">Email Address</label>
+                <input
+                  type="email"
+                  value={email}
+                  required
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full p-1 outline-1 outline-primary rounded-lg focus:border-primary border-black border"
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4 pt-2">
+              <div className="flex flex-col gap-1">
+                <label className="text-lg font-[500]">Subject</label>
+                <input
+                  type="text"
+                  value={subject}
+                  required
+                  onChange={(e) => setSubject(e.target.value)}
+                  className="w-full p-1 outline-1 outline-primary rounded-lg focus:border-primary border-black border"
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label className="text-lg font-[500]">Phone Number</label>
+                <input
+                  type="number"
+                  value={phone}
+                  required
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="w-full p-1 outline-1 outline-primary rounded-lg focus:border-primary border-black border"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col gap-1 pt-2">
+              <label className="text-lg font-[500]">Message</label>
+              <textarea
+                name=""
+                id=""
+                className="h-60 w-full rounded p-2"
+                value={message}
+                required
+                onChange={(e) => setMessage(e.target.value)}
+              ></textarea>
+            </div>
+            <div className="pt-6 pb-2 float-end">
+              <button className="py-2 px-4 text-white bg-primary rounded-lg ">
+                {isFmLoading ? "Sending..." : "Send"}
+              </button>
+            </div>
+          </form>
+          <div className="bg-primary rounded-tr-xl rounded-br-xl hidden md:block">
+            <h2 className="text-center text-white pt-8">Oasis Trade Hub</h2>
+          </div>
+        </div>
+      </div>
+      
+      {/* Play Store */}
+      <div>
+        <div className="container">
+          <div className="px-0 md:px-8 pt-24">
+        <div className="grid relative grid-cols-1 md:grid-cols-2 justify-center items-center gap-4 md:gap-8 bg-[#2f2f2f] text-white  rounded-xl">
+            <div className="pl-8">
+              
+              {/* absolute -top-32  */}
+              <img src={playstoreImg} alt="" className="
+              w-[550px] mx-auto" />
+            </div>
+            <div className="flex flex-col gap-8 justify-start items-start">
+              <h3 className="text-3xl md:text-5xl">Trade Seamlessly on Any Device, Anytime</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+              <div className="grid grid-cols-3 justify-center items-center gap-4 me-12">
+                {storeappImg.map((item, index) => (
+                  <div key={index} className="w-full">
+                    <img src={item} alt="" className="w-full"/>
+                  </div>
+                ))}
+              </div>
+            </div>
+        </div>      
+          </div>
+        
+        </div>
+        
+      </div>
 
       {/* Testimontials */}
-      <div className="container py-12" ref={TestfyRef}>
+      <TestyCard />
+      {/* <div className="container py-12" ref={TestfyRef}>
         <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center">
           <div className="flex flex-col gap-2">
             <p className="text-primary font-[500]">TESTIMONIALS</p>
@@ -903,7 +899,7 @@ const HomePg = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <Footer />
     </div>
   );

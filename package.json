@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
     "@types/react-google-recaptcha": "^2.1.9",
+    "@types/react-slick": "^0.23.13",
     "aos": "^2.3.4",
     "axios": "^1.7.9",
     "framer-motion": "^12.6.2",

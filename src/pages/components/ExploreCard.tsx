@@ -1,8 +1,9 @@
 interface ExplTypes {
     title: String,
     img: string
+    text: string
 }
-const ExploreCard = ({title, img}: ExplTypes) => {
+const ExploreCard = ({title, img, text}: ExplTypes) => {
   return (
     <div className="bg-white rounded shadow p-4">
               <div className="bg-[#ededed] rounded p-4 flex flex-col gap-4">
@@ -14,7 +15,7 @@ const ExploreCard = ({title, img}: ExplTypes) => {
                 <p>4.5</p>
                 <p>11</p>
               </div>
-              <p className="text-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quas id ex quidem! Eligendi excepturi nulla nostrum ex id iusto?</p>
+              <p className="text-md">{text}</p>
               <div>
                 <p className="font-[500]">Exchange:</p>
                 <div className="flex flex-row items-center gap-1">

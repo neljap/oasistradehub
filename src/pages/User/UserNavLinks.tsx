@@ -189,9 +189,9 @@ const UserNavLinks = ({ children }: any) => {
         </div>
         
         <div className="flex flex-row items-center gap-4">
-          <div className="relative">
+          <div className="relative group">
             <div
-              className="shadow px-2 md:px-3 py-1 md:py-2 rounded-md md:rounded-xl cursor-pointer border border-neutral-500 flex flex-row gap-3"
+              className="shadow group px-2 md:px-3 py-1 md:py-2 rounded-lg cursor-pointer border border-neutral-500 flex flex-row gap-3"
               onClick={() => setFigModal(!figModal)}
             >
               {figValue == 1 ? (
@@ -206,10 +206,8 @@ const UserNavLinks = ({ children }: any) => {
 
               <p>0</p>
             </div>
-            <div>
-              {figModal && (
                 <div
-                  className="absolute top-12 max-w-fit rounded-lg border border-neutral-400 shadow-lg z-20 p-2 md:p-4 bg-white dark:bg-black dark:text-white"
+                  className="absolute top-12 hidden group-hover:block max-w-fit rounded-lg border border-neutral-400 shadow-lg z-20 p-2 md:p-4 bg-white dark:bg-black dark:text-white"
                   onClick={() => setFigModal(!figModal)}
                 >
                   <button
@@ -252,8 +250,6 @@ const UserNavLinks = ({ children }: any) => {
                     <p className="font-[500]">0.00000</p>
                   </button>
                 </div>
-              )}
-            </div>
           </div>
 
           <div className="flex flex-row gap-2 items-center transition-all duration-[1s] ease-in-out   px-2 md:px-3 py-1 md:py-2 shadow rounded-md md:rounded-xl cursor-pointer text-primary bg-primary bg-opacity-5 hover:bg-opacity-95 hover:text-white">
