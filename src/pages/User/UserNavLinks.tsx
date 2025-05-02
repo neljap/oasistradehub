@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BiBellPlus, BiPowerOff } from "react-icons/bi";
 import {
   FaCommentAlt,
@@ -160,6 +160,15 @@ const UserNavLinks = ({ children }: any) => {
       toast.error(err.code, { position: "bottom-left" });
     }
   }
+
+  useEffect(() => {
+    let cookietoken = Cookies.get("token");
+
+    if(!cookietoken){
+      navigate("/login")
+    }
+
+  }, [])
 
   const activeLink =
     "flex flex-row gap-3 px-6 py-2 justify-start items-center bg-blue-200 text-[#0052FF] rounded-xl mt-2";

@@ -33,21 +33,24 @@ import {
   wwoImg5,
   wwoImg6,
 } from "../../assets";
-import { FaBaby } from "react-icons/fa6";
+
 import {
+  useEffect,
   useRef,
   // useContext,
   useState,
 } from "react";
 // import { FaMoon, FaSun } from "react-icons/fa";
 // import { DarkLightContext } from "../../app/DarkLightTheme";
-import { ExploreCard, Footer, Navbar } from "../components";
+import { ExploreCard, Navbar } from "../components";
 import { SiTransmission } from "react-icons/si";
 // import Carousel from "../components/TestCarousel";
 import axios from "axios";
 import { IoCheckmark } from "react-icons/io5";
 import CountUp from "./components/CountUpCounter";
 import { TestyCard } from "../components/TestyCard";
+import Footter from "../components/Footter";
+import { PricingCard } from "./components";
 const HomePg = () => {
   // const [changebg, setChangebg] = useState(false);
 
@@ -58,7 +61,7 @@ const HomePg = () => {
   const [phone, setPhone] = useState<any>(null);
   const [message, setMessage] = useState("");
   const [subject, setSubject] = useState("");
-  const [markSet, setMarkSet] = useState<any>(0);
+  // const [markSet, setMarkSet] = useState<any>(0);
   const [isFmLoading, setIsFmLoading] = useState(false);
 
   const storeappImg = [applestoreImg, gplaystoreImg, microsoftImg]
@@ -104,6 +107,10 @@ const HomePg = () => {
     })
   }
 
+  useEffect(() => {
+          document.title = "Oasis Trade Hub"
+  }, [])
+
   const handleForm = async (e: any) => {
     e.preventDefault();
     try {
@@ -125,45 +132,6 @@ const HomePg = () => {
     }
   };
 
-  // market
-  const CryptSection = () => {
-    return (
-      <div className="w-full h-full">
-        <iframe
-          src="https://s.tradingview.com/embed-widget/forex-cross-rates/?locale=en#%7B%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%2C%22currencies%22%3A%5B%22EUR%22%2C%22USD%22%2C%22JPY%22%2C%22GBP%22%2C%22CHF%22%2C%22AUD%22%2C%22CAD%22%2C%22NZD%22%2C%22CNY%22%5D%2C%22isTransparent%22%3Atrue%2C%22colorTheme%22%3A%22dark%22%2C%22utm_source%22%3A%22www.account.deepmargins.com%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22forex-cross-rates%22%2C%22page-uri%22%3A%22www.account.deepmargins.com%2Foverview%22%7D"
-          className="w-full h-full"
-        ></iframe>
-      </div>
-    );
-  };
-
-  const StockSection = () => {
-    return (
-      <div className="w-full h-full">
-        <iframe
-          src="https://s.tradingview.com/embed-widget/symbol-overview/?locale=en#%7B%22symbols%22%3A%5B%5B%22Apple%22%2C%22AAPL%7C1M%22%5D%2C%5B%22Google%22%2C%22GOOGL%7C1D%22%5D%2C%5B%22Microsoft%22%2C%22MSFT%7C1D%22%5D%2C%5B%22BINANCE%3ARNDRUSDT%7C1D%22%5D%5D%2C%22width%22%3A%22100%25%22%2C%22height%22%3A%22500px%22%2C%22colorTheme%22%3A%22light%22%2C%22gridLineColor%22%3A%22%232A2E39%22%2C%22fontColor%22%3A%22%23787B86%22%2C%22scalePosition%22%3A%22right%22%2C%22scaleMode%22%3A%22Normal%22%2C%22chartType%22%3A%22area%22%2C%22lineColor%22%3A%22%231976D2%22%2C%22topColor%22%3A%22rgba(55%2C%20166%2C%20239%2C%200.15)%22%2C%22fontFamily%22%3A%22-apple-system%2C%20BlinkMacSystemFont%2C%20Trebuchet%20MS%2C%20Roboto%2C%20Ubuntu%2C%20sans-serif%22%2C%22fontSize%22%3A%2210%22%2C%22valuesTracking%22%3A%221%22%2C%22changeMode%22%3A%22price-and-percent%22%2C%22lineWidth%22%3A2%2C%22isTransparent%22%3Atrue%2C%22maLineColor%22%3A%22%232962FF%22%2C%22maLineWidth%22%3A1%2C%22maLength%22%3A9%2C%22page-uri%22%3A%22www.apmbroker.com%2Fdashboard%22%2C%22utm_source%22%3A%22www.apmbroker.com%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22symbol-overview%22%7D"
-          className="w-full h-full"
-        ></iframe>
-      </div>
-    );
-  };
-
-  const ForexSection = () => {
-    return (
-      <div className="w-full h-full">
-        <iframe
-          src="https://www.tradingview-widget.com/embed-widget/crypto-mkt-screener/?locale=en#%7B%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%2C%22defaultColumn%22%3A%22overview%22%2C%22screener_type%22%3A%22crypto_mkt%22%2C%22displayCurrency%22%3A%22USD%22%2C%22colorTheme%22%3A%22dark%22%2C%22isTransparent%22%3Atrue%2C%22market%22%3A%22crypto%22%2C%22enableScrolling%22%3Atrue%2C%22utm_source%22%3A%22www.account.deepmargins.com%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22cryptomktscreener%22%7D"
-          className="w-full h-full"
-        ></iframe>
-      </div>
-    );
-  };
-
-  const display = {
-    0: <CryptSection />,
-    1: <StockSection />,
-    2: <ForexSection />,
-  } as any;
 
   const Explotrade = [
     {
@@ -257,7 +225,7 @@ const HomePg = () => {
         <div className="">
           <Navbar AboutRef={scrollToAbout} PackRef={scrollToPack} Testfy={scrollToTestfy} ContactRef={scrollToContact} TradeRef={scrollToTrade} />
           {/* Herosection */}
-          <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center bg-black text-white pt-16 bg-herobgone bg-center bg-no-repeat bg-cover">
+          <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center bg-black text-white pt-16 bg-center bg-no-repeat bg-cover">
             <div className="flex flex-col gap-6 px-12 text-center md:text-start">
               <h2 className="text-3xl md:text-5xl font-[600]">
               Smart Trading, Secure Investments, Your Wealth Grows Faster
@@ -292,9 +260,12 @@ const HomePg = () => {
               />
             </div>
           </div>
+          <div>
+
+    
+          </div>
         </div>
       </div>
-
       {/* Trusted Section */}
       <div className="bg-contain bg-white bg-opacity-50 bg-trustaset bg-center bg-no-repeat py-12">
       <div className="container">
@@ -359,10 +330,10 @@ const HomePg = () => {
             </div>
             <div className="flex flex-col gap-4">
               <p className="text-second font-[500]">WHO WE ARE</p>
-              <h3 className="text-3xl font-[600] text-gray-800">
+              <h3 className="text-3xl font-[600] text-gray-800 dark:text-white">
               Passionate Experts Driving Financial Growth Forward
               </h3>
-              <p className="text-gray-800">
+              <p className="text-gray-800 dark:text-white">
               We are a team of passionate financial experts dedicated to empowering individuals through smart trading, investing, and wealth management solutions.
               </p>
               <div className="flex flex-col gap-2">
@@ -384,27 +355,25 @@ const HomePg = () => {
       </div>
       {/* Trading */}
       <div>
-        <div className="bg-statbg bg-cover bg-center text-white">
-          <div className="container">
-            <div className="py-24">
-              <div className="mx-auto border border=white text-center rounded-lg  bg-transparent w-full md:w-1/3 h-56 flex flex-col justify-evenly items-center px-4">
-                <h3 className="text-2xl md:text-4xl">
-                  Start Trading Today and Unlock Your Financial Potential.
-                </h3>
-                <p className="text-gray-800">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                  elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus
-                  leo.
-                </p>
-                <div>
-                  <button className="py-1 px-3 rounded-lg bg-second">
-                    START TRADING NOW
-                  </button>
-                </div>
-              </div>
+        {/* Start trading */}
+      <div className="bg-statbg bg-cover bg-center py-20">
+        <div className="container">
+          <div className="flex flex-col gap-4 border border-white text-white py-6 md:py-12 text-center w-full md:w-1/2 rounded mx-auto justify-center items-center">
+            <h3 className="text-3xl">
+              Start Trading Today and Unlock Your Financial Potential.
+            </h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+            </p>
+            <div>
+              <button className="bg-second text-white rounded px-4 py-2">
+                Get Started
+              </button>
             </div>
           </div>
         </div>
+      </div>
         <div className="grid grid-cols-2 md:grid-cols-4 py-2 shadow-lg">
           <div className="flex flex-col justify-center items-center py-4 md:py-8">
             <div className="flex flex-row">
@@ -477,7 +446,7 @@ const HomePg = () => {
             <h2 className="text-3xl font-[600]">
               Your Success is Our Priority
             </h2>
-            <p className="text-gray-800">
+            <p className="text-gray-800 dark:text-white">
             Our values drive everything we do—integrity, innovation, trust, excellence, growth, and commitment to your financial success.
             </p>
             <div className="flex flex-col gap-4">
@@ -487,7 +456,7 @@ const HomePg = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-[500]">Our Vision</h3>
-                  <p className="text-gray-800">
+                  <p className="text-gray-800 dark:text-white">
                   To become the leading platform empowering individuals worldwide to achieve financial freedom through smart trading and investment solutions.
                   </p>
                 </div>
@@ -498,7 +467,7 @@ const HomePg = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-[500]">Our Mission</h3>
-                  <p className="text-gray-800">
+                  <p className="text-gray-800 dark:text-white">
                   Our mission is to deliver secure, innovative, and accessible trading and investment solutions that empower individuals to build lasting wealth.
                   </p>
                 </div>
@@ -508,7 +477,7 @@ const HomePg = () => {
         </div>
       </div>
       {/* WHAT WE OFFER */}
-      <div className="bg-[#ededed] py-24" ref={TradeRef}>
+      <div className="bg-[#ededed] dark:bg-black py-24" ref={TradeRef}>
         <div className="container">
           <div className="flex flex-col gap-1 md:gap-3 pb-8 w-full md:w-1/2 mx-auto">
             <p className="text-center text-second text-lg font-[500]">
@@ -522,7 +491,7 @@ const HomePg = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-0 md:mx-24">
             {wwoData.map((item) => (
               <div
-                className="bg-[#ffffff] shadow-lg rounded-lg p-8 flex flex-col gap-2"
+                className="bg-[#ffffff] dark:bg-[#1e1f24] shadow-lg rounded-lg p-8 flex flex-col gap-2"
                 key={item.id}
                 data-aos="zoom-out-up"
               >
@@ -543,27 +512,9 @@ const HomePg = () => {
           </div>
         </div>
       </div>
-      {/* Start trading */}
-      <div className="bg-statbg bg-cover bg-center py-20">
-        <div className="container">
-          <div className="flex flex-col gap-4 border border-white text-white py-6 text-center w-full md:w-1/2 rounded mx-auto justify-center items-center">
-            <h3 className="text-3xl">
-              Start Trading Today and Unlock Your Financial Potential.
-            </h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-              tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-            </p>
-            <div>
-              <button className="bg-second text-white rounded px-4 py-2">
-                Get Started
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      
       <div>
-        <div className="container">
+        {/* <div className="container">
           <div className="w-full md:w-1/2 text-center flex flex-col gap-4 mx-auto py-12">
             <h3 className="text-2xl md:text-4xl">Explore Trading Solutions</h3>
             <p>
@@ -652,7 +603,7 @@ const HomePg = () => {
               {display[markSet]}
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="container py-12">
           <div className="w-full md:w-1/2 text-center flex flex-col gap-4 justify-center items-center mx-auto">
           <h4 className="font-[600] text-4xl">Explore Our Trading Solutions</h4>
@@ -668,94 +619,49 @@ const HomePg = () => {
       </div>
       
       {/* Pricing Section */}
-      <div className="bg-[#f5f5f5]" ref={PackRef}>
+      <div className="bg-[#f5f5f5] dark:bg-black" ref={PackRef}>
         <div className="container py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-start items-start">
-            <div>
-              <p className="text-second font-[500]">CHOOSE YOUR PACKAGE</p>
-              <p>Tailored Pricing for Your Financial Goals</p>
-            </div>
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-                quia sit accusamus tenetur, cum sed praesentium veniam officia
-                saepe, eveniet voluptate fugit in harum eligendi.
-              </p>
-            </div>
+          <div className="w-full md:w-1/2 text-center mx-auto">
+          <h4 className="text-2xl font-[600]">Packages</h4>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur ullam a eum doloribus alias, deserunt aspernatur ex fuga labore inventore!</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 py-12">
-            <div className="bg-[#ffffff] flex flex-col gap-4 my-12 p-8 text-center">
-              <h2 className="text-2xl font-[600]">Starter Package</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
-                aut saepe illo?
-              </p>
-              <hr />
-              <div className="flex flex-row gap-1 mx-auto">
-                <h4 className="text-second text-5xl font-[500]">$49</h4>
-                <p>/month</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-12 justify-center items-center gap-8">
+            {/* PricingCard */}
+            <PricingCard title="Premium" days="28" amount={5000}/>
+            <PricingCard title="Gold" days="21" amount={3000} />
+            <PricingCard title="Silver" days="14" amount={1000}/>
+            <PricingCard title="Bronze" days="7" amount={500}/>
+            {/* <div className="rounded-lg shadow flex flex-col justify-center items-center py-4 border-[#7f57f3] border-t-2 w-full">
+              <div className="flex flex-row items-center gap-1">
+               <img src={premiummimg} className="w-8" alt="" />
+               <p className="font-[500] text-lg md:text-xl">Premium Plan</p> 
+
+              </div>
+              <div className="mx-auto text-center flex flex-row items-center py-4">
+                <span className="font-[600] text-2xl">$10,000</span>
+                <span>/14days</span>
               </div>
               <hr />
-              <p>Features</p>
-              <ul className="flex flex-col gap-4">
-                <li>All Starter Package Features</li>
-                <li>Basic Risk Management Tools </li>
-                <li>Quarterly Portfolio Review</li>
-                <li>24/7 Customer Support</li>
-                <li>Monthly Portfolio Review</li>
-              </ul>
-              <button className="w-full py-2 rounded bg-second text-white">
-                Get Started
-              </button>
+               <div className="flex flex-col gap-3 justify-start items-start py-4">
+
+              <div className="flex flex-row items-start gap-2">
+                              <VscVerifiedFilled />
+                              <p className="font-[500] text-sm">99.5% AI accuracy24/7</p>
+                            </div>
+                            <div className="flex flex-row items-center gap-2">
+                              <VscVerifiedFilled />
+                              <p className="font-[500] text-sm">99.5% AI accuracy24/7</p>
+                            </div>
+                            <div className="flex flex-row items-center gap-2">
+                              <VscVerifiedFilled />
+                              <p className="font-[500] text-sm">99.5% AI accuracy24/7</p>
+                            </div>
+
+                          </div>
+                          <div className="flex flex-row justify-center items-center">
+              <button className="bg-[#7f57f3] transition-all ease-in-out duration-[1s] hover:bg-opacity-20 border hover:border-primary hover:text-[#7f57f3] px-4 py-2 rounded-full mx-auto text-white font-[600]">Get Started</button>
             </div>
-            <div className="bg-gradient-to-br from-[#0b7c86] to-[#9440a2] rounded text-white flex flex-col gap-4 px-8 py-16 text-center">
-              <h2 className="text-2xl font-[600]">Starter Package</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
-                aut saepe illo?
-              </p>
-              <hr />
-              <div className="flex flex-row gap-1 mx-auto">
-                <h4 className="text-white text-5xl font-[500]">$49</h4>
-                <p>/month</p>
-              </div>
-              <hr />
-              <p>Features</p>
-              <ul className="flex flex-col gap-4">
-                <li>All Starter Package Features</li>
-                <li>Basic Risk Management Tools </li>
-                <li>Quarterly Portfolio Review</li>
-                <li>24/7 Customer Support</li>
-                <li>Monthly Portfolio Review</li>
-              </ul>
-              <button className="w-full py-2 rounded border border-white bg-transparent text-white">
-                Get Started
-              </button>
-            </div>
-            <div className="bg-[#ffffff] flex flex-col gap-4 my-12 p-8 text-center">
-              <h2 className="text-2xl font-[600]">Starter Package</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
-                aut saepe illo?
-              </p>
-              <hr />
-              <div className="flex flex-row gap-1 mx-auto">
-                <h4 className="text-second text-5xl font-[500]">$49</h4>
-                <p>/month</p>
-              </div>
-              <hr />
-              <p>Features</p>
-              <ul className="flex flex-col gap-4">
-                <li>All Starter Package Features</li>
-                <li>Basic Risk Management Tools </li>
-                <li>Quarterly Portfolio Review</li>
-                <li>24/7 Customer Support</li>
-                <li>Monthly Portfolio Review</li>
-              </ul>
-              <button className="w-full py-2 rounded bg-second text-white">
-                Get Started
-              </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -768,7 +674,7 @@ const HomePg = () => {
           Our support team is ready to assist you with trading inquiries, solutions, and personalized guidance anytime.
           </p>
         </div>
-        <div className="w-full md:w-2/3 rounded-xl shadow-xl bg-[#ededed] grid grid-cols-1 md:grid-cols-3 mx-auto">
+        <div className="w-full md:w-2/3 rounded-xl shadow-xl bg-[#ededed] dark:bg-[#222736] grid grid-cols-1 md:grid-cols-3 mx-auto">
           <form className="p-4 col-span-2" onSubmit={handleForm}>
             <h3 className="py-4 text-xl font-[600]">Send Us a Message</h3>
 
@@ -821,7 +727,7 @@ const HomePg = () => {
               <textarea
                 name=""
                 id=""
-                className="h-60 w-full rounded p-2"
+                className="h-60 w-full rounded-lg p-2"
                 value={message}
                 required
                 onChange={(e) => setMessage(e.target.value)}
@@ -838,11 +744,12 @@ const HomePg = () => {
           </div>
         </div>
       </div>
-      
+     {/* Testimontials */}
+      <TestyCard /> 
       {/* Play Store */}
       <div>
         <div className="container">
-          <div className="px-0 md:px-8 pt-24">
+          <div className="px-0 md:px-8 py-24">
         <div className="grid relative grid-cols-1 md:grid-cols-2 justify-center items-center gap-4 md:gap-8 bg-[#2f2f2f] text-white  rounded-xl">
             <div className="pl-8">
               
@@ -868,8 +775,7 @@ const HomePg = () => {
         
       </div>
 
-      {/* Testimontials */}
-      <TestyCard />
+      
       {/* <div className="container py-12" ref={TestfyRef}>
         <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center">
           <div className="flex flex-col gap-2">
@@ -900,7 +806,8 @@ const HomePg = () => {
           </div>
         </div>
       </div> */}
-      <Footer />
+      <Footter />
+      {/* <Footer /> */}
     </div>
   );
 };

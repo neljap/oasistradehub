@@ -50,12 +50,12 @@ function App() {
     return(
       <div>
         <button
-      className="fixed top-1/2 z-50 right-4 md:right-10 text-primary font-[700] bg-white rounded-full border-2 p-2 border-primary hover:bg-primary hover:text-white transition-all ease-in-out duration-[1s]"
+      className="fixed top-1/2 z-50 right-4 md:right-10 text-primary font-[700] bg-[#f5f5f5] dark:bg-[#1e1f24] rounded-full border-2 p-1.5 border-primary hover:bg-primary hover:text-white transition-all ease-in-out duration-[1s]"
       aria-label="Scroll to the top"
       onClick={scrollToTop}
       style={{ display: visible ? "inline" : "none" }}>
       {" "}
-      <HiArrowNarrowUp size={23}/>
+      <HiArrowNarrowUp size={20}/>
       {/* <span className="visually-hidden">Scroll to top</span> */}
     </button>
         <Routes>

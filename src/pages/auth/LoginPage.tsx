@@ -1,12 +1,14 @@
 import { Link, useNavigate } from "react-router-dom"
 import { authImag, authImg } from "../../assets"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 // import ReCAPTCHA from "react-google-recaptcha";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { IoEyeOutline } from "react-icons/io5";
+import { DarkLightContext } from "../../app/DarkLightTheme";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 
 const LoginPage = () => {
@@ -17,6 +19,7 @@ const LoginPage = () => {
   const [formLoading, setFormLoading] = useState(false);
 
   const navigate = useNavigate();
+  const {setTheme, systemTheme, theme} = useContext(DarkLightContext);
 
   useEffect(() => {
     document.title = "Oasis Trade Hub | Login"
@@ -47,13 +50,27 @@ const LoginPage = () => {
       .finally(() => setFormLoading(false));
   }
 
+  const themeBox = () => {
+                const currentTheme = theme === "system" ? systemTheme : theme;
+            
+                if (currentTheme === "dark") {
+                  return <FaSun color="#0052FF" size={18}/>;
+                } else {
+                  return <FaMoon color="#0052FF" size={18}/>;
+                }
+          };
+
   return (
     <div className="bg-second h-screen px-0 md:px-28 my-auto py-12">
       <div className="container">
-       <div className="my-auto rounded bg-white grid grid-cols-1 md:grid-cols-3">
+        <div>
+
+        </div>
+       <div className="my-auto rounded bg-white dark:bg-[#222738] grid grid-cols-1 md:grid-cols-3">
             <div className="py-6 px-10 flex flex-col gap-3">
               <div className="flex flex-row items-center justify-between">
                 <Link to="/" className="text-second font-[600] text-xl">OasisTradeHub</Link>
+                <div className="p-1.5 shadow rounded-full bg-primary bg-opacity-5 cursor-pointer" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>{themeBox()}</div>
                 <Link to="/register">Register</Link>
               </div>
               <h3 className="font-[600] text-2xl py-2">Hi, Welcome Back</h3>
