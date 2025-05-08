@@ -1,8 +1,17 @@
-import { useState } from "react";
+import {  useState } from "react";
 
 const VerificationPg = () => {
   const [idOptions, setIdOptions] = useState(false);
   const [idValue, setIdValue] = useState(0);
+
+    // const [frontFile, setFrontFile] = useState<any>("");
+
+  // const frontIdRef = useRef<any | null>(null);
+  // const backIdRef = useRef<any | null>(null);
+
+  // const uploadFrontRef = () => {
+  //   frontIdRef.current.click();
+  // }
 
   return (
     <div>
@@ -87,58 +96,21 @@ const VerificationPg = () => {
           {/* ID-Verify Form */}
           <div>
             {idValue > 0 && (
-           <form action="">
-            <div className="grid grid-cols-1 md:grid-cols-2 justify-start items-center gap-4 pt-2">
-              <div className="flex flex-col gap-1 justify-start items-start">
-                <label>First Name</label>
-                <input type="text" placeholder="Enter first name" className="py-1 px-2 border border-neutral-200 hover:border-primary w-full rounded-lg" />
-              </div>
-              <div className="flex flex-col gap-1 justify-start items-start">
-              <label>First Name</label>
-              <input type="text" placeholder="Enter last name" className="py-1 px-2 border border-neutral-200 hover:border-primary w-full rounded-lg" />
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 justify-start items-center gap-4 pt-2">
-              <div className="flex flex-col gap-1 justify-start items-start">
-                <label>Address Line1</label>
-                <input type="text" placeholder="Enter address line1" className="py-1 px-2 border border-neutral-200 hover:border-primary w-full rounded-lg" />
-              </div>
-              <div className="flex flex-col gap-1 justify-start items-start">
-              <label>Address Line2</label>
-              <input type="text" placeholder="Enter address line2" className="py-1 px-2 border border-neutral-200 hover:border-primary w-full rounded-lg" />
+            
+           <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-4 md:gap-8">
+            <div>
+              <div className="shadow">
+              <input
+                  type="file"
+                  style={{ display: "none" }}
+                  accept="/image/*"
+                  // onChange={(e: any) => setFrontFile(e.target.files[0])}
+                  // ref={frontIdRef}
+                />
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 justify-start items-center gap-4 pt-2">
-              <div className="flex flex-col gap-1 justify-start items-start">
-                <label>First Name</label>
-                <input type="text" placeholder="Enter first name" className="py-1 px-2 border border-neutral-200 hover:border-primary w-full rounded-lg" />
-              </div>
-              <div className="flex flex-col gap-1 justify-start items-start">
-              <label>First Name</label>
-              <input type="text" placeholder="Enter last name" className="py-1 px-2 border border-neutral-200 hover:border-primary w-full rounded-lg" />
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 justify-start items-center gap-4 pt-2">
-              <div className="flex flex-col gap-1 justify-start items-start">
-                <label>First Name</label>
-                <input type="text" placeholder="Enter first name" className="py-1 px-2 border border-neutral-200 hover:border-primary w-full rounded-lg" />
-              </div>
-              <div className="flex flex-col gap-1 justify-start items-start">
-              <label>First Name</label>
-              <input type="text" placeholder="Enter last name" className="py-1 px-2 border border-neutral-200 hover:border-primary w-full rounded-lg" />
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 justify-start items-center gap-4 pt-2">
-              <div className="flex flex-col gap-1 justify-start items-start">
-                <label>First Name</label>
-                <input type="text" placeholder="Enter first name" className="py-1 px-2 border border-neutral-200 hover:border-primary w-full rounded-lg" />
-              </div>
-              <div className="flex flex-col gap-1 justify-start items-start">
-              <label>First Name</label>
-              <input type="text" placeholder="Enter last name" className="py-1 px-2 border border-neutral-200 hover:border-primary w-full rounded-lg" />
-              </div>
-            </div>
-          </form>   
+            <div></div>
+           </div>
             )}
           </div>
           

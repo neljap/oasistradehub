@@ -12,14 +12,15 @@ import {
   FaMarker,
   FaMoon,
   FaPeopleGroup,
+  FaPowerOff,
   FaSun,
 } from "react-icons/fa6";
-import { IoLogOutSharp } from "react-icons/io5";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   ADACoin,
   BTCoin,
   ETHCoin,
+  HomeLogo,
   increasebar,
   moneybar,
   profilebar,
@@ -183,7 +184,8 @@ const UserNavLinks = ({ children }: any) => {
         <div>
             
             <div className="">
-          <Link to="/">
+          <Link to="/" className="flex flex-row gap-0.5 md:gap-2 items-center">
+          <img src={HomeLogo} alt="" className="w-4 md:w-8"/>
           <LogoText
             colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
             animationSpeed={3}
@@ -298,7 +300,7 @@ const UserNavLinks = ({ children }: any) => {
             </NavLink>
           ))}
           <div className="flex gap-4 ps-5 cursor-pointer" onClick={() => setLogoutModal(true)}>
-            <IoLogOutSharp size={32} color="black" />
+            <FaPowerOff size={24} color="black"/>
             <p className=" font-[600] font-[Jost] text-neutral-500">Logout</p>
           </div>
         </div>

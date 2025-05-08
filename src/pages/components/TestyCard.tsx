@@ -4,6 +4,7 @@ const TestimonialData = [
   {
     id: 1,
     name: "Victor",
+    title: "Software",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque reiciendis inventore iste ratione ex alias quis magni at optio",
     img: "https://picsum.photos/101/101",
   },
@@ -105,6 +106,7 @@ export const TestyCard = () => {
                       <h1 className="text-xl font-bold text-black/80 dark:text-light">
                         {data.name}
                       </h1>
+                      <p>{data.title}</p>
                     </div>
                   </div>
                   <p className="text-black/20 text-9xl font-serif absolute top-0 right-0">

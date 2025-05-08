@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { authImag, authImg } from "../../assets"
 import { useContext, useEffect, useState } from "react"
-// import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -14,7 +14,7 @@ import { FaMoon, FaSun } from "react-icons/fa";
 const LoginPage = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  // const [recapState, setRecapState] = useState(null);
+  const [recapState, setRecapState] = useState(null);
   const [eyeVisiblePass, setEyeVisiblePass] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
 
@@ -27,14 +27,14 @@ const LoginPage = () => {
 
   const handleLogin = async(e: any) => {
     e.preventDefault()
-    // if(recapState == null){
-    //   toast.info("Confirm that you're not a robot", {position: "bottom-left"})
-    //   return;
-    // }
+    if(recapState == null){
+      toast.info("Confirm that you're not a robot", {position: "bottom-left"})
+      return;
+    }
 
     const formData = {email, password}
 
-
+    setFormLoading(true)
     await axios
       .post("https://oaserver.onrender.com/api/user/login", formData)
       .then((res) => {
@@ -61,40 +61,40 @@ const LoginPage = () => {
           };
 
   return (
-    <div className="bg-second h-screen px-0 md:px-28 my-auto py-12">
+    <div className="bg-second h-screen px-0 md:px-28 my-auto py-16 md:py-12">
       <div className="container">
         <div>
 
         </div>
-       <div className="my-auto rounded bg-white dark:bg-[#222738] grid grid-cols-1 md:grid-cols-3">
+       <div className="my-auto rounded bg-white dark:bg-[#222738] grid grid-cols-1 md:grid-cols-3 justify-center items-center ">
             <div className="py-6 px-10 flex flex-col gap-3">
               <div className="flex flex-row items-center justify-between">
                 <Link to="/" className="text-second font-[600] text-xl">OasisTradeHub</Link>
                 <div className="p-1.5 shadow rounded-full bg-primary bg-opacity-5 cursor-pointer" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>{themeBox()}</div>
                 <Link to="/register">Register</Link>
               </div>
-              <h3 className="font-[600] text-2xl py-2">Hi, Welcome Back</h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident, a!</p>
+              <h3 className="font-[600] text-lg md:text-2xl py-2">Sign In to Your Account</h3>
+              <p className="text-sm font-[500]">Pick up right where you left off — your progress is always saved and ready for you.</p>
               <form onSubmit={handleLogin}>
                       <div className="flex flex-col gap-1 py-2">
                 <label>Email address</label>
-                <input type="email" className="w-full p-1 rounded" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <input type="email" className="w-full p-1 outline-none rounded-lg  border-black border" value={email} onChange={(e) => setEmail(e.target.value)}/>
               </div>
               <div className="flex flex-col gap-1 py-2 relative">
                 <label>Password</label>
-                <input type={eyeVisiblePass ? "text": "password"} className="w-full p-1 rounded border border-neutral-200" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <input type={eyeVisiblePass ? "text": "password"} className="w-full p-1 outline-none rounded-lg  border-black border" value={password} onChange={(e) => setPassword(e.target.value)}/>
                                 <div className="absolute cursor-pointer right-4 top-10" onClick={() => setEyeVisiblePass(!eyeVisiblePass)}>
                                 {eyeVisiblePass ? (<div>< IoEyeOutline size={28} /></div>) : (<div><AiFillEyeInvisible size={28}/></div>)}  
                                 </div>
               </div>
-              <div className="flex flex-row justify-between items-center">
+              {/* <div className="flex flex-row justify-between items-center">
                 <div className="flex flex-row items-center gap-1"><input type="checkbox" name="" id="" /> <p>keep me signed in</p></div>
                 <Link to="/register">Register</Link>
+              </div> */}
+              <div className="py-2 mx-auto">
+              <ReCAPTCHA sitekey="6LfSrWIqAAAAAAl5wjTLViZc_d0cDrHb9_V92smx" onChange={(val : any) => setRecapState(val)} />
               </div>
-              <div className="py-2">
-              {/* <ReCAPTCHA sitekey="6LfSrWIqAAAAAAl5wjTLViZc_d0cDrHb9_V92smx" onChange={(val : any) => setRecapState(val)} /> */}
-              </div>
-              <button className="bg-second text-white py-2 w-full rounded border border-black ">{formLoading ? "Submitting...":"Submit"}</button>        
+              <button className="bg-primary transition-all ease-in-out duration-[1s] hover:text-primary hover:bg-white  py-2 w-full text-white rounded border-2 font-[500] border-primary">{formLoading ? "Logging...":"Login"}</button>        
               </form>
 
               {/* <div className="flex flex-row items-center">
@@ -103,9 +103,9 @@ const LoginPage = () => {
               <hr /> 
               </div> */}
 
-              <div>
+              {/* <div>
                 <button className="border border-black w-full py-2 rounded">Sign with Google</button>
-              </div>
+              </div> */}
               
             </div>
             <div className="col-span-2 bg-[#3c39aa] py-6 hidden md:block">

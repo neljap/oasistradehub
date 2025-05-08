@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { FaAngleDown } from "react-icons/fa6";
+import { FaTimes } from "react-icons/fa";
+import { FaAngleDown, FaClipboard } from "react-icons/fa6";
 import {
   ADACoin,
   BTCoin,
@@ -14,8 +14,11 @@ import {
   zelleImg,
 } from "../../../assets";
 import { LiveReading } from "../ui";
-import { RxDropdownMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import { RiSecurePaymentFill } from "react-icons/ri";
+import { GiBanknote } from "react-icons/gi";
+import { PiCoinsFill } from "react-icons/pi";
+import { toast } from "react-toastify";
 
 const DepositPg = () => {
   const [bwValue, setBwValue] = useState<any>(null);
@@ -34,7 +37,49 @@ const DepositPg = () => {
   const [mpOptions, setMpOptions] = useState(false);
   // const handleW
 
+  // const [copyCB, setCopyCB] = useState<string | void>(null)
+  const [isCopied, setIsCopied] = useState(false);
+
+    // This is the function we wrote earlier
+    async function copyTextToClipboard() {
+      if ('clipboard' in navigator) {
+        return await navigator.clipboard.writeText(cryptValue == 1
+                          ? "bc1qhjqmuht400vpcz0wrdnj76mrfetnms4n0r3s3m"
+                          : cryptValue == 2
+                          ? "0x31c29387a851b68A85F24a6A7d1df0DB4494FD91"
+                          : cryptValue == 3
+                          ? "TAWCzZ2aGToj6QWr1vXnnUV9wxQHLQK5qn"
+                          : cryptValue == 4
+                          ? "TAWCzZ2aGToj6QWr1vXnnUV9wxQHLQK5qn"
+                          : "");
+      } else {
+        return document.execCommand('copy', true, cryptValue == 1
+                          ? "bc1qhjqmuht400vpcz0wrdnj76mrfetnms4n0r3s3m"
+                          : cryptValue == 2
+                          ? "0x31c29387a851b68A85F24a6A7d1df0DB4494FD91"
+                          : cryptValue == 3
+                          ? "TAWCzZ2aGToj6QWr1vXnnUV9wxQHLQK5qn"
+                          : cryptValue == 4
+                          ? "TAWCzZ2aGToj6QWr1vXnnUV9wxQHLQK5qn"
+                          : "");
+      }
+    }
   
+    // onClick handler function for the copy button
+    const handleCopyClick = () => {
+      // Asynchronously call copyTextToClipboard
+      copyTextToClipboard()
+        .then(() => {
+          // If successful, update the isCopied state value
+          setIsCopied(true);
+          setTimeout(() => {
+            setIsCopied(false);
+          }, 1500);
+        })
+        .catch((err) => {
+          toast.error(err, {position: "bottom-left"})
+        });
+    }
 
   return (
     <div>
@@ -88,8 +133,8 @@ const DepositPg = () => {
               <div className="flex flex-col gap-4 pb-16 text-center p-8">
                 <div className="mx-auto">
                   <div className="flex flex-row items-center justify-center gap-2">
-                    <FaBars />
-                    <p className="text-xl font-[500]">Crypto</p>
+                  <PiCoinsFill size={24} />
+                    <p className="text-lg font-[500]">Crypto</p>
                   </div>
                   <p className="font-[400]">Deposits Using Crypto</p>
                 </div>
@@ -129,7 +174,7 @@ const DepositPg = () => {
                   </div>
                   {crypOption && (
                     <div
-                      className="absolute w-full top-14 left-0 bg-white rounded-lg shadow-lg flex flex-col items-start justify-start p-2"
+                      className="absolute w-full top-14 left-0 bg-white rounded-lg shadow-lg flex flex-col items-start justify-start p-2 z-10"
                       onClick={() => setCrypOption(!crypOption)}
                     >
                       <div className="pl-3 text-start">
@@ -171,7 +216,22 @@ const DepositPg = () => {
                   )}
                 </div>
                 <div>
-                  {cryptValue > 0 && (
+                {cryptValue > 0 && (
+                  <div className="relative">
+                <input type="text" value={cryptValue == 1
+                          ? "bc1qhjqmuht400vpcz0wrdnj76mrfetnms4n0r3s3m"
+                          : cryptValue == 2
+                          ? "0x31c29387a851b68A85F24a6A7d1df0DB4494FD91"
+                          : cryptValue == 3
+                          ? "TAWCzZ2aGToj6QWr1vXnnUV9wxQHLQK5qn"
+                          : cryptValue == 4
+                          ? "TAWCzZ2aGToj6QWr1vXnnUV9wxQHLQK5qn"
+                          : ""} className="text-black w-full border border-neutral-200 hover:border-primary rounded shadow px-4 py-2"/>
+                          <div className="absolute right-2 top-2 cursor-pointer flex flex-row justify-center items-center" onClick={handleCopyClick}><FaClipboard /> <p className="text-sm">{isCopied ? 'Copied': 'Copy'}</p></div>
+                                          
+                  </div>)}
+
+                  {/* {cryptValue > 0 && (
                     <div className="px-4 py-2 border border-neutral-200 hover:border-primary rounded-lg shadow-sm flex flex-row justify-between items-center">
                       <p>
                         {cryptValue == 1
@@ -186,7 +246,7 @@ const DepositPg = () => {
                       </p>{" "}
                       <RxDropdownMenu />
                     </div>
-                  )}
+                  )} */}
                 </div>
                 <input
                   type="number"
@@ -232,9 +292,24 @@ const DepositPg = () => {
                     Confirm $ {cyptInput} Deposit of {cryptValue == 1 ? "Bitcoin" : cryptValue == 2 ? "Ethereum" : cryptValue == 3 ? "Tron" : "Tether USDT"}
                   </p>
                   <div className="w-full">
-                    <p className="font-[500] py-2">{cryptValue == 1 ? "Bitcoin" : cryptValue == 2 ? "Ethereum" : cryptValue == 3 ? "Tron" : "Tether USDT"} Deposit Address</p>
-                    <div className="px-4 w-full py-2 border border-neutral-200 hover:border-primary rounded-lg shadow-sm flex flex-row justify-between items-center">
-                      <p>
+                  <p className="font-[500] py-2">{cryptValue == 1 ? "Bitcoin" : cryptValue == 2 ? "Ethereum" : cryptValue == 3 ? "Tron" : "Tether USDT"} Deposit Address</p>
+                  {cryptValue > 0 && (
+                  <div className="relative">
+                <input type="text" value={cryptValue == 1
+                          ? "bc1qhjqmuht400vpcz0wrdnj76mrfetnms4n0r3s3m"
+                          : cryptValue == 2
+                          ? "0x31c29387a851b68A85F24a6A7d1df0DB4494FD91"
+                          : cryptValue == 3
+                          ? "TAWCzZ2aGToj6QWr1vXnnUV9wxQHLQK5qn"
+                          : cryptValue == 4
+                          ? "TAWCzZ2aGToj6QWr1vXnnUV9wxQHLQK5qn"
+                          : ""} className="text-black w-full border border-neutral-200 hover:border-primary rounded shadow px-4 py-2"/>
+                          <div className="absolute right-2 top-2 cursor-pointer flex flex-row justify-center items-center" onClick={handleCopyClick}><FaClipboard /> <p className="text-sm">{isCopied ? 'Copied': 'Copy'}</p></div>
+                                          
+                  </div>)}
+                    
+                    {/* <div className="px-4 w-full py-2 border border-neutral-200 hover:border-primary rounded-lg shadow-sm flex flex-row justify-between items-center"> */}
+                      {/* <p>
                         {cryptValue == 1
                           ? "bc1qhjqmuht400vpcz0wrdnj76mrfetnms4n0r3s3m"
                           : cryptValue == 2
@@ -244,12 +319,12 @@ const DepositPg = () => {
                           : cryptValue == 4
                           ? "TAWCzZ2aGToj6QWr1vXnnUV9wxQHLQK5qn"
                           : ""}
-                      </p>{" "}
-                      <div className="cursor-pointer">
+                      </p> */}
+                      {/* <div className="cursor-pointer">
                         {" "}
                         <RxDropdownMenu />
-                      </div>
-                    </div>
+                      </div> */}
+                    {/* </div> */}
                   </div>
                   <div>
                     {cyptCDeposit ? (
@@ -298,8 +373,8 @@ const DepositPg = () => {
               <div className="flex flex-col gap-4 pb-16 text-center p-8">
                 <div className="mx-auto">
                   <div className="flex flex-row items-center justify-center gap-2">
-                    <FaBars />
-                    <p>MOBILE PAYMENTS</p>
+                  <RiSecurePaymentFill size={24}/>
+                    <p className="font-[500]">Mobile Payments</p>
                   </div>
                   <p>Deposits Using Mobile Payments</p>
                 </div>
@@ -512,8 +587,8 @@ const DepositPg = () => {
             <div className="rounded-lg shadow-lg p-8 flex flex-col gap-3">
               <div className="">
                 <div className="flex flex-row items-center justify-center gap-2">
-                  <FaBars />
-                  <p>Crypto</p>
+                <GiBanknote size={24} />
+                  <p className="font-[500]">Bank Transfer</p>
                 </div>
                 <p className="text-center">Deposits Using Bank Wire</p>
               </div>

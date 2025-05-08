@@ -6,10 +6,14 @@ interface PricingType {
     title: string
     days: string
     amount: number
+    maxamount: number
+    roi: number
+    lists: object
 }
 
 
-const PricingCard = ({title, days, amount}:PricingType) => {
+const PricingCard = ({title, days, amount, maxamount, roi, lists}:PricingType) => {
+  console.log(typeof lists, lists)
   return (
     <div className="rounded-lg shadow flex flex-col justify-center items-center py-4 border-[#7f57f3] border-t-2 w-full bg-white dark:bg-gray-800">
               <div className="flex flex-row items-center gap-1">
@@ -22,12 +26,28 @@ const PricingCard = ({title, days, amount}:PricingType) => {
                 <span>/{days}days</span>
               </div>
               <hr />
+              <div className="grid grid-cols-2 justify-between items-center ps-12 w-full mx-auto">
+                <p className="font-[500] text-start">Min Deposit:</p>
+                <p className="text-center font-[600]">{amount}</p>
+              </div>
+              <div className="grid grid-cols-2 justify-between items-center ps-12 w-full mx-auto">
+                <p className="font-[500] text-start">Max Deposit:</p>
+                <p className="text-center font-[600]">${maxamount}</p>
+              </div>
+              <div className="grid grid-cols-2 justify-between items-center ps-12 w-full mx-auto">
+                <p className="font-[500] text-start">Return of Interest</p>
+                <p className="text-center font-[600]">{roi}%</p>
+              </div>
                <div className="flex flex-col gap-3 justify-start items-start py-4">
-
-              <div className="flex flex-row items-start gap-2">
+                {/* {Object.} */}
+                {Object.keys(lists).map((item: any, index: any) => (
+                <div className="flex flex-row items-start gap-2" key={index}>
                               <VscVerifiedFilled />
-                              <p className="font-[500] text-sm">99.5% AI accuracy24/7</p>
-                            </div>
+                              <p className="font-[500] text-sm">{item}</p>
+                   </div>  
+                ))}
+
+              
                             <div className="flex flex-row items-center gap-2">
                               <VscVerifiedFilled />
                               <p className="font-[500] text-sm">99.5% AI accuracy24/7</p>

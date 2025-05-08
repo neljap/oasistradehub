@@ -1,14 +1,15 @@
 export const SubscribeData = [
     {
         id: 1,
-        name: "Premium",
-        list : ["99.5% AI accuracy24/7", "Priority support", "Exclusive market insights", "Zero trading fees",
+        name: "Bronze",
+        list : ["99.5% AI accuracy", "Priority support", "Exclusive market insights", "Zero trading fees",
         "Dedicated account manager",
         "VIP event invitations",
         "Customized portfolio",
         "Early access to opportunities"],
-        amount: 100000
-
+        days: 28,
+        maxamount: 50000,
+        amount: 10000
     },
     {
         id: 2,
@@ -20,6 +21,8 @@ export const SubscribeData = [
 "Personalized strategies",
 "Exclusive webinars",
 "Flexible withdrawal options"],
+days: 21,
+        maxamount: 50000,
 amount: 75000
     },
     {

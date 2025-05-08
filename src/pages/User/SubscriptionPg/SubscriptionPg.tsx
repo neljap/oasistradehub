@@ -1,7 +1,7 @@
 import { VscVerifiedFilled } from "react-icons/vsc"
 import { premiummimg } from "../../../assets"
 import { CurrentPlanCard } from "../ui"
-import { SubscribeData } from "./components/Data"
+import { SubscribeData } from "../../../utils/SubscriptData"
 
 
 const SubscriptionPg = () => {

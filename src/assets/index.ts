@@ -97,3 +97,4 @@ export {default as ideaaImg} from "./ideaa (1).png";
 export {default as kanbaImg} from "./kanba (1).png";
 export {default as nirastateImg} from "./nirastate (1).png";
 export {default as solayticImg} from "./solaytic (1).png";
+export {default as HomeLogo} from "./Homelogo.png";

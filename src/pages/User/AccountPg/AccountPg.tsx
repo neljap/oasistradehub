@@ -1,19 +1,22 @@
+import { useContext } from "react"
 import { FaUserAlt } from "react-icons/fa"
 import { FaEnvelope } from "react-icons/fa6"
+import { AuthContext } from "../../../app/AuthContext"
 
 
 const AccountPg = () => {
+    const {data} = useContext(AuthContext);
   return (
     <div className="container">
         <div className="rounded-xl flex flex-col gap-3 items-start border border-neutral-200 bg-primary bg-opacity-5 px-4 py-6">
             <h3 className="font-[500] text-xl md:text-2xl">Account Information</h3>
             <div className="flex flex-row items-center gap-2">
-                <FaUserAlt />
-                <p>Jackson Paul</p>
+                <FaUserAlt size={24} />
+                <p className="capitalize text-lg">{data.fullname}</p>
             </div>
             <div className="flex flex-row items-center gap-2">
                 <FaEnvelope />
-                <p> <span className="font-[500]">Email:</span> Jacksonpaul@gmail.com</p>
+                <p> <span className="font-[500]">Email:</span> {data.email}</p>
             </div>
             <div className="flex flex-row items-center gap-2">
                 <FaUserAlt />

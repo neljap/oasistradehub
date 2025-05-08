@@ -23,6 +23,7 @@ import {
   nirastateImg,
   ourvalueImg,
   playstoreImg,
+  premiummimg,
   solayticImg,
   TopAset2Img,
   wwaImg,
@@ -50,7 +51,9 @@ import { IoCheckmark } from "react-icons/io5";
 import CountUp from "./components/CountUpCounter";
 import { TestyCard } from "../components/TestyCard";
 import Footter from "../components/Footter";
-import { PricingCard } from "./components";
+import { SubscribeData } from "../../utils/SubscriptData";
+import { VscVerifiedFilled } from "react-icons/vsc";
+import { Link } from "react-router-dom";
 const HomePg = () => {
   // const [changebg, setChangebg] = useState(false);
 
@@ -358,13 +361,12 @@ const HomePg = () => {
         {/* Start trading */}
       <div className="bg-statbg bg-cover bg-center py-20">
         <div className="container">
-          <div className="flex flex-col gap-4 border border-white text-white py-6 md:py-12 text-center w-full md:w-1/2 rounded mx-auto justify-center items-center">
+          <div className="flex flex-col gap-4 border border-white text-white py-6 md:py-12 text-center w-full md:w-1/2 rounded-2xl mx-auto justify-center items-center">
             <h3 className="text-3xl">
               Start Trading Today and Unlock Your Financial Potential.
             </h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-              tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+            Begin your trading journey now and discover new opportunities for financial growth, independence, and success. Take control of your future by exploring the power of smart investing today.
             </p>
             <div>
               <button className="bg-second text-white rounded px-4 py-2">
@@ -627,10 +629,52 @@ const HomePg = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-12 justify-center items-center gap-8">
             {/* PricingCard */}
-            <PricingCard title="Premium" days="28" amount={5000}/>
-            <PricingCard title="Gold" days="21" amount={3000} />
-            <PricingCard title="Silver" days="14" amount={1000}/>
-            <PricingCard title="Bronze" days="7" amount={500}/>
+            {SubscribeData.map((item) => (
+              <div className="rounded-lg shadow flex flex-col justify-start items-center py-4 border-[#7f57f3] border-t-2 w-full bg-white dark:bg-gray-800 h-[530px]" key={item.id}>
+              <div className="flex flex-row items-center gap-1">
+               <img src={premiummimg} className="w-8" alt="" />
+               <p className="font-[500] text-lg md:text-xl">{item.name} Plan</p> 
+
+              </div>
+              <div className="mx-auto text-center flex flex-row items-center py-4">
+                <span className="font-[600] text-2xl">${item.amount}</span>
+                <span>/{item.days}days</span>
+              </div>
+              <hr />
+              <div className="grid grid-cols-2 justify-between items-center ps-12 w-full mx-auto">
+                <p className="font-[500] text-start">Min Deposit:</p>
+                <p className="text-center font-[600]">{item.amount}</p>
+              </div>
+              <div className="grid grid-cols-2 justify-between items-center ps-12 w-full mx-auto">
+                <p className="font-[500] text-start">Max Deposit:</p>
+                <p className="text-center font-[600]">${item.maxamount}</p>
+              </div>
+              <div className="grid grid-cols-2 justify-between items-center ps-12 w-full mx-auto">
+                <p className="font-[500] text-start">Return of Interest</p>
+                <p className="text-center font-[600]">40%</p>
+              </div>
+               <div className="flex flex-col gap-3 justify-start items-start py-4">
+
+              {item.list.map((yap: any, index: any) => (
+                <div className="flex flex-row items-center gap-2" key={index}>
+                              <VscVerifiedFilled />
+                              <p className="font-[500] text-sm">{yap}</p>
+                            </div>
+              ))}
+                          </div>
+                          <div className="flex flex-row justify-center items-center">
+                            <Link to="/user/dashboard">
+              <button className="bg-[#7f57f3] transition-all ease-in-out duration-[1s] hover:bg-white border hover:border-primary hover:text-[#7f57f3] px-4 py-2 rounded-full mx-auto text-white font-[600]">Get Started</button>
+                            
+                            </Link>
+            </div>
+            </div>
+              // <PricingCard key={item.id} title={item.name} lists={item.list} days="" amount={item.amount} maxamount={item.amount} roi={40}/>
+            ))}
+            {/* <PricingCard title="Diamond" days="28" amount={30000} maxamount={50000} roi={40}/>
+            <PricingCard title="Gold" days="21" amount={15000} maxamount={29999} roi={40}/>
+            <PricingCard title="Silver" days="14" amount={5000} maxamount={14999} roi={40}/>
+            <PricingCard title="Bronze" days="7" amount={1000} maxamount={4999} roi={40}/> */}
             {/* <div className="rounded-lg shadow flex flex-col justify-center items-center py-4 border-[#7f57f3] border-t-2 w-full">
               <div className="flex flex-row items-center gap-1">
                <img src={premiummimg} className="w-8" alt="" />
@@ -678,8 +722,8 @@ const HomePg = () => {
           <form className="p-4 col-span-2" onSubmit={handleForm}>
             <h3 className="py-4 text-xl font-[600]">Send Us a Message</h3>
 
-            <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="flex flex-col gap-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-3 pt-1 md:pt-2">
+              <div className="flex flex-col gap-0 md:gap-1">
                 <label className="text-lg font-[500]">Full Name</label>
                 <input
                   type="text"
@@ -696,11 +740,11 @@ const HomePg = () => {
                   value={email}
                   required
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full p-1 outline-1 outline-primary rounded-lg focus:border-primary border-black border"
+                  className="w-full p-1 outline-1 shadow outline-none rounded-lg border-black border"
                 />
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4 pt-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-3 pt-1 md:pt-2">
               <div className="flex flex-col gap-1">
                 <label className="text-lg font-[500]">Subject</label>
                 <input
@@ -718,7 +762,7 @@ const HomePg = () => {
                   value={phone}
                   required
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full p-1 outline-1 outline-primary rounded-lg focus:border-primary border-black border"
+                  className="w-full p-1 outline-none rounded-lg border-black border shadow"
                 />
               </div>
             </div>
@@ -727,7 +771,7 @@ const HomePg = () => {
               <textarea
                 name=""
                 id=""
-                className="h-60 w-full rounded-lg p-2"
+                className="h-60 w-full rounded-lg p-2 shadow outline-none border-black border"
                 value={message}
                 required
                 onChange={(e) => setMessage(e.target.value)}
@@ -750,17 +794,17 @@ const HomePg = () => {
       <div>
         <div className="container">
           <div className="px-0 md:px-8 py-24">
-        <div className="grid relative grid-cols-1 md:grid-cols-2 justify-center items-center gap-4 md:gap-8 bg-[#2f2f2f] text-white  rounded-xl">
+        <div className="grid relative  grid-cols-1 md:grid-cols-2 justify-center items-center gap-4 md:gap-8 bg-[#2f2f2f] text-white  rounded-xl">
             <div className="pl-8">
               
               {/* absolute -top-32  */}
               <img src={playstoreImg} alt="" className="
               w-[550px] mx-auto" />
             </div>
-            <div className="flex flex-col gap-8 justify-start items-start">
-              <h3 className="text-3xl md:text-5xl">Trade Seamlessly on Any Device, Anytime</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-              <div className="grid grid-cols-3 justify-center items-center gap-4 me-12">
+            <div className="flex flex-col gap-2 md:gap-8 justify-start items-start">
+              <h3 className="text-3xl md:text-5xl text-center md:text-start">Trade Seamlessly on Any Device, Anytime</h3>
+              <p className="text-md md:text-xl text-center md:text-start">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+              <div className="grid grid-cols-3 justify-center items-center gap-4 me-12 mx-auto ps-6">
                 {storeappImg.map((item, index) => (
                   <div key={index} className="w-full">
                     <img src={item} alt="" className="w-full"/>

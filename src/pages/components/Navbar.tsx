@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { DarkLightContext } from "../../app/DarkLightTheme";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { FaLongArrowAltRight, FaMoon, FaSun } from "react-icons/fa";
 import LogoText from "./LogoText";
 import { AuthContext } from "../../app/AuthContext";
 import Cookies from "js-cookie";
 import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
 import ResponsiveNav from "../HomePg/components/ResponsiveNav";
+import { HomeLogo } from "../../assets";
 
 interface NavRefTypes {
   AboutRef: any;
@@ -46,14 +47,12 @@ const Navbar = ({
     return (
       <div>
         {data ? (
-          <Link to="/user/home">
-            <button>{data?.fullname}</button>
-            {/* <Button btntext={data?.fullname} /> */}
+          <Link to="/user/dashboard">
+            <button className="bg-transparent flex flex-row gap-2 items-center text-sm md:text-md hover:bg-primary hover:text-white text-primary py-1 md:py-2 px-1 md:px-3 border-2 border-primary font-[600] rounded-lg transition-all ease-in-out duration-[1s]">{data?.fullname}</button>
           </Link>
         ) : (
           <Link to="/login">
-            <button>Login</button>
-            {/* <Button btntext="login" />    */}
+            <button className="bg-transparent flex flex-row gap-2 items-center text-sm md:text-md hover:bg-primary hover:text-white text-primary py-1 md:py-2 px-2 md:px-4 border-2 border-primary font-[600] rounded-lg transition-all ease-in-out duration-[1s]">Get Started <FaLongArrowAltRight /></button>
           </Link>
         )}
       </div>
@@ -71,7 +70,8 @@ const Navbar = ({
       <div className="bg-white dark:bg-[#222736] dark:text-white w-full z-50 text-white shadow-xl">
         <div className="container">
           <div className="flex flex-row items-center justify-between py-4">
-            <Link to="/">
+            <Link to="/" className="flex flex-row items-center gap-0.5 md:gap-2">
+            <img src={HomeLogo} alt="" className="w-4 md:w-8" />
               <LogoText
                 colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
                 animationSpeed={3}
@@ -128,11 +128,12 @@ const Navbar = ({
                 </div>
               </div>
               <div className="hidden md:block">
-                <Link to="/user/dashboard">
-                  <button className="bg-transparent text-sm md:text-md hover:bg-primary hover:text-white text-primary py-1 md:py-2 px-2 md:px-4 border-2 border-primary font-[600] rounded-xl transition-all ease-in-out duration-[1s]">
-                    Get Started
+                {checkNav()}
+                {/* <Link to="/user/dashboard">
+                  <button className="bg-transparent flex flex-row gap-2 items-center text-sm md:text-md hover:bg-primary hover:text-white text-primary py-1 md:py-2 px-2 md:px-4 border-2 border-primary font-[600] rounded-xl transition-all ease-in-out duration-[1s]">
+                    Get Started <FaLongArrowAltRight />
                   </button>
-                </Link>
+                </Link> */}
               </div>
               {/* Mobile Toggle */}
               <div className="block md:hidden">

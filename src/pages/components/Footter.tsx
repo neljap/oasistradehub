@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import LogoText from "./LogoText"
 import { FaFacebook, FaInstagram, FaX } from "react-icons/fa6"
+import { HomeLogo } from "../../assets"
 
 const Footter = () => {
   return (
@@ -8,7 +9,8 @@ const Footter = () => {
         <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-start items-start pt-12 pb-6">
                 <div className="flex flex-col gap-2 items-start justify-start">
-                <Link to="/">
+                <Link to="/" className="flex flex-row items-center gap-0.5 md:gap-3">
+                  <img src={HomeLogo} className="w-4 md:w-8" alt="" />
                     <LogoText
                       colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
                       animationSpeed={3}
