@@ -53,7 +53,7 @@ import { TestyCard } from "../components/TestyCard";
 import Footter from "../components/Footter";
 import { SubscribeData } from "../../utils/SubscriptData";
 import { VscVerifiedFilled } from "react-icons/vsc";
-import { Link } from "react-router-dom";
+import { GetStarted } from "../User/ui";
 const HomePg = () => {
   // const [changebg, setChangebg] = useState(false);
 
@@ -237,12 +237,11 @@ const HomePg = () => {
               Join our trusted trading and investment platform designed for beginners and experts. Access real-time market data, secure transactions, and smart tools to grow your portfolio and achieve financial freedom today.
               </p>
               <div className="grid grid-cols-1 md:flex md:flex-row gap-2 md:gap-6 items-center ">
-                <button className="bg-second border hover:border-primary hover:bg-transparent hover:text-primary font-[500] transition-all ease-in-out duration-[1s] rounded py-2 px-4 text-white">
+                <GetStarted />
+                {/* <button className="bg-second border hover:border-primary hover:bg-transparent hover:text-primary font-[500] transition-all ease-in-out duration-[1s] rounded py-2 px-4 text-white">
                   Get Started
-                </button>
-                <button className="bg-transparent rounded py-2 px-4 text-second border border-second font-[500] duration-[1s] transition-all ease-in-out hover:bg-primary hover:text-white">
-                  Learn More
-                </button>
+                </button> */}
+
               </div>
             </div>
             <div className="relative">
@@ -348,9 +347,7 @@ const HomePg = () => {
                 ))}
               </div>
               <div>
-                <button className="bg-second text-white px-4 py-2 rounded">
-                  Learn More
-                </button>
+
               </div>
             </div>
           </div>
@@ -369,9 +366,7 @@ const HomePg = () => {
             Begin your trading journey now and discover new opportunities for financial growth, independence, and success. Take control of your future by exploring the power of smart investing today.
             </p>
             <div>
-              <button className="bg-second text-white rounded px-4 py-2">
-                Get Started
-              </button>
+              <GetStarted />
             </div>
           </div>
         </div>
@@ -381,7 +376,7 @@ const HomePg = () => {
             <div className="flex flex-row">
               <CountUp
                 from={0}
-                to={27}
+                to={14}
                 separator=","
                 direction="up"
                 duration={1}
@@ -395,13 +390,13 @@ const HomePg = () => {
             <div className="flex flex-row">
               <CountUp
                 from={0}
-                to={29}
+                to={40}
                 separator=","
                 direction="up"
                 duration={1}
                 className="count-up-text text-second text-5xl font-[600]"
               />
-              <p className="font-[600] text-second text-5xl">K+</p>
+              <p className="font-[600] text-second text-5xl">+</p>
             </div>
             <p className="text-center font-[500]">Expert Team</p>
           </div>
@@ -409,7 +404,7 @@ const HomePg = () => {
             <div className="flex flex-row">
               <CountUp
                 from={0}
-                to={279}
+                to={340}
                 separator=","
                 direction="up"
                 duration={1}
@@ -423,13 +418,13 @@ const HomePg = () => {
           <div className="flex flex-row">
             <CountUp
               from={0}
-              to={539}
+              to={279}
               separator=","
               direction="up"
               duration={1}
               className="count-up-text text-second text-5xl font-[600]"
             />
-            <p className="font-[600] text-second text-5xl">K+</p>
+            <p className="font-[600] text-second text-5xl">+</p>
           </div>
           <p className="text-center font-[500]">Happy Client</p>  
           </div>
@@ -505,9 +500,7 @@ const HomePg = () => {
                  {item.text}
                 </p>
                 <div>
-                  <button className="bg-second text-white px-4 py-2 rounded">
-                    Learn More
-                  </button>
+
                 </div>
               </div>
             ))}
@@ -516,96 +509,6 @@ const HomePg = () => {
       </div>
       
       <div>
-        {/* <div className="container">
-          <div className="w-full md:w-1/2 text-center flex flex-col gap-4 mx-auto py-12">
-            <h3 className="text-2xl md:text-4xl">Explore Trading Solutions</h3>
-            <p>
-            Explore our comprehensive trading solutions tailored for every investor, offering advanced tools, personalized strategies, and expert insights to help you achieve your financial goals with confidence.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-start">
-            <div className="flex flex-col gap-4">
-              <div
-                className={`rounded p-2 cursor-pointer bg-[#ffffff] ${
-                  markSet == 0 ? "bg-primary bg-opacity-15" : "bg-[#ffffff]"
-                }`}
-                onClick={() => setMarkSet(0)}
-              >
-                <div className="rounded bg-[#ededed] p-2 flex flex-col gap-2">
-                  <div className="flex flex-row items-center">
-                    <FaBaby />
-                    <p className="font-[500] text-lg md:text-2xl">Foreign Exchange</p>
-                  </div>
-                  <p className="text-sm">
-                  Our foreign exchange services offer real-time market data, advanced tools, and expert insights to help you navigate global currency trading effectively.
-                  </p>
-                  <div>
-                    <p>Exchange:</p>
-                    <div className="flex flex-row items-center">
-                      <p className="text-second font-[600] text-sm">EUR/USD,</p>
-                      <p>EUR/USD,</p>
-                      <p>EUR/USD,</p>
-                      <p>ETC</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className={`rounded p-2 cursor-pointer bg-[#ffffff] ${
-                  markSet == 1 ? "bg-primary bg-opacity-15" : "bg-[#ffffff]"
-                }`}
-                onClick={() => setMarkSet(1)}
-              >
-                <div className="rounded bg-[#ededed] p-2 flex flex-col gap-2">
-                  <div className="flex flex-row items-center">
-                    <FaBaby />
-                    <p className="font-[500] text-lg md:text-2xl">Stock Market</p>
-                  </div>
-                  <p className="text-sm">
-                  Our stock market services provide real-time data, expert analysis, and strategic insights to help you make informed investment decisions.
-                  </p>
-                  <div>
-                    <p>Exchange:</p>
-                    <div className="flex flex-row items-center">
-                      <p className="text-second font-[600] text-sm">EUR/USD,</p>
-                      <p>EUR/USD,</p>
-                      <p>EUR/USD,</p>
-                      <p>ETC</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className={`rounded p-2 cursor-pointer bg-[#ffffff] ${
-                  markSet == 2 ? "bg-primary bg-opacity-15" : "bg-[#ffffff]"
-                }`}
-                onClick={() => setMarkSet(2)}
-              >
-                <div className="rounded bg-[#ededed] p-2 flex flex-col gap-2">
-                  <div className="flex flex-row items-center">
-                    <FaBaby />
-                    <p className="font-[500] text-lg md:text-2xl">Cryptocurrency</p>
-                  </div>
-                  <p className="text-sm">
-                  Our cryptocurrency services offer secure trading, real-time market insights, and expert guidance to help you navigate the digital currency landscape confidently.
-                  </p>
-                  <div>
-                    <p>Exchange:</p>
-                    <div className="flex flex-row items-center">
-                      <p className="text-second font-[600] text-sm">EUR/USD,</p>
-                      <p>EUR/USD,</p>
-                      <p>EUR/USD,</p>
-                      <p>ETC</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-span-1 md:col-span-2 h-[300px] md:h-full">
-              {display[markSet]}
-            </div>
-          </div>
-        </div> */}
         <div className="container py-12">
           <div className="w-full md:w-1/2 text-center flex flex-col gap-4 justify-center items-center mx-auto">
           <h4 className="font-[600] text-4xl">Explore Our Trading Solutions</h4>
@@ -643,7 +546,7 @@ const HomePg = () => {
               <hr />
               <div className="grid grid-cols-2 justify-between items-center ps-12 w-full mx-auto">
                 <p className="font-[500] text-start">Min Deposit:</p>
-                <p className="text-center font-[600]">{item.amount}</p>
+                <p className="text-center font-[600]">${item.amount}</p>
               </div>
               <div className="grid grid-cols-2 justify-between items-center ps-12 w-full mx-auto">
                 <p className="font-[500] text-start">Max Deposit:</p>
@@ -651,7 +554,7 @@ const HomePg = () => {
               </div>
               <div className="grid grid-cols-2 justify-between items-center ps-12 w-full mx-auto">
                 <p className="font-[500] text-start">Return of Interest</p>
-                <p className="text-center font-[600]">40%</p>
+                <p className="text-center font-[600]">{item.roi}%</p>
               </div>
                <div className="flex flex-col gap-3 justify-start items-start py-4">
 
@@ -663,10 +566,11 @@ const HomePg = () => {
               ))}
                           </div>
                           <div className="flex flex-row justify-center items-center">
-                            <Link to="/user/dashboard">
+                            <GetStarted />
+                            {/* <Link to="/user/dashboard">
               <button className="bg-[#7f57f3] transition-all ease-in-out duration-[1s] hover:bg-white border hover:border-primary hover:text-[#7f57f3] px-4 py-2 rounded-full mx-auto text-white font-[600]">Get Started</button>
                             
-                            </Link>
+                            </Link> */}
             </div>
             </div>
               // <PricingCard key={item.id} title={item.name} lists={item.list} days="" amount={item.amount} maxamount={item.amount} roi={40}/>

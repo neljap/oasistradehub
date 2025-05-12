@@ -1,18 +1,37 @@
 export const SubscribeData = [
-    {
+
+        {
         id: 1,
         name: "Bronze",
-        list : ["99.5% AI accuracy", "Priority support", "Exclusive market insights", "Zero trading fees",
-        "Dedicated account manager",
-        "VIP event invitations",
-        "Customized portfolio",
-        "Early access to opportunities"],
-        days: 28,
-        maxamount: 50000,
-        amount: 10000
+        list: ["97% AI accuracy",
+"Live chat support",
+"Basic market insights",
+"Competitive fees",
+"Monthly market analysis",
+"Community forums",
+"Mobile app support"],
+days: 7,
+maxamount: 4999,
+amount: 1000,
+roi: 40
+    },
+       {
+        id:2,
+        name: "Silver",
+        list: ["98% AI accuracy",
+"Advanced market insights",
+"Loyalty discounts",
+"Educational resources",
+"Weekly market analysis",
+"Investment community access",
+"Enhanced security"],
+days: 14,
+maxamount: 14999,
+amount: 5000,
+roi: 55
     },
     {
-        id: 2,
+        id: 3,
         name: "Gold",
         list: ["99% AI accuracy",
 "Extended support hours",
@@ -22,31 +41,21 @@ export const SubscribeData = [
 "Exclusive webinars",
 "Flexible withdrawal options"],
 days: 21,
-        maxamount: 50000,
-amount: 75000
-    },
-    {
-        id:3,
-        name: "Silver",
-        list: ["98% AI accuracy",
-"Advanced market insights",
-"Loyalty discounts",
-"Educational resources",
-"Weekly market analysis",
-"Investment community access",
-"Enhanced security"],
-            amount: 50000
+        maxamount: 29999,
+amount: 15000,
+roi: 70
     },
     {
         id: 4,
-        name: "Bronze",
-        list: ["97% AI accuracy",
-"Live chat support",
-"Basic market insights",
-"Competitive fees",
-"Monthly market analysis",
-"Community forums",
-"Mobile app support"],
-        amount: 25000
+        name: "Diamond",
+        list : ["99.5% AI accuracy", "Priority support", "Exclusive market insights", "Zero trading fees",
+        "Dedicated account manager",
+        "VIP event invitations",
+        "Customized portfolio",
+        "Early access to opportunities"],
+        days: 28,
+        maxamount: 50000,
+        amount: 30000,
+        roi: 85
     }
 ]
