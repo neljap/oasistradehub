@@ -57,9 +57,10 @@ const Footter = () => {
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Quick Links</h3>
         <ul className="space-y-2">
-          <li><a href="#" className="text-gray-400 hover:text-white transition">About Us</a></li>
-          <li><a href="#" className="text-gray-400 hover:text-white transition">Ministries</a></li>
-          <li><a href="#" className="text-gray-400 hover:text-white transition">Contact Us</a></li>
+          <li><a href="/" className="text-gray-400 hover:text-white transition">About</a></li>
+          <li><a href="/" className="text-gray-400 hover:text-white transition">Trading</a></li>
+          <li><a href="/" className="text-gray-400 hover:text-white transition">Partners</a></li>
+          <li><a href="/" className="text-gray-400 hover:text-white transition">Testimonials</a></li>
         </ul>
       </div>
 
@@ -82,18 +83,24 @@ const Footter = () => {
                 <a href="mailto:info@company.com" className="hover:text-white transition">oasistradehub@gmail.com</a>
             </div>
             <div className="flex items-start justify-start gap-2.5">
-                <FaPhone className="text-gray-400 hover:text-white" size={23} /><a href="tel:+11234567890" className="hover:text-white transition">+1 (123) 456-7890</a>+
+                <FaPhone className="text-gray-400 hover:text-white" size={23} /><a href="tel:+11234567890" className="hover:text-white transition">+1 (123) 456-7890</a>
             </div>
         </address>
       </div>
       {/* <!-- Services --> */}
-      <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Subscribe</h3>
-        <p>Subscribe to our newsletter for updates, news, insights, and promotions.</p>
-        <div className="flex justify-start items-center">
-          <input type="text" className="py-1 px-1 border border-primary text-black font-[500] outline-none rounded-tl-lg rounded-bl-lg" />
-          <button className="py-1 px-1 bg-primary text-white rounded-tr-lg rounded-br-lg">Subscribe</button>
-        </div>
+      <div>
+        <h3 className="text-lg font-semibold mb-6">Stay Updated</h3>
+        <p className="text-gray-300 mb-4">Subscribe to the newsletter for the latest updates.</p>
+        <form className="mt-4">
+          <div className="relative">
+            <input type="email" placeholder="Your email" className="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500 text-white" />
+            <button type="submit" className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg px-4 py-1 transition">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </button>
+          </div>
+        </form>
       </div>
     </div>
 
