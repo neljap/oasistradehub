@@ -25,7 +25,103 @@ const Navbar = ({
   TradeRef,
 }: NavRefTypes) => {
   const [showMenu, setShowMenu] = useState(false);
+  const [changebg, setChangebg] = useState(false);
 
+  const [activeLink, setActiveLink] = useState("home");
+  const [
+    // @ts-ignore
+    isScrolled,
+    setIsScrolled] = useState(true);
+
+  // const navLinks = [
+  //   {
+  //     id: 1,
+  //     name: "Home",
+  //     navid: "home"
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "About Us",
+  //     navid: "about"
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Trading Solutions",
+  //     navid: "trading"
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Partners",
+  //     navid: "partner"
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Packages",
+  //     navid: "package"
+  //   },
+  //   {
+  //     id: 6,
+  //     name: "Testimonials",
+  //     navid: "testimonial"
+  //   },
+  //   {
+  //     id: 7,
+  //     name: "FAQ",
+  //     navid: "faq"
+  //   },
+  //   {
+  //     id: 8,
+  //     name: "Contact Us",
+  //     navid: "contact"
+  //   }
+  // ]
+
+ const sectionIds = ["home", "about", "trading", "partners", "packages", "testimonials", "faq", "contact"]
+
+// Function to smoothly scroll to a section by its ID
+    const scrollToSection = (sectionId : any) => {
+        const element = document.getElementById(sectionId);
+        if (element){
+            // Adjust the margin Top value as needed
+            const marginTop = 0;
+            const scrollToY = element.getBoundingClientRect().top + window.scrollY - marginTop;
+
+            window.scrollTo({top: scrollToY, behavior: "smooth"})
+        }
+    }
+
+    // Function to determine the active section while scrolling
+    const determineActiveSection = () => {
+        for (let i = sectionIds.length - 1; i>=0; i--){
+            const section = document.getElementById(sectionIds[i] as any)
+            if(section) {
+                const rect = section.getBoundingClientRect();
+                if(rect.top <= 120 && rect.bottom >=120){
+                    // Set the active link based on the section ID
+                    setActiveLink(sectionIds[i] as any)
+                    break;
+                }
+            }
+        }
+    }
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if(window.screenY > 300){
+                setIsScrolled(true)
+            }else {
+                setIsScrolled(false)
+            }
+            // Call the function to determine the active section while scrolling
+            determineActiveSection();
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll)
+        }
+    }, [])
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
@@ -42,6 +138,16 @@ const Navbar = ({
       return <FaMoon color="#0052FF" size={18} />;
     }
   };
+
+  const changeBackground = () => {
+    // console.log(window.scrollY)
+    if (window.scrollY >= 80) {
+      setChangebg(true);
+    } else {
+      setChangebg(false);
+    }
+  };
+  window.addEventListener("scroll", changeBackground);
 
   const checkNav = () => {
     return (
@@ -67,7 +173,7 @@ const Navbar = ({
 
   return (
     <div>
-      <div className="bg-white dark:bg-[#222736] dark:text-white w-full z-50 text-white shadow-xl">
+      <div className={`${changebg ? "fixed bg-white dark:bg-[#222736] dark:text-white w-full z-30 text-black shadow-xl" : "bg-transparent text-white dark:text-white"}""`}>
         <div className="container">
           <div className="flex flex-row items-center justify-between py-4">
             <Link to="/" className="flex flex-row items-center gap-0.5 md:gap-2">
@@ -81,42 +187,74 @@ const Navbar = ({
                 OASIS TRADE HUB
               </LogoText>
             </Link>
-            <nav className="hidden md:flex flex-row gap-6 font-[600]">
+            <nav className="hidden md:flex flex-row gap-4 font-[600]">
+              {sectionIds.map((sectionId: any, index) => (
+                <Link
+                key={index}
+                // className={activeLink === sectionId  ? "active" : ""}
+                to="/"
+                onClick={() => scrollToSection(sectionId)}
+                className={`${activeLink === sectionId  ? "active" : ""} text-md hover:text-primary capitalize transition-all ease-in-out duration-[1s] dark:text-white py-3`}
+              >
+                <p className={`${activeLink === sectionId ? "text-primary border-b-2 pb-1 border-primary" : ""}`}>{sectionId}</p>
+              </Link>
+              ))}
+              {/* <Link
+                to="/"
+                onClick={AboutRef}
+                className=" text-sm hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
+              >
+                Home
+              </Link>
               <Link
                 to="/"
                 onClick={AboutRef}
-                className="text-black hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
+                className=" text-sm hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
               >
-                About Us
+                About
+              </Link>
+              <Link
+                to="/"
+                onClick={AboutRef}
+                className=" text-sm hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
+              >
+               Trading Solutions
               </Link>
               <Link
                 to="/"
                 onClick={Testfy}
-                className="text-black hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
+                className=" text-sm hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
               >
-                Testimonials
+                Partners
               </Link>
               <Link
                 to="/"
                 onClick={PackRef}
-                className="text-black hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
+                className=" text-sm hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
               >
                 Packages
               </Link>
               <Link
                 to="/"
                 onClick={TradeRef}
-                className="text-black hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
+                className=" text-sm hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
               >
-                Trading
+                Testimonials
               </Link>
               <Link
                 to="/"
                 onClick={ContactRef}
-                className="text-black hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
+                className=" text-sm hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
+              >
+                FAQ
+              </Link>
+              <Link
+                to="/"
+                onClick={ContactRef}
+                className=" text-sm hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
               >
                 Contact Us
-              </Link>
+              </Link> */}
             </nav>
             <div className="flex flex-row gap-2 items-center">
               <div>
@@ -140,13 +278,13 @@ const Navbar = ({
                 {showMenu ? (
                   <HiMenuAlt1
                     onClick={toggleMenu}
-                    className="cursor-pointer transition-all text-black dark:text-white"
+                    className={`cursor-pointer transition-all text-primary`}
                     size={30}
-                  />
+                  /> 
                 ) : (
                   <HiMenuAlt3
                     onClick={toggleMenu}
-                    className="cursor-pointer transition-all text-black dark:text-white"
+                    className={`cursor-pointer transition-all text-primary`}
                     size={30}
                   />
                 )}

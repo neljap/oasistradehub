@@ -1,17 +1,11 @@
 import {
-  aboutusOne,
-  aboutusTwo,
   applestoreImg,
   CardAssetsImg,
-  // earth20Img,
   expltradecom,
   expltradecpt,
   expltradeetf,
   expltradefx,
   expltradequit,
-  // expltradestk,
-  // foxhubImg,
-  // goldlineImg,
   gplaystoreImg,
   herobgone,
   herobgtwo,
@@ -27,8 +21,6 @@ import {
   solayticImg,
   TopAset2Img,
   wwaImg,
-  // wwoImg1,
-  // wwoImg2,
   wwoImg3,
   wwoImg4,
   wwoImg5,
@@ -38,11 +30,8 @@ import {
 import {
   useEffect,
   useRef,
-  // useContext,
   useState,
 } from "react";
-// import { FaMoon, FaSun } from "react-icons/fa";
-// import { DarkLightContext } from "../../app/DarkLightTheme";
 import { ExploreCard, Navbar } from "../components";
 import { SiTransmission } from "react-icons/si";
 // import Carousel from "../components/TestCarousel";
@@ -54,6 +43,7 @@ import Footter from "../components/Footter";
 import { SubscribeData } from "../../utils/SubscriptData";
 import { VscVerifiedFilled } from "react-icons/vsc";
 import { GetStarted } from "../User/ui";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 const HomePg = () => {
   // const [changebg, setChangebg] = useState(false);
 
@@ -66,7 +56,8 @@ const HomePg = () => {
   const [subject, setSubject] = useState("");
   // const [markSet, setMarkSet] = useState<any>(0);
   const [isFmLoading, setIsFmLoading] = useState(false);
-
+  // FAQ TOGGLE
+  const [faqTog, setFaqTog] = useState(false);
   const storeappImg = [applestoreImg, gplaystoreImg, microsoftImg]
 
   const AboutRef = useRef<any>(null)
@@ -225,28 +216,22 @@ const HomePg = () => {
   return (
     <div>
       <div className="bg-black text-white">
-        <div className="">
+        <div className="" id="home">
           <Navbar AboutRef={scrollToAbout} PackRef={scrollToPack} Testfy={scrollToTestfy} ContactRef={scrollToContact} TradeRef={scrollToTrade} />
           {/* Herosection */}
-          <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center bg-black text-white pt-16 bg-center bg-no-repeat bg-cover">
-            <div className="flex flex-col gap-6 px-12 text-center md:text-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center bg-black text-white pt-16 bg-center bg-no-repeat bg-cover w-full">
+            <div className="flex flex-col gap-6 px-4 md:px-12 text-center md:text-start">
               <h2 className="text-3xl md:text-5xl font-[600]">
               Smart Trading, Secure Investments, Your Wealth Grows Faster
               </h2>
               <p className="font-[500]">
               Join our trusted trading and investment platform designed for beginners and experts. Access real-time market data, secure transactions, and smart tools to grow your portfolio and achieve financial freedom today.
               </p>
-              <div className="grid grid-cols-1 md:flex md:flex-row gap-2 md:gap-6 items-center ">
-                <GetStarted />
-                {/* <button className="bg-second border hover:border-primary hover:bg-transparent hover:text-primary font-[500] transition-all ease-in-out duration-[1s] rounded py-2 px-4 text-white">
-                  Get Started
-                </button> */}
-
+              <div className="grid grid-cols-1 md:flex md:flex-row gap-2 md:gap-6 items-center justify-center mx-auto md:ms-0">
+                <GetStarted getklass="bg-white border-primary text-primary" />
               </div>
             </div>
             <div className="relative">
-              {/* <div className="w-full bg-herobgone bg-left-top"></div>
-          <div className="w-full bg-herobgtwo bg-right-bottom"></div> */}
               <img
                 src={herobgone}
                 alt=""
@@ -268,64 +253,17 @@ const HomePg = () => {
           </div>
         </div>
       </div>
-      {/* Trusted Section */}
-      <div className="bg-contain bg-white bg-opacity-50 bg-trustaset bg-center bg-no-repeat py-12">
-      <div className="container">
-        <div className="mx-auto w-full md:w-1/2 py-12">
-          <h2 className="text-xl md:text-3xl  text-center font-[600]">
-            Trusted by Over 6 Million Traders Across 175+ Countries
-          </h2>
-        </div>
-        <div className="w-full md:w-2/3 mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 justify-center items-center gap-4 md:gap-8 py-4">
-                <img src={muzicaImg} alt="" />
-                <img src="https://res.cloudinary.com/dr6a80sph/image/upload/v1744201967/kme2fsx6umap7n7yqjmo.png" alt="" />
-                <img src="https://res.cloudinary.com/dr6a80sph/image/upload/v1744201966/dk49qlcppaietu9ajriz.png" alt="" />
-                <img src="https://res.cloudinary.com/dr6a80sph/image/upload/v1744201966/spbers12bhnqbodetrar.png" alt="" />
-
-        </div>
-        <div className="hidden md:grid grid-cols-2 md:grid-cols-4 justify-center items-center gap-4 md:gap-8 py-4">
-                <img src={ideaaImg} alt="" />
-                <img src={kanbaImg} alt="" />
-                <img src={nirastateImg} alt="" />
-                <img src={solayticImg} alt="" />
-
-        </div>
-        </div>
-      </div>  
-      </div>
-      
       {/* WHO WE ARE */}
-      <div ref={AboutRef}>
+      <div ref={AboutRef} id="about">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-12 md:py-24">
-            <div className="col-span-2">
-              <div className="grid md:grid-cols-2 grid-cols-1">
-                <div className="md:flex flex-col gap-4 hidden">
-                  <img
-                    src={aboutusOne}
-                    alt=""
-                    className="h-[400px] w-[90%] hidden md:block"
-                  />
-                  <img
-                    src={aboutusTwo}
-                    alt=""
-                    className="h-[100px] w-[90%] hidden md:block"
-                  />
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-8 py-12 md:py-24">
+            <div className="">
+              <div>
                 <div className="h-[500px] relative">
-                  <div className="rounded-full md:w-48 w-32 md:h-48 h-32 absolute md:-top-24 -top-16 right-0 bg-gradient-to-br from-[#0b7c86] to-[#9440a2] hidden md:flex flex-col gap-2 text-center justify-center items-center">
-                    <p className="md:text-6xl text-3xl font-[600] text-white">
-                      7+
-                    </p>
-                    <p className="text-white md:text-lg text-md">
-                      Years of Experience
-                    </p>
-                  </div>
                   <img
                     src={wwaImg}
                     alt=""
-                    className="w-full md:w-[80%] rounded-lg h-full object-cover"
+                    className="w-full rounded-lg h-full object-cover"
                   />
                 </div>
               </div>
@@ -346,10 +284,59 @@ const HomePg = () => {
                   </div>
                 ))}
               </div>
-              <div>
-
+              <div className="rounded-full md:w-48 w-32 md:h-48 h-32 bg-gradient-to-br from-[#0b7c86] to-[#9440a2] hidden md:flex flex-col gap-2 text-center justify-center items-center">
+                    <p className="md:text-4xl text-3xl font-[600] text-white font-[Jost]">
+                      14+
+                    </p>
+                    <p className="text-white md:text-md text-lg font-[500]">
+                      Years of Experience
+                    </p>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* OUR VALUE */}
+      <div className="container">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 justify-center items-center py-24">
+          
+          <div className="flex flex-col gap-4">
+            <p className="text-second font-[500]">OUR VALUE</p>
+            <h2 className="text-3xl font-[600]">
+              Your Success is Our Priority
+            </h2>
+            <p className="text-gray-800 dark:text-white">
+            Our values drive everything we do—integrity, innovation, trust, excellence, growth, and commitment to your financial success.
+            </p>
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-row gap-2 justify-start items-start">
+                <div className="bg-second p-4 w-fit rounded-full">
+                  <SiTransmission color="white" size={20} />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-[500]">Our Vision</h3>
+                  <p className="text-gray-800 dark:text-white">
+                  To become the leading platform empowering individuals worldwide to achieve financial freedom through smart trading and investment solutions.
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-row gap-2 justify-start items-start">
+                <div className="bg-second p-4 w-fit rounded-full">
+                  <SiTransmission color="white" size={20} />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-[500]">Our Mission</h3>
+                  <p className="text-gray-800 dark:text-white">
+                  Our mission is to deliver secure, innovative, and accessible trading and investment solutions that empower individuals to build lasting wealth.
+                  </p>
+                </div>
               </div>
             </div>
+          </div>
+          <div className="relative">
+            <img src={CardAssetsImg} alt="" className="absolute -top-10 z-20 w-48 md:w-auto " data-aos="zoom-out-up"/>
+            <img src={ourvalueImg} alt="" data-aos="zoom-out-up"/>
+            <img src={TopAset2Img} alt="" className="absolute -bottom-10 -right-10 hidden md:block" />
           </div>
         </div>
       </div>
@@ -366,7 +353,7 @@ const HomePg = () => {
             Begin your trading journey now and discover new opportunities for financial growth, independence, and success. Take control of your future by exploring the power of smart investing today.
             </p>
             <div>
-              <GetStarted />
+              <GetStarted getklass="bg-transparent" />
             </div>
           </div>
         </div>
@@ -430,49 +417,7 @@ const HomePg = () => {
           </div>
         </div>
       </div>
-      {/* OUR VALUE */}
-      <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 justify-center items-center py-24">
-          <div className="relative">
-            <img src={CardAssetsImg} alt="" className="absolute -top-10 z-20 w-48 md:w-auto " data-aos="zoom-out-up"/>
-            <img src={ourvalueImg} alt="" data-aos="zoom-out-up"/>
-            <img src={TopAset2Img} alt="" className="absolute -bottom-10 -right-10 hidden md:block" />
-          </div>
-          <div className="flex flex-col gap-4">
-            <p className="text-second font-[500]">OUR VALUE</p>
-            <h2 className="text-3xl font-[600]">
-              Your Success is Our Priority
-            </h2>
-            <p className="text-gray-800 dark:text-white">
-            Our values drive everything we do—integrity, innovation, trust, excellence, growth, and commitment to your financial success.
-            </p>
-            <div className="flex flex-col gap-4">
-              <div className="flex flex-row gap-2 justify-start items-start">
-                <div className="bg-second p-4 w-fit rounded-full">
-                  <SiTransmission color="white" size={20} />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-[500]">Our Vision</h3>
-                  <p className="text-gray-800 dark:text-white">
-                  To become the leading platform empowering individuals worldwide to achieve financial freedom through smart trading and investment solutions.
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-row gap-2 justify-start items-start">
-                <div className="bg-second p-4 w-fit rounded-full">
-                  <SiTransmission color="white" size={20} />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-[500]">Our Mission</h3>
-                  <p className="text-gray-800 dark:text-white">
-                  Our mission is to deliver secure, innovative, and accessible trading and investment solutions that empower individuals to build lasting wealth.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      
       {/* WHAT WE OFFER */}
       <div className="bg-[#ededed] dark:bg-black py-24" ref={TradeRef}>
         <div className="container">
@@ -508,7 +453,7 @@ const HomePg = () => {
         </div>
       </div>
       
-      <div>
+      <div id="trading">
         <div className="container py-12">
           <div className="w-full md:w-1/2 text-center flex flex-col gap-4 justify-center items-center mx-auto">
           <h4 className="font-[600] text-4xl">Explore Our Trading Solutions</h4>
@@ -522,13 +467,39 @@ const HomePg = () => {
           </div>
         </div>
       </div>
+            {/* Trusted Section */}
+      <div className="bg-contain bg-white bg-opacity-50 bg-trustaset bg-center bg-no-repeat py-12" id="partners">
+      <div className="container">
+        <div className="mx-auto w-full md:w-1/2 py-12">
+          <h2 className="text-xl md:text-3xl  text-center font-[600]">
+            Trusted by Over 6 Million Traders Across 175+ Countries
+          </h2>
+        </div>
+        <div className="w-full md:w-2/3 mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 justify-center items-center gap-4 md:gap-8 py-4">
+                <img src={muzicaImg} alt="" />
+                <img src="https://res.cloudinary.com/dr6a80sph/image/upload/v1744201967/kme2fsx6umap7n7yqjmo.png" alt="" />
+                <img src="https://res.cloudinary.com/dr6a80sph/image/upload/v1744201966/dk49qlcppaietu9ajriz.png" alt="" />
+                <img src="https://res.cloudinary.com/dr6a80sph/image/upload/v1744201966/spbers12bhnqbodetrar.png" alt="" />
+
+        </div>
+        <div className="hidden md:grid grid-cols-2 md:grid-cols-4 justify-center items-center gap-4 md:gap-8 py-4">
+                <img src={ideaaImg} alt="" />
+                <img src={kanbaImg} alt="" />
+                <img src={nirastateImg} alt="" />
+                <img src={solayticImg} alt="" />
+
+        </div>
+        </div>
+      </div>  
+      </div>
       
       {/* Pricing Section */}
-      <div className="bg-[#f5f5f5] dark:bg-black" ref={PackRef}>
+      <div className="bg-[#f5f5f5] dark:bg-black" ref={PackRef} id="packages">
         <div className="container py-12">
           <div className="w-full md:w-1/2 text-center mx-auto">
           <h4 className="text-2xl font-[600]">Packages</h4>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur ullam a eum doloribus alias, deserunt aspernatur ex fuga labore inventore!</p>
+          <p>Choose from flexible trading packages designed to fit your goals, risk tolerance, and budget—unlock advanced tools, expert support, and maximize your market potential today</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-12 justify-center items-center gap-8">
             {/* PricingCard */}
@@ -566,7 +537,7 @@ const HomePg = () => {
               ))}
                           </div>
                           <div className="flex flex-row justify-center items-center">
-                            <GetStarted />
+                            <GetStarted getklass="bg-transparent border-[#7f57f3] text-[#7f57f3]" />
                             {/* <Link to="/user/dashboard">
               <button className="bg-[#7f57f3] transition-all ease-in-out duration-[1s] hover:bg-white border hover:border-primary hover:text-[#7f57f3] px-4 py-2 rounded-full mx-auto text-white font-[600]">Get Started</button>
                             
@@ -614,8 +585,210 @@ const HomePg = () => {
         </div>
       </div>
       
+      
+     {/* Testimontials */}
+     <div id="testimonials">
+      <TestyCard /> 
+     </div>
+      
+      {/* FAQ */}
+      <div className="container" id="faq">
+     <div
+    className="relative w-full bg-white pt-10 pb-8 mt-4 ">
+    <div className="mx-auto w-full px-0 md:px-12">
+        <div className="flex flex-col items-center w-full md:w-1/2 mx-auto">
+            <h2 className="mt-5 text-center text-3xl font-bold tracking-tight md:text-5xl">FAQ</h2>
+            <p className="text-center text-lg md:text-xl font-[500] py-2">Have <span className="text-primary">questions?</span>  We've got the <span className="text-primary">answers</span>  you need.</p>
+            {/* <p className="mt-3 text-lg text-neutral-500 md:text-xl text-center">Experience unmatched service excellence with a team devoted to surpassing your expectations. From arrival, enjoy a refined, welcoming atmosphere shaped around your needs and preferences. </p> */}
+        </div>
+        <div className="mx-auto mt-4 grid gap-4 md:gap-8 justify-start items-center grid-cols-1 md:grid-cols-2">
+            <div className="py-2">
+                <details className="group">
+                    <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
+                        <span> How can I get started with your platform?</span>
+                        <span className="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision"
+                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                                    <path d="M6 9l6 6 6-6"></path>
+                                </svg>
+                            </span>
+                    </summary>
+                    <p className="group-open:animate-fadeIn mt-3 text-neutral-600">Getting started is easy—just register on our website and complete the onboarding steps. You’ll then unlock full access to all our platform’s features and tools.
+
+                    </p>
+                </details>
+            </div>
+            <div className="py-2">
+                <details className="group">
+                    <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
+                        <span> What payment methods do you support?</span>
+                        <span className="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision"
+                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                                    <path d="M6 9l6 6 6-6"></path>
+                                </svg>
+                            </span>
+                    </summary>
+                    <p className="group-open:animate-fadeIn mt-3 text-neutral-600">We support a variety of payment methods, including credit cards, bank transfers, and popular digital wallets such as PayPal and Stripe.
+                    </p>
+                </details>
+            </div>
+        </div>
+        <div className="mx-auto mt-4 grid gap-4 md:gap-8 justify-start items-center grid-cols-1 md:grid-cols-2">
+            <div className="py-2">
+                <details className="group">
+                    <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
+                        <span> Are my funds safe with your platform?</span>
+                        <span className="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision"
+                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                                    <path d="M6 9l6 6 6-6"></path>
+                                </svg>
+                            </span>
+                    </summary>
+                    <p className="group-open:animate-fadeIn mt-3 text-neutral-600">Absolutely. We take security seriously and have implemented robust measures to ensure the safety of your funds. Your account is protected by advanced encryption and authentication protocols.
+                    </p>
+                </details>
+            </div>
+            <div className="py-2">
+                <details className="group">
+                    <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
+                        <span> Do you provide customer support?</span>
+                        <span className="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision"
+                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                                    <path d="M6 9l6 6 6-6"></path>
+                                </svg>
+                            </span>
+                    </summary>
+                    <p className="group-open:animate-fadeIn mt-3 text-neutral-600">Yes, we offer 24/7 customer support via email, live chat, and phone. Our dedicated support team is ready to assist you with any questions or issues you may have.
+                    </p>
+                </details>
+            </div>
+        </div>
+        <div className="mx-auto mt-4 grid gap-4 md:gap-8 justify-start items-center grid-cols-1 md:grid-cols-2">
+            <div className="py-2">
+                <details className="group">
+                    <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
+                        <span> How can I withdraw my profits?</span>
+                        <span className="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision"
+                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                                    <path d="M6 9l6 6 6-6"></path>
+                                </svg>
+                            </span>
+                    </summary>
+                    <p className="group-open:animate-fadeIn mt-3 text-neutral-600">Withdrawing your profits is easy. Simply navigate to the withdrawal section in your account dashboard and follow the instructions to initiate a withdrawal. Your funds will be transferred to your designated bank account or payment method.
+                    </p>
+                </details>
+            </div>
+            <div className="py-2">
+                <details className="group">
+                    <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
+                        <span>Is there a minimum deposit amount?</span>
+                        <span className="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision"
+                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                                    <path d="M6 9l6 6 6-6"></path>
+                                </svg>
+                            </span>
+                    </summary>
+                    <p className="group-open:animate-fadeIn mt-3 text-neutral-600">Yes, there is a minimum deposit amount required to open an account. The specific minimum deposit requirement will be mentioned during the account registration process.
+                    </p>
+                </details>
+            </div>
+        </div>
+        {!faqTog && (<div className="mx-auto flex flex-col items-center justify-center pt-4">
+          <button className="px-2 flex justify-center items-center gap-2 font-[Jost] font-[600]" onClick={() => setFaqTog(!faqTog)}>See More <FaAngleDown /></button>
+        </div>)}
+        
+        {faqTog && (
+        <div >
+          <div className="mx-auto mt-4 grid gap-4 md:gap-8 justify-start items-center grid-cols-1 md:grid-cols-2">
+            <div className="py-2">
+                <details className="group">
+                    <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
+                        <span>Are there any trading fees?</span>
+                        <span className="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision"
+                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                                    <path d="M6 9l6 6 6-6"></path>
+                                </svg>
+                            </span>
+                    </summary>
+                    <p className="group-open:animate-fadeIn mt-3 text-neutral-600">Yes, we charge trading fees based on the specific financial instruments and trading activities. The fee structure is transparent and can be found on our website. We strive to provide competitive and fair pricing for our traders.
+                    </p>
+                </details>
+            </div>
+            <div className="py-2">
+                <details className="group">
+                    <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
+                        <span>Can I use automated trading strategies?</span>
+                        <span className="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision"
+                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                                    <path d="M6 9l6 6 6-6"></path>
+                                </svg>
+                            </span>
+                    </summary>
+                    <p className="group-open:animate-fadeIn mt-3 text-neutral-600">Yes, we support automated trading strategies through the use of API integration. Traders can connect their preferred trading bots or algorithmic trading systems to our platform for seamless automated trading.
+                    </p>
+                </details>
+            </div>
+        </div>
+        <div className="mx-auto mt-4 grid gap-4 md:gap-8 justify-start items-center grid-cols-1 md:grid-cols-2">
+            <div className="py-2">
+                <details className="group">
+                    <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
+                        <span>What trading tools do you offer?</span>
+                        <span className="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision"
+                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                                    <path d="M6 9l6 6 6-6"></path>
+                                </svg>
+                            </span>
+                    </summary>
+                    <p className="group-open:animate-fadeIn mt-3 text-neutral-600">We offer a comprehensive range of trading tools, including advanced charting, technical analysis indicators, real-time market data, and trade execution features. These tools are designed to assist traders in making informed decisions and maximizing their trading potential.
+                    </p>
+                </details>
+            </div>
+            <div className="py-2">
+                <details className="group">
+                    <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
+                        <span>What should I do if I forgot my password?</span>
+                        <span className="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision"
+                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                                    <path d="M6 9l6 6 6-6"></path>
+                                </svg>
+                            </span>
+                    </summary>
+                    <p className="group-open:animate-fadeIn mt-3 text-neutral-600">If you forgot your password, you can click on the "Forgot Password" link on the login page. Follow the instructions to reset your password and regain access to your account.
+                    </p>
+                </details>
+            </div>
+        </div>
+        <div className="mx-auto flex flex-col items-center justify-center pt-4">
+          <button className="px-2 flex justify-center items-center gap-2 font-[Jost] font-[600]" onClick={() => setFaqTog(!faqTog)}>See Less <FaAngleUp /></button>
+        </div>
+        </div>  
+        )}
+        
+    </div>
+</div>   
+      </div>
       {/* Contact Section */}
-      <div className="container py-12" ref={ContactRef}>
+      <div className="container py-12" ref={ContactRef} id="contact">
         <div className="w-full md:w-1/2 mx-auto text-center py-12">
           <h3 className="text-2xl font-[500]">Contact Us</h3>
           <p className="text">
@@ -692,8 +865,6 @@ const HomePg = () => {
           </div>
         </div>
       </div>
-     {/* Testimontials */}
-      <TestyCard /> 
       {/* Play Store */}
       <div>
         <div className="container">
@@ -706,9 +877,9 @@ const HomePg = () => {
               w-[550px] mx-auto" />
             </div>
             <div className="flex flex-col gap-2 md:gap-8 justify-start items-start">
-              <h3 className="text-3xl md:text-5xl text-center md:text-start">Trade Seamlessly on Any Device, Anytime</h3>
+              <h3 className="text-2xl md:text-5xl text-center md:text-start">Trade Seamlessly on Any Device, Anytime</h3>
               <p className="text-md md:text-xl text-center md:text-start">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-              <div className="grid grid-cols-3 justify-center items-center gap-4 me-12 mx-auto ps-6">
+              <div className="grid grid-cols-3 justify-center items-center gap-4 me-12 ps-6 pb-8 md:pb-0">
                 {storeappImg.map((item, index) => (
                   <div key={index} className="w-full">
                     <img src={item} alt="" className="w-full"/>
