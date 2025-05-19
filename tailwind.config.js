@@ -15,7 +15,7 @@ export default {
         gradient: "gradient 8s linear infinite",
       },
       backgroundImage: {
-        statbg: "url('assets/man-laptop-dark-office-1-1066px.webp')",
+        statbg: "url('assets/istockman.webp')",
         herobgone: "url('assets/uuundulat.svg')",
         herobgtwo: "url('assets/aset-homepage-4.png')",
         trustbg: "url('assets/clas-bg.png')",

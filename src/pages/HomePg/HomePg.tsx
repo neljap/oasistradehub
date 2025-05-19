@@ -43,7 +43,9 @@ import Footter from "../components/Footter";
 import { SubscribeData } from "../../utils/SubscriptData";
 import { VscVerifiedFilled } from "react-icons/vsc";
 import { GetStarted } from "../User/ui";
-import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
+import { FaAngleDown, FaAngleUp, FaHeart, FaPeopleGroup } from "react-icons/fa6";
+import { FcLineChart } from "react-icons/fc";
+import { HiSpeakerphone } from "react-icons/hi";
 const HomePg = () => {
   // const [changebg, setChangebg] = useState(false);
 
@@ -343,8 +345,11 @@ const HomePg = () => {
       {/* Trading */}
       <div>
         {/* Start trading */}
-      <div className="bg-statbg bg-cover bg-center py-20">
-        <div className="container">
+      <div className="bg-statbg relative bg-neutral-900 bg-cover bg-center py-20">
+        <div className="absolute w-full z-10 top-0 left-0 bg-neutral-900 bg-opacity-55 h-full">
+
+        </div>
+        <div className="container text-white">
           <div className="flex flex-col gap-4 border border-white text-white py-6 md:py-12 text-center w-full md:w-1/2 rounded-2xl mx-auto justify-center items-center">
             <h3 className="text-3xl">
               Start Trading Today and Unlock Your Financial Potential.
@@ -360,6 +365,45 @@ const HomePg = () => {
       </div>
         <div className="grid grid-cols-2 md:grid-cols-4 py-2 shadow-lg">
           <div className="flex flex-col justify-center items-center py-4 md:py-8">
+            <div>
+              <FcLineChart className="text-5xl" />
+            </div>
+            <div className="flex flex-row">
+
+              <CountUp
+                from={0}
+                to={310}
+                separator=","
+                direction="up"
+                duration={1}
+                className="count-up-text text-second md:text-4xl text-lg font-[600]"
+              />
+              <p className="font-[600] text-second text-4xl">+</p>
+            </div>
+            <p className="text-center font-[500]">SUCCESSFUL TRADES</p>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <div>
+             <FaPeopleGroup className="text-5xl" /> 
+            </div>
+            
+            <div className="flex flex-row">
+              <CountUp
+                from={0}
+                to={279}
+                separator=","
+                direction="up"
+                duration={1}
+                className="count-up-text text-second text-5xl font-[600]"
+              />
+              <p className="font-[600] text-second text-5xl">+</p>
+            </div>
+            <p className="text-center font-[500]">HAPPY CLIENT</p>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <div>
+              <HiSpeakerphone className="text-2xl md:text-4xl" />
+            </div>
             <div className="flex flex-row">
               <CountUp
                 from={0}
@@ -367,53 +411,29 @@ const HomePg = () => {
                 separator=","
                 direction="up"
                 duration={1}
-                className="count-up-text text-second text-5xl font-[600]"
+                className="count-up-text text-second text-4xl font-[600]"
               />
-              <p className="font-[600] text-second text-5xl">+</p>
+              <p className="font-[600] text-second text-4xl">+</p>
             </div>
-            <p className="text-center font-[500]">Years of Experience</p>
+            <p className="text-center font-[500]">YEARS OF EXPERIENCE</p>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <div className="flex flex-row">
-              <CountUp
-                from={0}
-                to={40}
-                separator=","
-                direction="up"
-                duration={1}
-                className="count-up-text text-second text-5xl font-[600]"
-              />
-              <p className="font-[600] text-second text-5xl">+</p>
+            <div>
+              <FaHeart className="text-4xl" />
             </div>
-            <p className="text-center font-[500]">Expert Team</p>
-          </div>
-          <div className="flex flex-col justify-center items-center">
-            <div className="flex flex-row">
-              <CountUp
-                from={0}
-                to={340}
-                separator=","
-                direction="up"
-                duration={1}
-                className="count-up-text text-second text-5xl font-[600]"
-              />
-              <p className="font-[600] text-second text-5xl">+</p>
-            </div>
-            <p className="text-center font-[500]">Project Done</p>
-          </div>
-          <div className="flex flex-col justify-center items-center">
           <div className="flex flex-row">
+            
             <CountUp
               from={0}
-              to={279}
+              to={100}
               separator=","
               direction="up"
               duration={1}
-              className="count-up-text text-second text-5xl font-[600]"
+              className="count-up-text text-second text-4xl font-[600]"
             />
-            <p className="font-[600] text-second text-5xl">+</p>
+            <p className="font-[600] text-second text-4xl">%</p>
           </div>
-          <p className="text-center font-[500]">Happy Client</p>  
+          <p className="text-center font-[500]">CLIENT SATIFASTION</p>  
           </div>
         </div>
       </div>
@@ -861,7 +881,62 @@ const HomePg = () => {
             </div>
           </form>
           <div className="bg-primary rounded-tr-xl rounded-br-xl hidden md:block">
-            <h2 className="text-center text-white pt-8">Oasis Trade Hub</h2>
+            <h2 className="text-center text-white pt-8 text-2xl">Oasis Trade Hub</h2>
+            <div className="ps-4">
+              <div className="mx-auto pt-24">
+                <div className="space-y-8">
+                        <div className="flex items-center gap-4 group min-w-fit">
+                            <div className="bg-blue-900 p-4 rounded-xl transform transition-transform duration-300 group-hover:translate-y-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <div className="w-fit">
+                                <p className="text-white font-[500]">Email</p>
+                                <p className="text-gray-400 text-sm">oasistradehub@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div className="flex items-center gap-4 group">
+                            <div className="bg-green-900 p-4 rounded-xl transform transition-transform duration-300 group-hover:translate-y-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p className="text-white font-[500]">Phone</p>
+                                <p className="text-gray-400 text-sm">0123456789</p>
+                            </div>
+                        </div>
+                        
+                        <div className="flex items-center gap-4 group">
+                            <div className="bg-red-900 p-4 rounded-xl transform transition-transform duration-300 group-hover:translate-y-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p className="text-white font-[500]">Location</p>
+                                <p className="text-gray-400 text-sm">Aberdeen Avenue, California, Santa Rosa, US</p>
+                            </div>
+                        </div>
+                        
+                        {/* <div className="flex items-center gap-4 group">
+                            <div className="bg-purple-900 p-4 rounded-xl transform transition-transform duration-300 group-hover:translate-y-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p className="text-gray-400">Calendly</p>
+                                <a href="#" className="text-blue-400 hover:underline">Schedule a meeting with Me</a>
+                            </div>
+                        </div> */}
+                    </div>
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>
