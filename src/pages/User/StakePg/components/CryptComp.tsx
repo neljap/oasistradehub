@@ -1,13 +1,14 @@
 import { useContext, useState } from "react";
 import { FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa6";
 import { StakeContext } from "../../../../app/StakeContext";
 import { StakingData } from "../../../../utils/AppData";
-import { useAppDispatch } from "../../../../app/hook";
-import { stakeAdded } from "../../../../features/stakeSlice";
+// import { useAppDispatch } from "../../../../app/hook";
+import axios from "axios";
 // import axios from "axios";
-// import { AuthContext } from "../../../../app/AuthContext";
+import { AuthContext } from "../../../../app/AuthContext";
+import { toast } from "react-toastify";
 
 const CryptComp = () => {
   const [stakeOpen, setStakeOpen] = useState(false);
@@ -20,9 +21,9 @@ const CryptComp = () => {
 
   const { inputStkCrypto, handleStkCrypto, filteredStkCrypto } =
     useContext(StakeContext);
-  // const { data } = useContext(AuthContext);
+  const { data } = useContext(AuthContext);
   // const {allStakings, setAllStakings} = useContext(StakeContext);
-  const dispatch = useAppDispatch()
+  // const dispatch = useAppDispatch()
   console.log("staking", stakingSetNum);
 
   const singleStake = StakingData.find((item) => item.id == stakingSetNum);
@@ -30,7 +31,7 @@ const CryptComp = () => {
   const handleStake = async (e: any) => {
     e.preventDefault();
     let sAmount = inputModal;
-    // let sImg = singleStake?.icon
+    let sImg = singleStake?.icon
     let sSign = singleStake?.sign;
     let sCoin = singleStake?.coin;
     let sDuration = stakeNum;
@@ -78,6 +79,7 @@ const CryptComp = () => {
       // }else{
       //   setAllStakings([...allStakings, allStakings.push(staked)])
       // }
+      let img = sImg
       let asset = sSign;
       let amount = sAmount
       let duration = sDuration
@@ -85,8 +87,12 @@ const CryptComp = () => {
       let totalreturn = sROI
       let status = 'locked'
       console.log("staking", staked)
-      dispatch(stakeAdded(asset,  amount, duration, returns, totalreturn, status ))
+       await axios.post("http://localhost:3030/api/user/staked", {userid: data?._id, stakes: {img, asset, amount, duration, returns, totalreturn, status}})
+        toast.info("Staked", {position: "bottom-left"})
+
+      // dispatch(stakeAdded(asset,  amount, duration, returns, totalreturn, status ))
     } catch (error) {
+      toast.error(`staked error: ${error}`, {position: "bottom-left"})
       console.log("error", error);
     } finally {
       setStakeOpen(false);

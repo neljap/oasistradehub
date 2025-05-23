@@ -1,5 +1,24 @@
-import { ADACoin, AdobeStock, AmazonStock, AppleStock, AUDUSDImg, BTCoin, CHFJPYImg, DOGECoin, ETHCoin, EURGBPImg, EURJPYImg, GoogleStock, NetflixStock, NikeStock, SOLCoin, TelsaStock, TRXCoin, USDCADImg, USDTCoin } from "../assets";
+// import { ADACoin, AdobeStock, AmazonStock, AppleStock, AUDUSDImg, BTCoin, CHFJPYImg, DOGECoin, ETHCoin, EURGBPImg, EURJPYImg, GoogleStock, NetflixStock, NikeStock, SOLCoin, TelsaStock, TRXCoin, USDCADImg, USDTCoin } from "../assets";
 
+let USDCADImg = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013815/USDCAD_1_w1xebc.svg"
+let USDTCoin = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013813/USDT_ow3j7j.svg";
+let TelsaStock = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013812/TSLA_jktbe8.svg";
+let TRXCoin = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013812/TRX_jwi8n7.svg";
+let NikeStock = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013812/NKE_hshgq6.svg";
+let SOLCoin = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013812/SOL_g27qak.svg";
+let GoogleStock = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013811/GOOGL_w1rrhl.svg";
+let EURJPYImg = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013811/EURJPY_1_xxwmoi.svg";
+let EURGBPImg = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013810/EURGBP_1_qiudww.svg";
+let NetflixStock = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013810/NFLX_wknhaz.svg";
+let CHFJPYImg = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013810/CHFJPY_1_velfhn.svg";
+let AmazonStock = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013809/AMZN_z2k43a.svg";
+let DOGECoin = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013808/DOGE_wdianl.svg";
+let AUDUSDImg = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013808/AUDUSD_1_atrmwn.svg";
+let AdobeStock = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013807/ADBE_miaxnk.svg";
+let BTCoin = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013806/BTC_nxofho.svg";
+let AppleStock = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013806/AAPL_jhd2e1.svg";
+let ADACoin = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013806/ADA_sigygt.svg";
+let ETHCoin = "https://res.cloudinary.com/dr6a80sph/image/upload/v1748013806/ETH_sbnxld.svg";
 
 export const GetStartHome = [
     {

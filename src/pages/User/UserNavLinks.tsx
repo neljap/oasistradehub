@@ -4,11 +4,9 @@ import {
   FaCommentAlt,
   FaShoppingBag,
   FaTh,
-  FaTimes,
   FaUserAlt,
 } from "react-icons/fa";
 import {
-    FaBars,
   FaMarker,
   FaMoon,
   FaPeopleGroup,
@@ -35,10 +33,11 @@ import {  HiMiniClipboardDocumentList } from "react-icons/hi2";
 import { AiOutlineGlobal } from "react-icons/ai";
 import { IoIosCash } from "react-icons/io";
 import { SiBitcoincash } from "react-icons/si";
-import { HiCash } from "react-icons/hi";
+import { HiCash, HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
 import { MdVerified } from "react-icons/md";
 import Cookies from 'js-cookie';
 import { toast } from "react-toastify";
+import UserRespNav from "./UserRespNav";
 
 const UserNavLinks = ({ children }: any) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -47,6 +46,8 @@ const UserNavLinks = ({ children }: any) => {
   const [figValue, setFigValue] = useState<any>(null);
   const { setTheme, systemTheme, theme } = useContext(DarkLightContext);
   const [isMobOpen, setIsMobOpen] = useState(false);
+
+  const [showNavMenu, setShowNavMenu] = useState(false);
 
   const navigate = useNavigate()
 
@@ -59,6 +60,10 @@ const UserNavLinks = ({ children }: any) => {
       return <FaMoon color="#0052FF" size={18} />;
     }
   };
+
+  const togNavMenu = () => {
+    setShowNavMenu(!showNavMenu)
+  }
 
   const menuItem = [
     {
@@ -202,7 +207,7 @@ const UserNavLinks = ({ children }: any) => {
         <div className="flex flex-row items-center gap-4">
           <div className="relative group">
             <div
-              className="shadow group px-2 md:px-3 py-1 md:py-2 rounded-lg cursor-pointer border border-neutral-500 flex flex-row gap-3"
+              className="shadow group px-2 md:px-3 py-1 md:py-2 rounded-lg cursor-pointer border border-neutral-500 hidden md:flex flex-row gap-3"
               onClick={() => setFigModal(!figModal)}
             >
               {figValue == 1 ? (
@@ -278,9 +283,22 @@ const UserNavLinks = ({ children }: any) => {
           >
             <FaTh size={20} color="#0052FF" />
           </div>
-          <div className="block md:hidden cursor-pointer" onClick={() => setIsMobOpen(!isMobOpen)}>
-            {isMobOpen ? (<FaTimes color="#0052FF" size={22}/>): (<FaBars color="#0052FF" size={22}/>)}
-          </div>
+          {/* Mobile Toggle */}
+                        <div className="block md:hidden">
+                          {showNavMenu ? (
+                            <HiMenuAlt1
+                              onClick={togNavMenu}
+                              className={`cursor-pointer transition-all text-primary`}
+                              size={30}
+                            /> 
+                          ) : (
+                            <HiMenuAlt3
+                              onClick={togNavMenu}
+                              className={`cursor-pointer transition-all text-primary`}
+                              size={30}
+                            />
+                          )}
+                        </div>
         </div>
       </div>
       <div className="flex flex-row ">
@@ -386,6 +404,7 @@ const UserNavLinks = ({ children }: any) => {
                </div>
         </div>
         </div>
+    <UserRespNav showNavMenu={showNavMenu} setShowNavMenu={setShowNavMenu} setLogoutModal={setLogoutModal}/>
     </div>
   );
 };

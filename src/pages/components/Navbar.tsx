@@ -199,62 +199,6 @@ const Navbar = ({
                 <p className={`${activeLink === sectionId ? "text-primary border-b-2 pb-1 border-primary" : ""}`}>{sectionId}</p>
               </Link>
               ))}
-              {/* <Link
-                to="/"
-                onClick={AboutRef}
-                className=" text-sm hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
-              >
-                Home
-              </Link>
-              <Link
-                to="/"
-                onClick={AboutRef}
-                className=" text-sm hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
-              >
-                About
-              </Link>
-              <Link
-                to="/"
-                onClick={AboutRef}
-                className=" text-sm hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
-              >
-               Trading Solutions
-              </Link>
-              <Link
-                to="/"
-                onClick={Testfy}
-                className=" text-sm hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
-              >
-                Partners
-              </Link>
-              <Link
-                to="/"
-                onClick={PackRef}
-                className=" text-sm hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
-              >
-                Packages
-              </Link>
-              <Link
-                to="/"
-                onClick={TradeRef}
-                className=" text-sm hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
-              >
-                Testimonials
-              </Link>
-              <Link
-                to="/"
-                onClick={ContactRef}
-                className=" text-sm hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
-              >
-                FAQ
-              </Link>
-              <Link
-                to="/"
-                onClick={ContactRef}
-                className=" text-sm hover:text-primary transition-all ease-in-out duration-[1s] dark:text-white"
-              >
-                Contact Us
-              </Link> */}
             </nav>
             <div className="flex flex-row gap-2 items-center">
               <div>

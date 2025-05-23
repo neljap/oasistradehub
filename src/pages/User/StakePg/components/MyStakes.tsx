@@ -1,14 +1,19 @@
-import { useAppSelector } from "../../../../app/hook"
+import { useContext } from "react"
+// import { useAppSelector } from "../../../../app/hook"
+import { AuthContext } from "../../../../app/AuthContext"
 
 
 const MyStakes = () => {
    // Select the `state.posts` value from the store into the component
-   const stakes = useAppSelector(state => state.stake)
+  //  const stakes = useAppSelector(state => state.stake)
   //  const dispatch = useAppDispatch()
- 
+  const {data} = useContext(AuthContext);
+
+  let stakes = data?.staked
    const renderedStakes = stakes.map((take :any) => (
     <div className="grid grid-cols-4 md:grid-cols-6 justify-start items-center gap-4 rounded-lg shadow w-full py-2 px-2" key={take.id}>
-    <div>
+    <div className="flex items-center gap-2">
+      <div><img src={take.img} alt="" className="w-8 h-8" /></div>
       <p className="font-[500]">{take.asset}</p>
     </div>
     <div>
