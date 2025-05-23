@@ -136,7 +136,7 @@ const DepositPg = () => {
         });
         return;
       } else {
-        await axios.post("https://serveroasis.vercel.app/api/user/receipts", {
+        await axios.post("https://oaserver.onrender.com/api/user/receipts", {
           userid: data?._id,
           receipt: kycinfo,
         });
