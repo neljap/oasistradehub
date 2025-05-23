@@ -524,7 +524,7 @@ const HomePg = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-12 justify-center items-center gap-8">
             {/* PricingCard */}
             {SubscribeData.map((item) => (
-              <div className="rounded-lg shadow flex flex-col justify-start items-center py-4 border-[#7f57f3] border-t-2 w-full bg-white dark:bg-gray-800 h-[530px]" key={item.id}>
+              <div className={`rounded-lg shadow flex flex-col justify-start items-center py-4 border-${item.color} border-t-2 w-full bg-white dark:bg-gray-800 h-[530px]`} key={item.id}>
               <div className="flex flex-row items-center gap-1">
                <img src={premiummimg} className="w-8" alt="" />
                <p className="font-[500] text-lg md:text-xl">{item.name} Plan</p> 

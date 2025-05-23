@@ -24,6 +24,9 @@ export default {
       colors: {
         primary: "#0052FF",
         second: "#0052FF",
+        prione: "#0052FF",
+        pritwo: "#0052FF",
+        priour: "#0052FF"
       },
       container: {
         center: true,

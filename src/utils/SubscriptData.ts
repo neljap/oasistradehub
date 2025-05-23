@@ -13,7 +13,8 @@ export const SubscribeData = [
 days: 7,
 maxamount: 4999,
 amount: 1000,
-roi: 40
+roi: 40,
+color: "primary"
     },
        {
         id:2,
@@ -28,7 +29,8 @@ roi: 40
 days: 14,
 maxamount: 14999,
 amount: 5000,
-roi: 55
+roi: 55,
+color: "prione"
     },
     {
         id: 3,
@@ -43,7 +45,8 @@ roi: 55
 days: 21,
         maxamount: 29999,
 amount: 15000,
-roi: 70
+roi: 70,
+color: "pritwo"
     },
     {
         id: 4,
@@ -56,6 +59,7 @@ roi: 70
         days: 28,
         maxamount: 50000,
         amount: 30000,
-        roi: 85
+        roi: 85,
+        color: "priour"
     }
 ]
