@@ -1,4 +1,5 @@
 import {
+  alogoimg,
   applestoreImg,
   CardAssetsImg,
   expltradecom,
@@ -10,23 +11,26 @@ import {
   herobgone,
   herobgtwo,
   heroImg,
-  ideaaImg,
-  kanbaImg,
+  istockman,
+  mastercardimg,
+  metamaskimg,
   microsoftImg,
-  muzicaImg,
-  nirastateImg,
+  okxlogoimg,
   ourvalueImg,
+  paypalimg,
   playstoreImg,
   premiummimg,
-  solayticImg,
   TopAset2Img,
+  trustwallimg,
+  uniswapimg,
+  universalimg,
   wwaImg,
   wwoImg3,
   wwoImg4,
   wwoImg5,
   wwoImg6,
 } from "../../assets";
-
+import {Triangle} from "lucide-react";
 import {
   useEffect,
   useRef,
@@ -134,38 +138,43 @@ const HomePg = () => {
       id: 1,
       title: "Forex",
       img: expltradefx,
-      text: "Explore our Forex trading solutions—real-time data, low spreads, expert tools, and secure platforms for global currency trading."
+      text: "Explore our Forex trading solutions—real-time data, low spreads, expert tools, and secure platforms for global currency trading.",
+      pairs: ["EUR/USD,", "USD/JPY,", "GPB/USD,", "ETC"]
     },
     {
       id: 2,
       title: "Cryptocurrency",
       img: expltradecpt,
-      text: "Explore our cryptocurrency trading solutions—secure platforms, real-time data, low fees, and expert tools for digital asset trading."
+      text: "Explore our cryptocurrency trading solutions—secure platforms, real-time data, low fees, and expert tools for digital asset trading.",
+      pairs: ["BTC/USDT,", "ETH/USDT,", "LTC/USDT,", "ETC"]
     },
     {
       id: 3,
       title: "Equity",
       img: expltradequit,
-      text: "Explore our trading solutions—built on equality, ensuring fair access, opportunities, and tools for every trader to succeed globally."
-
+      text: "Explore our trading solutions—built on equality, ensuring fair access, opportunities, and tools for every trader to succeed globally.",
+      pairs: ["AAPL/EUR,", "TSLA/USD,", "AAPL/USD,", "ETC"]
     },
     {
       id: 4,
       title: "Stock",
       img: "https://res.cloudinary.com/dr6a80sph/image/upload/v1744201969/j4lplfrn8xhkcd7d2ezs.png",
-      text: "Explore our stock trading solutions—real-time insights, diverse markets, advanced tools, and secure platforms for smart equity investments."
+      text: "Explore our stock trading solutions—real-time insights, diverse markets, advanced tools, and secure platforms for smart equity investments.",
+      pairs: ["KO/PEP","AAPL/EUR,", "AAPL,", "ETC"]
     },
     {
       id: 5,
       title: "ETF",
       img: expltradeetf,
-      text: "Explore our ETF trading solutions—diversified portfolios, low-cost access, real-time tracking, and smart tools for strategic investment growth."
+      text: "Explore our ETF trading solutions—diversified portfolios, low-cost access, real-time tracking, and smart tools for strategic investment growth.",
+      pairs: ["SPY/USD,","EWJ/JPY,", "VTI/USD,", "ETC"]
     },
     {
       id: 6,
       title: "Commodity",
       img: expltradecom,
-      text: "Explore our commodity trading solutions—gain access to gold, oil, and more with real-time data, low fees, and security."
+      text: "Explore our commodity trading solutions—gain access to gold, oil, and more with real-time data, low fees, and security.",
+      pairs: ["	XAU/USD","XAG/USD,", "BRENT/USD,", "ETC"]
     }
   ]
 
@@ -250,7 +259,24 @@ const HomePg = () => {
             </div>
           </div>
           <div>
+          {/* TestScroll */}
+      <div className="overflow-hidden bg-black flex">
+              <ul className="flex gap-10  text-white py-4 animate-infinite-scroll">
+                {[...stocks, ...stocks].map((stock) => {
+                  const priceIncrease = stock.priceChange > 0 
 
+                  return(
+                  <li className="flex gap-2 items-center">
+                    <p className="text-gray-300">{stock.ticker}</p>
+                    <p className="text-gray-300">{stock.price}</p>
+                    <Triangle fill="white" className={`size-3 ${!priceIncrease && "rotate-180"}`}/>
+                    <p className={`${priceIncrease ? "text-green-500" : "text-red-500"}`}>{stock.priceChange}</p>
+                    <p className={`${priceIncrease ? "text-green-500" : "text-red-500"}`}>{stock.percentChange}</p>
+                    
+                  </li>
+                )})}
+              </ul>
+      </div>
     
           </div>
         </div>
@@ -345,11 +371,10 @@ const HomePg = () => {
       {/* Trading */}
       <div>
         {/* Start trading */}
-      <div className="bg-statbg relative bg-neutral-900 bg-cover bg-center py-20">
-        <div className="absolute w-full z-10 top-0 left-0 bg-neutral-900 bg-opacity-55 h-full">
-
-        </div>
-        <div className="container text-white">
+      <div className=" relative bg-neutral-900 h-[600px] w-full">
+      <img src={istockman} alt="" className="w-full absolute h-full object-cover mix-blend-overlay"/>
+        <div className=" flex justify-center items-center pt-28">
+<div className="container text-white">
           <div className="flex flex-col gap-4 border border-white text-white py-6 md:py-12 text-center w-full md:w-1/2 rounded-2xl mx-auto justify-center items-center">
             <h3 className="text-3xl">
               Start Trading Today and Unlock Your Financial Potential.
@@ -362,6 +387,8 @@ const HomePg = () => {
             </div>
           </div>
         </div>
+        </div>
+        
       </div>
         <div className="grid grid-cols-2 md:grid-cols-4 py-2 shadow-lg">
           <div className="flex flex-col justify-center items-center py-4 md:py-8">
@@ -481,36 +508,47 @@ const HomePg = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 justify-center items-center py-12 px-0 md:px-8">
             {Explotrade.map((item: any) => (
-           <ExploreCard key={item.id} title={item.title} img={item.img} text={item.text}/>   
+           <ExploreCard key={item.id} title={item.title} img={item.img} text={item.text} pairs={item.pairs}/>   
             ))}
             
           </div>
         </div>
       </div>
             {/* Trusted Section */}
-      <div className="bg-contain bg-white bg-opacity-50 bg-trustaset bg-center bg-no-repeat py-12" id="partners">
+      <div className="shadow-xl bg-neutral-50  py-4" id="partners">
       <div className="container">
-        <div className="mx-auto w-full md:w-1/2 py-12">
+    
           <h2 className="text-xl md:text-3xl  text-center font-[600]">
-            Trusted by Over 6 Million Traders Across 175+ Countries
+            Trusted by
           </h2>
+        <div>
+          {window.innerWidth > 767 ? (
+            <div className="grid md:grid-cols-8 grid-cols-4 px-8 justify-center items-center gap-8 ">
+          <img src={metamaskimg} alt="" />
+          <img src={paypalimg} alt="" />
+          <img src={trustwallimg} alt="" />
+          <img src={universalimg} alt="" />
+          <img src={mastercardimg} alt="" />
+          <img src={okxlogoimg} alt="" />
+          <img src={alogoimg} alt="" />
+          <img src={uniswapimg} alt="" />
         </div>
-        <div className="w-full md:w-2/3 mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 justify-center items-center gap-4 md:gap-8 py-4">
-                <img src={muzicaImg} alt="" />
-                <img src="https://res.cloudinary.com/dr6a80sph/image/upload/v1744201967/kme2fsx6umap7n7yqjmo.png" alt="" />
-                <img src="https://res.cloudinary.com/dr6a80sph/image/upload/v1744201966/dk49qlcppaietu9ajriz.png" alt="" />
-                <img src="https://res.cloudinary.com/dr6a80sph/image/upload/v1744201966/spbers12bhnqbodetrar.png" alt="" />
-
-        </div>
-        <div className="hidden md:grid grid-cols-2 md:grid-cols-4 justify-center items-center gap-4 md:gap-8 py-4">
-                <img src={ideaaImg} alt="" />
-                <img src={kanbaImg} alt="" />
-                <img src={nirastateImg} alt="" />
-                <img src={solayticImg} alt="" />
-
+          ): (
+            <div className="w-full overflow-hidden flex">
+        <div className="flex justify-center items-center gap-4 animate-infinite-scroll-img">
+          <img src={metamaskimg} alt="" />
+          <img src={paypalimg} alt="" />
+          <img src={trustwallimg} alt="" />
+          <img src={universalimg} alt="" />
+          <img src={mastercardimg} alt="" />
+          <img src={okxlogoimg} alt="" />
+          <img src={alogoimg} alt="" />
+          <img src={uniswapimg} alt="" />
         </div>
         </div>
+          )}
+        </div>
+        
       </div>  
       </div>
       
@@ -524,7 +562,7 @@ const HomePg = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-12 justify-center items-center gap-8">
             {/* PricingCard */}
             {SubscribeData.map((item) => (
-              <div className={`rounded-lg shadow flex flex-col justify-start items-center py-4 border-${item.color} border-t-2 w-full bg-white dark:bg-gray-800 h-[530px]`} key={item.id}>
+              <div className={`rounded-lg shadow flex flex-col justify-start items-center py-4 border-t-4 ${item.id == 1 ? "border-primary" : item.id == 2 ? "border-[#000]" : item.id == 3 ? "border-red-700" : "border-yellow-500"} border-t-2 w-full bg-white dark:bg-gray-800 h-[530px]`} key={item.id}>
               <div className="flex flex-row items-center gap-1">
                <img src={premiummimg} className="w-8" alt="" />
                <p className="font-[500] text-lg md:text-xl">{item.name} Plan</p> 
@@ -1007,3 +1045,29 @@ const HomePg = () => {
 };
 
 export default HomePg;
+
+
+
+const stocks = [
+  { ticker: "AAPL", price: 191.34, priceChange: 1.56, percentChange: 0.82 },
+  { ticker: "MSFT", price: 418.25, priceChange: -2.35, percentChange: -0.56 },
+  { ticker: "GOOGL", price: 178.90, priceChange: 0.95, percentChange: 0.53 },
+  { ticker: "AMZN", price: 183.70, priceChange: -1.02, percentChange: -0.55 },
+  { ticker: "TSLA", price: 174.55, priceChange: 3.20, percentChange: 1.87 },
+  { ticker: "NVDA", price: 1124.12, priceChange: -15.62, percentChange: -1.37 },
+  { ticker: "META", price: 471.23, priceChange: 4.10, percentChange: 0.88 },
+  { ticker: "NFLX", price: 641.50, priceChange: -7.25, percentChange: -1.12 },
+  { ticker: "AMD", price: 164.00, priceChange: 2.50, percentChange: 1.55 },
+  { ticker: "INTC", price: 30.48, priceChange: -0.74, percentChange: -2.37 },
+  { ticker: "BA", price: 178.35, priceChange: 0.65, percentChange: 0.37 },
+  { ticker: "JPM", price: 199.10, priceChange: 1.25, percentChange: 0.63 },
+  { ticker: "V", price: 275.89, priceChange: -0.40, percentChange: -0.14 },
+  { ticker: "MA", price: 454.73, priceChange: 3.12, percentChange: 0.69 },
+  { ticker: "DIS", price: 102.23, priceChange: 0.85, percentChange: 0.84 },
+  { ticker: "UBER", price: 68.45, priceChange: -1.10, percentChange: -1.58 },
+  { ticker: "CRM", price: 261.42, priceChange: 2.60, percentChange: 1.01 },
+  { ticker: "ORCL", price: 123.33, priceChange: -0.98, percentChange: -0.79 },
+  { ticker: "PYPL", price: 65.20, priceChange: 0.20, percentChange: 0.31 },
+  { ticker: "SHOP", price: 63.80, priceChange: -0.60, percentChange: -0.93 }
+];
+

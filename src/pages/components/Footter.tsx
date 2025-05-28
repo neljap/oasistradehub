@@ -74,7 +74,7 @@ const Footter = () => {
                 <div>
                 <FaUserAlt className="text-gray-400 hover:text-white" size={23} />
                 </div>
-                <p className="text-sm">Aberdeen Avenue, California, Santa Rosa, US</p>
+                <p className="text-sm capitalize">109th street. cleveland, ohio. united states</p>
             </div>
             <div className="flex items-start justify-start gap-2.5">
                 <div>

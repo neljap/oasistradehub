@@ -2,8 +2,9 @@ interface ExplTypes {
     title: String,
     img: string
     text: string
+    pairs: any
 }
-const ExploreCard = ({title, img, text}: ExplTypes) => {
+const ExploreCard = ({title, img, text, pairs}: ExplTypes) => {
   return (
     <div className="bg-white dark:bg-black rounded shadow-lg p-4">
               <div className="bg-[#ededed] dark:bg-[#222736] rounded p-4 flex flex-col gap-4">
@@ -19,10 +20,10 @@ const ExploreCard = ({title, img, text}: ExplTypes) => {
               <div>
                 <p className="font-[500]">Exchange:</p>
                 <div className="flex flex-row items-center gap-1">
-                  <p className="text-second font-[500] text-sm">EUR/USD,</p>
-                  <p className="text-second font-[500] text-sm">USD/JPY,</p>
-                  <p className="text-second font-[500] text-sm">GPB/USD,</p>
-                  <p className="text-second font-[500] text-sm">ETC</p>
+                  <p className="text-second font-[600] text-sm">{pairs[0]}</p>
+                  <p className="text-second font-[600] text-sm">{pairs[1]}</p>
+                  <p className="text-second font-[600] text-sm">{pairs[2]}</p>
+                  <p className="text-second font-[600] text-sm">{pairs[3]}</p>
                 </div>
                 <p></p>
               </div>

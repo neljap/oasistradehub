@@ -10,12 +10,18 @@ export default {
           "50%": { backgroundPosition: "100% 50%" },
           "100%": { backgroundPosition: "0% 50%" },
         },
+        "infinite-scroll": {
+          "0%": {transform: "translateX(0)"},
+          "100%": {transform: "translateX(calc(-50% - 20px))"}
+        }
       },
       animation: {
         gradient: "gradient 8s linear infinite",
+        "infinite-scroll": "infinite-scroll 40s linear infinite",
+        "infinite-scroll-img": "infinite-scroll 5s linear infinite"
       },
       backgroundImage: {
-        statbg: "url('assets/istockman.webp')",
+        statbg: "url('assets/istockman.jpg')",
         herobgone: "url('assets/uuundulat.svg')",
         herobgtwo: "url('assets/aset-homepage-4.png')",
         trustbg: "url('assets/clas-bg.png')",
