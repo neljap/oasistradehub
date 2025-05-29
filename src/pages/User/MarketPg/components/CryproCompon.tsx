@@ -36,7 +36,8 @@ const CryproCompon = () => {
       <div>
         {/* <input type="text" value={topLink} onChange={(e) => setTopLink(e.target.value)} />
         <input type="text" value={btmLink} onChange={(e) => setBtmLink(e.target.value)} /> */}
-        <Link to={`/user/markets/trade/crypto/${item.name}/${item.obj}`}>
+        {/* @ts-ignore */}
+        <Link to={`/user/markets/trade/crypto/${item.name}/${item.obj}`} onClick={() => window.scrollY(0, 0)}>
         <button className="bg-green-100 hover:bg-green-700 text-green-700 hover:text-green-100 px-3 md:px-4 py-2 rounded-xl transition-all ease-in-out duration-[1s]">Trade</button>
         </Link>
         </div>

@@ -7,9 +7,13 @@ import { toast } from "react-toastify"
 const WithdrawPg = () => {
   const {data} = useContext(AuthContext);
 
-  const handleWithdrawal = () => {
+  const handleWithdrawal = async({mode}: any) => {
     if(data?.verified == false){
       toast.error("ID Verification Required", {position: "bottom-left"})
+      return;
+      
+    }else if (mode == "Ethereum" && data?.myeth == ""){
+      toast.error("please input your Ethereum Address", {position: "bottom-left"})
       return;
     }
     try {
@@ -32,7 +36,7 @@ const WithdrawPg = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 justify-center items-center p-8 w-full">
         <WithdrawCard wMode="Bank Withdrawl" minWd='1.00' maxWd='1,000,000' chgWd='13%' duraWd='1'handleWithdraw={handleWithdrawal}/>
         <WithdrawCard wMode="Bitcoin" minWd='1.00' maxWd='1,000,000' chgWd='13%' duraWd='1' handleWithdraw={handleWithdrawal}/>
-        <WithdrawCard wMode="Ethereum" minWd='1.00' maxWd='1,000,000' chgWd='13%' duraWd='1' handleWithdraw={handleWithdrawal}/>
+        <WithdrawCard wMode="Ethereum" minWd='1.00' maxWd='1,000,000' chgWd='13%' duraWd='1' handleWithdraw={handleWithdrawal("Ethereum")}/>
         <WithdrawCard wMode="USDT" minWd='1.00' maxWd='1,000,000' chgWd='13%' duraWd='1' handleWithdraw={handleWithdrawal}/>
         <WithdrawCard wMode="Litecoin" minWd='1.00' maxWd='1,000,000' chgWd='13%' duraWd='1' handleWithdraw={handleWithdrawal}/>
       </div>

@@ -87,7 +87,7 @@ const CryptComp = () => {
       let totalreturn = sROI
       let status = 'locked'
       console.log("staking", staked)
-       await axios.post("http://localhost:3030/api/user/staked", {userid: data?._id, stakes: {img, asset, amount, duration, returns, totalreturn, status}})
+       await axios.post("https://oaserver.onrender.com/api/user/staked", {userid: data?._id, stakes: {img, asset, amount, duration, returns, totalreturn, status}})
         toast.info("Staked", {position: "bottom-left"})
 
       // dispatch(stakeAdded(asset,  amount, duration, returns, totalreturn, status ))

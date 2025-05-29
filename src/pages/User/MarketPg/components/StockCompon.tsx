@@ -27,7 +27,8 @@ const StockCompon = () => {
       <div>0.00 {item.name}</div>
       <div>${item.price}</div>
       <div>
-        <Link to={`/user/markets/trade/stock/${item.name}/${item.obj}`}>
+        {/* @ts-ignore */}
+        <Link to={`/user/markets/trade/stock/${item.name}/${item.obj}`} onClick={() => window.scrollY(0, 0)}>
         <button className="bg-green-100 text-green-700 px-4 py-2 rounded-xl">Trade</button>
         </Link>
         </div>

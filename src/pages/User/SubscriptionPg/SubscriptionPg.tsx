@@ -15,7 +15,7 @@ const SubscriptionPg = () => {
         <CurrentPlanCard />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-8">
           {SubscribeData.map((item: any) => (
-          <div className="w-full rounded-lg border border-neutral-200 p-8 flex flex-col justify-between" key={item.id}>
+          <div className={`w-full rounded-lg border ${item.id == 1 ? "border-purple-400" : item.id == 2 ? "border-primary" : item.id == 3 ? "border-red-400" : "border-yellow-400"} p-8 flex flex-col justify-between`} key={item.id}>
             <div className="flex flex-row gap-1 items-center justify-center"><img src={premiummimg} className="w-8 md:w-12" alt="" />
             <p className="text-lg md:text-2xl font-[500]">{item.name} Plan</p>
             </div>

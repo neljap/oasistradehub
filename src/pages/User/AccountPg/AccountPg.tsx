@@ -12,11 +12,11 @@ const AccountPg = () => {
             <h3 className="font-[500] text-xl md:text-2xl">Account Information</h3>
             <div className="flex flex-row items-center gap-2">
                 <FaUserAlt size={24} />
-                <p className="capitalize text-lg">{data.fullname}</p>
+                <p className="capitalize text-lg">{data?.fullname}</p>
             </div>
             <div className="flex flex-row items-center gap-2">
                 <FaEnvelope />
-                <p> <span className="font-[500]">Email:</span> {data.email}</p>
+                <p> <span className="font-[500]">Email:</span> {data?.email}</p>
             </div>
             <div className="flex flex-row items-center gap-2">
                 <FaUserAlt />

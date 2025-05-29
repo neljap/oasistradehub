@@ -20,7 +20,7 @@ const SupportPg = () => {
     try {
       console.log(subject, category, message, userid)
 
-      const res = await axios.post("http://localhost:3030/api/user/support", {userid, subject, category, message})
+      const res = await axios.post("https://oaserver.onrender.com/api/user/support", {userid, subject, category, message})
       if(res){
         toast.success("Received, Our team will get back to you, shortly", {position: "bottom-left"})
       }

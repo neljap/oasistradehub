@@ -29,7 +29,8 @@ const ForexCompon = () => {
              <div>{item.unit}</div>
              <div>0.00</div>
              <div>
-               <Link to={`/user/markets/trade/forex/${item.currency}/${item.obj}`}>
+              {/* @ts-ignore */}
+               <Link to={`/user/markets/trade/forex/${item.currency}/${item.obj}`} onClick={() => window.scrollY(0, 0)}>
                <button className="bg-green-100 text-green-700 px-4 py-2 rounded-xl">Trade</button>
                </Link>
                </div>

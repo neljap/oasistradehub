@@ -117,7 +117,7 @@ const HomePg = () => {
       setIsFmLoading(true);
       // email, fullname, message, subject, phone
       console.log(fullname, email, phone, message, subject);
-      const res = await axios.post("http://localhost:3030/api/user/contact", {fullname, email, phone, message, subject});
+      const res = await axios.post("https://oaserver.onrender.com/api/user/contact", {fullname, email, phone, message, subject});
       console.log("res", res);
       
     } catch (error) {
