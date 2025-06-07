@@ -930,8 +930,8 @@ const HomePg = () => {
                                 </svg>
                             </div>
                             <div className="w-fit">
-                                <p className="text-white font-[500]">Email</p>
-                                <p className="text-gray-400 text-sm">oasistradehub@gmail.com</p>
+                                <p className="text-white font-[600]">Email</p>
+                                <p className="text-white text-sm">oasistradehub@gmail.com</p>
                             </div>
                         </div>
                         
@@ -942,8 +942,8 @@ const HomePg = () => {
                                 </svg>
                             </div>
                             <div>
-                                <p className="text-white font-[500]">Phone</p>
-                                <p className="text-gray-400 text-sm">0123456789</p>
+                                <p className="text-white font-[600]">Phone</p>
+                                <p className=" text-sm text-white">+1 (585) 612-1730</p>
                             </div>
                         </div>
                         
@@ -955,8 +955,8 @@ const HomePg = () => {
                                 </svg>
                             </div>
                             <div>
-                                <p className="text-white font-[500]">Location</p>
-                                <p className="text-gray-400 text-sm">Aberdeen Avenue, California, Santa Rosa, US</p>
+                                <p className="text-white font-[600]">Location</p>
+                                <p className="text-white text-sm">109th street. cleveland, ohio. united states</p>
                             </div>
                         </div>
                         

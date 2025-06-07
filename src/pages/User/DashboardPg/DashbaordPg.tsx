@@ -35,7 +35,7 @@ const DashbaordPg = () => {
         },
         {
             id:4,
-            title: "Trade",
+            title: "Total Trade",
             icon: FaTrademark,
             amount: 0
         }
@@ -62,16 +62,16 @@ const DashbaordPg = () => {
                 <div className="text-primary bg-primary bg-opacity-5 rounded-full p-2">
                 <MdAccountBalanceWallet size={24}/>
                 </div>
-                <p className="font-[500]">Account Balance ${data ? data?.tAmount : 0}</p>
+                <p className="font-[600] font-[Jost]">Account Balance: ${data ? data?.tAmount : 0}</p>
             </div>
             <div className="flex flex-row justify-between items-center">
                 <div></div>
             <div className="flex flex-col md:flex-row gap-4">
                 <Link to="/user/withdraw">
-                <button className="text-primary rounded-lg py-2 px-4 bg-opacity-5 bg-primary flex flex-row gap-2 items-center font-[500]"> <BiMoneyWithdraw size={24}/> Withdraw</button>
+                <button className="text-primary rounded-lg py-2 px-4 bg-opacity-5 bg-primary flex flex-row gap-2 items-center font-[500] font-[Jost]"> <BiMoneyWithdraw size={24}/> Withdraw</button>
                 </Link>
                 <Link to="/user/deposit">
-                <button className="text-white rounded-lg py-2 px-4 bg-primary flex flex-row gap-2 items-center font-[500]"><PiHandDepositFill size={24}/> Deposit</button>
+                <button className="text-white rounded-lg py-2 px-4 bg-primary flex flex-row gap-2 items-center font-[500] font-[Jost]"><PiHandDepositFill size={24}/> Deposit</button>
                 </Link>
             </div> 
             </div>
@@ -82,7 +82,7 @@ const DashbaordPg = () => {
         <FcNeutralTrading size={24} />
                 </div>
                 <div className="w-full">
-                    <p>Trading Progress</p>
+                    <p className="font-[Jost] text-lg md:text-xl">Trading Progress</p>
                     <input type="range" name="" id="" className="text-primary w-full outline-none" />
                 </div>
         </div>
@@ -90,9 +90,9 @@ const DashbaordPg = () => {
             {DashItems.map((item, index) => (
              <div className="border border-neutral-200 rounded-xl bg-primary bg-opacity-5 p-4 flex flex-row justify-between items-start" key={index}>
                 <div>
-                    <h3 className="text-neutral-700 font-[600]">{item.title}</h3>
+                    <h3 className="text-neutral-700 font-[600] font-[Jost]">{item.title}</h3>
                     <p>$0</p>
-                    <p className="text-sm text-green-500 font-[500]">+0 from last month</p>
+                    {/* <p className="text-sm text-green-500 font-[500]">+0 from last month</p> */}
                 </div>
                 <div>
                     <CiCloudRainbow size={24} color="#0052FF" />

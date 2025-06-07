@@ -83,7 +83,7 @@ const Footter = () => {
                 <a href="mailto:info@company.com" className="hover:text-white transition">oasistradehub@gmail.com</a>
             </div>
             <div className="flex items-start justify-start gap-2.5">
-                <FaPhone className="text-gray-400 hover:text-white" size={23} /><a href="tel:+11234567890" className="hover:text-white transition">+1 (123) 456-7890</a>
+                <FaPhone className="text-gray-400 hover:text-white" size={23} /><a href="tel:+11234567890" className="hover:text-white transition">+1 (585) 612-1730</a>
             </div>
         </address>
       </div>
@@ -105,7 +105,7 @@ const Footter = () => {
     </div>
 
     <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
-      <p className="text-gray-500 text-sm mb-4 md:mb-0">© 2025 Company. All rights reserved.</p>
+      <p className="text-gray-500 text-sm mb-4 md:mb-0">© 2010 Oasis Trade Hub. All rights reserved.</p>
       <div className="flex space-x-6">
         <a href="#" className="text-gray-500 hover:text-white text-sm transition">Privacy Policy</a>
         <a href="#" className="text-gray-500 hover:text-white text-sm transition">Terms of Service</a>

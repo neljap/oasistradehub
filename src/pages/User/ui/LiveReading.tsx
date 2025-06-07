@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../app/AuthContext";
 
 const LiveReading = () => {
 
   const [num, setNum] = useState(0)
+
+  const {data} = useContext(AuthContext);
 
   useEffect(() => {
     setNum(Math.floor(Math.random() * 10) +1)
@@ -11,35 +14,38 @@ const LiveReading = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
       <div className="border border-neutral-200 rounded-xl bg-white p-4">
-        <p>Live</p>
+      <div className="flex justify-between items-center">
+        <p className="font-[Jost] font-[600]">Live</p>
+        <div className="blink"></div>
+        </div>  
         <p>0</p>
         <p>{num}</p>
-        <p className="text-green-800 font-[500]">2.4% from last second</p>
+
       </div>
       <div className="border border-neutral-200 rounded-xl bg-white p-4">
-        <p className="font-[500]">Last Profit</p>
-        <p className="font-[600] text-xl py-2">$0</p>
-        <p className="text-green-800 font-[500]">2.4% from last second</p>
+        <p className="font-[500]">Total Amount</p>
+        <p className="font-[600] text-xl py-2">${data ? data?.tAmount : 0}</p>
+      
       </div>
       <div className="border border-neutral-200 rounded-xl bg-white p-4">
-        <p className="font-[500]">Balance</p>
+        <p className="font-[500]">Current Plan</p>
         <p className="font-[600] text-xl py-2">0</p>
-        <p className="text-green-800 font-[500]">2.4% from last second</p>
+      
       </div>
       <div className="border border-neutral-200 rounded-xl bg-white p-4">
-        <p className="font-[500]">Trade</p>
+        <p className="font-[Jost] font-[600]">Total Trades</p>
         <p className="font-[600] text-xl py-2">0</p>
-        <p className="text-green-800 font-[500]">2.4% from last second</p>
+      
       </div>
       <div className="border border-neutral-200 rounded-xl bg-white p-4">
-        <p className="font-[500]">Total Won</p>
-        <p className="font-[600] text-xl py-2">0</p>
-        <p className="text-green-800 font-[500]">2.4% from last second</p>
+        <p className="font-[Jost] font-[600]">Total Stakes</p>
+        <p className="font-[600] text-xl py-2">{data?.staked.length}</p>
+      
       </div>
       <div className="border border-neutral-200 rounded-xl bg-white p-4">
-        <p className="font-[500]">Total Loss</p>
+        <p className="font-[Jost] font-[600]">Bonus</p>
         <p className="font-[600] text-xl py-2">0</p>
-        <p className="text-green-800 font-[500]">2.4% from last second</p>
+      
       </div>
     </div>
   );

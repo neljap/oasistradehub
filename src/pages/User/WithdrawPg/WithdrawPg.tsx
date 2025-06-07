@@ -1,44 +1,19 @@
-import { Link } from "react-router-dom"
 import { WithdrawCard } from "../ui"
-import { useContext } from "react"
-import { AuthContext } from "../../../app/AuthContext"
-import { toast } from "react-toastify"
+
 
 const WithdrawPg = () => {
-  const {data} = useContext(AuthContext);
 
-  const handleWithdrawal = async({mode}: any) => {
-    if(data?.verified == false){
-      toast.error("ID Verification Required", {position: "bottom-left"})
-      return;
-      
-    }else if (mode == "Ethereum" && data?.myeth == ""){
-      toast.error("please input your Ethereum Address", {position: "bottom-left"})
-      return;
-    }
-    try {
-      
-    } catch (error) {
-      
-    }
-  }
+
 
   return (
     <div>
       <div className="container">
-        <p className="font-[500] py-4">WITHDRAWAL</p>
+        <p className="font-[500] py-4 font-[Jost] text-lg md:text-2xl">WITHDRAWAL</p>
         <div className="rounded-lg shadow ">
-          <div className="py-8 pr-8">
-            <Link to="/user/update-wallet">
-          <button className="rounded-lg py-2 px-4 text-white shadow-md bg-primary float-end text-sm font-[500]">Update Withdraw Wallet Address</button>
-            </Link>
-          </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 justify-center items-center p-8 w-full">
-        <WithdrawCard wMode="Bank Withdrawl" minWd='1.00' maxWd='1,000,000' chgWd='13%' duraWd='1'handleWithdraw={handleWithdrawal}/>
-        <WithdrawCard wMode="Bitcoin" minWd='1.00' maxWd='1,000,000' chgWd='13%' duraWd='1' handleWithdraw={handleWithdrawal}/>
-        <WithdrawCard wMode="Ethereum" minWd='1.00' maxWd='1,000,000' chgWd='13%' duraWd='1' handleWithdraw={handleWithdrawal("Ethereum")}/>
-        <WithdrawCard wMode="USDT" minWd='1.00' maxWd='1,000,000' chgWd='13%' duraWd='1' handleWithdraw={handleWithdrawal}/>
-        <WithdrawCard wMode="Litecoin" minWd='1.00' maxWd='1,000,000' chgWd='13%' duraWd='1' handleWithdraw={handleWithdrawal}/>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-center items-center p-8 w-full">
+        {withdrawProcess.map((item: any) => (
+          <WithdrawCard key={item.id} wMode={item.mode} minWd={item.minwithdraw} maxWd={item.maxwithdraw} chgWd={item.charges} duraWd={item.duration} msign={item.msign}/>
+        ))}
       </div>
         </div>
       </div>
@@ -47,3 +22,24 @@ const WithdrawPg = () => {
 }
 
 export default WithdrawPg
+
+const withdrawProcess = [
+  {
+    id: 1,
+    mode: "Bank Withdrawal",
+    minwithdraw: "1,000",
+    maxwithdraw: "1,000,000",
+    charges: "15%",
+    duration: "1",
+    msign: "bank"
+  },
+  {
+    id: 2,
+    mode: "Cryptocurrency (USDT)",
+    minwithdraw: "1,000",
+    maxwithdraw: "1,000,000",
+    charges: "15%",
+    duration: "1",
+    msign: "cypt"
+  }
+]

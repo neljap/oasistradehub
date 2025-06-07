@@ -13,7 +13,7 @@ const CryproCompon = () => {
 
 
   return (
-    <div>
+    <div className="font-[Jost]">
       <div className="my-4">
         <input type="text" value={inputMktQuery} onChange={handleMktCrypto} placeholder="Search Cryptos eg. 'BTC'" className="w-full border border-neutral-200 rounded-xl p-2"/>
       </div>

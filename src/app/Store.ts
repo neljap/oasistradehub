@@ -1,12 +1,14 @@
 import type { Action, ThunkAction } from '@reduxjs/toolkit'
 import { configureStore } from '@reduxjs/toolkit'
 import stakeReducer from "../features/stakeSlice";
+import marketReducer from "../features/MarketSlice";
 // import counterReducer from '../features/counter/counterSlice';
 // import postsReducer from '../features/posts/postsSlice';
 
 export const store = configureStore({
   reducer: {
-    stake: stakeReducer
+    stake: stakeReducer,
+    market: marketReducer
     // counter: counterReducer,
     // posts: postsReducer
   }

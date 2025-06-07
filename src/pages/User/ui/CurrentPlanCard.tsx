@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom'
 import { emptyboxdash } from '../../../assets'
 
 const CurrentPlanCard = () => {
@@ -16,7 +17,9 @@ const CurrentPlanCard = () => {
                 </div>
                 
                 <div>
+                    <Link to="/user/subscriptions">
                     <button className="px-4 py-2 text-primary bg-primary bg-opacity-5 hover:bg-opacity-95 hover:text-white transition-all ease-in-out duration-[1s] rounded-xl ">Purchase Plan</button>
+                    </Link>
                 </div>
             </div>
             <div className="flex flex-row justify-between items-center bg-neutral-50 border border-neutral-300 p-2 rounded-xl">

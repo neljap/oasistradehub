@@ -15,6 +15,8 @@ import VerificationPg from './VerificationPg/VerificationPg'
 import TradeChartPg from './MarketPg/components/TradeChartPg'
 import UpdateWalletPg from './WithdrawPg/UpdateWalletPg'
 import {  ForexTdChart, StockTdChart } from './MarketPg/components'
+import WithdrawBankTransfer from './WithdrawPg/WithdrawBankTransfer'
+import WithdrawCrypto from './WithdrawPg/WithdrawCrypto'
 
 const UserRoutes = () => {
   return (
@@ -31,6 +33,8 @@ const UserRoutes = () => {
             <Route path='support' element={<SupportPg />} />
             <Route path='experts' element={<TradExpertPg />} />
             <Route path='withdraw' element={<WithdrawPg />} />
+            <Route path='withdraw-banktf' element={<WithdrawBankTransfer />} />
+            <Route path='withdraw-crypto' element={<WithdrawCrypto />} />
             <Route path='verification' element={<VerificationPg />} />
             <Route path='update-wallet' element={<UpdateWalletPg />} />
             <Route path='markets/trade/crypto/:coin/:obj' element={<TradeChartPg />} />

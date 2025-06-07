@@ -177,10 +177,10 @@ const UserNavLinks = ({ children }: any) => {
   }, [])
 
   const activeLink =
-    "flex flex-row gap-3 px-6 py-2 justify-start items-center bg-blue-200 text-[#0052FF] rounded-xl mt-2";
+    "flex flex-row gap-3 font-[Jost] px-6 py-2 justify-start items-center bg-blue-200 text-[#0052FF] rounded-xl mt-2";
 
   const normalLink =
-    "flex flex-row gap-3 px-6 py-2 justify-start items-center hover:bg-blue-50 rounded-xl text-neutral-500 mt-2";
+    "flex flex-row gap-3 font-[Jost] px-6 py-2 justify-start items-center hover:bg-blue-50 rounded-xl text-neutral-500 mt-2";
 
   return (
     <div className="">
@@ -323,7 +323,22 @@ const UserNavLinks = ({ children }: any) => {
           </div>
         </div>
 
-        <main className="md:pl-56 pl-0 w-full pt-24">{children}</main>
+        <main className="md:pl-56 pl-0 w-full pt-24 min-h-screen flex flex-col justify-between">
+          {children}
+          <footer className="bg-gray-600 text-white font-[Jost]">
+            <div className="container">
+            <div className="border-t border-gray-800 md:py-6 py-4 flex flex-col md:flex-row justify-between items-center">
+      <p className="text-white font-[Jost] text-sm mb-4 md:mb-0">© 2010 Oasis Trade Hub. All rights reserved.</p>
+      <div className="flex space-x-6">
+        <a href="#" className="hover:text-gray-500 text-white text-sm transition">Privacy Policy</a>
+        <a href="#" className="hover:text-gray-500 text-white text-sm transition">Terms of Service</a>
+        <a href="#" className="hover:text-gray-500 text-white text-sm transition">Cookies</a>
+      </div>  
+            </div>
+            
+    </div>
+          </footer>
+        </main>
       </div>
       {isNavOpen && (
         <div className="border border-neutral-300 rounded-xl p-4 w-fit absolute top-20 right-10 flex flex-col gap-4 z-50 bg-white">

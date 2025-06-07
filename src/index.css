@@ -20,10 +20,17 @@ body{
   overflow-x: hidden;
 }
 
-.active{
-  /* border-bottom: #0052FF;
-  font-size: larger; */
+.blink{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #0052FF;
+  opacity: .25;
+  -moz-animation: blink 1s infinite;
+  -o-animation: blink 1s infinite;
+  -webkit-animation: blink 1s infinite;
 }
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px; 

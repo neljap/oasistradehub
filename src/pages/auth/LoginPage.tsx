@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom"
-import { authImag, authImg } from "../../assets"
+import { authImag, authImg, HomeLogo } from "../../assets"
 import { useContext, useEffect, useState } from "react"
 // import ReCAPTCHA from "react-google-recaptcha";
 import { toast } from "react-toastify";
@@ -9,6 +9,7 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 import { IoEyeOutline } from "react-icons/io5";
 import { DarkLightContext } from "../../app/DarkLightTheme";
 import { FaMoon, FaSun } from "react-icons/fa";
+import LogoText from "../components/LogoText";
 
 
 const LoginPage = () => {
@@ -69,20 +70,30 @@ const LoginPage = () => {
        <div className="my-auto rounded bg-white dark:bg-[#222738] grid grid-cols-1 md:grid-cols-3 justify-center items-center ">
             <div className="py-6 px-10 flex flex-col gap-3">
               <div className="flex flex-row items-center justify-between">
-                <Link to="/" className="text-second font-[600] text-xl">OasisTradeHub</Link>
+                <Link to="/" className="flex flex-row items-center gap-1 md:gap-2">
+                            <img src={HomeLogo} alt="" className="w-4 md:w-8" />
+                              <LogoText
+                                colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                                animationSpeed={3}
+                                showBorder={false}
+                                className="custom-class"
+                              >
+                                OASIS TRADE HUB
+                              </LogoText>
+                            </Link>
                 <div className="p-1.5 shadow rounded-full bg-primary bg-opacity-5 cursor-pointer" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>{themeBox()}</div>
-                <Link to="/register">Register</Link>
+                <Link to="/register" className="font-[Jost] font-[600]">Register</Link>
               </div>
-              <h3 className="font-[600] text-lg md:text-2xl py-2">Sign In to Your Account</h3>
+              <h3 className="font-[600] text-lg md:text-2xl py-2 font-[Jost]">Sign In to Your Account</h3>
               <p className="text-sm font-[500]">Pick up right where you left off — your progress is always saved and ready for you.</p>
               <form onSubmit={handleLogin}>
                       <div className="flex flex-col gap-1 py-2">
-                <label>Email address</label>
-                <input type="email" className="w-full p-1 outline-none rounded-lg  border-black border" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <label className="font-[Jost] text-lg md:text-xl">Email Address</label>
+                <input type="email" placeholder="Enter your Email Address" className="w-full py-2 px-3 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" value={email} onChange={(e) => setEmail(e.target.value)}/>
               </div>
               <div className="flex flex-col gap-1 py-2 relative">
-                <label>Password</label>
-                <input type={eyeVisiblePass ? "text": "password"} className="w-full p-1 outline-none rounded-lg  border-black border" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <label className="font-[Jost] text-lg md:text-xl">Password</label>
+                <input type={eyeVisiblePass ? "text": "password"} placeholder="Enter your Password" className="w-full py-2 px-3 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" value={password} onChange={(e) => setPassword(e.target.value)}/>
                                 <div className="absolute cursor-pointer right-4 top-10" onClick={() => setEyeVisiblePass(!eyeVisiblePass)}>
                                 {eyeVisiblePass ? (<div>< IoEyeOutline size={28} /></div>) : (<div><AiFillEyeInvisible size={28}/></div>)}  
                                 </div>
@@ -97,6 +108,9 @@ const LoginPage = () => {
               <button className="bg-primary transition-all ease-in-out duration-[1s] hover:text-primary hover:bg-white  py-2 w-full text-white rounded border-2 font-[500] border-primary">{formLoading ? "Logging...":"Login"}</button>        
               </form>
 
+                <div>
+                  <p className="font-[Jost] font-[600] pt-3">Forgot Password</p>
+                </div>
               {/* <div className="flex flex-row items-center">
               <hr /> 
               <p className="text-center text-sm">or, login with your email</p>
