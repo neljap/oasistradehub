@@ -10,7 +10,7 @@ const ExploreCard = ({title, img, text, pairs}: ExplTypes) => {
               <div className="bg-[#ededed] dark:bg-[#222736] rounded p-4 flex flex-col gap-4">
                 <div className="flex flex-row gap-4 items-center">
                 <img src={img} alt="" className="w-12" />
-                <p className="font-[500] text-2xl">{title}</p>
+                <p className="font-[600] font-[Jost] text-2xl">{title}</p>
               </div>
               <div className="flex flex-row gap-1 items-center">
                 <p>4.5</p>

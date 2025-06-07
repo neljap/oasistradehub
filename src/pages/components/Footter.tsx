@@ -23,7 +23,8 @@ const Footter = () => {
                           </LogoText>
                         </Link>
         </div>
-        <p className="text-gray-400">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus facilis qui veritatis? Sed architecto repudiandae ipsa nostrum aliquam iste. Tempore!
+        <p className="text-gray-400">Oasis Trade Hub is a secure, user-friendly platform offering real-time data and smart tools to help beginners and experts grow portfolios and achieve financial independence.
+
 </p>
         <div className="flex space-x-4">
           <a href="#" className="text-gray-400 hover:text-white transition">

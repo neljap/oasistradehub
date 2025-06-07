@@ -93,15 +93,15 @@ const RegisterPage = () => {
               <form onSubmit={handleRegister}>
               <div className="flex flex-col gap-1 py-1">
                 <label className="font-[Jost] text-lg md:text-xl">Full Name</label>
-                <input type="text" placeholder="Enter your full name" className="w-full py-2 px-3 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={fullname} onChange={(e) => setFullName(e.target.value)}/>
+                <input type="text" placeholder="Enter your full name" className="w-full py-2 px-3 outline-none dark:text-gray-50 shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={fullname} onChange={(e) => setFullName(e.target.value)}/>
               </div>
               <div className="flex flex-col gap-1 py-1">
                 <label className="font-[Jost] text-lg md:text-xl">Email address</label>
-                <input type="email" placeholder="Enter your email address" className="w-full py-2 px-3 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <input type="email" placeholder="Enter your email address" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={email} onChange={(e) => setEmail(e.target.value)}/>
               </div>
               <div className="flex flex-col gap-1 py-1 relative">
                 <label className="font-[Jost] text-lg md:text-xl">Password</label>
-                <input type={eyeVisiblePass ? "text":"password"} placeholder="Enter your password" className="w-full py-2 px-3 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <input type={eyeVisiblePass ? "text":"password"} placeholder="Enter your password" className="w-full py-2 dark:text-gray-50 px-3 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <div className="absolute cursor-pointer right-4 top-10" onClick={() => setEyeVisiblePass(!eyeVisiblePass)}>
                 {eyeVisiblePass ? (<div><AiFillEyeInvisible size={28} /></div>) : (<div><IoEyeOutline size={28}/></div>)}  
                 </div>
@@ -109,7 +109,7 @@ const RegisterPage = () => {
               </div>
               <div className="flex flex-col gap-1 py-1 relative">
                 <label className="font-[Jost] text-lg md:text-xl">Confirm Password</label>
-                <input type={eyeVisibleCPass ? "text":"password"} placeholder="Re-Enter your password" className="w-full py-2 px-3 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={passwordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)}/>
+                <input type={eyeVisibleCPass ? "text":"password"} placeholder="Re-Enter your password" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={passwordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)}/>
                 <div className="absolute cursor-pointer right-4 top-10" onClick={() => setEyeVisibleCPass(!eyeVisibleCPass)}>
                 {eyeVisibleCPass ? (<div><AiFillEyeInvisible size={28} /></div>) : (<div><IoEyeOutline size={28}/></div>)}  
                 </div>

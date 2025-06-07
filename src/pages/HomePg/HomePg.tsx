@@ -232,7 +232,7 @@ const HomePg = () => {
           {/* Herosection */}
           <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center bg-black text-white pt-16 bg-center bg-no-repeat bg-cover w-full">
             <div className="flex flex-col gap-6 px-4 md:px-12 text-center md:text-start">
-              <h2 className="text-3xl md:text-5xl font-[600]">
+              <h2 className="text-3xl md:text-5xl font-[600] font-[Jost]">
               Smart Trading, Secure Investments, Your Wealth Grows Faster
               </h2>
               <p className="font-[500]">
@@ -292,12 +292,13 @@ const HomePg = () => {
                     src={wwaImg}
                     alt=""
                     className="w-full rounded-lg h-full object-cover"
+                    data-aos="zoom-out-up"
                   />
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-4">
-              <p className="text-second font-[500]">WHO WE ARE</p>
+            <div className="flex flex-col gap-4" data-aos="zoom-out-up">
+              <p className="text-second font-[600] font-[Jost]">WHO WE ARE</p>
               <h3 className="text-3xl font-[600] text-gray-800 dark:text-white">
               Passionate Experts Driving Financial Growth Forward
               </h3>
@@ -328,8 +329,8 @@ const HomePg = () => {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 justify-center items-center py-24">
           
-          <div className="flex flex-col gap-4">
-            <p className="text-second font-[500]">OUR VALUE</p>
+          <div className="flex flex-col gap-4" data-aos="zoom-out-up">
+            <p className="text-second font-[600] font-[Jost]">OUR VALUE</p>
             <h2 className="text-3xl font-[600]">
               Your Success is Our Priority
             </h2>
@@ -375,8 +376,8 @@ const HomePg = () => {
       <img src={istockman} alt="" className="w-full absolute h-full object-cover mix-blend-overlay"/>
         <div className=" flex justify-center items-center pt-28">
 <div className="container text-white">
-          <div className="flex flex-col gap-4 border border-white text-white py-6 md:py-12 text-center w-full md:w-1/2 rounded-2xl mx-auto justify-center items-center">
-            <h3 className="text-3xl">
+          <div className="flex flex-col gap-4 border border-white text-white py-6 md:py-12 text-center w-full md:w-1/2 rounded-2xl mx-auto justify-center items-center" data-aos="zoom-out-up">
+            <h3 className="text-lg md:text-2xl font-[Jost]">
               Start Trading Today and Unlock Your Financial Potential.
             </h3>
             <p>
@@ -390,10 +391,10 @@ const HomePg = () => {
         </div>
         
       </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 py-2 shadow-lg">
-          <div className="flex flex-col justify-center items-center py-4 md:py-8">
-            <div>
-              <FcLineChart className="text-5xl" />
+        <div className="grid grid-cols-2 md:grid-cols-4 py-2 shadow-lg" data-aos="zoom-out-up">
+          <div className="flex flex-col justify-center gap-2 items-center py-4 md:py-8">
+            <div className="rounded-full p-4 shadow-sm bg-[#f0f4ff]">
+              <FcLineChart className="text-2xl" />
             </div>
             <div className="flex flex-row">
 
@@ -403,15 +404,15 @@ const HomePg = () => {
                 separator=","
                 direction="up"
                 duration={1}
-                className="count-up-text text-second md:text-4xl text-lg font-[600]"
+                className="count-up-text text-second text-3xl font-[Jost]  font-[600]"
               />
-              <p className="font-[600] text-second text-4xl">+</p>
+              <p className="font-[600] text-second text-3xl font-[Jost]">+</p>
             </div>
             <p className="text-center font-[500]">SUCCESSFUL TRADES</p>
           </div>
-          <div className="flex flex-col justify-center items-center">
-            <div>
-             <FaPeopleGroup className="text-5xl" /> 
+          <div className="flex flex-col justify-center gap-2 items-center">
+            <div className="rounded-full p-4 shadow-sm bg-[#f4f9f6]">
+             <FaPeopleGroup className="text-2xl" color="#209c59" /> 
             </div>
             
             <div className="flex flex-row">
@@ -421,15 +422,15 @@ const HomePg = () => {
                 separator=","
                 direction="up"
                 duration={1}
-                className="count-up-text text-second text-5xl font-[600]"
+                className="count-up-text text-second text-3xl font-[Jost] font-[600]"
               />
-              <p className="font-[600] text-second text-5xl">+</p>
+              <p className="font-[600] text-second text-3xl font-[Jost]">+</p>
             </div>
             <p className="text-center font-[500]">HAPPY CLIENT</p>
           </div>
-          <div className="flex flex-col justify-center items-center">
-            <div>
-              <HiSpeakerphone className="text-2xl md:text-4xl" />
+          <div className="flex flex-col justify-center gap-2 items-center">
+            <div className="rounded-full p-4 shadow-sm bg-[#f7f5fa]">
+              <HiSpeakerphone className="text-2xl" color="#c325d6" />
             </div>
             <div className="flex flex-row">
               <CountUp
@@ -438,15 +439,15 @@ const HomePg = () => {
                 separator=","
                 direction="up"
                 duration={1}
-                className="count-up-text text-second text-4xl font-[600]"
+                className="count-up-text text-second text-3xl font-[Jost] font-[600]"
               />
-              <p className="font-[600] text-second text-4xl">+</p>
+              <p className="font-[600] text-second text-3xl font-[Jost]">+</p>
             </div>
             <p className="text-center font-[500]">YEARS OF EXPERIENCE</p>
           </div>
-          <div className="flex flex-col justify-center items-center">
-            <div>
-              <FaHeart className="text-4xl" />
+          <div className="flex flex-col justify-center gap-2 items-center">
+            <div className="rounded-full p-4 shadow-sm bg-[#fef5f2]">
+              <FaHeart className="text-2xl" color="#da2724"/>
             </div>
           <div className="flex flex-row">
             
@@ -456,9 +457,9 @@ const HomePg = () => {
               separator=","
               direction="up"
               duration={1}
-              className="count-up-text text-second text-4xl font-[600]"
+              className="count-up-text text-second text-3xl font-[600]"
             />
-            <p className="font-[600] text-second text-4xl">%</p>
+            <p className="font-[600] text-second text-3xl font-[Jost]">%</p>
           </div>
           <p className="text-center font-[500]">CLIENT SATIFASTION</p>  
           </div>
@@ -469,7 +470,7 @@ const HomePg = () => {
       <div className="bg-[#ededed] dark:bg-black py-24" ref={TradeRef}>
         <div className="container">
           <div className="flex flex-col gap-1 md:gap-3 pb-8 w-full md:w-1/2 mx-auto">
-            <p className="text-center text-second text-lg font-[500]">
+            <p className="text-center text-second text-lg font-[600] font-[Jost]">
               WHAT WE OFFER
             </p>
             <h3 className="text-xl md:text-3xl font-[600] text-center">
@@ -487,7 +488,7 @@ const HomePg = () => {
                 <div>
                   <img src={item.img} alt="" className="w-24" />
                 </div>
-                <h3 className="text-xl">{item.title}</h3>
+                <h3 className="text-xl font-[Jost] font-[600]">{item.title}</h3>
                 <p className="leading-5 text-md">
                  {item.text}
                 </p>
@@ -502,8 +503,8 @@ const HomePg = () => {
       
       <div id="trading">
         <div className="container py-12">
-          <div className="w-full md:w-1/2 text-center flex flex-col gap-4 justify-center items-center mx-auto">
-          <h4 className="font-[600] text-4xl">Explore Our Trading Solutions</h4>
+          <div className="w-full md:w-1/2 text-center flex flex-col gap-4 justify-center items-center mx-auto" data-aos="zoom-out-up">
+          <h4 className="font-[600] text-4xl font-[Jost]">Explore Our Trading Solutions</h4>
           <p>Explore our comprehensive trading solutions tailored for every investor, offering advanced tools, personalized strategies, and expert insights to help you achieve your financial goals with confidence.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 justify-center items-center py-12 px-0 md:px-8">
@@ -515,10 +516,10 @@ const HomePg = () => {
         </div>
       </div>
             {/* Trusted Section */}
-      <div className="shadow-xl bg-neutral-50  py-4" id="partners">
+      <div className="shadow-xl bg-neutral-50  py-4" id="partners" data-aos="zoom-out-up">
       <div className="container">
     
-          <h2 className="text-xl md:text-3xl  text-center font-[600]">
+          <h2 className="text-xl md:text-3xl font-[Jost]  text-center font-[600]">
             Trusted by
           </h2>
         <div>
@@ -556,13 +557,13 @@ const HomePg = () => {
       <div className="bg-[#f5f5f5] dark:bg-black" ref={PackRef} id="packages">
         <div className="container py-12">
           <div className="w-full md:w-1/2 text-center mx-auto">
-          <h4 className="text-2xl font-[600]">Packages</h4>
+          <h4 className="text-2xl font-[600] font-[Jost]">Packages</h4>
           <p>Choose from flexible trading packages designed to fit your goals, risk tolerance, and budget—unlock advanced tools, expert support, and maximize your market potential today</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-12 justify-center items-center gap-8">
             {/* PricingCard */}
             {SubscribeData.map((item) => (
-              <div className={`rounded-lg shadow flex flex-col justify-start items-center py-4 border-t-4 ${item.id == 1 ? "border-primary" : item.id == 2 ? "border-[#000]" : item.id == 3 ? "border-red-700" : "border-yellow-500"} border-t-2 w-full bg-white dark:bg-gray-800 h-[530px]`} key={item.id}>
+              <div className={`rounded-lg shadow flex flex-col justify-start items-center py-4 border-t-4 ${item.id == 1 ? "border-primary" : item.id == 2 ? "border-[#000]" : item.id == 3 ? "border-red-700" : "border-yellow-500"} border-t-2 w-full bg-white dark:bg-gray-800 h-[530px]`} key={item.id} data-aos="zoom-out-up">
               <div className="flex flex-row items-center gap-1">
                <img src={premiummimg} className="w-8" alt="" />
                <p className="font-[500] text-lg md:text-xl">{item.name} Plan</p> 
@@ -596,49 +597,9 @@ const HomePg = () => {
                           </div>
                           <div className="flex flex-row justify-center items-center">
                             <GetStarted getklass="bg-transparent border-[#7f57f3] text-[#7f57f3]" />
-                            {/* <Link to="/user/dashboard">
-              <button className="bg-[#7f57f3] transition-all ease-in-out duration-[1s] hover:bg-white border hover:border-primary hover:text-[#7f57f3] px-4 py-2 rounded-full mx-auto text-white font-[600]">Get Started</button>
-                            
-                            </Link> */}
             </div>
             </div>
-              // <PricingCard key={item.id} title={item.name} lists={item.list} days="" amount={item.amount} maxamount={item.amount} roi={40}/>
             ))}
-            {/* <PricingCard title="Diamond" days="28" amount={30000} maxamount={50000} roi={40}/>
-            <PricingCard title="Gold" days="21" amount={15000} maxamount={29999} roi={40}/>
-            <PricingCard title="Silver" days="14" amount={5000} maxamount={14999} roi={40}/>
-            <PricingCard title="Bronze" days="7" amount={1000} maxamount={4999} roi={40}/> */}
-            {/* <div className="rounded-lg shadow flex flex-col justify-center items-center py-4 border-[#7f57f3] border-t-2 w-full">
-              <div className="flex flex-row items-center gap-1">
-               <img src={premiummimg} className="w-8" alt="" />
-               <p className="font-[500] text-lg md:text-xl">Premium Plan</p> 
-
-              </div>
-              <div className="mx-auto text-center flex flex-row items-center py-4">
-                <span className="font-[600] text-2xl">$10,000</span>
-                <span>/14days</span>
-              </div>
-              <hr />
-               <div className="flex flex-col gap-3 justify-start items-start py-4">
-
-              <div className="flex flex-row items-start gap-2">
-                              <VscVerifiedFilled />
-                              <p className="font-[500] text-sm">99.5% AI accuracy24/7</p>
-                            </div>
-                            <div className="flex flex-row items-center gap-2">
-                              <VscVerifiedFilled />
-                              <p className="font-[500] text-sm">99.5% AI accuracy24/7</p>
-                            </div>
-                            <div className="flex flex-row items-center gap-2">
-                              <VscVerifiedFilled />
-                              <p className="font-[500] text-sm">99.5% AI accuracy24/7</p>
-                            </div>
-
-                          </div>
-                          <div className="flex flex-row justify-center items-center">
-              <button className="bg-[#7f57f3] transition-all ease-in-out duration-[1s] hover:bg-opacity-20 border hover:border-primary hover:text-[#7f57f3] px-4 py-2 rounded-full mx-auto text-white font-[600]">Get Started</button>
-            </div>
-            </div> */}
           </div>
         </div>
       </div>
@@ -655,7 +616,7 @@ const HomePg = () => {
     className="relative w-full bg-white pt-10 pb-8 mt-4 ">
     <div className="mx-auto w-full px-0 md:px-12">
         <div className="flex flex-col items-center w-full md:w-1/2 mx-auto">
-            <h2 className="mt-5 text-center text-3xl font-bold tracking-tight md:text-5xl">FAQ</h2>
+            <h2 className="mt-5 text-center text-3xl font-bold tracking-tight md:text-5xl font-[Jost]">FAQ</h2>
             <p className="text-center text-lg md:text-xl font-[500] py-2">Have <span className="text-primary">questions?</span>  We've got the <span className="text-primary">answers</span>  you need.</p>
             {/* <p className="mt-3 text-lg text-neutral-500 md:text-xl text-center">Experience unmatched service excellence with a team devoted to surpassing your expectations. From arrival, enjoy a refined, welcoming atmosphere shaped around your needs and preferences. </p> */}
         </div>
@@ -846,36 +807,38 @@ const HomePg = () => {
 </div>   
       </div>
       {/* Contact Section */}
-      <div className="container py-12" ref={ContactRef} id="contact">
+      <div className="container py-12" ref={ContactRef} id="contact" data-aos="zoom-out-up">
         <div className="w-full md:w-1/2 mx-auto text-center py-12">
-          <h3 className="text-2xl font-[500]">Contact Us</h3>
+          <h3 className="text-2xl font-[600] font-[Jost]">Contact Us</h3>
           <p className="text">
           Our support team is ready to assist you with trading inquiries, solutions, and personalized guidance anytime.
           </p>
         </div>
         <div className="w-full md:w-2/3 rounded-xl shadow-xl bg-[#ededed] dark:bg-[#222736] grid grid-cols-1 md:grid-cols-3 mx-auto">
-          <form className="p-4 col-span-2" onSubmit={handleForm}>
-            <h3 className="py-4 text-xl font-[600]">Send Us a Message</h3>
+          <form className="p-4 col-span-2 font-[Jost]" onSubmit={handleForm}>
+            <h3 className="py-4 text-xl font-[600] font-[Jost]">Send Us a Message</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-3 pt-1 md:pt-2">
               <div className="flex flex-col gap-0 md:gap-1">
-                <label className="text-lg font-[500]">Full Name</label>
+                <label className="text-lg font-[500] font-[Jost]">Full Name</label>
                 <input
                   type="text"
                   value={fullname}
                   required
+                  placeholder="Full Name"
                   onChange={(e) => setFullname(e.target.value)}
-                  className="w-full p-1 outline-none rounded-lg  border-black border"
+                  className="w-full py-2 px-3 outline-none shadow appearance-none text-gray-700 dark:text-gray-50 leading-tight focus:outline-none rounded-lg  border"
                 />
               </div>
               <div className="flex flex-col gap-1">
-                <label className="text-lg font-[500]">Email Address</label>
+                <label className="text-lg font-[500] font-[Jost]">Email Address</label>
                 <input
                   type="email"
                   value={email}
                   required
+                  placeholder="Email Address"
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full p-1 outline-1 shadow outline-none rounded-lg border-black border"
+                  className="w-full py-2 px-3 outline-none shadow appearance-none text-gray-700 dark:text-gray-50 leading-tight focus:outline-none rounded-lg  border"
                 />
               </div>
             </div>
@@ -886,8 +849,9 @@ const HomePg = () => {
                   type="text"
                   value={subject}
                   required
+                  placeholder="Subject"
                   onChange={(e) => setSubject(e.target.value)}
-                  className="w-full p-1 outline-1 outline-primary rounded-lg focus:border-primary border-black border"
+                  className="w-full py-2 px-3 outline-none shadow appearance-none text-gray-700 dark:text-gray-50 leading-tight focus:outline-none rounded-lg  border"
                 />
               </div>
               <div className="flex flex-col gap-1">
@@ -896,8 +860,9 @@ const HomePg = () => {
                   type="number"
                   value={phone}
                   required
+                  placeholder="Phone Number"
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full p-1 outline-none rounded-lg border-black border shadow"
+                  className="w-full py-2 px-3 outline-none shadow appearance-none text-gray-700 dark:text-gray-50 leading-tight focus:outline-none rounded-lg  border"
                 />
               </div>
             </div>
@@ -906,9 +871,10 @@ const HomePg = () => {
               <textarea
                 name=""
                 id=""
-                className="h-60 w-full rounded-lg p-2 shadow outline-none border-black border"
+                className="h-60 w-full rounded-lg py-2 px-4 shadow outline-none appearance-none text-gray-700 dark:text-gray-50 leading-tight focus:outline-none border"
                 value={message}
                 required
+                placeholder="Message"
                 onChange={(e) => setMessage(e.target.value)}
               ></textarea>
             </div>
@@ -982,7 +948,7 @@ const HomePg = () => {
       <div>
         <div className="container">
           <div className="px-0 md:px-8 py-24">
-        <div className="grid relative  grid-cols-1 md:grid-cols-2 justify-center items-center gap-4 md:gap-8 bg-[#2f2f2f] text-white  rounded-xl">
+        <div className="grid relative  grid-cols-1 md:grid-cols-2 justify-center items-center gap-4 md:gap-8 bg-[#2f2f2f] text-white  rounded-xl px-2">
             <div className="pl-8">
               
               {/* absolute -top-32  */}
@@ -990,9 +956,9 @@ const HomePg = () => {
               w-[550px] mx-auto" />
             </div>
             <div className="flex flex-col gap-2 md:gap-8 justify-start items-start">
-              <h3 className="text-2xl md:text-5xl text-center md:text-start">Trade Seamlessly on Any Device, Anytime</h3>
-              <p className="text-md md:text-xl text-center md:text-start">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-              <div className="grid grid-cols-3 justify-center items-center gap-4 me-12 ps-6 pb-8 md:pb-0">
+              <h3 className="text-2xl md:text-5xl text-center md:text-start font-[Jost]">Trade Seamlessly on Any Device, Anytime</h3>
+              <p className="text-md md:text-xl text-center md:text-start">Experience seamless trading across all your devices, anytime. Access real-time market data, advanced tools, and secure transactions with Oasis Trade Hub—designed for convenience, flexibility, and success wherever you are.</p>
+              <div className="grid grid-cols-3 justify-center items-center gap-4 me-12 ps-6 pb-8 pt-2 md:pb-0">
                 {storeappImg.map((item, index) => (
                   <div key={index} className="w-full">
                     <img src={item} alt="" className="w-full"/>

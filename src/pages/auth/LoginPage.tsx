@@ -89,11 +89,11 @@ const LoginPage = () => {
               <form onSubmit={handleLogin}>
                       <div className="flex flex-col gap-1 py-2">
                 <label className="font-[Jost] text-lg md:text-xl">Email Address</label>
-                <input type="email" placeholder="Enter your Email Address" className="w-full py-2 px-3 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <input type="email" placeholder="Enter your Email Address" className="w-full py-2 px-3 outline-none shadow appearance-none text-gray-700 dark:text-gray-50 leading-tight focus:outline-none rounded-lg  border" value={email} onChange={(e) => setEmail(e.target.value)}/>
               </div>
               <div className="flex flex-col gap-1 py-2 relative">
                 <label className="font-[Jost] text-lg md:text-xl">Password</label>
-                <input type={eyeVisiblePass ? "text": "password"} placeholder="Enter your Password" className="w-full py-2 px-3 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <input type={eyeVisiblePass ? "text": "password"} placeholder="Enter your Password" className="w-full py-2 px-3 outline-none shadow dark:text-gray-50 appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" value={password} onChange={(e) => setPassword(e.target.value)}/>
                                 <div className="absolute cursor-pointer right-4 top-10" onClick={() => setEyeVisiblePass(!eyeVisiblePass)}>
                                 {eyeVisiblePass ? (<div>< IoEyeOutline size={28} /></div>) : (<div><AiFillEyeInvisible size={28}/></div>)}  
                                 </div>
