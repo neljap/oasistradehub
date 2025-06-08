@@ -35,8 +35,10 @@ const BuyMarketCard = ({coin, butClass, butext}: BuyMarketype) => {
 
         console.log({"asset": coin, "amountCoin": amountCoin, "amountUSD": mktInput, "Buy/Sell": butext, "Duration": duration, "EntryPrice": mktEntryP})
   
-        await axios.post("https://oaserver.onrender.com/api/user/market", {userid: data._id, asset: coin, amountCoin, amountUSD: mktInput, buysell: butext, duration, entryPrice: mktEntryP})
+        let res = await axios.post("https://oaserver.onrender.com/api/user/market", {userid: data._id, market: { asset: coin, amountCoin, amountUSD: mktInput, buysell: butext, duration, entryPrice: mktEntryP}})
+        if(res){
         toast.success("Trade Placed", {position: "bottom-left"})
+        }
       } catch (error: any) {
         toast.error(`Error: ${error}`, {position: "bottom-left"})
         console.log("error", error)

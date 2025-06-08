@@ -51,7 +51,7 @@ const DashbaordPg = () => {
         <div className="container">
         <div className="flex flex-row gap-4 items-center text-neutral-700 font-[500]">
             <div className="py-2 px-4 rounded-lg bg-neutral-100">
-                <p>Hello {data? data?.fullname : "Jackson"}</p>
+                <p>Hello {data? data?.fullname : ""}</p>
             </div>
             <div className={`py-2 px-4 rounded-lg ${data?.verified ? "bg-green-100" : "bg-red-100"}  w-fit`}>
                 <p>{data?.verified ? "Verified": "You're not verified"}</p>
