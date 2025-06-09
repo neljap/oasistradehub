@@ -89,7 +89,7 @@ const DashbaordPg = () => {
                     </div>    
                     </div>
                     
-                    <input type="range" name=""  id="" value={10} className="text-primary w-full outline-none" />
+                    <input type="range" name=""  id="" value={data?.tradProg} className="text-primary w-full outline-none" />
                     <div className="flex justify-between items-center">
                         <p className="font-[Jost]">0%</p>
                         <p className="font-[Jost]">100%</p>
