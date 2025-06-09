@@ -19,13 +19,13 @@ const MyTradeCompon = () => {
         <div className="hidden md:block">BUY/SELL</div>
         </div>
         {data?.market.map((item: any, index: any) => (
-<div className={`${data?.market.buysell == "Buy" ? "bg-red-50" : "bg-green-50"} grid grid-cols-5 md:grid-cols-6 font-[Jost] justify-center text-center items-center border-b-1 border-primary py-2 px-3 `} key={index}>
-        <div><span>{item.asset}</span> <span className={`${data?.market.buysell == "Buy" ? "bg-red-500" : "bg-green-500"} rounded-full size-fit text-center p-1 font-[600]`}>{item.buysell}</span></div>
+<div className={`${item.buysell == "Buy" ? "bg-green-50" : "bg-red-50"} grid grid-cols-5 md:grid-cols-6 font-[Jost] justify-center border-b-2 border-gray-50 dark:border-gray-700 text-center items-center py-2 px-3 `} key={index}>
+        <div className="flex flex-col justify-center items-center"><span>{item.asset}</span> <span className={`${item.buysell == "Buy" ? "bg-green-500" : "bg-red-500"} rounded-full size-fit text-center text-sm p-1 font-[600] block md:hidden`}>{item.buysell}</span></div>
         <div>${item.amountUSD}</div>
         <div>{item.amountCoin}</div>
         <div>{item.duration}</div>
         <div>{item.entryPrice}</div>
-        <div className={`${data?.market.buysell == "Buy" ? "bg-red-500" : "bg-green-500"} rounded-full hidden md:block text-sm size-fit text-center p-1 font-[600]`}>{item.buysell}</div>
+        <div className={`${item.buysell == "Buy" ? "bg-green-500" : "bg-red-500"} rounded-full hidden md:flex text-sm size-fit items-center justify-center text-center p-1 font-[600]`}>{item.buysell}</div>
         </div>
         ))}
         

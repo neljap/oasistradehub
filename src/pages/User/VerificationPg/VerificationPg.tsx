@@ -4,6 +4,7 @@ import { FaCloudUploadAlt } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../../app/AuthContext";
 import { BiSolidCloudUpload } from "react-icons/bi";
+import { IoCheckmarkDoneCircle } from "react-icons/io5";
 
 const VerificationPg = () => {
   const [idOptions, setIdOptions] = useState(false);
@@ -11,7 +12,18 @@ const VerificationPg = () => {
   const [kycFile, setKycFile] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const {data} = useContext(AuthContext);
+const {data} = useContext(AuthContext);
+  // Address
+  const [street, setStreet] = useState<any>(data?.street);
+  const [dob, setDob] = useState<any>(data?.dob);
+  const [country, setCountry] = useState<any>(data?.country);
+  const [state, setState] = useState<any>(data?.state);
+  const [city, setCity] = useState<any>(data?.city);
+  const [number, setNumber] = useState<any>(data?.number);
+
+  // const [disabled, setDisabled] = useState(false);
+
+  
 
   console.log("idValue", idValue);
 
@@ -58,6 +70,9 @@ const VerificationPg = () => {
       setLoading(true)
       const kycinfo = await preFile('image');
       console.log(kycinfo, "kycinfo")
+      if(street == "" || dob == "" || country == "" || state == "" || city == "" || number == ""){
+        toast.info("Please fill all required fields", {position: "bottom-left"})
+      }
       await axios.patch(`https://oaserver.onrender.com/api/user/update/${data?._id}`, {
         kycinfo,
       });
@@ -78,7 +93,7 @@ const VerificationPg = () => {
       <div className="container">
         <div className="shadow-md rounded-lg border border-neutral-200 py-10 px-4">
           <div className="flex flex-col gap-4 pb-4">
-          <h2 className="font-[600] text-xl">ID Verification</h2>
+          <h2 className="font-[600] text-xl font-[Jost] flex gap-1 items-center">ID Verification <IoCheckmarkDoneCircle /></h2>
           <p className="font-[500]">
             Your Personal info/ID for verification will be processed and
             verified
@@ -157,9 +172,38 @@ const VerificationPg = () => {
           <div>
             {idValue > 0 && (
             
-            <div >
-              {/* @ts-ignore */}
-              <div onClick={uploadRef} style={{backgroundImage: kycFile ? `url(${URL.createObjectURL(kycFile)})` : "", backgroundSize: "cover",  backgroundPosition: "center"}} className="shadow w-full md:w-1/2 mx-auto h-56 rounded-xl flex items-center justify-center mt-8">
+            <form onSubmit={uploadFile} className="grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-4 md:gap-8">
+              <div>
+              <h3 className="font-[Jost] font-[600] pt-2 text-xl">Address</h3>
+                <div className="flex flex-col gap-0.5 py-0.5">
+                <label className="font-[Jost] text-lg md:text-xl">Street Details</label>
+                <input type="text"  placeholder="Enter your street details" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={street} onChange={(e) => setStreet(e.target.value)}/>
+              </div>
+              <div className="flex flex-col gap-0.5 py-0.5">
+                <label className="font-[Jost] text-lg md:text-xl">City</label>
+                <input type="text" placeholder="Enter your city" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={city} onChange={(e) => setCity(e.target.value)}/>
+              </div>
+              <div className="flex flex-col gap-0.5 py-0.5">
+                <label className="font-[Jost] text-lg md:text-xl">State/province/area</label>
+                <input type="text" placeholder="Enter your state/province/area" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={state} onChange={(e) => setState(e.target.value)}/>
+              </div>
+              <div className="flex flex-col gap-0.5 py-0.5">
+                <label className="font-[Jost] text-lg md:text-xl">Country</label>
+                <input type="text" placeholder="Enter your country" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={country} onChange={(e) => setCountry(e.target.value)}/>
+              </div>
+              <h3 className="font-[Jost] font-[600] pt-2 text-xl">Personal Details</h3>
+              <div className="flex flex-col gap-0.5 py-0.5">
+                <label className="font-[Jost] text-lg md:text-xl">Phone Number</label>
+                <input type="text" placeholder="Enter your email address" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={number} onChange={(e) => setNumber(e.target.value)}/>
+              </div>
+              <div className="flex flex-col gap-0.5 py-0.5">
+                <label className="font-[Jost] text-lg md:text-xl">Date of Birth</label>
+                <input type="text" placeholder="Enter your email address" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={dob} onChange={(e) => setDob(e.target.value)}/>
+              </div>
+              </div>
+              <div>
+               {/* @ts-ignore */}
+              <div onClick={uploadRef} style={{backgroundImage: kycFile ? `url(${URL.createObjectURL(kycFile)})` : "", backgroundSize: "cover",  backgroundPosition: "center"}} className="shadow w-full mx-auto h-56 rounded-xl flex items-center justify-center mt-8">
               {!kycFile && (
               <div className="mx-auto flex flex-col items-center">
                 <FaCloudUploadAlt size={80}/>
@@ -176,11 +220,14 @@ const VerificationPg = () => {
                   // onChange={(e: any) => setFrontFile(e.target.files[0])}
                   // ref={frontIdRef}
                 />
-              </div>
+              </div> 
               <div className="flex justify-center items-center pt-4">
-              {kycFile && (<div><button onClick={uploadFile} className="capitalize font-[Jost] font-[500] border-2 border-primary px-4 py-2 rounded-lg text-primary flex items-center gap-2 hover:bg-primary hover:text-white">{loading ? "Uploading.." :(<div className="flex flex-items gap-2 items-center"><BiSolidCloudUpload size={20}/> Click here to upload </div>)}</button></div>)}
+    <div><button  className="capitalize font-[Jost] font-[500] border-2 border-gray-700 px-4 py-2 rounded-lg text-gray-700 flex items-center gap-2 hover:bg-gray-700 hover:text-white shadow">{loading ? "Uploading.." :(<div className="flex flex-items gap-2 items-center transition-all ease-in-out duration-[1s]"><BiSolidCloudUpload size={20}/> Click here to submit </div>)}</button></div>
               </div>
-            </div>
+              </div>
+              
+              
+            </form>
             )}
           </div>
           

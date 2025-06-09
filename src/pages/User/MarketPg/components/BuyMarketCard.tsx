@@ -30,13 +30,26 @@ const BuyMarketCard = ({coin, butClass, butext}: BuyMarketype) => {
     const handleSubmit = async(e: any) => {
       e.preventDefault();
 
+
       try {
+
+        let tAmount = data?.tAmount
+
+        if(tAmount < mktInput){
+          toast.info("Insufficient balance", {position: "bottom-left"})
+          return;
+        }
+
         let amountCoin = Math.round((mktInput / Number(obj)) * 100) / 100;
 
-        console.log({"asset": coin, "amountCoin": amountCoin, "amountUSD": mktInput, "Buy/Sell": butext, "Duration": duration, "EntryPrice": mktEntryP})
+        // console.log({"asset": coin, "amountCoin": amountCoin, "amountUSD": mktInput, "Buy/Sell": butext, "Duration": duration, "EntryPrice": mktEntryP})
   
         let res = await axios.post("https://oaserver.onrender.com/api/user/market", {userid: data._id, market: { asset: coin, amountCoin, amountUSD: mktInput, buysell: butext, duration, entryPrice: mktEntryP}})
         if(res){
+        tAmount = tAmount - mktInput
+          await axios.patch(`https://oaserver.onrender.com/api/user/update/${data?._id}`, {
+        tAmount,
+      })
         toast.success("Trade Placed", {position: "bottom-left"})
         }
       } catch (error: any) {

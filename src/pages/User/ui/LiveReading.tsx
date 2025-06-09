@@ -1,15 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext} from "react";
 import { AuthContext } from "../../../app/AuthContext";
 
 const LiveReading = () => {
 
-  const [num, setNum] = useState(0)
 
   const {data} = useContext(AuthContext);
 
-  useEffect(() => {
-    setNum(Math.floor(Math.random() * 10) +1)
-  }, [])
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
@@ -19,8 +15,6 @@ const LiveReading = () => {
         <div className="blink"></div>
         </div>  
         <p>0</p>
-        <p>{num}</p>
-
       </div>
       <div className="border border-neutral-200 rounded-xl bg-white p-4">
         <p className="font-[500]">Total Amount</p>
@@ -34,7 +28,7 @@ const LiveReading = () => {
       </div>
       <div className="border border-neutral-200 rounded-xl bg-white p-4">
         <p className="font-[Jost] font-[600]">Total Trades</p>
-        <p className="font-[600] text-xl py-2">0</p>
+        <p className="font-[600] text-xl py-2">{data?.market.length}</p>
       
       </div>
       <div className="border border-neutral-200 rounded-xl bg-white p-4">

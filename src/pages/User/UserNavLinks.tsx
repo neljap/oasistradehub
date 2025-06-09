@@ -7,7 +7,6 @@ import {
   FaUserAlt,
 } from "react-icons/fa";
 import {
-  FaMarker,
   FaMoon,
   FaPeopleGroup,
   FaPowerOff,
@@ -15,14 +14,10 @@ import {
 } from "react-icons/fa6";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
-  ADACoin,
-  BTCoin,
-  ETHCoin,
   HomeLogo,
   increasebar,
   moneybar,
   profilebar,
-  USDTCoin,
   veraccount,
   walletbar,
   withdrawbar,
@@ -34,16 +29,15 @@ import { AiOutlineGlobal } from "react-icons/ai";
 import { IoIosCash } from "react-icons/io";
 import { SiBitcoincash } from "react-icons/si";
 import { HiCash, HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
-import { MdVerified } from "react-icons/md";
+import { MdAccountBalanceWallet, MdVerified } from "react-icons/md";
 import Cookies from 'js-cookie';
 import { toast } from "react-toastify";
 import UserRespNav from "./UserRespNav";
+import { AuthContext } from "../../app/AuthContext";
 
 const UserNavLinks = ({ children }: any) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [logoutModal, setLogoutModal] = useState(false);
-  const [figModal, setFigModal] = useState(false);
-  const [figValue, setFigValue] = useState<any>(null);
   const { setTheme, systemTheme, theme } = useContext(DarkLightContext);
   const [isMobOpen, setIsMobOpen] = useState(false);
 
@@ -128,31 +122,37 @@ const UserNavLinks = ({ children }: any) => {
       id: 1,
       text: "Profile",
       img: profilebar,
+      path: "/user/account"
     },
     {
       id: 2,
       text: "Deposit",
       img: walletbar,
+      path: "/user/deposit"
     },
     {
       id: 3,
       text: "Withdraw",
       img: withdrawbar,
+      path: "/user/withdraw"
     },
     {
       id: 4,
       text: "Tradings",
       img: increasebar,
+      path: "/user/markets"
     },
     {
       id: 5,
       text: "Subscription",
       img: moneybar,
+      path: "/user/subscriptions"
     },
     {
       id: 6,
       text: "Verification",
       img: veraccount,
+      path: "/user/verification"
     },
   ];
 
@@ -167,6 +167,8 @@ const UserNavLinks = ({ children }: any) => {
     }
   }
 
+  const {data} = useContext(AuthContext);
+
   useEffect(() => {
     let cookietoken = Cookies.get("token");
 
@@ -175,6 +177,7 @@ const UserNavLinks = ({ children }: any) => {
     }
 
   }, [])
+
 
   const activeLink =
     "flex flex-row gap-3 font-[Jost] px-6 py-2 justify-start items-center bg-blue-200 text-[#0052FF] rounded-xl mt-2";
@@ -205,7 +208,7 @@ const UserNavLinks = ({ children }: any) => {
         </div>
         
         <div className="flex flex-row items-center gap-4">
-          <div className="relative group">
+          {/* <div className="relative group">
             <div
               className="shadow group px-2 md:px-3 py-1 md:py-2 rounded-lg cursor-pointer border border-neutral-500 hidden md:flex flex-row gap-3"
               onClick={() => setFigModal(!figModal)}
@@ -266,8 +269,13 @@ const UserNavLinks = ({ children }: any) => {
                     <p className="font-[500]">0.00000</p>
                   </button>
                 </div>
-          </div>
-
+          </div> */}
+          <div className="flex flex-row items-center gap-2">
+                          <div className="text-primary bg-primary bg-opacity-5 rounded-full p-2">
+                          <MdAccountBalanceWallet size={24}/>
+                          </div>
+                          <p className="font-[600] font-[Jost]">Account Balance: ${data ? data?.tAmount : 0}</p>
+                      </div>
           <div className="flex flex-row gap-2 items-center transition-all duration-[1s] ease-in-out   px-2 md:px-3 py-1 md:py-2 shadow rounded-md md:rounded-xl cursor-pointer text-primary bg-primary bg-opacity-5 hover:bg-opacity-95 hover:text-white">
             <BiBellPlus size={22} /> <p className="font-[500] hidden md:block">Notifications</p>
           </div>
@@ -342,15 +350,17 @@ const UserNavLinks = ({ children }: any) => {
       </div>
       {isNavOpen && (
         <div className="border border-neutral-300 rounded-xl p-4 w-fit absolute top-20 right-10 flex flex-col gap-4 z-50 bg-white">
-          <div className="grid grid-cols-3 gap-2 justify-center items-center">
+          <div className="grid grid-cols-3 gap-2 justify-center items-center" onClick={() => setIsNavOpen(!isNavOpen)}>
             {probar.map((item) => (
-              <div
+              <Link to={item.path}
                 className="rounded-xl bg-neutral-50 py-1 flex flex-col items-center gap-1"
                 key={item.id}
+
               >
+
                 <img src={item.img} alt="" className="w-8 h-8" />
                 <p className="font-[500] text-sm">{item.text}</p>
-              </div>
+              </Link>
             ))}
           </div>
           <button
@@ -385,21 +395,6 @@ const UserNavLinks = ({ children }: any) => {
       )}
       {/* Mobile Nav */}
       <div className="flex  md:hidden items-center font-medium justify-around">
-        {/* <div className="z-50 p-5 md:w-auto w-full flex justify-between">
-        <Link to="/">
-          <LogoText
-            colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
-            animationSpeed={3}
-            showBorder={false}
-            className="custom-class"
-          >
-            OASIS TRADE HUB
-          </LogoText>
-        </Link>     
-          <div className="text-3xl md:hidden" onClick={() => setIsMobOpen(!isMobOpen)}>
-            {isMobOpen ? <FaTimes /> : <FaBars />}
-          </div>
-        </div> */}
         <div
           className={`
         md:hidden bg-[#f1f1f1] dark:bg-[#1f2937] fixed z-10 w-full top-0 overflow-y-auto bottom-0 py-24 pl-4

@@ -1,9 +1,13 @@
+import { useEffect } from "react"
 import { WithdrawCard } from "../ui"
 
 
 const WithdrawPg = () => {
 
-
+   useEffect(() => {
+      document.title = "OASIS TRADE HUB | WITHDRAW"
+    }, [])
+  
 
   return (
     <div>

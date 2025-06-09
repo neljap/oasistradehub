@@ -11,14 +11,14 @@ const CurrentPlanCard = () => {
                   <img src={emptyboxdash} alt="" className="w-8 h-8"/>  
                 </div> 
                 <div className="leading-5">
-                    <p>Current Plan</p>
+                    <p className='font-[Jost] font-[600]'>Current Plan</p>
                     <p>No Plan</p>
                 </div>  
                 </div>
                 
                 <div>
                     <Link to="/user/subscriptions">
-                    <button className="px-4 py-2 text-primary bg-primary bg-opacity-5 hover:bg-opacity-95 hover:text-white transition-all ease-in-out duration-[1s] rounded-xl ">Purchase Plan</button>
+                    <button className="px-4 py-2 text-primary bg-primary bg-opacity-5 hover:bg-opacity-95 font-[Jost] hover:text-white transition-all ease-in-out duration-[1s] rounded-xl ">Purchase Plan</button>
                     </Link>
                 </div>
             </div>

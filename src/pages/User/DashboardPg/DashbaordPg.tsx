@@ -17,9 +17,9 @@ const DashbaordPg = () => {
     const DashItems = [
         {
             id: 1,
-            title: "Deposited",
+            title: "Total Deposit",
             icon: FaCloudMoonRain,
-            amount: data?.tDeposit,
+            amount: data?.receipts.length,
         },
         {
             id: 2,
@@ -37,7 +37,7 @@ const DashbaordPg = () => {
             id:4,
             title: "Total Trade",
             icon: FaTrademark,
-            amount: 0
+            amount: data?.market.length
         }
     ]
     useEffect(() => {
@@ -51,10 +51,10 @@ const DashbaordPg = () => {
         <div className="container">
         <div className="flex flex-row gap-4 items-center text-neutral-700 font-[500]">
             <div className="py-2 px-4 rounded-lg bg-neutral-100">
-                <p>Hello {data? data?.fullname : ""}</p>
+                <p className="font-[Jost] capitalize">👋Hello {data? data?.fullname : ""}</p>
             </div>
             <div className={`py-2 px-4 rounded-lg ${data?.verified ? "bg-green-100" : "bg-red-100"}  w-fit`}>
-                <p>{data?.verified ? "Verified": "You're not verified"}</p>
+                <p className="font-[Jost] capitalize">{data?.verified ? "Verified": "You're not verified"}</p>
             </div>
         </div>  
         <div className="border border-neutral-100 grid grid-cols-1 md:grid-cols-2 justify-between items-center px-6 py-4 rounded-xl mt-4 dark:bg-[#2a3042]">
@@ -82,8 +82,18 @@ const DashbaordPg = () => {
         <FcNeutralTrading size={24} />
                 </div>
                 <div className="w-full">
+                    <div className="flex items-center gap-2">
                     <p className="font-[Jost] text-lg md:text-xl">Trading Progress</p>
-                    <input type="range" name="" id="" className="text-primary w-full outline-none" />
+                    <div className="p-2">
+                        <p>{data?.tradProg}%</p>
+                    </div>    
+                    </div>
+                    
+                    <input type="range" name=""  id="" value={10} className="text-primary w-full outline-none" />
+                    <div className="flex justify-between items-center">
+                        <p className="font-[Jost]">0%</p>
+                        <p className="font-[Jost]">100%</p>
+                    </div>
                 </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 gap-8">
@@ -91,7 +101,7 @@ const DashbaordPg = () => {
              <div className="border border-neutral-200 rounded-xl bg-primary bg-opacity-5 p-4 flex flex-row justify-between items-start" key={index}>
                 <div>
                     <h3 className="text-neutral-700 font-[600] font-[Jost]">{item.title}</h3>
-                    <p>$0</p>
+                    <p>{item.amount}</p>
                     {/* <p className="text-sm text-green-500 font-[500]">+0 from last month</p> */}
                 </div>
                 <div>
@@ -103,7 +113,7 @@ const DashbaordPg = () => {
         </div>
         <CurrentPlanCard />
         <div className="flex flex-row justify-between items-center mt-4">
-            <p>My Assets</p>
+            <p className="font-[Jost] font-[600]">My Assets</p>
             <button className="bg-primary text-white px-4 py-2 rounded-xl flex flex-row items-center gap-2 font-[500]"><PiHandDepositFill size={24}/> Deposit</button>
         </div>
         <div className="h-[600px]">
