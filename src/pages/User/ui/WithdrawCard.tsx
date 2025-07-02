@@ -43,8 +43,8 @@ const WithdrawCard = ({minWd, maxWd, wMode, chgWd, duraWd, msign}: Wdctypes) => 
         </div>
         
         <div className="flex gap-2 flex-col pt-2">
-        <p >Minimum Withdrawable: <span className="font-[500]">${minWd}.00</span> </p>
-        <p>Maximum Withdrawable: <span className="font-[500]">${maxWd}.00</span> </p>
+        <p >Minimum Withdrawable: <span className="font-[500]">${Number(minWd).toLocaleString()}.00</span> </p>
+        <p>Maximum Withdrawable: <span className="font-[500]">${Number(maxWd).toLocaleString()}.00</span> </p>
         <p>Charges Amount: <span className="font-[500]">{chgWd}%</span> </p>
         <p>Duration: <span className="font-[500]">{duraWd} Minute</span> </p>
         <div className="w-full pt-2">

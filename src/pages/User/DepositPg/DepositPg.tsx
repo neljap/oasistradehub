@@ -243,7 +243,7 @@ const DepositPg = () => {
                         ) : cryptValue == 3 ? (
                           <div className="flex flex-row gap-1">
                             <img src={ADACoin} alt="" />{" "}
-                            <p className="font-[500]">USDC</p>{" "}
+                            <p className="font-[500]">USDC TRC-20</p>{" "}
                           </div>
                         ) : cryptValue == 4 ? (
                           <div className="flex flex-row gap-1">
@@ -287,7 +287,7 @@ const DepositPg = () => {
                       >
                         {" "}
                         <img src={ADACoin} alt="" />{" "}
-                        <p className="font-[500]">USDC</p>
+                        <p className="font-[500]">USDC TRC-20</p>
                       </div>
                       <div
                         className="py-1 pl-3 hover:bg-neutral-200 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
@@ -367,7 +367,7 @@ const DepositPg = () => {
                           : cryptValue == 2
                           ? "Ethereum"
                           : cryptValue == 3
-                          ? "USDC"
+                          ? "USDC TRC-20"
                           : "Tether"}{" "}
                         Deposit
                       </button>
@@ -388,13 +388,13 @@ const DepositPg = () => {
                     <FaTimes size={18} />
                   </div>
                   <p className="font-[500] text-lg">
-                    Confirm $ {cyptInput} Deposit of{" "}
+                    Confirm ${Number(cyptInput).toLocaleString()} Deposit of{" "}
                     {cryptValue == 1
                       ? "Bitcoin"
                       : cryptValue == 2
                       ? "Ethereum"
                       : cryptValue == 3
-                      ? "USDC"
+                      ? "USDC TRC-20"
                       : "Tether USDT"}
                   </p>
                   <div className="w-full">
@@ -404,7 +404,7 @@ const DepositPg = () => {
                         : cryptValue == 2
                         ? "Ethereum"
                         : cryptValue == 3
-                        ? "USDC"
+                        ? "USDC TRC-20"
                         : "Tether USDT"}{" "}
                       Deposit Address
                     </p>
@@ -457,12 +457,12 @@ const DepositPg = () => {
                   </div>
                   <div>
                     {cyptCDeposit ? (
-                      <div>
+                      <div >
                         <p className="pb-4 font-[Jost] font-[700]">
                           Upload Deposit Proof (Screenshot)
                         </p>
                         <div
-                          className="border border-primary p-8 w-full md:w-1/2 flex flex-col items-center justify-center min-h-40 rounded-2xl bg-[#f1f1f1] dark:bg-[#1f2937]"
+                          className="border-dashed border-2  border-primary p-8 w-full md:w-1/2 flex flex-col items-center justify-center min-h-40 rounded-2xl bg-[#f1f1f1] dark:bg-[#1f2937]"
                           onClick={uploadRef}
                           style={{
                             backgroundImage: depRef
@@ -490,14 +490,18 @@ const DepositPg = () => {
                             </div>
                           )}
                         </div>
-
-                        <button
+                          {depRef && (
+                            <>
+                            <button
                           className="bg-primary px-4 py-2 rounded-xl"
                           onClick={uploadFile}
                         >
                           Upload
                         </button>
                         {loading && <p>Loading...</p>}
+                            </>
+                          )}
+                        
 
                         <p className="text-sm">
                           <span className="font-[500]">Note:</span> The above
