@@ -2,18 +2,62 @@ import { VscVerifiedFilled } from "react-icons/vsc"
 import { premiummimg } from "../../../assets"
 import { CurrentPlanCard } from "../ui"
 import { SubscribeData } from "../../../utils/SubscriptData"
-import { useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { AuthContext } from "../../../app/AuthContext"
+// import { toast } from "react-toastify"
+import { Link } from "react-router-dom"
 
 
 const SubscriptionPg = () => {
   
   const [isOpen, setIsOpen] = useState(false);
-  // const [isChoice, setIsChoice] = useState("")
+  // const [isChoice, setIsChoice] = useState<any>(null)
+  // const [range, setRange] = useState<any>(isChoice?.amount)
+  // const [subNum, setSubNum] = useState(0);
+  const [insufficient, 
+    
+    // setInsufficient
+  
+  ] = useState(false);
 
-  // const handleOpen = ({isChoice}: any) => {
-  //   setIsOpen(true);
-  //   setIsChoice(isChoice)
-  // }
+
+  // const {data} = 
+  useContext(AuthContext)
+
+
+// let tAmount = data?.tAmount
+
+// console.log(isOpen, "isOpen")
+// const handleSubscription = async(item:any) => {
+//   console.log("it", item)
+//   // @ts-ignore
+//     if(JSON.stringify(isChoice).amount  > tAmount){
+//       setInsufficient(true)
+//       return;
+//     }
+//     setIsOpen(true)
+//     try {
+//       if(range > tAmount){
+//         toast.info("Ins", {position: "bottom-left"})
+//       }
+//     } catch (error: any) {
+//       toast.error(error, {position: "bottom-left"})
+//     }finally{
+//       setRange("")
+//       setIsOpen(false)
+//     }
+//   }
+//   // handleSubscription()
+// useEffect(() => {
+ 
+// }, [isChoice])
+
+useEffect(() => {
+  document.title = "Oasis Trade Home | Subscription"
+}, [])
+  
+
+  
 
   return (
     <div>
@@ -59,6 +103,8 @@ const SubscriptionPg = () => {
             <div className="flex flex-row justify-center items-center">
               <button className="bg-[#7f57f3] transition-all ease-in-out duration-[1s] hover:bg-opacity-20 border hover:border-primary hover:text-[#7f57f3] px-4 py-2 rounded-full mx-auto text-white font-[600]">Purchase Plan</button>
             </div>
+            
+            {insufficient &&  <p className="font-[Jost] text-red-500 font-[600]">Insufficient Balance, <Link to="/user/deposit">Deposit Now</Link></p> }
           </div>  
           
           ))}
@@ -66,21 +112,23 @@ const SubscriptionPg = () => {
         </div>
     </div>
     {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center" onClick={() => setIsOpen(!isOpen)}>
-          <div className="w-80 rounded-xl h-40 bg-[#f1f1f1] dark:bg-[#1f2937] flex flex-col justify-center items-center gap-8">
-            {/* <p>{isChoice}</p> */}
+        <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
+          <div className=" rounded-xl bg-[#f1f1f1] dark:bg-[#1f2937] px-12 py-4 w-3/4 md:w-1/2 flex flex-col justify-center items-center gap-2">
+
+
+            
             <div className="flex justify-between items-center px-8 gap-4">
               <button
-                className="bg-primary px-4 py-2 rounded-xl"
-               
+                className="bg-red-500 px-4 py-2 rounded-xl"
+               onClick={() => setIsOpen(!isOpen)}
               >
-                Yes
+                Exit
               </button>
               <button
-                className="bg-red-500 px-4 py-2 rounded-xl"
-       
+                className="bg-green-500 font-[Jost] font-[600] px-4 py-2 rounded-xl"
+                // onClick={handleSubscription}
               >
-                No
+                Proceed
               </button>
             </div>
           </div>

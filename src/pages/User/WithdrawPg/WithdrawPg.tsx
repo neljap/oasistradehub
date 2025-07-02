@@ -5,7 +5,7 @@ import { WithdrawCard } from "../ui"
 const WithdrawPg = () => {
 
    useEffect(() => {
-      document.title = "OASIS TRADE HUB | WITHDRAW"
+      document.title = "Oasis Trade Hub | Withdraw"
     }, [])
   
 
@@ -31,18 +31,18 @@ const withdrawProcess = [
   {
     id: 1,
     mode: "Bank Withdrawal",
-    minwithdraw: "1,000",
-    maxwithdraw: "1,000,000",
-    charges: "15%",
+    minwithdraw: 50000,
+    maxwithdraw: 1000000,
+    charges: 5,
     duration: "1",
     msign: "bank"
   },
   {
     id: 2,
-    mode: "Cryptocurrency (USDT)",
-    minwithdraw: "1,000",
-    maxwithdraw: "1,000,000",
-    charges: "15%",
+    mode: "Cryptocurrency (USDT/USDC)",
+    minwithdraw: 20000,
+    maxwithdraw: 500000,
+    charges: 3,
     duration: "1",
     msign: "cypt"
   }

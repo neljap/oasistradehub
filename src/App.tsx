@@ -9,6 +9,7 @@ import 'aos/dist/aos.css';
 import { useEffect, useState } from "react";
 import { HiArrowNarrowUp } from "react-icons/hi";
 import { FaWhatsapp } from "react-icons/fa6";
+import "./App.css";
 
 
 

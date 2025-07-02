@@ -271,14 +271,23 @@ const UserNavLinks = ({ children }: any) => {
                 </div>
           </div> */}
           <div className="flex flex-row items-center gap-2">
-                          <div className="text-primary bg-primary bg-opacity-5 rounded-full p-2">
-                          <MdAccountBalanceWallet size={24}/>
-                          </div>
-                          <p className="font-[600] font-[Jost]">Account Balance: ${data ? data?.tAmount : 0}</p>
-                      </div>
+            <div className="text-primary bg-primary bg-opacity-5 rounded-full p-2">
+              <MdAccountBalanceWallet size={24}/>
+            </div>
+            <p className="font-[600] font-[Jost]">Account Balance: ${data ? Number(data?.tAmount).toLocaleString() : 0}</p>
+          </div>
+          <div className="relative">
+            <div className="absolute right-0 top-0">
+              <span className="relative flex size-3">
+  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#0052FF] opacity-75"></span>
+  <span className="relative inline-flex size-3 rounded-full bg-[#0052FF]"></span>
+</span>
+            </div>
           <div className="flex flex-row gap-2 items-center transition-all duration-[1s] ease-in-out   px-2 md:px-3 py-1 md:py-2 shadow rounded-md md:rounded-xl cursor-pointer text-primary bg-primary bg-opacity-5 hover:bg-opacity-95 hover:text-white">
             <BiBellPlus size={22} /> <p className="font-[500] hidden md:block">Notifications</p>
+          </div>  
           </div>
+          
           <div
             className="p-2 shadow rounded-full bg-primary bg-opacity-5 cursor-pointer hover:bg-opacity-95 transition-all ease-in-out duration-[1s] hover:text-white"
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}

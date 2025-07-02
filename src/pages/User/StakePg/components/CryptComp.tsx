@@ -87,8 +87,20 @@ const CryptComp = () => {
       let totalreturn = sROI
       let status = 'locked'
       console.log("staking", staked)
-       await axios.post("https://oaserver.onrender.com/api/user/staked", {userid: data?._id, stakes: {img, asset, amount, duration, returns, totalreturn, status}})
-        toast.info("Staked", {position: "bottom-left"})
+      let tAmount = data?.tAmount
+      if(tAmount < inputModal){
+        toast.info("Insufficient balance", {position: "bottom-left"})
+        return;
+      }
+      let res =  await axios.post("https://oaserver.onrender.com/api/user/staked", {userid: data?._id, stakes: {img, asset, amount, duration, returns, totalreturn, status}})
+      if(res){
+        tAmount = tAmount - inputModal
+        await axios.patch(`https://oaserver.onrender.com/api/user/update/${data?._id}`, {
+        tAmount,
+      })
+      toast.info("Staked", {position: "bottom-left"})
+      }
+        
 
       // dispatch(stakeAdded(asset,  amount, duration, returns, totalreturn, status ))
     } catch (error) {

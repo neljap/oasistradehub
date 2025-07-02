@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { FaAngleDown, FaClipboard } from "react-icons/fa6";
 import {
@@ -50,6 +50,13 @@ const DepositPg = () => {
   const cyptInputRef = useRef<any>(null);
 
   const { data } = useContext(AuthContext);
+
+  const modalopt = mmValue == 1 ? "PayPal": mmValue == 2 ? "Zelle" : mmValue == 3 ? "Cashapp" : "Venmo"
+
+  useEffect(() => {
+            document.title = "Oasis Trade Home | Deposit"
+          }, [])
+    
 
   // This is the function we wrote earlier
   async function copyTextToClipboard() {
@@ -236,7 +243,7 @@ const DepositPg = () => {
                         ) : cryptValue == 3 ? (
                           <div className="flex flex-row gap-1">
                             <img src={ADACoin} alt="" />{" "}
-                            <p className="font-[500]">Tron</p>{" "}
+                            <p className="font-[500]">USDC</p>{" "}
                           </div>
                         ) : cryptValue == 4 ? (
                           <div className="flex flex-row gap-1">
@@ -280,7 +287,7 @@ const DepositPg = () => {
                       >
                         {" "}
                         <img src={ADACoin} alt="" />{" "}
-                        <p className="font-[500]">Tron</p>
+                        <p className="font-[500]">USDC</p>
                       </div>
                       <div
                         className="py-1 pl-3 hover:bg-neutral-200 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
@@ -360,7 +367,7 @@ const DepositPg = () => {
                           : cryptValue == 2
                           ? "Ethereum"
                           : cryptValue == 3
-                          ? "Tron"
+                          ? "USDC"
                           : "Tether"}{" "}
                         Deposit
                       </button>
@@ -387,7 +394,7 @@ const DepositPg = () => {
                       : cryptValue == 2
                       ? "Ethereum"
                       : cryptValue == 3
-                      ? "Tron"
+                      ? "USDC"
                       : "Tether USDT"}
                   </p>
                   <div className="w-full">
@@ -397,7 +404,7 @@ const DepositPg = () => {
                         : cryptValue == 2
                         ? "Ethereum"
                         : cryptValue == 3
-                        ? "Tron"
+                        ? "USDC"
                         : "Tether USDT"}{" "}
                       Deposit Address
                     </p>
@@ -691,7 +698,7 @@ const DepositPg = () => {
                   <p className="font-[600] text-lg">Deposit Using Paypal</p>
                   <div>
                     <p className="font-[500]">
-                      To deposit using (Paypal), please follow these detailed
+                      To deposit using ({modalopt}), please follow these detailed
                       steps:
                     </p>
                     <div className="flex flex-col gap-2 pl-4 pt-2">
@@ -701,7 +708,7 @@ const DepositPg = () => {
                           Contact Live Support:
                         </span>{" "}
                         Reach out to our live support team to obtain the
-                        specific details required for (Paypal). You can contact
+                        specific details required for ({modalopt}). You can contact
                         them via the Live Chat help center. They will provide
                         you with the necessary information to proceed with the
                         payment.
@@ -709,7 +716,7 @@ const DepositPg = () => {
                       <p className="text-sm">
                         2. <span className="font-[500]">Make the Payment:</span>{" "}
                         Using the details provided by our support team, complete
-                        the Paypal payment. Ensure you follow all the
+                        the {modalopt} payment. Ensure you follow all the
                         instructions carefully to avoid any errors.
                       </p>
                       <p className="text-sm">

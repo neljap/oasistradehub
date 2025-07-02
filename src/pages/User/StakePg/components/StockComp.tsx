@@ -4,6 +4,9 @@ import { FaAngleDown } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { StakeContext } from "../../../../app/StakeContext";
 import { StockStakePg } from "../../../../utils/AppData";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { AuthContext } from "../../../../app/AuthContext";
 
 const StockComp = () => {
   const [stakeOpen, setStakeOpen] = useState(false);
@@ -12,14 +15,85 @@ const StockComp = () => {
   const [stakingSetNum] = useState();
   const [inputModal, setInputModal] = useState<any>(null);
 
+  const { data } = useContext(AuthContext);
+
   const { inputStkStock, handleStkStock, filteredStkStock } =
     useContext(StakeContext);
 
     const singleStake = StockStakePg.find((item) => item.id == stakingSetNum)
 
-    const handleStake = async(e: any) => {
-      e.preventDefault()
+    const handleStake = async (e: any) => {
+    e.preventDefault();
+    let sAmount = inputModal;
+    let sImg = singleStake?.icon
+    let sSign = singleStake?.sign;
+    let sCoin = singleStake?.stock;
+    let sDuration = stakeNum;
+
+    let sRPC =
+      stakeNum == 1
+        ? Number(inputModal) * 1.05
+        : stakeNum == 3
+        ? Math.floor(((Number(inputModal) * 1.189) / 3) * 100) / 100
+        : stakeNum == 4
+        ? Math.floor(((Number(inputModal) * 1.296) / 4) * 100) / 100
+        : stakeNum == 6
+        ? Math.floor(((Number(inputModal) * 1.5282) / 6) * 100) / 100
+        : stakeNum == 8
+        ? Math.floor(((Number(inputModal) * 1.832) / 8) * 100) / 100
+        : stakeNum == 12
+        ? Math.floor(((Number(inputModal) * 2.4396) / 12) * 100) / 100
+        : 0;
+    let sROI =
+      stakeNum == 1
+        ? Number(inputModal) * 1.05
+        : stakeNum == 3
+        ? Math.floor(Number(inputModal) * 1.189 * 100) / 100
+        : stakeNum == 4
+        ? Math.floor(Number(inputModal) * 1.296 * 100) / 100
+        : stakeNum == 6
+        ? Math.floor(Number(inputModal) * 1.5282 * 100) / 100
+        : stakeNum == 8
+        ? Math.floor(Number(inputModal) * 1.832 * 100) / 100
+        : stakeNum == 12
+        ? Math.floor(Number(inputModal) * 2.4396 * 100) / 100
+        : 0;
+
+    let staked = { sAmount, sSign, sCoin, sDuration, sROI, sRPC };
+    
+
+    try {
+      let img = sImg
+      let asset = sSign;
+      let amount = sAmount
+      let duration = sDuration
+      let returns = sRPC
+      let totalreturn = sROI
+      let status = 'locked'
+      console.log("staking", staked)
+      let tAmount = data?.tAmount
+      if(tAmount < inputModal){
+        toast.info("Insufficient balance", {position: "bottom-left"})
+        return;
+      }
+      let res =  await axios.post("https://oaserver.onrender.com/api/user/staked", {userid: data?._id, stakes: {img, asset, amount, duration, returns, totalreturn, status}})
+      if(res){
+        tAmount = tAmount - inputModal
+        await axios.patch(`https://oaserver.onrender.com/api/user/update/${data?._id}`, {
+        tAmount,
+      })
+      toast.info("Staked", {position: "bottom-left"})
+      }
+        
+
+      // dispatch(stakeAdded(asset,  amount, duration, returns, totalreturn, status ))
+    } catch (error) {
+      toast.error(`staked error: ${error}`, {position: "bottom-left"})
+      console.log("error", error);
+    } finally {
+      setStakeOpen(false);
     }
+  };
 
   return (
     <div>
@@ -55,7 +129,7 @@ const StockComp = () => {
                 </div>
                 <div className="bg-neutral-200 rounded-lg px-2 py-1">
                   <p>ROI</p>
-                  <p>5% - 12%</p>
+                  <p>{item.roi}</p>
                 </div>
                 <div className="bg-neutral-200 rounded-lg px-2 py-1">
                   <p>Cycle</p>
@@ -87,11 +161,11 @@ const StockComp = () => {
               <div className="flex flex-row justify-between items-center w-full">
                 <div className="flex flex-row gap-2">
                   <div>
-                    <img src="" alt="" className="w-12" />
+                    <img src={singleStake?.icon} alt="" className="w-12" />
                   </div>
                   <div>
-                    <h4 className="font-[500]">text</h4>
-                    <p>BTC</p>
+                    <h4 className="font-[500]">{singleStake?.stock}</h4>
+                    <p>{singleStake?.sign}</p>
                   </div>
                 </div>
                 <div>

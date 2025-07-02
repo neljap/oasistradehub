@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../../app/AuthContext";
 
@@ -12,6 +12,10 @@ const SupportPg = () => {
 
   const catValue = ["select","mywallet", "verification", "others"]
   const {data} = useContext(AuthContext);
+
+  useEffect(() => {
+      document.title = "Oasis Trade Home | Support"
+  }, [])
 
   const handleSupport = async(e: any) => {
     e.preventDefault()

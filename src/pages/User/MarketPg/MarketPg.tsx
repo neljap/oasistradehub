@@ -1,11 +1,16 @@
 import { CryptoCompon, ForexCompon, MyTradeCompon, StockCompon } from "./components"
-import { useContext} from "react"
+import { useContext, useEffect} from "react"
 import { LiveReading } from "../ui";
 import { LiveMarketContext } from "../../../app/LiveMarketContext";
 
 const MarketPg = () => {
 
   const {section, setSection} = useContext(LiveMarketContext);
+
+  useEffect(() => {
+          document.title = "Oasis Trade Home | Live Market"
+        }, [])
+  
 
   const display = {
     0: <CryptoCompon />,

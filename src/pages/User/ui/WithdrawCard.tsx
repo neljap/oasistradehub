@@ -26,25 +26,25 @@ const WithdrawCard = ({minWd, maxWd, wMode, chgWd, duraWd, msign}: Wdctypes) => 
       
     }else if (msign == "cypt"){
       navigate("/user/withdraw-crypto")
-      toast.info("crypto", {position: "bottom-left"})
+      // toast.info("crypto", {position: "bottom-left"})
     }else if(msign == "bank"){
       navigate("/user/withdraw-banktf")
-      toast.info("bank", {position: "bottom-left"})
+      // toast.info("bank", {position: "bottom-left"})
     }
 
   }
 
 
   return (
-    <div className="w-full shadow-xl px-4 pb-6 rounded-lg border border-neutral-200">
+    <div className="w-full shadow-xl px-4 pb-6 rounded-lg border border-neutral-200 font-[Jost]">
         <div className="bg-neutral-50 rounded-bl-lg rounded-br-lg">
-         <div className="bg-primary px-16 py-1 text-white rounded-bl-lg rounded-br-lg w-fit mx-auto"><p className="font-[500] font-[Jost] text-3xl">{wMode}</p></div>
+         <div className="bg-primary px-16 py-1 text-white rounded-bl-lg rounded-br-lg w-fit mx-auto"><p className="font-[500] font-[Jost] text-xl md:text-3xl">{wMode}</p></div>
         <img src={bankwithdrawalImg} alt="" className="size-32 md:size-52 py-4 mx-auto" />   
         </div>
         
         <div className="flex gap-2 flex-col pt-2">
-        <p>Min. Withdrawable: <span className="font-[500]">${minWd}.00</span> </p>
-        <p>Max. Withdrawable: <span className="font-[500]">${maxWd}.00</span> </p>
+        <p >Minimum Withdrawable: <span className="font-[500]">${minWd}.00</span> </p>
+        <p>Maximum Withdrawable: <span className="font-[500]">${maxWd}.00</span> </p>
         <p>Charges Amount: <span className="font-[500]">{chgWd}%</span> </p>
         <p>Duration: <span className="font-[500]">{duraWd} Minute</span> </p>
         <div className="w-full pt-2">

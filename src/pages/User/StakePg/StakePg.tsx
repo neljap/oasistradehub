@@ -1,4 +1,4 @@
-import { useContext} from "react"
+import { useContext, useEffect} from "react"
 import { CryptComp, CurrencyComp, MyStakes, StockComp } from "./components";
 import { StakeContext } from "../../../app/StakeContext";
 
@@ -7,6 +7,11 @@ const StakePg = () => {
 
 
   const {stakeSection, setStakeSection} = useContext(StakeContext);
+
+  useEffect(() => {
+            document.title = "Oasis Trade Home | Staking"
+          }, [])
+    
 
   const display = {
     0: <CryptComp/>,

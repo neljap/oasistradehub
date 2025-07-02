@@ -239,8 +239,9 @@ const HomePg = () => {
               Join our trusted trading and investment platform designed for beginners and experts. Access real-time market data, secure transactions, and smart tools to grow your portfolio and achieve financial freedom today.
               </p>
               <div className="grid grid-cols-1 md:flex md:flex-row gap-2 md:gap-6 items-center justify-center mx-auto md:ms-0">
-                <GetStarted getklass="bg-white border-primary text-primary" />
+                <GetStarted getklass="bg-white text-black hover:bg-black hover:text-white" />
               </div>
+
             </div>
             <div className="relative">
               <img
@@ -570,17 +571,17 @@ const HomePg = () => {
 
               </div>
               <div className="mx-auto text-center flex flex-row items-center py-4">
-                <span className="font-[600] text-2xl">${item.amount}</span>
+                <span className="font-[600] text-2xl">${Number(item.amount).toLocaleString()}</span>
                 <span>/{item.days}days</span>
               </div>
               <hr />
               <div className="grid grid-cols-2 justify-between items-center ps-12 w-full mx-auto">
                 <p className="font-[500] text-start">Min Deposit:</p>
-                <p className="text-center font-[600]">${item.amount}</p>
+                <p className="text-center font-[600]">${Number(item.amount).toLocaleString()}</p>
               </div>
               <div className="grid grid-cols-2 justify-between items-center ps-12 w-full mx-auto">
                 <p className="font-[500] text-start">Max Deposit:</p>
-                <p className="text-center font-[600]">${item.maxamount}</p>
+                <p className="text-center font-[600]">${Number(item.maxamount).toLocaleString()}</p>
               </div>
               <div className="grid grid-cols-2 justify-between items-center ps-12 w-full mx-auto">
                 <p className="font-[500] text-start">Return of Interest</p>

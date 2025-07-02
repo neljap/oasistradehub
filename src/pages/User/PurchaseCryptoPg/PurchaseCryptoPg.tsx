@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { binancelogo, bitsologo, coinbaselogo, moonpaylogo } from "../../../assets"
 import PurCard from "./PurCard"
 
@@ -34,6 +35,11 @@ const PurchaseCryptoPg = () => {
       img: bitsologo
     }
   ]
+
+  useEffect(() => {
+    document.title = "Oasis Trade Home | Purchase Crypto"
+    }, [])
+    
 
   return (
     <div>

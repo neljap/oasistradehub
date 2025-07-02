@@ -33,48 +33,6 @@ const Navbar = ({
     isScrolled,
     setIsScrolled] = useState(true);
 
-  // const navLinks = [
-  //   {
-  //     id: 1,
-  //     name: "Home",
-  //     navid: "home"
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "About Us",
-  //     navid: "about"
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Trading Solutions",
-  //     navid: "trading"
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Partners",
-  //     navid: "partner"
-  //   },
-  //   {
-  //     id: 5,
-  //     name: "Packages",
-  //     navid: "package"
-  //   },
-  //   {
-  //     id: 6,
-  //     name: "Testimonials",
-  //     navid: "testimonial"
-  //   },
-  //   {
-  //     id: 7,
-  //     name: "FAQ",
-  //     navid: "faq"
-  //   },
-  //   {
-  //     id: 8,
-  //     name: "Contact Us",
-  //     navid: "contact"
-  //   }
-  // ]
 
  const sectionIds = ["home", "about", "trading", "partners", "packages", "testimonials", "faq", "contact"]
 
@@ -154,11 +112,11 @@ const Navbar = ({
       <div>
         {data ? (
           <Link to="/user/dashboard">
-            <button className="bg-transparent flex flex-row gap-2 items-center text-sm md:text-md hover:bg-primary hover:text-white text-primary py-1 md:py-2 px-1 md:px-3 border-2 border-primary font-[600] rounded-lg transition-all ease-in-out duration-[1s]">{data?.fullname}</button>
+            <button className="bg-white flex flex-row gap-2 items-center text-sm md:text-md hover:bg-black hover:border-white hover:text-white text-black py-1 md:py-2 px-1 md:px-3 border-2 border-black font-[600] rounded-lg transition-all ease-in-out duration-[1s]">{data?.fullname}</button>
           </Link>
         ) : (
           <Link to="/login">
-            <button className="bg-transparent flex flex-row gap-2 items-center text-sm md:text-md hover:bg-primary hover:text-white text-primary py-1 md:py-2 px-2 md:px-4 border-2 border-primary font-[600] rounded-lg transition-all ease-in-out duration-[1s]">Get Started <FaLongArrowAltRight /></button>
+            <button className="bg-white flex flex-row gap-2 items-center text-sm md:text-md hover:bg-black hover:border-white hover:text-white text-black py-1 md:py-2 px-2 md:px-4 border-2 border-black font-[600] rounded-lg transition-all ease-in-out duration-[1s]">Get Started <FaLongArrowAltRight /></button>
           </Link>
         )}
       </div>
