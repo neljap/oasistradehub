@@ -41,7 +41,7 @@ const LiveReading = () => {
       </div>
       <div className="border border-neutral-200 rounded-xl bg-white p-4">
         <p className="font-[Jost] font-[600]">Bonus</p>
-        <p className="font-[600] text-xl py-2">0</p>
+        <p className="font-[600] text-xl py-2">${Number(data?.tBonus)}</p>
       
       </div>
     </div>

@@ -66,12 +66,12 @@ useEffect(() => {
         <CurrentPlanCard />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-8">
           {SubscribeData.map((item: any) => (
-          <div className={`w-full rounded-lg border ${item.id == 1 ? "border-purple-400" : item.id == 2 ? "border-primary" : item.id == 3 ? "border-red-400" : "border-yellow-400"} p-8 flex flex-col justify-between`} key={item.id}>
+          <div className={`w-full rounded-lg border ${item.id == 1 ? "border-purple-400" : item.id == 2 ? "border-primary" : item.id == 3 ? "border-red-400" : "border-yellow-400"} p-8 flex flex-col justify-between font-[Jost]`} key={item.id}>
             <div className="flex flex-row gap-1 items-center justify-center"><img src={premiummimg} className="w-8 md:w-12" alt="" />
             <p className="text-lg md:text-2xl font-[500] font-[Jost]">{item.name} Plan</p>
             </div>
             <div className="px-4 py-2 rounded-xl bg-[#7f57f3] bg-opacity-10 w-fit mx-auto">
-              <p className="font-[500]">${item.amount}/{item.days}days</p>
+              <p className="font-[500]">${Number(item.amount).toLocaleString()}/{item.days}days</p>
             </div>
             <div className="py-4">
               <hr />
@@ -79,11 +79,11 @@ useEffect(() => {
             
               <div className="grid grid-cols-2 justify-between items-center w-full mx-auto">
                 <p className="font-[500] text-start">Min Deposit:</p>
-                <p className="text-center font-[600]">${item.amount}</p>
+                <p className="text-center font-[600]">${Number(item.amount).toLocaleString()}</p>
               </div>
               <div className="grid grid-cols-2 justify-between items-center w-full mx-auto">
                 <p className="font-[500] text-start">Max Deposit:</p>
-                <p className="text-center font-[600]">${item.maxamount}</p>
+                <p className="text-center font-[600]">${Number(item.maxamount).toLocaleString()}</p>
               </div>
               <div className="grid grid-cols-2 justify-between items-center w-full mx-auto">
                 <p className="font-[500] text-start">Return of Interest</p>

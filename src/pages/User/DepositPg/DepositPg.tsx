@@ -248,7 +248,7 @@ const DepositPg = () => {
                         ) : cryptValue == 4 ? (
                           <div className="flex flex-row gap-1">
                             <img src={USDTCoin} alt="" />{" "}
-                            <p className="font-[500]">Tether USDT</p>{" "}
+                            <p className="font-[500]">Tether USDT TRC-20</p>{" "}
                           </div>
                         ) : (
                           "Select a Deposit Asset"
@@ -295,7 +295,7 @@ const DepositPg = () => {
                       >
                         {" "}
                         <img src={USDTCoin} alt="" />{" "}
-                        <p className="font-[500]">USDT</p>
+                        <p className="font-[500]">USDT TRC-20</p>
                       </div>
                     </div>
                   )}
@@ -395,7 +395,7 @@ const DepositPg = () => {
                       ? "Ethereum"
                       : cryptValue == 3
                       ? "USDC TRC-20"
-                      : "Tether USDT"}
+                      : "USDT TRC-20"}{" "}
                   </p>
                   <div className="w-full">
                     <p className="font-[500] py-2">
@@ -405,7 +405,7 @@ const DepositPg = () => {
                         ? "Ethereum"
                         : cryptValue == 3
                         ? "USDC TRC-20"
-                        : "Tether USDT"}{" "}
+                        : "USDT TRC-20"}{" "}
                       Deposit Address
                     </p>
                     {cryptValue > 0 && (

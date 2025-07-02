@@ -24,7 +24,7 @@ const BuyMarketCard = ({coin, butClass, butext}: BuyMarketype) => {
     // const [amountUSD, setAmountUSD] = useState("");
     // const [amountCoin] = useState(Math.round((mktInput / Number(obj)) * 100) / 100 );
 
-    const duraOptions = [5, 10, 15, 20 , 30]
+    const duraOptions = [0.5, 1, 2, 3]
 
 
     const handleSubmit = async(e: any) => {
@@ -44,7 +44,7 @@ const BuyMarketCard = ({coin, butClass, butext}: BuyMarketype) => {
 
         // console.log({"asset": coin, "amountCoin": amountCoin, "amountUSD": mktInput, "Buy/Sell": butext, "Duration": duration, "EntryPrice": mktEntryP})
   
-        let res = await axios.post("https://oaserver.onrender.com/api/user/market", {userid: data._id, market: { asset: coin, amountCoin, amountUSD: mktInput, buysell: butext, duration, entryPrice: mktEntryP}})
+        let res = await axios.post("https://oaserver.onrender.com/api/user/market", {userid: data._id, market: { asset: coin, amountCoin, amountUSD: mktInput, buysell: butext, duration, entryPrice: mktEntryP, status: "Pending" }});
         if(res){
         tAmount = tAmount - mktInput
           await axios.patch(`https://oaserver.onrender.com/api/user/update/${data?._id}`, {
@@ -97,7 +97,7 @@ const BuyMarketCard = ({coin, butClass, butext}: BuyMarketype) => {
                     <select name="" required id="" value={duration} onChange={(e:any) => setDuration(e.target.value)} className='rounded cursor-pointer outline-none border border-gray-400 w-full pe-4 py-1 shadow'>
                       <option value="">Select Duration</option>
                       {duraOptions.map((item, index) => (
-                       <option value={item} key={index}>{item} mins</option> 
+                       <option value={item} key={index}>{item == 0.5 ? 30 : item} {item == 0.5 ? "minutes" : item == 1 ? "hour" : "hours"}</option> 
                       ))}
                     </select>
                     <div>

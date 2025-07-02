@@ -1,8 +1,11 @@
 
 import { Link } from 'react-router-dom'
 import { emptyboxdash } from '../../../assets'
+import { useContext } from 'react';
+import { AuthContext } from '../../../app/AuthContext';
 
 const CurrentPlanCard = () => {
+    const {data} = useContext(AuthContext);
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
             <div className="flex flex-row justify-between items-center bg-neutral-50 border border-neutral-300 p-2 rounded-xl">
@@ -28,8 +31,8 @@ const CurrentPlanCard = () => {
                   <img src={emptyboxdash} alt="" className="w-8 h-8"/>  
                 </div> 
                 <div className="leading-5">
-                    <p>Plan Bonus</p>
-                    <p>$0</p>
+                    <p className='font-[Jost] font-[600]'>Bonus</p>
+                    <p>${Number(data?.tBonus)}</p>
                 </div>  
                 </div>
                 

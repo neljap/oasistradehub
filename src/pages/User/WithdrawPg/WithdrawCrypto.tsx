@@ -8,8 +8,8 @@ const WithdrawCrypto = () => {
 
 // https://oaserver.onrender.com
 
-    const handleSubmit = async() => {
-
+    const handleSubmit = async(e:any) => {
+        e.preventDefault()
         try {
             
         } catch (error) {
@@ -44,7 +44,7 @@ const WithdrawCrypto = () => {
             
             <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="email" type="email" placeholder="Enter your email" />
+                id="email" type="email" placeholder="Enter your OTP" />
         </div>
         <div className="mb-4">
             <label className="block text-gray-700 font-bold mb-2" >
@@ -52,7 +52,7 @@ const WithdrawCrypto = () => {
             </label>
             <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="test" type="text" placeholder="Enter your email" />
+                id="test" type="text" placeholder="Enter your USDT Address" />
         </div>
 
         <div className="flex items-center justify-center mb-4">
