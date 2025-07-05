@@ -10,14 +10,14 @@ const LiveReading = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
       <div className="border border-neutral-200 rounded-xl bg-white p-4">
-      <div className="flex justify-between items-center">
-        <p className="font-[Jost] font-[600]">Live</p>
-        <span className="relative flex size-3">
-  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
-  <span className="relative inline-flex size-3 rounded-full bg-primary"></span>
+      <div className="flex flex-col justify-start items-start gap-1">
+        <p className=" font-[500]">Live Market</p>
+        <span className="relative flex size-4">
+  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-600 opacity-75"></span>
+  <span className="relative inline-flex size-4 rounded-full bg-green-500"></span>
 </span>
         </div>  
-        <p>0</p>
+        {/* <p>0</p> */}
       </div>
       <div className="border border-neutral-200 rounded-xl bg-white p-4">
         <p className="font-[500]">Total Amount</p>
@@ -41,7 +41,7 @@ const LiveReading = () => {
       </div>
       <div className="border border-neutral-200 rounded-xl bg-white p-4">
         <p className="font-[Jost] font-[600]">Bonus</p>
-        <p className="font-[600] text-xl py-2">${Number(data?.tBonus)}</p>
+        <p className="font-[600] text-xl py-2">${Number(data?.tBonus).toLocaleString()}</p>
       
       </div>
     </div>

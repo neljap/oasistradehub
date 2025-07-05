@@ -17,25 +17,23 @@ const StockCompon = () => {
               <div className="my-4">
         <input type="text" value={inputMktStock} onChange={handleMktStock} placeholder="Search Cryptos eg. 'BTC'" className="w-full border border-neutral-200 rounded-xl p-2"/>
       </div>
-      <div className="grid grid-cols-6 justify-start items-center gap-2 ">
+      <div className="grid grid-cols-5 justify-center items-center gap-2 ">
       <div>ID</div>
       <div>Asset</div>
       <div>Name</div>
       <div>Value</div>
-      <div>Current Price</div>
       <div></div>
       </div>
       <div className="flex flex-col gap-2">
         {filteredMktStock.map((item: any) => (
-      <div className="grid grid-cols-6 justify-start items-center gap-2 " key={item.id}>
-      <div>{item.id}</div>
+      <div className="grid grid-cols-5 justify-center items-center gap-2 " key={item.id}>
+      <div>{item.id + 1}</div>
       <div className="flex items-center gap-2">
         <img src={item.img} alt={item.name} className="size-4 md:size-6 rounded-full" />
 
         {item.name}</div>
       <div>{item.stock}</div>
       <div>0.00 {item.name}</div>
-      <div>${item.price}</div>
       <div>
         {/* @ts-ignore */}
         <Link to={`/user/markets/trade/stock/${item.name}/${item.obj}`} onClick={() => window.scrollY(0, 0)}>

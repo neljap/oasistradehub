@@ -19,16 +19,15 @@ const ForexCompon = () => {
              <div className="my-4">
                <input type="text" value={inputMktForex} onChange={handleMktForex} placeholder="Search Cryptos eg. 'BTC'" className="w-full border border-neutral-200 rounded-xl p-2"/>
              </div>
-             <div className="grid grid-cols-6 justify-start items-center gap-2 ">
+             <div className="grid grid-cols-5 justify-start items-center gap-2 ">
              <div>ID</div>
              <div>Asset</div>
              <div>Name</div>
-             <div>Current Price</div>
-             <div></div>
+             <div>Value</div>
              </div>
              <div className="flex flex-col gap-2">
                {filteredMktForex.map((item: any) => (
-             <div className="grid grid-cols-6 justify-start items-center gap-2 " key={item.id}>
+             <div className="grid grid-cols-5 justify-start items-center gap-2 " key={item.id}>
              <div>{item.id}</div>
              <div><img src={item.img} className="w-12 h-12 rounded" alt="" /></div>
              <div>{item.unit}</div>
