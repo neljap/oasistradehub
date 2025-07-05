@@ -6,7 +6,19 @@ import { AuthContext } from '../../../app/AuthContext';
 
 const CurrentPlanCard = () => {
     const {data} = useContext(AuthContext);
+
+    const res = data?.copyTrader.map((item: any) => 
+         ( 
+        <div key={item.id} className="flex flex-col justify-center items-center px-1 rounded-xl">
+            <p className='font-[Jost] font-[600]'>{item.name}</p>
+        </div>
+    ))
+    
+
+
   return (
+
+   
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
             <div className="flex flex-row justify-between items-center bg-neutral-50 border border-neutral-300 p-2 rounded-xl">
                 <div className="flex flex-row items-center gap-2">
@@ -15,7 +27,7 @@ const CurrentPlanCard = () => {
                 </div> 
                 <div className="leading-5">
                     <p className='font-[Jost] font-[600]'>Current Plan</p>
-                    <p>No Plan</p>
+                    <p>{data?.accountype == "" ? "No Plan" : data?.accountype} Plan</p>
                 </div>  
                 </div>
                 
@@ -43,11 +55,32 @@ const CurrentPlanCard = () => {
             <div className="flex flex-row justify-between items-center bg-neutral-50 border border-neutral-300 p-2 rounded-xl">
                 <div className="flex flex-row items-center gap-2">
                  <div className="rounded-full p-2 bg-primary bg-opacity-5">
-                  <img src={emptyboxdash} alt="" className="w-8 h-8"/>  
+                    {data?.copyTrader.length > 0 ? (
+                        <div className='relative'>
+                        <span className='rounded-full absolute -top-1 -right-1 bg-primary text-white text-xs px-1'>
+                            {data?.copyTrader.length}
+                        </span>
+                        <img src={data?.copyTrader[0].img} alt="" className="w-8 h-8 rounded-full" />
+                        </div>
+                    ): (
+                        <div>
+                        <img src={emptyboxdash} alt="" className="w-8 h-8"/>
+                        </div>
+                    )}
+                    
                 </div> 
                 <div className="leading-5">
                     <p className='font-[Jost] font-[600]'>Copy Trader</p>
-                    <p>Julian Hosp</p>
+                    {data?.copyTrader.length > 0 ? (
+       
+                        <div className='flex items-center gap-1'>
+                            {res}
+                        </div>
+                        // <p className='text-sm text-gray-500'>{data?.copyTrader.description}</p>
+                    ) : (
+                        <p className='text-sm text-gray-500'>No Copy Trader</p>
+                    )}
+                    {/* <p className='text-green-500'>Active</p>  <p className='text-red-500'>Inactive</p>   */}
                 </div>  
                 </div>
                 

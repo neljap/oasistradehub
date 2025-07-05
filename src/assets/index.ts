@@ -105,3 +105,7 @@ export {default as traderthree} from "./1000435587.jpg";
 export {default as traderfour} from "./1000435995.jpg";
 export {default as traderfive} from "./1000435996.jpg";
 export {default as tradersix} from "./1000435997.jpg";
+export {default as traderseven} from "./1000442379.jpg";
+export {default as tradereight} from "./1000442409.jpg";
+export {default as tradernine} from "./1000442410.jpg";
+export {default as UsaFlag} from "./usa_flag.png";

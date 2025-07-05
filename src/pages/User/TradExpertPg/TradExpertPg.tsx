@@ -1,13 +1,17 @@
 import {  czechflag, elonmuskimg, franceflag, germanyflag, jbravoimg, 
   optionsproimg, protraderximg, 
   rosscameron, singaporeflag, swingmasterimg, 
+  tradereight, 
   traderfive, 
   traderfour, 
+  tradernine, 
   traderone, 
+  traderseven, 
   tradersix, 
   traderthree, 
   tradertwo, 
-  UAEFlag} from "../../../assets";
+  UAEFlag,
+  UsaFlag} from "../../../assets";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -119,7 +123,7 @@ const TradExpertPg = () => {
       names: "",
       sym: UAEFlag,
       title: "Russian",
-      img: tradertwo,
+      img: tradersix,
       pshare: "20%",
       winrate: "90%",
       totaltrade: 413
@@ -130,7 +134,7 @@ const TradExpertPg = () => {
       names: "",
       title: "Czech Republic",
       sym: czechflag,
-      img: traderthree,
+      img: tradertwo,
       pshare: "20%",
       winrate: "87%",
       totaltrade: 413
@@ -163,10 +167,43 @@ const TradExpertPg = () => {
       names: "",
       title: "Germany",
       sym: germanyflag,
-      img: tradersix,
+      img: traderthree,
       pshare: "20%",
       winrate: "90%",
       totaltrade: 413
+    },
+    {
+      id: 13,
+      name: "Kim Paula",
+      names: "",
+      title: "New Jersey, USA",
+      sym: UsaFlag,
+      img: traderseven,
+      pshare: "20%",
+      winrate: "92%",
+      totaltrade: 413
+    },
+    {
+      id: 14,
+      name: "Camilla",
+      names: "",
+      title: "Germany",
+      sym: germanyflag,
+      img: tradereight,
+      pshare: "20%",
+      winrate: "91%",
+      totaltrade: 430
+    },
+    {
+      id: 15,
+      name: "Elon Musk",
+      names: "",
+      title: "United States",
+      sym: UsaFlag,
+      img: tradernine,
+      pshare: "20%",
+      winrate: "89%",
+      totaltrade: 313
     }
   ]
 

@@ -14,7 +14,7 @@ import WithdrawPg from './WithdrawPg/WithdrawPg'
 import VerificationPg from './VerificationPg/VerificationPg'
 import TradeChartPg from './MarketPg/components/TradeChartPg'
 import UpdateWalletPg from './WithdrawPg/UpdateWalletPg'
-import {  ForexTdChart, StockTdChart } from './MarketPg/components'
+import {  ForexCompon, ForexTdChart, MyTradeCompon, StockCompon, StockTdChart } from './MarketPg/components'
 import WithdrawBankTransfer from './WithdrawPg/WithdrawBankTransfer'
 import WithdrawCrypto from './WithdrawPg/WithdrawCrypto'
 
@@ -23,6 +23,9 @@ const UserRoutes = () => {
     <UserNavLinks>
         <Routes>
             <Route path='markets' element={<MarketPg />} />
+            <Route path='markets/stock' element={<StockCompon />} />
+            <Route path='markets/forex' element={<ForexCompon />} />
+            <Route path='markets/mytrades' element={<MyTradeCompon />} />
             <Route path='stake' element={<StakePg />} />
             <Route path='account' element={<AccountPg />} />
             <Route path='dashboard' element={<DashbaordPg />} />

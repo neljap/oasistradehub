@@ -21,7 +21,7 @@ const WithdrawCrypto = () => {
         <div className="container">
             <div className="max-w-md mx-auto mt-10 font-[Jost] bg-white shadow-lg rounded-lg overflow-hidden">
     <div className="text-xl py-4 font-[Jost] px-6 bg-gray-900 text-white text-center font-bold uppercase">
-        Withdraw By Cryptocurrency (USDT)
+        Withdraw By Cryptocurrency (USDT/USDC)
     </div>
     <form className="py-4 px-6" action="" method="POST">
         <div className="mb-4">

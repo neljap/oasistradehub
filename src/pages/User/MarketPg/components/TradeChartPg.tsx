@@ -2,6 +2,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { Link, useParams } from "react-router-dom"
 import BuyMarketCard from "./BuyMarketCard";
 import { TestScroll } from "../../ui";
+import { MktCryptoData } from "../../../../utils/AppData";
 
 
 const TradeChartPg = () => {
@@ -14,7 +15,7 @@ const TradeChartPg = () => {
   // https://www.tradingview-widget.com/embed-widget/symbol-info/?locale=en&symbol=KRAKEN%3AAAVEUSD#%7B%22symbol%22%3A%22KRAKEN%3AAAVEUSD%22%2C%22width%22%3A%22100%25%22%2C%22colorTheme%22%3A%22light%22%2C%22isTransparent%22%3Atrue%2C%22height%22%3A203%2C%22utm_source%22%3A%22www.apmbroker.com%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22symbol-info%22%2C%22page-uri%22%3A%22www.apmbroker.com%2Fdashboard%2Ftrade%2Fen%2Fcrypto%2FAAVE%2FKRAKEN%2F167.63%22%7D    167.63
 
 
-
+let singlecoin = MktCryptoData.find((item) => item.coin === coin);
   
 
   return (
@@ -32,8 +33,8 @@ const TradeChartPg = () => {
         {/* Trade Entry */}
         <div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <BuyMarketCard coin={coin} butClass="bg-green-700" butext="Buy"/>
-            <BuyMarketCard coin={coin} butClass="bg-red-700" butext="Sell"/>
+            <BuyMarketCard coin={coin} butClass="bg-green-700" butext="Buy" img={singlecoin?.img}/>
+            <BuyMarketCard coin={coin} butClass="bg-red-700" butext="Sell" img={singlecoin?.img}/>
           </div>
         </div>  
         <div className="pb-4">

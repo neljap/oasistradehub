@@ -1,5 +1,5 @@
 import { useContext } from "react"
-// import { useAppSelector } from "../../../../app/hook"
+import { TbLockDollar } from "react-icons/tb";
 import { AuthContext } from "../../../../app/AuthContext"
 
 
@@ -11,7 +11,7 @@ const MyStakes = () => {
 
   let stakes = data?.staked
    const renderedStakes = stakes?.map((take :any) => (
-    <div className="grid grid-cols-4 md:grid-cols-6 justify-start items-center gap-4 rounded-lg shadow w-full py-2 px-2" key={take.id}>
+    <div className="grid grid-cols-4 md:grid-cols-8 justify-start items-center gap-4 rounded-lg shadow w-full py-2 px-2" key={take.id}>
     <div className="flex items-center gap-2">
       <div><img src={take.img} alt="" className="w-8 h-8" /></div>
       <p className="font-[500]">{take.asset}</p>
@@ -29,13 +29,19 @@ const MyStakes = () => {
     <p className="font-[500]">{take.totalreturn}</p>
     </div>
     <div>
-    <p className="font-[500]">{take.status}</p>
+    <p className="font-[500] flex gap-1 items-center"><p>{take.status}</p> <TbLockDollar className="" /></p>
+    </div>
+    <div>
+    <p className="font-[500]">{take.startdate}</p>
+    </div>
+    <div>
+    <p className="font-[500]">{take.enddate}</p>
     </div>
   </div>
    ))
   return (
     <div className="py-4">
-        <div className="grid grid-cols-4 md:grid-cols-6 justify-start items-center gap-4 bg-neutral-200 rounded-lg shadow w-full py-2 px-2">
+        <div className="grid grid-cols-4 md:grid-cols-8 justify-start items-center gap-4 bg-neutral-200 rounded-lg shadow w-full py-2 px-2">
           <div>
             <p className="font-[500]">Staked Asset</p>
           </div>
@@ -53,6 +59,12 @@ const MyStakes = () => {
           </div>
           <div>
           <p className="font-[500]">Status</p>
+          </div>
+          <div>
+          <p className="font-[500]">Start Date</p>
+          </div>
+          <div>
+          <p className="font-[500]">End Date</p>
           </div>
         </div>
         {renderedStakes}

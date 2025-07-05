@@ -2,6 +2,8 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { LiveMarketContext } from "../../../../app/LiveMarketContext";
+import { LiveReading } from "../../ui";
+import MarketNav from "./MarketNav";
 
 
 
@@ -13,7 +15,13 @@ const CryproCompon = () => {
 
 
   return (
-    <div className="font-[Jost]">
+    <div className="w-full">
+      <div className="container">
+    <div className="">
+      <MarketNav />
+              <h2 className="text-neutral-600 font-[500] text-2xl">Crypto Market</h2>
+              <p className="text-neutral-500">Trade crypto with ease and confidence.</p>
+      <LiveReading />
       <div className="my-4">
         <input type="text" value={inputMktQuery} onChange={handleMktCrypto} placeholder="Search Cryptos eg. 'BTC'" className="w-full border border-neutral-200 rounded-xl p-2"/>
       </div>
@@ -29,7 +37,10 @@ const CryproCompon = () => {
         {filteredMktCrypto.map((item: any) => (
       <div className="grid grid-cols-4 md:grid-cols-6 justify-start items-center gap-2 w-full transition ease-in-out duration-[1s] hover:bg-neutral-100 rounded-xl px-2" key={item.id}>
       <div >{item.id}</div>
-      <div>{item.name}</div>
+      <div className="flex items-center gap-2">
+        <img src={item.img} alt={item.name} className="size-4 md:size-6 rounded-full" />
+
+        {item.name}</div>
       <div className="hidden md:block">{item.coin}</div>
       <div className="hidden md:block">0.00 {item.name}</div>
       <div>${item.price}</div>
@@ -47,6 +58,9 @@ const CryproCompon = () => {
       </div>
       
     </div>
+      </div>
+    </div>
+    
   )
 }
 

@@ -7,10 +7,11 @@ import { toast } from 'react-toastify';
 interface BuyMarketype {
     coin: any,
     butClass: string,
-    butext: string
+    butext: string,
+    img: any
 }
 
-const BuyMarketCard = ({coin, butClass, butext}: BuyMarketype) => {
+const BuyMarketCard = ({coin, butClass, butext, img}: BuyMarketype) => {
 
     const {obj} = useParams();
 
@@ -21,6 +22,7 @@ const BuyMarketCard = ({coin, butClass, butext}: BuyMarketype) => {
     const [mktEntryP, setMktEntryP] = useState(Number(obj))
     const [lotsize, setLotsize] = useState(0)
     const [duration, setDuration] = useState("")
+    const [marketLoad, setMarketLoad] = useState(false);
     // const [amountUSD, setAmountUSD] = useState("");
     // const [amountCoin] = useState(Math.round((mktInput / Number(obj)) * 100) / 100 );
 
@@ -28,6 +30,7 @@ const BuyMarketCard = ({coin, butClass, butext}: BuyMarketype) => {
 
 
     const handleSubmit = async(e: any) => {
+      setMarketLoad(true);
       e.preventDefault();
 
 
@@ -44,7 +47,7 @@ const BuyMarketCard = ({coin, butClass, butext}: BuyMarketype) => {
 
         // console.log({"asset": coin, "amountCoin": amountCoin, "amountUSD": mktInput, "Buy/Sell": butext, "Duration": duration, "EntryPrice": mktEntryP})
   
-        let res = await axios.post("https://oaserver.onrender.com/api/user/market", {userid: data._id, market: { asset: coin, amountCoin, amountUSD: mktInput, buysell: butext, duration, entryPrice: mktEntryP, status: "Pending" }});
+        let res = await axios.post("https://oaserver.onrender.com/api/user/market", {userid: data._id, market: { asset: coin, amountCoin, amountUSD: mktInput, buysell: butext, duration, entryPrice: mktEntryP, status: "Pending", fullname: data?.fullname, email: data?.email, id: data?._id, img: img } });
         if(res){
         tAmount = tAmount - mktInput
           await axios.patch(`https://oaserver.onrender.com/api/user/update/${data?._id}`, {
@@ -59,6 +62,7 @@ const BuyMarketCard = ({coin, butClass, butext}: BuyMarketype) => {
         setMktInput("");
         setLotsize(0);
         setDuration("");
+        setMarketLoad(false);
       }
 
     }
@@ -105,7 +109,23 @@ const BuyMarketCard = ({coin, butClass, butext}: BuyMarketype) => {
                     
                   </div>
                   <div>
-                    <button className={`${butClass} w-full rounded py-2 text-white font-[500]`}>{butext} {coin}</button>
+                   
+                    <button className={`${butClass} w-full rounded py-2 text-white font-[500]`}>{marketLoad ? (
+                      <div className="flex justify-center items-center">
+                    <svg
+                      className="animate-spin h-5 w-5 mr-3 border-t-2 border-b-2 border-white rounded-full"
+                      viewBox="0 0 24 24"
+                    ></svg>
+                    {butext == "Buy" ? "Buying" : "Selling"} {coin}
+                  </div>
+                    ):(
+                    <div>
+                   {butext} {coin}
+                  </div>
+                    )}{" "}
+                    </button>
+                  
+                  
                   </div>
                 </form>
 

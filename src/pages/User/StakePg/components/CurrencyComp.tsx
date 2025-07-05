@@ -7,17 +7,19 @@ import { CurrencyStakePg } from "../../../../utils/AppData";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { AuthContext } from "../../../../app/AuthContext";
+import { addDays, format } from "date-fns";
 
 
 const CurrencyComp = () => {
   const [stakeOpen, setStakeOpen] = useState(false);
     const [stakeNum, setStakeNum] = useState(0);
     const [stakingdrop, setStakingdrop] = useState(false);
-    const [stakingSetNum] = useState(0);
+    const [stakingSetNum, setStakingSetNum] = useState(0);
+    const [stakeNuLoad, setStakeNuLoad] = useState(false);
     // const [sCardModal, setSCardModal] = useState(null);
     const [inputModal, 
       
-      // setInputModal
+      setInputModal
     ] = useState<any>(null);
 
     const {inputStkCurrency, handleStkCurrency, filteredStkCurrency} = useContext(StakeContext);
@@ -27,9 +29,8 @@ const CurrencyComp = () => {
     
     const singleStake =  CurrencyStakePg.find((item) => item.id == stakingSetNum);
 
-    // const handleStake = 
-    
-    async (e: any) => {
+    const handleStake = async (e: any) => {
+      setStakeNuLoad(true);
     e.preventDefault();
     let sAmount = inputModal;
     let sImg = singleStake?.icon
@@ -39,47 +40,33 @@ const CurrencyComp = () => {
 
     let sRPC =
       stakeNum == 1
-        ? Number(inputModal) * 1.05
+        ? Number(inputModal) * 1.2
+        : stakeNum == 2
+        ? Math.floor(((Number(inputModal) * 1.25) / 2) * 100) / 100
         : stakeNum == 3
-        ? Math.floor(((Number(inputModal) * 1.189) / 3) * 100) / 100
-        : stakeNum == 4
-        ? Math.floor(((Number(inputModal) * 1.296) / 4) * 100) / 100
+        ? Math.floor(((Number(inputModal) * 1.3) / 3) * 100) / 100
         : stakeNum == 6
-        ? Math.floor(((Number(inputModal) * 1.5282) / 6) * 100) / 100
-        : stakeNum == 8
-        ? Math.floor(((Number(inputModal) * 1.832) / 8) * 100) / 100
+        ? Math.floor(((Number(inputModal) * 1.4) / 6) * 100) / 100
         : stakeNum == 12
-        ? Math.floor(((Number(inputModal) * 2.4396) / 12) * 100) / 100
+        ? Math.floor(((Number(inputModal) * 1.6) / 12) * 100) / 100
         : 0;
     let sROI =
       stakeNum == 1
-        ? Number(inputModal) * 1.05
+        ? Number(inputModal) * 1.2
+        : stakeNum == 2
+        ? Math.floor(Number(inputModal) * 1.25 * 100) / 100
         : stakeNum == 3
-        ? Math.floor(Number(inputModal) * 1.189 * 100) / 100
-        : stakeNum == 4
-        ? Math.floor(Number(inputModal) * 1.296 * 100) / 100
+        ? Math.floor(Number(inputModal) * 1.3 * 100) / 100
         : stakeNum == 6
-        ? Math.floor(Number(inputModal) * 1.5282 * 100) / 100
-        : stakeNum == 8
-        ? Math.floor(Number(inputModal) * 1.832 * 100) / 100
+        ? Math.floor(Number(inputModal) * 1.4 * 100) / 100
         : stakeNum == 12
-        ? Math.floor(Number(inputModal) * 2.4396 * 100) / 100
+        ? Math.floor(Number(inputModal) * 1.6 * 100) / 100
         : 0;
 
     let staked = { sAmount, sSign, sCoin, sDuration, sROI, sRPC };
     
 
     try {
-      // const res = await axios.post(
-      //   "https://oaserver.onrender.com/api/user/staked",
-      //   { userid: data._id, staked }
-      // );
-      // console.log("res", res);
-      // if(allStakings.length > 0){
-      //  setAllStakings(allStakings.push(staked)) 
-      // }else{
-      //   setAllStakings([...allStakings, allStakings.push(staked)])
-      // }
       let img = sImg
       let asset = sSign;
       let amount = sAmount
@@ -89,11 +76,14 @@ const CurrencyComp = () => {
       let status = 'locked'
       console.log("staking", staked)
       let tAmount = data?.tAmount
+      let startdate = format(new Date(), "dd/MM/yyyy");
+      let enddate = format(addDays(new Date(), sDuration * 30), "dd/MM/yyyy");
+
       if(tAmount < inputModal){
         toast.info("Insufficient balance", {position: "bottom-left"})
         return;
       }
-      let res =  await axios.post("https://oaserver.onrender.com/api/user/staked", {userid: data?._id, stakes: {img, asset, amount, duration, returns, totalreturn, status}})
+      let res =  await axios.post("https://oaserver.onrender.com/api/user/staked", {userid: data?._id, stakes: {img, asset, amount, duration, returns, totalreturn, status, startdate, enddate}})
       if(res){
         tAmount = tAmount - inputModal
         await axios.patch(`https://oaserver.onrender.com/api/user/update/${data?._id}`, {
@@ -101,14 +91,12 @@ const CurrencyComp = () => {
       })
       toast.info("Staked", {position: "bottom-left"})
       }
-        
-
-      // dispatch(stakeAdded(asset,  amount, duration, returns, totalreturn, status ))
     } catch (error) {
       toast.error(`staked error: ${error}`, {position: "bottom-left"})
       console.log("error", error);
     } finally {
       setStakeOpen(false);
+      setStakeNuLoad(false);
     }
   };
   return (
@@ -139,7 +127,7 @@ const CurrencyComp = () => {
         </div>
         <div className="bg-neutral-200 rounded-lg px-2 py-1">
           <p>ROI</p>
-          <p>5% - 12%</p>
+          <p>20% - 60%</p>
         </div>
         <div className="bg-neutral-200 rounded-lg px-2 py-1">
           <p>Cycle</p>
@@ -147,7 +135,7 @@ const CurrencyComp = () => {
         </div>
         </div>
   
-          <button className="bg-primary w-full text-white py-3 rounded-xl" onClick={() => setStakeOpen(true)}>Stake {item.name}</button>
+          <button className="bg-primary w-full text-white py-3 rounded-xl" onClick={() => {{setStakeOpen(true); setStakingSetNum(item.id)}}}>Stake {item.name}</button>
         </div>
           
         </div>
@@ -174,18 +162,27 @@ const CurrencyComp = () => {
                     </div>
                   </div>
                   <div>
-                    <p className="font-[500]">1BTC ~ 83009</p>
+                    <p className="font-[500]">1{singleStake?.sign} ~ {Number(singleStake?.priceNum).toLocaleString()}</p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-1 items-start w-full">
-                  <label>Staking Amount (USD)</label>
-                  <input type="number" name="" id="" placeholder="Enter amount to stake" className="w-full p-2 rounded-lg" />
+                  <label className="font-[600] font-[Jost]">Staking Amount (USD)</label>
+                  <input type="number"
+                  value={inputModal}
+                  onChange={(e) => setInputModal(e.target.value)}
+                  name="" id="" placeholder="Enter amount to stake" className="w-full p-2 rounded-lg" />
                   <div className="flex flex-row items-center py-1 gap-2">
-                    <p className="text-sm font-[500]">Balance: 0.000BTC</p>
-                    <Link to="/" className="text-sm font-[500] py-1 px-2 rounded-lg bg-neutral-200">Deposit</Link>
+                    <p className="text-sm font-[500]">
+                      Balance:{" "}
+                    {Math.round(
+                      (inputModal / Number(singleStake?.priceNum)) * 1000
+                    ) / 1000}
+                    {singleStake?.sign}
+                      </p>
+                    <Link to="/user/deposit" className="text-sm font-[500] py-1 px-2 rounded-lg bg-neutral-200">Deposit</Link>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 justify-start items-start gap-3">
+                <div className="grid grid-cols-2 justify-start items-start gap-3 w-full">
                   <div className="relative">
                     <label className="text-sm font-[500]">Staking Duration</label>
                     <div className="flex flex-row gap-3 justify-between items-center p-2 rounded-lg border border-neutral-800 cursor-pointer" onClick={() => setStakingdrop(!stakingdrop)}>
@@ -194,39 +191,164 @@ const CurrencyComp = () => {
                     </div>
                     {stakingdrop && (
                      <div className="flex flex-col gap-1 absolute w-full border border-neutral-800 rounded-lg bg-[#f1f1f1] dark:bg-[#1f2937] top-16 shadow-lg p-1">
-                      <button className="w-full hover:bg-neutral-300 rounded-lg p-1 text-sm" value={1} onClick={() => setStakeNum(1)}>1 months</button>
-                      <button className="w-full hover:bg-neutral-300 rounded-lg p-1 text-sm" value={3} onClick={() => setStakeNum(3)}>3 months</button>
-                      <button className="w-full hover:bg-neutral-300 rounded-lg p-1 text-sm">4 months</button>
-                      <button className="w-full hover:bg-neutral-300 rounded-lg p-1 text-sm">6 months</button>
-                      <button className="w-full hover:bg-neutral-300 rounded-lg p-1 text-sm">8 months</button>
-                      <button className="w-full hover:bg-neutral-300 rounded-lg p-1 text-sm">12 months</button>
+                      <button
+                        className="w-full hover:bg-neutral-300 rounded-lg p-1 text-sm"
+                        onClick={() => {
+                          setStakeNum(1), setStakingdrop(false);
+                        }}
+                      >
+                        1 months
+                      </button>
+                      <button
+                        className="w-full hover:bg-neutral-300 rounded-lg p-1 text-sm"
+                        onClick={() => {
+                          setStakeNum(2), setStakingdrop(false);
+                        }}
+                      >
+                        2 months
+                      </button>
+                      <button
+                        className="w-full hover:bg-neutral-300 rounded-lg p-1 text-sm"
+                        onClick={() => {
+                          setStakeNum(3), setStakingdrop(false);
+                        }}
+                      >
+                        3 months
+                      </button>
+                      <button
+                        className="w-full hover:bg-neutral-300 rounded-lg p-1 text-sm"
+                        onClick={() => {
+                          setStakeNum(6), setStakingdrop(false);
+                        }}
+                      >
+                        6 months
+                      </button>
+                      <button
+                        className="w-full hover:bg-neutral-300 rounded-lg p-1 text-sm"
+                        onClick={() => {
+                          setStakeNum(12), setStakingdrop(false);
+                        }}
+                      >
+                        12 months
+                      </button>
                     </div> 
                     )}
                     
                   </div>
                   <div className="flex flex-col gap-1">
                     <label className="text-sm font-[500]">Return per cycle</label>
-                    <input type="text" placeholder="0 per months" className="w-full p-2 rounded-lg border border-neutral-600" />
+                    <div className="w-full p-2 rounded-lg border border-neutral-600 cursor-pointer">
+                    {" "}
+                    {stakeNum == 1
+                      ? Number(inputModal) * 1.2
+                      : stakeNum == 2
+                      ? Math.floor(((Number(inputModal) * 1.25  ) / 2) * 100) /
+                        100
+                      : stakeNum == 3
+                      ? Math.floor(((Number(inputModal) * 1.3) / 3) * 100) /
+                        100
+                      : stakeNum == 6
+                      ? Math.floor(((Number(inputModal) * 1.4) / 6) * 100) /
+                        100
+                      : stakeNum == 12
+                      ? Math.floor(((Number(inputModal) * 1.6) / 12) * 100) /
+                        100
+                      : 0}{" "}
+                    per months
+                  </div>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 justify-start items-start gap-3">
-                    <div>
+                <div className="grid grid-cols-2 justify-start items-start gap-3 w-full">
+                    <div className="w-full">
                       <label className="text-sm font-[500]">ROI (USD)</label>
-                      <input type="text" placeholder="0 per months" className="w-full p-2 rounded-lg border border-neutral-600" />
+                      <div className="w-full p-2 rounded-lg border border-neutral-600 cursor-pointer">
+                    {stakeNum == 1
+                      ? Number(inputModal) * 1.2
+                      : stakeNum == 2
+                      ? Math.floor(Number(inputModal) * 1.25 * 100) / 100
+                      : stakeNum == 3
+                      ? Math.floor(Number(inputModal) * 1.3 * 100) / 100
+                      : stakeNum == 6
+                      ? Math.floor(Number(inputModal) * 1.4 * 100) / 100
+                      : stakeNum == 12
+                      ? Math.floor(Number(inputModal) * 1.6 * 100) / 100
+                      : 0}
+                  </div>
                     </div>
-                    <div>
-                      <label className="text-sm font-[500]">ROI (USD)</label>
-                      <input type="text" placeholder="0 per months" className="w-full p-2 rounded-lg border border-neutral-600" />
+                    <div className="w-full">
+                      <label className="text-sm font-[500]">Staking Equivalent</label>
+                      <div className="w-full p-2 rounded-lg border border-neutral-600 cursor-pointer">
+                    {Math.round(
+                      (inputModal / Number(singleStake?.priceNum)) * 1000
+                    ) / 1000}{" "}
+                    {singleStake?.sign}
+                  </div>
                     </div>
                 </div>
                 <div className="border border-neutral-800 p-2 rounded-lg">
-                  <p className="text-sm">Staking results in an estimated 0% RPC (Return Per Cycle) for BTC</p>
+                  <p className="text-sm">
+                    Staking results in an estimated{" "}
+                  <span className="font-[500]">
+                    {stakeNum == 1
+                      ? 20
+                      : stakeNum == 2
+                      ? 25
+                      : stakeNum == 3
+                      ? 30
+                      : stakeNum == 6
+                      ? 40
+                      : stakeNum == 12
+                      ? 60
+                      : 0}
+                    % RPC (Return Per Cycle)
+                  </span>{" "}
+                  for {singleStake?.sign}
+                    
+                    </p>
                 </div>
                 <div className="border border-neutral-800 p-2 rounded-lg">
-                  <p className="text-sm">Your staking period will end in 0 month(s). Your earning will be sent to your live BTC account</p>
+                  <p className="text-sm">
+                    Your staking period will end in{" "}
+                  <span className="font-[500]">
+                    {stakeNum == 1
+                      ? 1
+                      : stakeNum == 2
+                      ? 2
+                      : stakeNum == 3
+                      ? 3
+                      : stakeNum == 6
+                      ? 6
+                      : stakeNum == 12
+                      ? 12
+                      : 0}{" "}
+                    month(s).
+                  </span>{" "}
+                  Your earning will be sent to your live {singleStake?.sign}{" "}
+                  account
+                    
+                    </p>
                 </div>
   
-                  <button className="w-full rounded-lg bg-neutral-800 py-3 text-white font-[500]">Stake BTC</button>
+                  <button className="w-full rounded-lg bg-neutral-800 py-3 text-white font-[500]" onClick={handleStake}>
+                    
+                    {stakeNuLoad ? (
+                  <div className="flex justify-center items-center">
+                    <svg
+                      className="animate-spin h-5 w-5 mr-3 border-t-2 border-b-2 border-white rounded-full"
+                      viewBox="0 0 24 24"
+                    ></svg>
+                    Staking...
+                  </div>
+                ) : (
+                  <div>
+                    Stake{" "}
+                    {Math.round(
+                      (inputModal / Number(singleStake?.priceNum)) * 1000
+                    ) / 1000}{" "}
+                    {singleStake?.sign}
+                  </div>
+                )}{" "}
+                    </button>
   
                   {/* <p>Are you sure you want to Log Out?</p>
                   <div className='flex justify-between items-center px-8 gap-4'>

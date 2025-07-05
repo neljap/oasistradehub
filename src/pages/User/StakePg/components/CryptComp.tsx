@@ -9,6 +9,7 @@ import axios from "axios";
 // import axios from "axios";
 import { AuthContext } from "../../../../app/AuthContext";
 import { toast } from "react-toastify";
+import {format, addDays} from "date-fns";
 
 const CryptComp = () => {
   const [stakeOpen, setStakeOpen] = useState(false);
@@ -17,7 +18,7 @@ const CryptComp = () => {
   const [stakingSetNum, setStakingSetNum] = useState(0);
   // const [sCardModal, setSCardModal] = useState(null);
   const [inputModal, setInputModal] = useState<any>(null);
-  // const [stakeNuLoad, setStakeNuLoad] = useState(false);
+  const [stakeNuLoad, setStakeNuLoad] = useState(false);
 
   const { inputStkCrypto, handleStkCrypto, filteredStkCrypto } =
     useContext(StakeContext);
@@ -29,6 +30,7 @@ const CryptComp = () => {
   const singleStake = StakingData.find((item) => item.id == stakingSetNum);
 
   const handleStake = async (e: any) => {
+    setStakeNuLoad(true);
     e.preventDefault();
     let sAmount = inputModal;
     let sImg = singleStake?.icon
@@ -38,47 +40,33 @@ const CryptComp = () => {
 
     let sRPC =
       stakeNum == 1
-        ? Number(inputModal) * 1.05
+        ? Number(inputModal) * 1.2
+        : stakeNum == 2
+        ? Math.floor(((Number(inputModal) * 1.25) / 2) * 100) / 100
         : stakeNum == 3
-        ? Math.floor(((Number(inputModal) * 1.189) / 3) * 100) / 100
-        : stakeNum == 4
-        ? Math.floor(((Number(inputModal) * 1.296) / 4) * 100) / 100
+        ? Math.floor(((Number(inputModal) * 1.3) / 3) * 100) / 100
         : stakeNum == 6
-        ? Math.floor(((Number(inputModal) * 1.5282) / 6) * 100) / 100
-        : stakeNum == 8
-        ? Math.floor(((Number(inputModal) * 1.832) / 8) * 100) / 100
+        ? Math.floor(((Number(inputModal) * 1.4) / 6) * 100) / 100
         : stakeNum == 12
-        ? Math.floor(((Number(inputModal) * 2.4396) / 12) * 100) / 100
+        ? Math.floor(((Number(inputModal) * 1.6) / 12) * 100) / 100
         : 0;
     let sROI =
       stakeNum == 1
-        ? Number(inputModal) * 1.05
+        ? Number(inputModal) * 1.2
+        : stakeNum == 2
+        ? Math.floor(Number(inputModal) * 1.25 * 100) / 100
         : stakeNum == 3
-        ? Math.floor(Number(inputModal) * 1.189 * 100) / 100
-        : stakeNum == 4
-        ? Math.floor(Number(inputModal) * 1.296 * 100) / 100
+        ? Math.floor(Number(inputModal) * 1.3 * 100) / 100
         : stakeNum == 6
-        ? Math.floor(Number(inputModal) * 1.5282 * 100) / 100
-        : stakeNum == 8
-        ? Math.floor(Number(inputModal) * 1.832 * 100) / 100
+        ? Math.floor(Number(inputModal) * 1.4 * 100) / 100
         : stakeNum == 12
-        ? Math.floor(Number(inputModal) * 2.4396 * 100) / 100
+        ? Math.floor(Number(inputModal) * 1.6 * 100) / 100
         : 0;
 
     let staked = { sAmount, sSign, sCoin, sDuration, sROI, sRPC };
     
 
     try {
-      // const res = await axios.post(
-      //   "https://oaserver.onrender.com/api/user/staked",
-      //   { userid: data._id, staked }
-      // );
-      // console.log("res", res);
-      // if(allStakings.length > 0){
-      //  setAllStakings(allStakings.push(staked)) 
-      // }else{
-      //   setAllStakings([...allStakings, allStakings.push(staked)])
-      // }
       let img = sImg
       let asset = sSign;
       let amount = sAmount
@@ -88,11 +76,13 @@ const CryptComp = () => {
       let status = 'locked'
       console.log("staking", staked)
       let tAmount = data?.tAmount
+      let startdate = format (new Date(), "dd/MM/yyyy")
+      let enddate = format(addDays(new Date(), 30 * sDuration), "dd/MM/yyyy")
       if(tAmount < inputModal){
         toast.info("Insufficient balance", {position: "bottom-left"})
         return;
       }
-      let res =  await axios.post("https://oaserver.onrender.com/api/user/staked", {userid: data?._id, stakes: {img, asset, amount, duration, returns, totalreturn, status}})
+      let res =  await axios.post("https://oaserver.onrender.com/api/user/staked", {userid: data?._id, stakes: {img, asset, amount, duration, returns, totalreturn, status, startdate, enddate}})
       if(res){
         tAmount = tAmount - inputModal
         await axios.patch(`https://oaserver.onrender.com/api/user/update/${data?._id}`, {
@@ -108,11 +98,12 @@ const CryptComp = () => {
       console.log("error", error);
     } finally {
       setStakeOpen(false);
+      setStakeNuLoad(false);
     }
   };
 
   return (
-    <div>
+    <div className="pb-6 md:pb-12">
       <div className="my-4">
         <input
           type="text"
@@ -131,7 +122,7 @@ const CryptComp = () => {
                   <img src={item.icon} alt="" className="w-12" />
                   <div>
                     <p className="font-[500]">{item.coin}</p>
-                    <p>{item.sign}</p>
+                    <p className="font-[400] text-sm text-neutral-700">{item.sign}</p>
                   </div>
                 </div>
                 <div className="bg-neutral-200 py-1 px-2 rounded-lg">
@@ -145,7 +136,7 @@ const CryptComp = () => {
                 </div>
                 <div className="bg-neutral-200 rounded-lg px-2 py-1">
                   <p>ROI</p>
-                  <p>{item.roi}</p>
+                  <p>20% - 60%</p>
                 </div>
                 <div className="bg-neutral-200 rounded-lg px-2 py-1">
                   <p>Cycle</p>
@@ -188,11 +179,11 @@ const CryptComp = () => {
                   </div>
                 </div>
                 <div>
-                  <p className="font-[500]">1BTC ~ {singleStake?.priceNum}</p>
+                  <p className="font-[500]">1{singleStake?.sign} ~ ${Number(singleStake?.priceNum).toLocaleString()}</p>
                 </div>
               </div>
               <div className="flex flex-col gap-1 items-start w-full">
-                <label>Staking Amount (USD)</label>
+                <label className="font-[600] font-[Jost]">Staking Amount (USD)</label>
                 <input
                   type="number"
                   value={inputModal}
@@ -211,7 +202,7 @@ const CryptComp = () => {
                     {singleStake?.sign}
                   </p>
                   <Link
-                    to="/"
+                    to="/user/deposit"
                     className="text-sm font-[500] py-1 px-2 rounded-lg bg-neutral-200"
                   >
                     Deposit
@@ -245,6 +236,14 @@ const CryptComp = () => {
                       <button
                         className="w-full hover:bg-neutral-300 rounded-lg p-1 text-sm"
                         onClick={() => {
+                          setStakeNum(2), setStakingdrop(false);
+                        }}
+                      >
+                        2 months
+                      </button>
+                      <button
+                        className="w-full hover:bg-neutral-300 rounded-lg p-1 text-sm"
+                        onClick={() => {
                           setStakeNum(3), setStakingdrop(false);
                         }}
                       >
@@ -253,26 +252,10 @@ const CryptComp = () => {
                       <button
                         className="w-full hover:bg-neutral-300 rounded-lg p-1 text-sm"
                         onClick={() => {
-                          setStakeNum(4), setStakingdrop(false);
-                        }}
-                      >
-                        4 months
-                      </button>
-                      <button
-                        className="w-full hover:bg-neutral-300 rounded-lg p-1 text-sm"
-                        onClick={() => {
                           setStakeNum(6), setStakingdrop(false);
                         }}
                       >
                         6 months
-                      </button>
-                      <button
-                        className="w-full hover:bg-neutral-300 rounded-lg p-1 text-sm"
-                        onClick={() => {
-                          setStakeNum(8), setStakingdrop(false);
-                        }}
-                      >
-                        8 months
                       </button>
                       <button
                         className="w-full hover:bg-neutral-300 rounded-lg p-1 text-sm"
@@ -290,21 +273,18 @@ const CryptComp = () => {
                   <div className="w-full p-2 rounded-lg border border-neutral-600 cursor-pointer">
                     {" "}
                     {stakeNum == 1
-                      ? Number(inputModal) * 1.05
-                      : stakeNum == 3
-                      ? Math.floor(((Number(inputModal) * 1.189) / 3) * 100) /
+                      ? Number(inputModal) * 1.2
+                      : stakeNum == 2
+                      ? Math.floor(((Number(inputModal) * 1.25  ) / 2) * 100) /
                         100
-                      : stakeNum == 4
-                      ? Math.floor(((Number(inputModal) * 1.296) / 4) * 100) /
+                      : stakeNum == 3
+                      ? Math.floor(((Number(inputModal) * 1.3) / 3) * 100) /
                         100
                       : stakeNum == 6
-                      ? Math.floor(((Number(inputModal) * 1.5282) / 6) * 100) /
-                        100
-                      : stakeNum == 8
-                      ? Math.floor(((Number(inputModal) * 1.832) / 8) * 100) /
+                      ? Math.floor(((Number(inputModal) * 1.4) / 6) * 100) /
                         100
                       : stakeNum == 12
-                      ? Math.floor(((Number(inputModal) * 2.4396) / 12) * 100) /
+                      ? Math.floor(((Number(inputModal) * 1.6) / 12) * 100) /
                         100
                       : 0}{" "}
                     per months
@@ -316,17 +296,15 @@ const CryptComp = () => {
                   <label className="text-sm font-[500]">ROI (USD)</label>
                   <div className="w-full p-2 rounded-lg border border-neutral-600 cursor-pointer">
                     {stakeNum == 1
-                      ? Number(inputModal) * 1.05
+                      ? Number(inputModal) * 1.2
+                      : stakeNum == 2
+                      ? Math.floor(Number(inputModal) * 1.25 * 100) / 100
                       : stakeNum == 3
-                      ? Math.floor(Number(inputModal) * 1.189 * 100) / 100
-                      : stakeNum == 4
-                      ? Math.floor(Number(inputModal) * 1.296 * 100) / 100
+                      ? Math.floor(Number(inputModal) * 1.3 * 100) / 100
                       : stakeNum == 6
-                      ? Math.floor(Number(inputModal) * 1.5282 * 100) / 100
-                      : stakeNum == 8
-                      ? Math.floor(Number(inputModal) * 1.832 * 100) / 100
+                      ? Math.floor(Number(inputModal) * 1.4 * 100) / 100
                       : stakeNum == 12
-                      ? Math.floor(Number(inputModal) * 2.4396 * 100) / 100
+                      ? Math.floor(Number(inputModal) * 1.6 * 100) / 100
                       : 0}
                   </div>
                 </div>
@@ -347,17 +325,15 @@ const CryptComp = () => {
                   Staking results in an estimated{" "}
                   <span className="font-[500]">
                     {stakeNum == 1
-                      ? 5
+                      ? 20
+                      : stakeNum == 2
+                      ? 25
                       : stakeNum == 3
-                      ? 6.2
-                      : stakeNum == 4
-                      ? 7.4
+                      ? 30
                       : stakeNum == 6
-                      ? 8.8
-                      : stakeNum == 8
-                      ? 10.4
+                      ? 40
                       : stakeNum == 12
-                      ? 12
+                      ? 60
                       : 0}
                     % RPC (Return Per Cycle)
                   </span>{" "}
@@ -370,14 +346,12 @@ const CryptComp = () => {
                   <span className="font-[500]">
                     {stakeNum == 1
                       ? 1
+                      : stakeNum == 2
+                      ? 2
                       : stakeNum == 3
                       ? 3
-                      : stakeNum == 4
-                      ? 4
                       : stakeNum == 6
                       ? 6
-                      : stakeNum == 8
-                      ? 8
                       : stakeNum == 12
                       ? 12
                       : 0}{" "}
@@ -392,11 +366,24 @@ const CryptComp = () => {
                 className="w-full rounded-lg bg-neutral-800 py-3 text-white font-[500]"
                 onClick={handleStake}
               >
-                Stake{" "}
-                {Math.round(
-                  (inputModal / Number(singleStake?.priceNum)) * 1000
-                ) / 1000}{" "}
-                {singleStake?.coin}
+                {stakeNuLoad ? (
+                  <div className="flex justify-center items-center">
+                    <svg
+                      className="animate-spin h-5 w-5 mr-3 border-t-2 border-b-2 border-white rounded-full"
+                      viewBox="0 0 24 24"
+                    ></svg>
+                    Staking...
+                  </div>
+                ) : (
+                  <div>
+                    Stake{" "}
+                    {Math.round(
+                      (inputModal / Number(singleStake?.priceNum)) * 1000
+                    ) / 1000}{" "}
+                    {singleStake?.sign}
+                  </div>
+                )}{" "}
+               
               </button>
             </div>
           </div>

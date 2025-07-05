@@ -5,3 +5,4 @@ export {default as StockCompon} from "./StockCompon";
 export {default as StockTdChart} from "./StockTdChart";
 export {default as ForexTdChart} from "./ForexTdChart";
 export {default as BuyMarketCard} from "./BuyMarketCard";
+export {default as MarketNav} from "./MarketNav";

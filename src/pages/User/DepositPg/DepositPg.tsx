@@ -8,13 +8,11 @@ import {
   // curplanImg,
   ETHCoin,
   paypalImg,
-  planbonusImg,
   USDTCoin,
   venmoImg,
   zelleImg,
 } from "../../../assets";
-import { LiveReading } from "../ui";
-import { Link } from "react-router-dom";
+import { CurrentPlanCard, LiveReading } from "../ui";
 import { RiSecurePaymentFill } from "react-icons/ri";
 import { GiBanknote } from "react-icons/gi";
 import { PiCoinsFill } from "react-icons/pi";
@@ -171,46 +169,7 @@ const DepositPg = () => {
         </div>
 
         {/* Current Plan */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-start items-center">
-          <div className="w-full flex flex-row justify-between items-center border border-neutral-200 shadow rounded-lg py-4 px-4">
-            <div className="flex flex-row gap-4 items-center">
-              <div className="bg-neutral-200 rounded-full p-2">
-                <img
-                  src="https://res.cloudinary.com/dr6a80sph/image/upload/v1744201966/te8p7hiijaxoaiu1aven.png"
-                  alt=""
-                  className="w-8"
-                />
-              </div>
-              <div>
-                <p className="text-sm">Current Plan</p>{" "}
-                <p className="font-[500]">No Plan</p>
-              </div>
-            </div>
-
-            <div>
-              <Link to="/user/subscriptions">
-                <button className="py-2 px-4 rounded-xl hover:bg-primary hover:text-white transition-all ease-in-out duration-[1s] text-primary bg-primary bg-opacity-20">
-                  Purchase Plan
-                </button>
-              </Link>
-            </div>
-          </div>
-          <div className="w-full flex flex-row justify-between items-center border border-neutral-200 shadow rounded-lg py-4 px-4">
-            <div className="flex flex-row gap-4 items-center">
-              <div className="bg-neutral-200 rounded-full p-2">
-                <img src={planbonusImg} alt="" className="w-8" />
-              </div>
-              <div>
-                <p className="text-sm">Plan Bonus</p>{" "}
-                <p className="font-[500]">$0</p>
-              </div>
-            </div>
-
-            <div>
-              {/* <button className="py-2 px-4 rounded-xl text-primary bg-primary bg-opacity-20">Purchase Plan</button> */}
-            </div>
-          </div>
-        </div>
+        <CurrentPlanCard />
         <div className="flex flex-col gap-4 py-8">
           {/* Crypto */}
           <>

@@ -4,8 +4,7 @@ import { CurrentPlanCard } from "../ui"
 import { SubscribeData } from "../../../utils/SubscriptData"
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../../app/AuthContext"
-// import { toast } from "react-toastify"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 
 const SubscriptionPg = () => {
@@ -19,6 +18,8 @@ const SubscriptionPg = () => {
     // setInsufficient
   
   ] = useState(false);
+
+  const navigate = useNavigate()
 
 
   // const {data} = 
@@ -101,7 +102,7 @@ useEffect(() => {
               
             </div>
             <div className="flex flex-row justify-center items-center">
-              <button className="bg-[#7f57f3] transition-all ease-in-out duration-[1s] hover:bg-opacity-20 border hover:border-primary hover:text-[#7f57f3] px-4 py-2 rounded-full mx-auto text-white font-[600]">Purchase Plan</button>
+              <button className="bg-[#7f57f3] transition-all ease-in-out duration-[1s] hover:bg-opacity-20 border hover:border-primary hover:text-[#7f57f3] px-4 py-2 rounded-full mx-auto text-white font-[600]" onClick={() => navigate("/user/deposit")}>Purchase Plan</button>
             </div>
             
             {insufficient &&  <p className="font-[Jost] text-red-500 font-[600]">Insufficient Balance, <Link to="/user/deposit">Deposit Now</Link></p> }

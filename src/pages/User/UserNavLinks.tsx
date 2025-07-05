@@ -208,73 +208,11 @@ const UserNavLinks = ({ children }: any) => {
         </div>
         
         <div className="flex flex-row items-center gap-4">
-          {/* <div className="relative group">
-            <div
-              className="shadow group px-2 md:px-3 py-1 md:py-2 rounded-lg cursor-pointer border border-neutral-500 hidden md:flex flex-row gap-3"
-              onClick={() => setFigModal(!figModal)}
-            >
-              {figValue == 1 ? (
-                <img src={USDTCoin} alt="" />
-              ) : figValue == 2 ? (
-                <img src={BTCoin} alt="" />
-              ) : figValue == 3 ? (
-                <img src={ETHCoin} alt="" />
-              ) : (
-                <img src={ADACoin} alt="" />
-              )}
-
-              <p>0</p>
-            </div>
-                <div
-                  className="absolute top-12 hidden group-hover:block max-w-fit rounded-lg border border-neutral-400 shadow-lg z-20 p-2 md:p-4 bg-white dark:bg-black dark:text-white"
-                  onClick={() => setFigModal(!figModal)}
-                >
-                  <button
-                    className="flex flex-row gap-1 items-start max-w-fit px-4"
-                    onClick={() => setFigValue(1)}
-                  >
-                    <div>
-                      {figValue == 1 ? (
-                        <FaMarker color="black" />
-                      ) : (
-                        <div className="px-2"></div>
-                      )}
-                    </div>
-                    <img src={USDTCoin} alt="" />
-                    <p className="font-[500]">0</p>
-                  </button>
-                  <button
-                    className="flex flex-row gap-1 items-start py-1 px-8 hover:bg-neutral-200 rounded-lg w-fit"
-                    onClick={() => setFigValue(2)}
-                  >
-                    <div className="float-left">{figValue == 2 && <FaMarker color="black" />}</div>
-
-                    <img src={BTCoin} alt="" />
-                    <p className="font-[500]">0.00000</p>
-                  </button>
-                  <button
-                    className="flex flex-row gap-1 items-start py-1 px-8 hover:bg-neutral-200 rounded-lg w-fit"
-                    onClick={() => setFigValue(3)}
-                  >
-                    <div>{figValue == 3 && <FaMarker color="black" />}</div>
-                    <img src={ETHCoin} alt="" />
-                    <p className="font-[500]">0.00000</p>
-                  </button>
-                  <button
-                    className="flex flex-row gap-1 items-start py-1 px-8 hover:bg-neutral-200 rounded-lg w-fit"
-                    onClick={() => setFigValue(4)}
-                  >
-                    <div>{figValue == 4 && <FaMarker color="black" />}</div>
-                    <img src={ADACoin} alt="" />
-                    <p className="font-[500]">0.00000</p>
-                  </button>
-                </div>
-          </div> */}
           <div className="flex flex-row items-center gap-2">
             <div className="text-primary bg-primary bg-opacity-5 rounded-full p-2">
               <MdAccountBalanceWallet size={24}/>
             </div>
-            <p className="font-[600] font-[Jost]">Account Balance: ${data ? Number(data?.tAmount).toLocaleString() : 0}</p>
+            <p className="font-[600] font-[Jost] flex items-center gap-1"><span className="hidden md:block">Account Balance:</span> ${data ? Number(data?.tAmount).toLocaleString() : 0}</p>
           </div>
           <div className="relative">
             <div className="absolute right-0 top-0">
