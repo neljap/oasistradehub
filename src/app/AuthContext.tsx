@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }: any) => {
         .then((res) => {
           setData(res?.data);
         })
-        .catch((err) => toast.error(err, {position: "bottom-left", className: "font-[Jost]"}));
+        .catch((err) => {toast.error(err, {position: "bottom-left", className: "font-[Jost]"}); throw new Error(err)});
     };
     getUserDetails();
   }, []);
