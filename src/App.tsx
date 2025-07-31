@@ -10,6 +10,9 @@ import { useEffect, useState } from "react";
 import { HiArrowNarrowUp } from "react-icons/hi";
 import { FaWhatsapp } from "react-icons/fa6";
 import "./App.css";
+import { Toaster } from "react-hot-toast";
+import ForgotPassword from "./pages/auth/forgot-password";
+import ResetPassword from "./pages/auth/reset-password";
 
 
 
@@ -72,8 +75,11 @@ function App() {
           <Route path="/" element={<HomePg />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/user/*" element={<UserPg />} />
         </Routes>
+        <Toaster />
         <ToastContainer />
       </div>
     )

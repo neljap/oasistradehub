@@ -233,7 +233,7 @@ export const MktCryptoData = [
     },{
         id: 8,
         name: "XRP",
-        coin: "XRP",
+        coin: "Ripple",
         value: 0.00,
         price: 0.50,
         obj: 0.1,

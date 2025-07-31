@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { StakeContext } from "../../../../app/StakeContext";
 import { FaAngleDown } from "react-icons/fa6";
 import { CurrencyStakePg } from "../../../../utils/AppData";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import axios from "axios";
 import { AuthContext } from "../../../../app/AuthContext";
 import { addDays, format } from "date-fns";
@@ -80,7 +80,7 @@ const CurrencyComp = () => {
       let enddate = format(addDays(new Date(), sDuration * 30), "dd/MM/yyyy");
 
       if(tAmount < inputModal){
-        toast.info("Insufficient balance", {position: "bottom-left"})
+        toast.error("Insufficient balance", {position: "bottom-left", className: "font-[Jost]"})
         return;
       }
       let res =  await axios.post("https://oaserver.onrender.com/api/user/staked", {userid: data?._id, stakes: {img, asset, amount, duration, returns, totalreturn, status, startdate, enddate}})
@@ -89,10 +89,10 @@ const CurrencyComp = () => {
         await axios.patch(`https://oaserver.onrender.com/api/user/update/${data?._id}`, {
         tAmount,
       })
-      toast.info("Staked", {position: "bottom-left"})
+      toast.success("Staked", {position: "bottom-left", className: "font-[Jost]"})
       }
     } catch (error) {
-      toast.error(`staked error: ${error}`, {position: "bottom-left"})
+      toast.error(`staked error: ${error}`, {position: "bottom-left", className: "font-[Jost]"})
       console.log("error", error);
     } finally {
       setStakeOpen(false);
@@ -107,29 +107,29 @@ const CurrencyComp = () => {
        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-6">
     {filteredStkCurrency.map((item: any) => (
         <div className="" key={item.id}>
-        <div className="border border-neutral-400 rounded-xl bg-neutral-50 p-4 flex flex-col gap-3 shadow">
+        <div className="border border-neutral-100 dark:border-neutral-700 rounded-xl bg-neutral-100 dark:bg-[#2a3042]  p-4 flex flex-col gap-3 shadow">
         <div className="flex flex-row justify-between items-center">
           <div className="flex flex-row gap-2">
             <img src={item.icon} alt="" className="w-12" />
             <div>
               <p className="font-[500]">{item.name}</p>
-              <p className="font-[400] text-sm text-neutral-700">{item.sign}</p>
+              <p className="font-[400] text-sm text-neutral-700 dark:text-neutral-100">{item.sign}</p>
             </div>
           </div>
-          <div className="bg-neutral-200 py-1 px-2 rounded-lg">
+          <div className="bg-neutral-200 dark:bg-[#20232d] py-1 px-2 rounded-lg shadow">
             <p className="font-[500]">$</p>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-2">
-        <div className="bg-neutral-200 rounded-lg px-2 py-1">
+        <div className="bg-neutral-200 dark:bg-[#20232d] rounded-lg px-2 py-1">
           <p>Minium</p>
           <p>$100</p>
         </div>
-        <div className="bg-neutral-200 rounded-lg px-2 py-1">
+        <div className="bg-neutral-200 dark:bg-[#20232d] rounded-lg px-2 py-1">
           <p>ROI</p>
           <p>20% - 60%</p>
         </div>
-        <div className="bg-neutral-200 rounded-lg px-2 py-1">
+        <div className="bg-neutral-200 dark:bg-[#20232d] rounded-lg px-2 py-1">
           <p>Cycle</p>
           <p>Monthly</p>
         </div>

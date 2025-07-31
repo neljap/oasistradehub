@@ -14,7 +14,7 @@ import {  czechflag, elonmuskimg, franceflag, germanyflag, jbravoimg,
   UsaFlag} from "../../../assets";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { AuthContext } from "../../../app/AuthContext";
 
 
@@ -224,11 +224,11 @@ try {
   console.log(singleTrader, "id")
   let res =  await axios.post("https://oaserver.onrender.com/api/user/copytrader", {userid: data?._id, copyTrader: singleTrader})
   if(res) {
-  toast.success("Trader copied successfully", {position: "bottom-left"})
+  toast.success("Trader copied successfully", {position: "bottom-left", className: "font-[Jost]"})
   } 
   
 } catch (error) {
-  toast.error("An Error Occurred", {position: "bottom-left"})
+  toast.error("An Error Occurred", {position: "bottom-left", className: "font-[Jost]"})
 }finally{
   setIsOpen(false);
   setTraderLoad(false);
@@ -249,7 +249,7 @@ try {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center items-center pt-4 pb-8">
               {filterTradPert.map((item: any) => (
-              <div className="rounded-xl border font-[Jost] border-neutral-200 px-2 py-4 mx-auto w-full" key={item.id}>
+              <div className="rounded-xl border font-[Jost] border-neutral-200 dark:border-neutral-700 dark:bg-[#2a3042] px-2 py-4 mx-auto w-full" key={item.id}>
                   <div className="flex flex-row justify-center items-center py-2">
                     <img src={item.img} alt="" className="rounded-full w-24 h-24" />
                   </div>

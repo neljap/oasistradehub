@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { AuthContext } from "../../../app/AuthContext";
 
 const SupportPg = () => {
@@ -26,10 +26,10 @@ const SupportPg = () => {
 
       const res = await axios.post("https://oaserver.onrender.com/api/user/support", {userid, subject, category, message})
       if(res){
-        toast.success("Received, Our team will get back to you, shortly", {position: "bottom-left"})
+        toast.success("Received, Our team will get back to you, shortly", {position: "bottom-left", className: "font-[Jost]"})
       }
     } catch (error) {
-      toast.error(`Support Error: ${error}`, {position: "bottom-left"})
+      toast.error(`Support Error: ${error}`, {position: "bottom-left", className: "font-[Jost]"})
     }finally{
       setSubLoading(false);
       setCategory("");
@@ -42,7 +42,7 @@ const SupportPg = () => {
     <div>
       <div className="container">
         <h2 className="text-center text-xl md:text-4xl py-4 font-[500]">Support</h2>
-        <form onSubmit={handleSupport} className="mx-auto w-full md:w-2/3 rounded-lg shadow flex flex-col gap-2 px-4 py-8">
+        <form onSubmit={handleSupport} className="mx-auto w-full md:w-2/3 rounded-lg shadow flex flex-col gap-2 px-4 py-8 dark:bg-[#2a3042] border border-neutral-200 dark:border-neutral-700 mb-8">
           <p className="font-[500] text-xl">Support Ticket</p>
           <div className="flex flex-col justify-start items-start gap-2">
             <label className="font-[500]">Subject</label>
@@ -56,7 +56,7 @@ const SupportPg = () => {
           </div>
           <div className="w-full">
           <div className="mb-4 ">
-            <label className="block text-gray-700 mb-2 font-[500]">Category</label>
+            <label className="block  mb-2 font-[500]">Category</label>
             <select id="gender" name="gender"
                 className="border cursor-pointer border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-neutral-200" required value={category} onChange={(e: any) => setCategory(e.target.value)}>
                 {catValue.map((item, index) => (

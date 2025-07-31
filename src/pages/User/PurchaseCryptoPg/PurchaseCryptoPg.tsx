@@ -44,7 +44,7 @@ const PurchaseCryptoPg = () => {
   return (
     <div>
         <div className="container">
-            <div className="grid grid-cols-1 md:grid-cols-3 justify-start items-center gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 py-4 justify-start items-center gap-8">
             {PurcryData.map((item) => (
               <PurCard key={item.id} name={item.name} link={item.link} color={item.color} img={item.img}/>
             ))}

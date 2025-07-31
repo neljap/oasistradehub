@@ -2,7 +2,7 @@ import axios from 'axios';
 import  { useContext, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../../../app/AuthContext';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 
 interface BuyMarketype {
     coin: any,
@@ -39,7 +39,7 @@ const BuyMarketCard = ({coin, butClass, butext, img}: BuyMarketype) => {
         let tAmount = data?.tAmount
 
         if(tAmount < mktInput){
-          toast.info("Insufficient balance", {position: "bottom-left"})
+          toast.error("Insufficient balance", {position: "bottom-left", className: "font-[Jost]"})
           return;
         }
 
@@ -53,10 +53,10 @@ const BuyMarketCard = ({coin, butClass, butext, img}: BuyMarketype) => {
           await axios.patch(`https://oaserver.onrender.com/api/user/update/${data?._id}`, {
         tAmount,
       })
-        toast.success("Trade Placed", {position: "bottom-left"})
+        toast.success("Trade Placed", {position: "bottom-left", className: "font-[Jost]"})
         }
       } catch (error: any) {
-        toast.error(`Error: ${error}`, {position: "bottom-left"})
+        toast.error(`Error: ${error}`, {position: "bottom-left", className: "font-[Jost]"})
         console.log("error", error)
       }finally{
         setMktInput("");

@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { authImag, authImg, HomeLogo } from "../../assets"
 import { useContext, useEffect, useState } from "react"
 // import ReCAPTCHA from "react-google-recaptcha";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { AiFillEyeInvisible } from "react-icons/ai";
@@ -16,7 +16,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   // const [recapState, setRecapState] = useState(null);
-  const [eyeVisiblePass, setEyeVisiblePass] = useState(false);
+  const [eyeVisiblePass, setEyeVisiblePass] = useState(true);
   const [formLoading, setFormLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -42,10 +42,10 @@ const LoginPage = () => {
         Cookies.set("token", res.data.token, { expires: 7 });
         navigate("/user/dashboard");
         window.location.reload();
-        toast.success("Login Successfully", { position: "bottom-left" });
+        toast.success("Login Successfully", { position: "bottom-left", className: "font-[Jost]" });
       })
       .catch((err) => {
-        toast.error(err.message, { position: "bottom-left" });
+        toast.error(err.message, { position: "bottom-left", className: "font-[Jost]" });
         setFormLoading(false);
       })
       .finally(() => setFormLoading(false));
@@ -67,7 +67,7 @@ const LoginPage = () => {
         <div>
 
         </div>
-       <div className="my-auto rounded bg-white dark:bg-[#222738] grid grid-cols-1 md:grid-cols-3 justify-center items-center ">
+       <div className="my-auto rounded bg-white dark:bg-[#222738] grid grid-cols-1 md:grid-cols-3 justify-center items-center shadow-lg">
             <div className="py-6 px-10 flex flex-col gap-3">
               <div className="flex flex-row items-center justify-between">
                 <Link to="/" className="flex flex-row items-center gap-1 md:gap-2">
@@ -93,9 +93,9 @@ const LoginPage = () => {
               </div>
               <div className="flex flex-col gap-1 py-2 relative">
                 <label className="font-[Jost] text-lg md:text-xl">Password</label>
-                <input type={eyeVisiblePass ? "text": "password"} placeholder="Enter your Password" className="w-full py-2 px-3 outline-none shadow dark:text-gray-50 appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <input type={eyeVisiblePass ? "password": "text"} placeholder="Enter your Password" className="w-full py-2 px-3 outline-none shadow dark:text-gray-50 appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" value={password} onChange={(e) => setPassword(e.target.value)}/>
                                 <div className="absolute cursor-pointer right-4 top-10" onClick={() => setEyeVisiblePass(!eyeVisiblePass)}>
-                                {eyeVisiblePass ? (<div>< IoEyeOutline size={28} /></div>) : (<div><AiFillEyeInvisible size={28}/></div>)}  
+                                {eyeVisiblePass ? (<div><AiFillEyeInvisible  size={28} /></div>) : (<div><IoEyeOutline size={28}/></div>)}  
                                 </div>
               </div>
               {/* <div className="flex flex-row justify-between items-center">
@@ -109,7 +109,11 @@ const LoginPage = () => {
               </form>
 
                 <div>
-                  <p className="font-[Jost] font-[600] pt-3">Forgot Password</p>
+                  <p className="font-[Jost] font-[600] pt-3">
+                    <Link to="/forgot-password">
+                    Forgot Password
+                    </Link>
+                    </p>
                 </div>
               {/* <div className="flex flex-row items-center">
               <hr /> 
@@ -123,9 +127,9 @@ const LoginPage = () => {
               
             </div>
             <div className="col-span-2 bg-[#3c39aa] py-6 hidden md:block">
-              <div className="w-1/2 mx-auto text-white text-center">
+              <div className="w-1/2 mx-auto text-white text-center flex flex-col gap-3">
               <p className="font-[500] text-2xl">Welcome to Oasis Trade Hub</p>
-              <p className="leading-5 font-[500]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia neque vero natus, laborum quisquam aliquam.</p>
+              <p className="leading-5 font-[500] text-sm">A secure and intuitive platform that provides real-time insights and intelligent tools to support both beginners and professionals in growing their portfolios and reaching financial freedom.</p>
               </div>
               
 

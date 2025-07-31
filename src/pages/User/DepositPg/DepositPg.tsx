@@ -16,7 +16,7 @@ import { CurrentPlanCard, LiveReading } from "../ui";
 import { RiSecurePaymentFill } from "react-icons/ri";
 import { GiBanknote } from "react-icons/gi";
 import { PiCoinsFill } from "react-icons/pi";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { BiSolidCloudUpload } from "react-icons/bi";
 import axios from "axios";
 import { AuthContext } from "../../../app/AuthContext";
@@ -99,7 +99,7 @@ const DepositPg = () => {
         }, 1500);
       })
       .catch((err) => {
-        toast.error(err, { position: "bottom-left" });
+        toast.error(err, { position: "bottom-left", className: "font-[Jost]" });
       });
   };
 
@@ -118,15 +118,16 @@ const DepositPg = () => {
       console.log("secure_url", secure_url)
       return secure_url;
     } catch (error: any) {
-      toast.error(error.code, { position: "bottom-left" });
+      toast.error(error.code, { position: "bottom-left", className: "font-[Jost]" });
     }
   };
 
   const uploadFile = async (e: any) => {
     e.preventDefault();
     if (!depRef) {
-      toast.info("Kindly Upload your Payment Receipt", {
+      toast.success("Kindly Upload your Payment Receipt", {
         position: "bottom-left",
+        className: "font-[Jost]"
       });
       return;
     }
@@ -136,8 +137,9 @@ const DepositPg = () => {
       const kycinfo = await preFile("image");
 
       if (!kycinfo || !data?._id) {
-        toast.info("Payment Receipt not uploaded, Kindly Upload", {
+        toast.success("Payment Receipt not uploaded, Kindly Upload", {
           position: "bottom-left",
+          className: "font-[Jost]"
         });
         return;
       } else {
@@ -147,10 +149,11 @@ const DepositPg = () => {
         });
         toast.success("Receipt Uploaded Successfully", {
           position: "bottom-left",
+          className: "font-[Jost]"
         });
       }
     } catch (error: any) {
-      toast.error(error.code, { position: "bottom-left" });
+      toast.error(error.code, { position: "bottom-left", className: "font-[Jost]" });
     } finally {
       setLoading(false);
       setDepRef("");
@@ -173,7 +176,7 @@ const DepositPg = () => {
         <div className="flex flex-col gap-4 py-8">
           {/* Crypto */}
           <>
-            <div className="rounded-lg shadow-lg">
+            <div className="rounded-lg shadow-lg bg-neutral-100 dark:bg-[#2a3042]">
               <div className="flex flex-col gap-4 pb-16 text-center p-8">
                 <div className="mx-auto">
                   <div className="flex flex-row items-center justify-center gap-2">
@@ -182,7 +185,7 @@ const DepositPg = () => {
                   </div>
                   <p className="font-[400]">Deposits Using Crypto</p>
                 </div>
-                <div className="relative">
+                <div className="relative ">
                   <div
                     className="w-full border border-neutral-600 hover:border-primary cursor-pointer px-2 py-2 rounded-lg"
                     onClick={() => setCrypOption(!crypOption)}
@@ -218,14 +221,14 @@ const DepositPg = () => {
                   </div>
                   {crypOption && (
                     <div
-                      className="absolute w-full top-14 left-0 bg-white rounded-lg shadow-lg flex flex-col items-start justify-start p-2 z-10"
+                      className="absolute dark:bg-[#2a3042] w-full top-14 left-0 bg-white rounded-lg shadow-lg flex flex-col items-start justify-start p-2 z-10"
                       onClick={() => setCrypOption(!crypOption)}
                     >
                       <div className="pl-3 text-start">
                         <p className="font-[500]">Recommendation</p>
                       </div>
                       <div
-                        className="py-2 pl-3 hover:bg-neutral-200 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
+                        className="py-2 pl-3 hover:bg-neutral-200 dark:hover:bg-neutral-700  w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
                         onClick={() => setCryptValue(1)}
                       >
                         {" "}
@@ -233,7 +236,7 @@ const DepositPg = () => {
                         <p className="font-[500]">Bitcoin</p>
                       </div>
                       <div
-                        className="py-2 pl-3 hover:bg-neutral-200 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
+                        className="py-2 pl-3 hover:bg-neutral-200 dark:hover:bg-neutral-700  w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
                         onClick={() => setCryptValue(2)}
                       >
                         {" "}
@@ -241,7 +244,7 @@ const DepositPg = () => {
                         <p className="font-[500]">Ethereum</p>
                       </div>
                       <div
-                        className="py-1 pl-3 hover:bg-neutral-200 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
+                        className="py-1 pl-3 hover:bg-neutral-200 dark:hover:bg-neutral-700  w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
                         onClick={() => setCryptValue(3)}
                       >
                         {" "}
@@ -249,7 +252,7 @@ const DepositPg = () => {
                         <p className="font-[500]">USDC TRC-20</p>
                       </div>
                       <div
-                        className="py-1 pl-3 hover:bg-neutral-200 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
+                        className="py-1 pl-3 hover:bg-neutral-200 dark:hover:bg-neutral-700  w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
                         onClick={() => setCryptValue(4)}
                       >
                         {" "}
@@ -275,7 +278,7 @@ const DepositPg = () => {
                             ? "TAWCzZ2aGToj6QWr1vXnnUV9wxQHLQK5qn"
                             : ""
                         }
-                        className="text-black w-full border border-neutral-200 hover:border-primary rounded shadow px-4 py-2"
+                        className=" w-full border border-neutral-200 hover:border-primary rounded shadow px-4 py-2"
                       />
                       <div
                         className="absolute right-2 top-2 cursor-pointer flex flex-row justify-center items-center"
@@ -310,7 +313,7 @@ const DepositPg = () => {
                   type="number"
                   value={cyptInput}
                   onChange={(e) => setCyptInput(e.target.value)}
-                  className="w-full p-2 rounded-lg border border-neutral-600"
+                  className="w-full p-2 rounded-lg border border-neutral-700 dark:border-neutral-100"
                   placeholder="Enter Amount in USD"
                 />
                 <div>
@@ -341,7 +344,7 @@ const DepositPg = () => {
               <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
                 <div className="max-w-[500px] relative rounded-xl h-fit p-6 bg-[#f1f1f1] dark:bg-[#1f2937] flex flex-col justify-center items-center gap-8">
                   <div
-                    className="absolute top-3 right-6 cursor-pointer"
+                    className="absolute  top-3 right-6 cursor-pointer"
                     onClick={() => setCryptModal(false)}
                   >
                     <FaTimes size={18} />
@@ -500,7 +503,7 @@ const DepositPg = () => {
 
           {/* Mobile Transfer */}
           <>
-            <div className="rounded-lg shadow-lg">
+            <div className="rounded-lg shadow-lg dark:bg-[#2a3042]">
               <div className="flex flex-col gap-4 pb-16 text-center p-8">
                 <div className="mx-auto">
                   <div className="flex flex-row items-center justify-center gap-2">
@@ -561,14 +564,14 @@ const DepositPg = () => {
                   </div>
                   {mpOptions && (
                     <div
-                      className="absolute w-full top-14 left-0 bg-white rounded-lg shadow-lg flex flex-col items-start justify-start p-2"
+                      className="absolute dark:bg-[#2a3042] w-full top-14 left-0 bg-white rounded-lg shadow-lg flex flex-col items-start justify-start p-2"
                       onClick={() => setMpOptions(!mpOptions)}
                     >
                       <div className="pl-3 text-start">
                         <p className="font-[500]">Recommendation</p>
                       </div>
                       <div
-                        className="py-2 pl-3 hover:bg-neutral-200 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
+                        className="py-2 pl-3 hover:bg-neutral-200 dark:hover:bg-neutral-700 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
                         onClick={() => setMmValue(1)}
                       >
                         {" "}
@@ -580,7 +583,7 @@ const DepositPg = () => {
                         <p className="font-[500]">Paypal</p>
                       </div>
                       <div
-                        className="py-2 pl-3 hover:bg-neutral-200 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
+                        className="py-2 pl-3 hover:bg-neutral-200 dark:hover:bg-neutral-700 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
                         onClick={() => setMmValue(2)}
                       >
                         {" "}
@@ -592,7 +595,7 @@ const DepositPg = () => {
                         <p className="font-[500]">Zelle</p>
                       </div>
                       <div
-                        className="py-1 pl-3 hover:bg-neutral-200 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
+                        className="py-1 pl-3 hover:bg-neutral-200 dark:hover:bg-neutral-700 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
                         onClick={() => setMmValue(3)}
                       >
                         {" "}
@@ -604,7 +607,7 @@ const DepositPg = () => {
                         <p className="font-[500]">Cashapp</p>
                       </div>
                       <div
-                        className="py-1 pl-3 hover:bg-neutral-200 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
+                        className="py-1 pl-3 hover:bg-neutral-200 dark:hover:bg-neutral-700 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
                         onClick={() => setMmValue(4)}
                       >
                         {" "}
@@ -715,7 +718,7 @@ const DepositPg = () => {
 
           {/* Bank Wire */}
           <>
-            <div className="rounded-lg shadow-lg p-8 flex flex-col gap-3">
+            <div className="rounded-lg shadow-lg dark:bg-[#2a3042] p-8 flex flex-col gap-3">
               <div className="">
                 <div className="flex flex-row items-center justify-center gap-2">
                   <GiBanknote size={24} />

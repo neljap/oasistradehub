@@ -1,5 +1,5 @@
 // import { useState } from "react"
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 
 const WithdrawCrypto = () => {
@@ -38,7 +38,7 @@ const WithdrawCrypto = () => {
                 Enter OTP
             </label>    
             <div>
-                <button type="button" className="rounded py-1 font-[Jost] px-3 bg-gray-700 text-gray-50" onClick={() => toast.info("Contact Support for OTP", {position: "bottom-left"})}>Request OTP</button>
+                <button type="button" className="rounded py-1 font-[Jost] px-3 bg-gray-700 text-gray-50" onClick={() => toast.success("Contact Support for OTP", {position: "bottom-left", className: "font-[Jost]"})}>Request OTP</button>
             </div>
             </div>
             

@@ -38,7 +38,6 @@ import {
 } from "react";
 import { ExploreCard, Navbar } from "../components";
 import { SiTransmission } from "react-icons/si";
-// import Carousel from "../components/TestCarousel";
 import axios from "axios";
 import { IoCheckmark } from "react-icons/io5";
 import CountUp from "./components/CountUpCounter";

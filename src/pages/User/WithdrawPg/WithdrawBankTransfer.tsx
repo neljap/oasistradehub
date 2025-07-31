@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useContext, useState } from "react"
-import { toast } from "react-toastify"
+import { toast } from "react-hot-toast"
 import { AuthContext } from "../../../app/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 
 const WithdrawBankTransfer = () => {
@@ -9,31 +10,44 @@ const WithdrawBankTransfer = () => {
   const [bankname, setBankname] = useState("");
   const [amount, setAmount] = useState<any | null>(null);
   const [otp, setOtp] = useState<any | String>("");
+  const [withLoading, setWithLoading] = useState(false);
   
   const [other, setOther] = useState("");
 
   const {data} = useContext(AuthContext);
   // const [loading, setLoading] = useState(false);
 
-
+  const navigate = useNavigate();
 
   const handleSubmit = async(e: any) => {
     e.preventDefault()
+    setWithLoading(true);
     try {
-      if(amount  < 500){
-        toast.info("Amount is too Low", {position: "bottom-left"})
+      if(amount  < 50000){
+        toast.error("Amount is too Low", {position: "bottom-left", className: "font-[Jost]"})
         return;
-      }else if(otp == 333333 || 555555){
+      }else if(otp == 340845 || 230457 || 659265 || 973270 ){
 
       let address = ''
         // console.log({userid: data._id, accnumber, bankname, amount, otp, other})
-      await axios.post("https://oaserver.onrender.com/api/user/withdraw", {userid: data._id,  accnumber, address, bankname, amount, other});
+      let response = await axios.post("https://oaserver.onrender.com/api/user/withdraw", {userid: data._id,  accnumber, address, bankname, amount, otp, other});
+      if(response) {
+        toast.success("Withdraw Request Sent Successfully", {position: "bottom-left", className: "font-[Jost]"});
+        navigate("/user/withdraw-processing")
+      }
       }else{
-        toast.info("Wrong OTP")
+        toast.error("Wrong OTP", {position: "bottom-left", className: "font-[Jost]"})
         return;
       }
     } catch (error) {
-      toast.error(`Error: ${error}`)
+      toast.error(`Error: ${error}`, {position: "bottom-left", className: "font-[Jost]"})
+    }finally{
+      setWithLoading(false);
+      setAccnumber("");
+      setBankname("");
+      setAmount(null);
+      setOtp("");
+      setOther("");
     }
   } 
 
@@ -41,7 +55,7 @@ const WithdrawBankTransfer = () => {
     <div>
         <div className="container">
             <div className="max-w-md mx-auto my-8 font-[Jost] bg-white shadow-lg rounded-lg overflow-hidden">
-    <div className="text-xl py-4 px-6 bg-gray-900 text-white text-center font-bold uppercase">
+    <div className="text-xl py-4 px-6 bg-[#86b144] text-white text-center font-bold uppercase">
         Withdraw Through Bank Transfer
     </div>
     <form className="py-4 px-6" onSubmit={handleSubmit}>
@@ -59,7 +73,7 @@ const WithdrawBankTransfer = () => {
                       Enter OTP
                   </label>    
                   <div>
-                      <button type="button" className="rounded py-1 font-[Jost] px-3 bg-gray-700 text-gray-50" onClick={() => toast.info("Contact Support for OTP", {position: "bottom-left"})}>Request OTP</button>
+                      <button type="button" className="rounded py-1 font-[Jost] px-3 bg-[#0052FF] text-gray-50" onClick={() => toast.success("Contact Support for OTP", {position: "bottom-left", className: "font-[Jost]"})}>Request OTP</button>
                   </div>
                   </div>
                   
@@ -96,7 +110,7 @@ const WithdrawBankTransfer = () => {
             <button
                 className="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline"
                 type="submit">
-                Submit Withdraw Request
+                  {withLoading ? "Processing..." : "Submit Withdraw Request"}
             </button>
         </div>
 

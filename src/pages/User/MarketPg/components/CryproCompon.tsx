@@ -1,4 +1,3 @@
-// import {  useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { LiveMarketContext } from "../../../../app/LiveMarketContext";
@@ -19,8 +18,8 @@ const CryproCompon = () => {
       <div className="container">
     <div className="">
       <MarketNav />
-              <h2 className="text-neutral-600 font-[500] text-2xl">Crypto Market</h2>
-              <p className="text-neutral-500">Trade crypto with ease and confidence.</p>
+              <h2 className="text-neutral-700 dark:text-neutral-100 font-[500] text-2xl">Crypto Market</h2>
+              <p className="text-neutral-700 dark:text-neutral-100">Trade crypto with ease and confidence.</p>
       <LiveReading />
       <div className="my-4">
         <input type="text" value={inputMktQuery} onChange={handleMktCrypto} placeholder="Search Cryptos eg. 'BTC'" className="w-full border border-neutral-200 rounded-xl p-2"/>

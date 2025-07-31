@@ -1,10 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { BiBellPlus, BiPowerOff } from "react-icons/bi";
+import {BiBellPlus, BiPowerOff, BiSolidDashboard } from "react-icons/bi";
 import {
   FaCommentAlt,
-  FaShoppingBag,
   FaTh,
-  FaUserAlt,
 } from "react-icons/fa";
 import {
   FaMoon,
@@ -25,15 +23,16 @@ import {
 import { DarkLightContext } from "../../app/DarkLightTheme";
 import LogoText from "../components/LogoText";
 import {  HiMiniClipboardDocumentList } from "react-icons/hi2";
-import { AiOutlineGlobal } from "react-icons/ai";
+import { GrMoney } from "react-icons/gr";
 import { IoIosCash } from "react-icons/io";
-import { SiBitcoincash } from "react-icons/si";
-import { HiCash, HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
-import { MdAccountBalanceWallet, MdVerified } from "react-icons/md";
+import { SiBitcoincash, SiMarketo } from "react-icons/si";
+import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
+import { MdAccountBalanceWallet, MdOutlineSupervisorAccount, MdVerified } from "react-icons/md";
 import Cookies from 'js-cookie';
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import UserRespNav from "./UserRespNav";
 import { AuthContext } from "../../app/AuthContext";
+import { RiExchangeBoxLine } from "react-icons/ri";
 
 const UserNavLinks = ({ children }: any) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -49,9 +48,16 @@ const UserNavLinks = ({ children }: any) => {
     const currentTheme = theme === "system" ? systemTheme : theme;
 
     if (currentTheme === "dark") {
-      return <FaSun color="#0052FF" size={18} />;
+      return (
+        <div className="text-[#0052FF] hover:text-white"><FaSun color="" size={18} /></div>
+      
+      );
     } else {
-      return <FaMoon color="#0052FF" size={18} />;
+      return (
+      <div className="text-[#0052FF] hover:text-white ">
+       <FaMoon color="" size={18} /> 
+      </div>
+      );
     }
   };
 
@@ -63,57 +69,57 @@ const UserNavLinks = ({ children }: any) => {
     {
       path: "/user/dashboard",
       name: "Dashboard",
-      icon: <FaTh size={24} />,
+      icon: <BiSolidDashboard size={24} color="#0252ff"/>,
     },
     {
-      path: "/user/markets",
+      path: "/user/markets/crypto",
       name: "Live Markets",
-      icon: <AiOutlineGlobal size={24}  />
+      icon: <SiMarketo size={24} color="#097031" />
     },
     {
       path: "/user/stake",
       name: "Stake",
-      icon: <FaShoppingBag size={24} />,
+      icon: <RiExchangeBoxLine size={24} color="#3c39aa" />,
     },
     {
       path: "/user/deposit",
       name: "Deposit",
-      icon: <IoIosCash size={24} />
+      icon: <IoIosCash size={24} color="#f49419"/>
     },
     {
       path: "/user/experts",
       name: "Trading Experts",
-      icon: <HiMiniClipboardDocumentList size={24} />
+      icon: <HiMiniClipboardDocumentList size={24}  color="#e84242"/>
     },
     {
       path: "/user/withdraw",
       name: "Withdraw",
-      icon: <HiCash size={24}  />
+      icon: <GrMoney size={24}  color="#86b144"/>
     },
     {
       path: "/user/subscriptions",
       name: "Subscriptions",
-      icon: <FaCommentAlt size={24} />,
+      icon: <FaCommentAlt size={24} color="#fcdeff"/>,
     },
     {
       path: "/user/purchase-crypto",
       name: "Purchase Crypto",
-      icon: <SiBitcoincash size={24} />
+      icon: <SiBitcoincash size={24} color="#ffdc08"/>
     },
     {
       path: "/user/account",
       name: "Account",
-      icon: <FaUserAlt size={24} />,
+      icon: <MdOutlineSupervisorAccount size={24} color="#0252ff"/>,
     },
     {
       path: "/user/verification",
       name: "Verification",
-      icon: <MdVerified size={24}  />
+      icon: <MdVerified size={24} color="#007f02" />
     },
     {
       path: "/user/support",
       name: "Support",
-      icon: <FaPeopleGroup size={24}  />
+      icon: <FaPeopleGroup size={24} color="#f16719" />
     },
   ];
 
@@ -140,7 +146,7 @@ const UserNavLinks = ({ children }: any) => {
       id: 4,
       text: "Tradings",
       img: increasebar,
-      path: "/user/markets"
+      path: "/user/markets/crypto"
     },
     {
       id: 5,
@@ -161,9 +167,9 @@ const UserNavLinks = ({ children }: any) => {
       Cookies.remove("token");
       setLogoutModal(false);
       navigate("/");
-      toast.info("Log Out Successfully", {position: "bottom-left"})
+      toast.success("Log Out Successfully", {position: "bottom-left", className: "font-[Jost]"});
     }catch(err: any){
-      toast.error(err.code, { position: "bottom-left" });
+      toast.error(err.code, { position: "bottom-left", className: "font-[Jost]" });
     }
   }
 
@@ -180,7 +186,7 @@ const UserNavLinks = ({ children }: any) => {
 
 
   const activeLink =
-    "flex flex-row gap-3 font-[Jost] px-6 py-2 justify-start items-center bg-blue-200 text-[#0052FF] rounded-xl mt-2";
+    "flex flex-row gap-3 font-[Jost] px-6 py-2 justify-start items-center bg-[#5ca453] bg-opacity-20 text-[#5ca453] rounded-xl mt-2";
 
   const normalLink =
     "flex flex-row gap-3 font-[Jost] px-6 py-2 justify-start items-center hover:bg-blue-50 rounded-xl text-neutral-500 mt-2";
@@ -193,15 +199,18 @@ const UserNavLinks = ({ children }: any) => {
             
             <div className="">
           <Link to="/" className="flex flex-row gap-0.5 md:gap-2 items-center">
-          <img src={HomeLogo} alt="" className="w-4 md:w-8"/>
-          <LogoText
+          <img src={HomeLogo} alt="" className="w-6 md:w-8"/>
+          <div className="hidden md:block">
+           <LogoText
             colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
             animationSpeed={3}
             showBorder={false}
             className="custom-class"
           >
             OASIS TRADE HUB
-          </LogoText>
+          </LogoText> 
+          </div>
+          
         </Link>       
             </div>
            
@@ -209,7 +218,7 @@ const UserNavLinks = ({ children }: any) => {
         
         <div className="flex flex-row items-center gap-4">
           <div className="flex flex-row items-center gap-2">
-            <div className="text-primary bg-primary bg-opacity-5 rounded-full p-2">
+            <div className="text-primary bg-primary bg-opacity-5 dark:bg-neutral-400 rounded-full p-2">
               <MdAccountBalanceWallet size={24}/>
             </div>
             <p className="font-[600] font-[Jost] flex items-center gap-1"><span className="hidden md:block">Account Balance:</span> ${data ? Number(data?.tAmount).toLocaleString() : 0}</p>
@@ -221,7 +230,7 @@ const UserNavLinks = ({ children }: any) => {
   <span className="relative inline-flex size-3 rounded-full bg-[#0052FF]"></span>
 </span>
             </div>
-          <div className="flex flex-row gap-2 items-center transition-all duration-[1s] ease-in-out   px-2 md:px-3 py-1 md:py-2 shadow rounded-md md:rounded-xl cursor-pointer text-primary bg-primary bg-opacity-5 hover:bg-opacity-95 hover:text-white">
+          <div className="flex flex-row gap-2 items-center transition-all duration-[1s] ease-in-out   px-2 md:px-3 py-1 md:py-2 shadow rounded-md md:rounded-xl cursor-pointer text-primary bg-primary bg-opacity-5 dark:bg-neutral-400 hover:bg-opacity-95 hover:text-white">
             <BiBellPlus size={22} /> <p className="font-[500] hidden md:block">Notifications</p>
           </div>  
           </div>
@@ -233,7 +242,7 @@ const UserNavLinks = ({ children }: any) => {
             {themeBox()}
           </div>
           <div
-            className="p-2 hidden md:block rounded-full bg-primary dark:bg-slate-400 bg-opacity-5 cursor-pointer shadow"
+            className="p-2 hidden md:block rounded-full bg-primary dark:bg-neutral-400  bg-opacity-5 cursor-pointer shadow"
             onClick={() => setIsNavOpen(!isNavOpen)}
           >
             <FaTh size={20} color="#0052FF" />
@@ -272,13 +281,13 @@ const UserNavLinks = ({ children }: any) => {
               </span>
             </NavLink>
           ))}
-          <div className="flex gap-4 ps-5 cursor-pointer" onClick={() => setLogoutModal(true)}>
-            <FaPowerOff size={24} color="black"/>
+          <div className="flex gap-4 ps-5 pt-6 cursor-pointer" onClick={() => setLogoutModal(true)}>
+            <FaPowerOff size={24} color="red"/>
             <p className=" font-[600] font-[Jost] text-neutral-500">Logout</p>
           </div>
         </div>
 
-        <main className="md:pl-56 pl-0 w-full pt-24 min-h-screen flex flex-col justify-between">
+        <main className="md:pl-56 pl-0 w-full pt-24 min-h-screen dark:bg-[#1a1d2c] flex flex-col justify-between">
           {children}
           <footer className="bg-gray-600 text-white font-[Jost]">
             <div className="container">
@@ -296,11 +305,11 @@ const UserNavLinks = ({ children }: any) => {
         </main>
       </div>
       {isNavOpen && (
-        <div className="border border-neutral-300 rounded-xl p-4 w-fit absolute top-20 right-10 flex flex-col gap-4 z-50 bg-white">
+        <div className="border border-neutral-200 dark:border-neutral-800 rounded-xl p-4 w-fit  fixed top-20 right-10 flex flex-col gap-4 z-50 bg-white dark:bg-[#2a2f42]">
           <div className="grid grid-cols-3 gap-2 justify-center items-center" onClick={() => setIsNavOpen(!isNavOpen)}>
             {probar.map((item) => (
               <Link to={item.path}
-                className="rounded-xl bg-neutral-50 py-1 flex flex-col items-center gap-1"
+                className="rounded-xl bg-neutral-100 dark:bg-neutral-800 py-1 flex flex-col items-center gap-1 "
                 key={item.id}
 
               >
@@ -367,3 +376,5 @@ const UserNavLinks = ({ children }: any) => {
 };
 
 export default UserNavLinks;
+
+// under src/pages/auth, create two pages for forgot password and reset password, alongside with a nice ui and login

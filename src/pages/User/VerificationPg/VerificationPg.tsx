@@ -1,10 +1,10 @@
 import axios from "axios";
 import {  useContext, useEffect, useRef, useState } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { AuthContext } from "../../../app/AuthContext";
 import { BiSolidCloudUpload } from "react-icons/bi";
-import { IoCheckmarkDoneCircle } from "react-icons/io5";
+import { MdVerified } from "react-icons/md";
 
 const VerificationPg = () => {
   const [idOptions, setIdOptions] = useState(false);
@@ -53,7 +53,7 @@ const {data} = useContext(AuthContext);
       const { secure_url } = res.data;
       return secure_url;
     } catch (error :any) {
-      toast.error(error.code, { position: "bottom-left" });
+      toast.error(error.code, { position: "bottom-left", className: "font-[Jost]" });
     }
   };
 
@@ -62,6 +62,7 @@ const {data} = useContext(AuthContext);
     if (!kycFile) {
       toast.error("Please Upload a file", {
         position: "bottom-left",
+        className: "font-[Jost]"
       });
       return;
     }
@@ -71,17 +72,17 @@ const {data} = useContext(AuthContext);
       const kycinfo = await preFile('image');
       console.log(kycinfo, "kycinfo")
       if(street == "" || dob == "" || country == "" || state == "" || city == "" || number == ""){
-        toast.info("Please fill all required fields", {position: "bottom-left"})
+        toast.success("Please fill all required fields", {position: "bottom-left", className: "font-[Jost]"})
       }
       await axios.patch(`https://oaserver.onrender.com/api/user/update/${data?._id}`, {
         kycinfo,
       });
 
-      toast.success("Kyc Data Uploaded Successfully", {position: "bottom-left"})
+      toast.success("Kyc Data Uploaded Successfully", {position: "bottom-left", className: "font-[Jost]"})
       // window.location.reload()
 
     } catch (error : any) {
-      toast.error(error.code, { position: "bottom-left" });
+      toast.error(error.code, { position: "bottom-left", className: "font-[Jost]" });
     } finally{
       setLoading(false)
       setKycFile("")
@@ -91,9 +92,9 @@ const {data} = useContext(AuthContext);
   return (
     <div>
       <div className="container">
-        <div className="shadow-md rounded-lg border border-neutral-200 py-10 px-4">
+        <div className="shadow-md rounded-lg border border-neutral-200 dark:border-neutral-700 py-10 px-4 dark:bg-[#2a3042] mt-4 mb-8">
           <div className="flex flex-col gap-4 pb-4">
-          <h2 className="font-[600] text-xl font-[Jost] flex gap-1 items-center">ID Verification <IoCheckmarkDoneCircle /></h2>
+          <h2 className="font-[600] text-xl font-[Jost] flex gap-1 items-center">ID Verification <span className="text-[#007f02] dark:text-[#64e266]"><MdVerified size={24} /></span> </h2>
           <p className="font-[500]">
             Your Personal info/ID for verification will be processed and
             verified
@@ -101,7 +102,7 @@ const {data} = useContext(AuthContext);
           </div>
           
           <div className="relative">
-          <div className="w-full border border-neutral-600 bg-neutral-200 hover:border-primary cursor-pointer px-2 py-2 rounded-lg"
+          <div className="w-full border border-neutral-600 bg-neutral-200 dark:bg-[#2a3042] hover:border-primary cursor-pointer px-2 py-2 rounded-lg"
             onClick={() => setIdOptions(!idOptions)}>
             <p>
               {idValue == 1 ? (
@@ -124,39 +125,39 @@ const {data} = useContext(AuthContext);
           <div>
             {idOptions && (
               <div
-                className="absolute w-full top-14 left-0 bg-white rounded-lg shadow-lg flex flex-col items-start justify-start p-2"
+                className="absolute w-full top-14 left-0 bg-neutral-200 dark:bg-[#2a3042] rounded-lg shadow-lg flex flex-col items-start justify-start p-2"
                 onClick={() => setIdOptions(!idOptions)}
               >
-                <div className="py-2 pl-3 hover:bg-neutral-200 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
+                <div className="py-2 pl-3 hover:bg-neutral-200 dark:hover:bg-neutral-700 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
                   onClick={() => setIdValue(1)}>
                   <p className="font-[500]">Driver's License</p>
                 </div>
                 <div
-                  className="py-2 pl-3 hover:bg-neutral-200 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
+                  className="py-2 pl-3 hover:bg-neutral-200 dark:hover:bg-neutral-700 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
                   onClick={() => setIdValue(2)}
                 >
                   <p className="font-[500]">Passport</p>
                 </div>
                 <div
-                  className="py-2 pl-3 hover:bg-neutral-200 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
+                  className="py-2 pl-3 hover:bg-neutral-200 dark:hover:bg-neutral-700 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
                   onClick={() => setIdValue(3)}
                 >
                   <p className="font-[500]">Social Security Card</p>
                 </div>
                 <div
-                  className="py-1 pl-3 hover:bg-neutral-200 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
+                  className="py-1 pl-3 hover:bg-neutral-200 dark:hover:bg-neutral-700 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
                   onClick={() => setIdValue(4)}
                 >
                   <p className="font-[500]">State ID</p>
                 </div>
                 <div
-                  className="py-1 pl-3 hover:bg-neutral-200 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
+                  className="py-1 pl-3 hover:bg-neutral-200 dark:hover:bg-neutral-700 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
                   onClick={() => setIdValue(5)}
                 >
                   <p className="font-[500]">Military ID</p>
                 </div>
                 <div
-                  className="py-1 pl-3 hover:bg-neutral-200 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
+                  className="py-1 pl-3 hover:bg-neutral-200 dark:hover:bg-neutral-700 w-full text-start rounded-lg cursor-pointer flex flex-row gap-1"
                   onClick={() => setIdValue(6)}
                 >
                   <p className="font-[500]">Green Card</p>
@@ -177,28 +178,28 @@ const {data} = useContext(AuthContext);
               <h3 className="font-[Jost] font-[600] pt-2 text-xl">Address</h3>
                 <div className="flex flex-col gap-0.5 py-0.5">
                 <label className="font-[Jost] text-lg md:text-xl">Street Details</label>
-                <input type="text"  placeholder="Enter your street details" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={street} onChange={(e) => setStreet(e.target.value)}/>
+                <input type="text"  placeholder="Enter your street details" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border border-neutral-100 dark:border-neutral-700" required value={street} onChange={(e) => setStreet(e.target.value)}/>
               </div>
               <div className="flex flex-col gap-0.5 py-0.5">
                 <label className="font-[Jost] text-lg md:text-xl">City</label>
-                <input type="text" placeholder="Enter your city" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={city} onChange={(e) => setCity(e.target.value)}/>
+                <input type="text" placeholder="Enter your city" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border border-neutral-100 dark:border-neutral-700" required value={city} onChange={(e) => setCity(e.target.value)}/>
               </div>
               <div className="flex flex-col gap-0.5 py-0.5">
                 <label className="font-[Jost] text-lg md:text-xl">State/province/area</label>
-                <input type="text" placeholder="Enter your state/province/area" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={state} onChange={(e) => setState(e.target.value)}/>
+                <input type="text" placeholder="Enter your state/province/area" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border border-neutral-100 dark:border-neutral-700" required value={state} onChange={(e) => setState(e.target.value)}/>
               </div>
               <div className="flex flex-col gap-0.5 py-0.5">
                 <label className="font-[Jost] text-lg md:text-xl">Country</label>
-                <input type="text" placeholder="Enter your country" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={country} onChange={(e) => setCountry(e.target.value)}/>
+                <input type="text" placeholder="Enter your country" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border border-neutral-100 dark:border-neutral-700" required value={country} onChange={(e) => setCountry(e.target.value)}/>
               </div>
               <h3 className="font-[Jost] font-[600] pt-2 text-xl">Personal Details</h3>
               <div className="flex flex-col gap-0.5 py-0.5">
                 <label className="font-[Jost] text-lg md:text-xl">Phone Number</label>
-                <input type="text" placeholder="Enter your email address" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={number} onChange={(e) => setNumber(e.target.value)}/>
+                <input type="text" placeholder="Enter your email address" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border border-neutral-100 dark:border-neutral-700" required value={number} onChange={(e) => setNumber(e.target.value)}/>
               </div>
               <div className="flex flex-col gap-0.5 py-0.5">
                 <label className="font-[Jost] text-lg md:text-xl">Date of Birth</label>
-                <input type="text" placeholder="Enter your email address" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" required value={dob} onChange={(e) => setDob(e.target.value)}/>
+                <input type="text" placeholder="Enter your email address" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border border-neutral-100 dark:border-neutral-700" required value={dob} onChange={(e) => setDob(e.target.value)}/>
               </div>
               </div>
               <div>
@@ -222,7 +223,7 @@ const {data} = useContext(AuthContext);
                 />
               </div> 
               <div className="flex justify-center items-center pt-4">
-    <div><button  className="capitalize font-[Jost] font-[500] border-2 border-gray-700 px-4 py-2 rounded-lg text-gray-700 flex items-center gap-2 hover:bg-gray-700 hover:text-white shadow">{loading ? "Uploading.." :(<div className="flex flex-items gap-2 items-center transition-all ease-in-out duration-[1s]"><BiSolidCloudUpload size={20}/> Click here to submit </div>)}</button></div>
+    <div><button  className="capitalize font-[Jost] font-[500] border-2 border-neutral-700 dark:border-neutral-100 px-4 py-2 rounded-lg text-neutral-700 dark:text-neutral-100 flex items-center gap-2 hover:bg-gray-700 hover:text-white shadow">{loading ? "Uploading.." :(<div className="flex flex-items gap-2 items-center transition-all ease-in-out duration-[1s]"><BiSolidCloudUpload size={20}/> Click here to submit </div>)}</button></div>
               </div>
               </div>
               

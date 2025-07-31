@@ -8,7 +8,7 @@ import { StakingData } from "../../../../utils/AppData";
 import axios from "axios";
 // import axios from "axios";
 import { AuthContext } from "../../../../app/AuthContext";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import {format, addDays} from "date-fns";
 
 const CryptComp = () => {
@@ -79,7 +79,7 @@ const CryptComp = () => {
       let startdate = format (new Date(), "dd/MM/yyyy")
       let enddate = format(addDays(new Date(), 30 * sDuration), "dd/MM/yyyy")
       if(tAmount < inputModal){
-        toast.info("Insufficient balance", {position: "bottom-left"})
+        toast.error("Insufficient balance", {position: "bottom-left", className: "font-[Jost]"})
         return;
       }
       let res =  await axios.post("https://oaserver.onrender.com/api/user/staked", {userid: data?._id, stakes: {img, asset, amount, duration, returns, totalreturn, status, startdate, enddate}})
@@ -88,13 +88,13 @@ const CryptComp = () => {
         await axios.patch(`https://oaserver.onrender.com/api/user/update/${data?._id}`, {
         tAmount,
       })
-      toast.info("Staked", {position: "bottom-left"})
+      toast.success("Staked", {position: "bottom-left", className: "font-[Jost]"})
       }
         
 
       // dispatch(stakeAdded(asset,  amount, duration, returns, totalreturn, status ))
     } catch (error) {
-      toast.error(`staked error: ${error}`, {position: "bottom-left"})
+      toast.error(`staked error: ${error}`, {position: "bottom-left", className: "font-[Jost]"})
       console.log("error", error);
     } finally {
       setStakeOpen(false);
@@ -110,42 +110,42 @@ const CryptComp = () => {
           value={inputStkCrypto}
           onChange={handleStkCrypto}
           placeholder="Search Cryptos eg. 'BTC'"
-          className="w-full border border-neutral-200 rounded-xl p-2"
+          className="w-full border border-neutral-200 dark:border-neutral-500 rounded-xl p-2"
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-6">
         {filteredStkCrypto.map((item: any) => (
           <div className="" key={item.id}>
-            <div className="border border-neutral-400 rounded-xl bg-neutral-50 p-4 flex flex-col gap-3 shadow">
+            <div className="border border-neutral-100 dark:border-neutral-600 rounded-xl bg-neutral-100 dark:bg-[#2a3042] p-4 flex flex-col gap-3 shadow">
               <div className="flex flex-row justify-between items-center">
                 <div className="flex flex-row gap-2">
                   <img src={item.icon} alt="" className="w-12" />
                   <div>
                     <p className="font-[500]">{item.coin}</p>
-                    <p className="font-[400] text-sm text-neutral-700">{item.sign}</p>
+                    <p className="font-[400] text-sm text-neutral-700 dark:text-neutral-100">{item.sign}</p>
                   </div>
                 </div>
-                <div className="bg-neutral-200 py-1 px-2 rounded-lg">
+                <div className="bg-neutral-200 dark:bg-[#20232d] py-1 px-2 rounded-lg">
                   <p className="font-[500]">{item.price}</p>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-2">
-                <div className="bg-neutral-200 rounded-lg px-2 py-1">
+                <div className="bg-neutral-200 dark:bg-[#20232d] rounded-lg px-2 py-1">
                   <p>Minium</p>
                   <p>$100</p>
                 </div>
-                <div className="bg-neutral-200 rounded-lg px-2 py-1">
+                <div className="bg-neutral-200 dark:bg-[#20232d] rounded-lg px-2 py-1">
                   <p>ROI</p>
                   <p>20% - 60%</p>
                 </div>
-                <div className="bg-neutral-200 rounded-lg px-2 py-1">
+                <div className="bg-neutral-200 dark:bg-[#20232d] rounded-lg px-2 py-1">
                   <p>Cycle</p>
                   <p>Monthly</p>
                 </div>
               </div>
 
               <button
-                className="bg-primary transition-all ease-in-out duration-[1s] hover:bg-opacity-10 hover:text-primary hover:border-primary border font-[600] w-full text-white py-3 rounded-xl"
+                className="bg-primary bg-opacity-75 transition-all ease-in-out duration-[1s] hover:bg-opacity-10 hover:text-primary hover:border-primary border font-[600] w-full text-neutral-100 dark:text-neutral-700 py-3 rounded-xl"
                 onClick={() => {
                   setStakeOpen(true);
                   setStakingSetNum(item.id);

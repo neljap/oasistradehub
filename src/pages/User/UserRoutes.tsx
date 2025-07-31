@@ -17,12 +17,17 @@ import UpdateWalletPg from './WithdrawPg/UpdateWalletPg'
 import {  ForexCompon, ForexTdChart, MyTradeCompon, StockCompon, StockTdChart } from './MarketPg/components'
 import WithdrawBankTransfer from './WithdrawPg/WithdrawBankTransfer'
 import WithdrawCrypto from './WithdrawPg/WithdrawCrypto'
+import WithdrawPaid from './WithdrawPg/WithdrawProcessing'
 
 const UserRoutes = () => {
+
   return (
-    <UserNavLinks>
+    <div>
+
+
+      <UserNavLinks>
         <Routes>
-            <Route path='markets' element={<MarketPg />} />
+            <Route path='markets/crypto' element={<MarketPg />} />
             <Route path='markets/stock' element={<StockCompon />} />
             <Route path='markets/forex' element={<ForexCompon />} />
             <Route path='markets/mytrades' element={<MyTradeCompon />} />
@@ -38,6 +43,7 @@ const UserRoutes = () => {
             <Route path='withdraw' element={<WithdrawPg />} />
             <Route path='withdraw-banktf' element={<WithdrawBankTransfer />} />
             <Route path='withdraw-crypto' element={<WithdrawCrypto />} />
+            <Route path='withdraw-processing' element={<WithdrawPaid />} />
             <Route path='verification' element={<VerificationPg />} />
             <Route path='update-wallet' element={<UpdateWalletPg />} />
             <Route path='markets/trade/crypto/:coin/:obj' element={<TradeChartPg />} />
@@ -45,6 +51,8 @@ const UserRoutes = () => {
             <Route path='markets/trade/forex/:currency/:obj' element={<ForexTdChart />} />
         </Routes>
     </UserNavLinks>
+    </div>
+    
   )
 }
 

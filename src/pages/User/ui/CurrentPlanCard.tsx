@@ -20,7 +20,7 @@ const CurrentPlanCard = () => {
 
    
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-            <div className="flex flex-row justify-between items-center bg-neutral-50 border border-neutral-300 p-2 rounded-xl">
+            <div className="flex flex-row justify-between items-center dark:border-neutral-700 bg-neutral-100 border border-neutral-300 p-2 rounded-xl dark:bg-[#2a3042]">
                 <div className="flex flex-row items-center gap-2">
                  <div className="rounded-full p-2 bg-primary bg-opacity-5">
                   <img src={emptyboxdash} alt="" className="w-8 h-8"/>  
@@ -37,7 +37,7 @@ const CurrentPlanCard = () => {
                     </Link>
                 </div>
             </div>
-            <div className="flex flex-row justify-between items-center bg-neutral-50 border border-neutral-300 p-2 rounded-xl">
+            <div className="flex flex-row justify-between items-center dark:border-neutral-700 bg-neutral-100 border border-neutral-300 p-2 rounded-xl dark:bg-[#2a3042]">
                 <div className="flex flex-row items-center gap-2">
                  <div className="rounded-full p-2 bg-primary bg-opacity-5">
                   <img src={emptyboxdash} alt="" className="w-8 h-8"/>  
@@ -52,7 +52,7 @@ const CurrentPlanCard = () => {
                    
                 </div>
             </div>
-            <div className="flex flex-row justify-between items-center bg-neutral-50 border border-neutral-300 p-2 rounded-xl">
+            <div className="flex flex-row justify-between items-center bg-neutral-100  dark:border-neutral-700 border border-neutral-300 p-2 rounded-xl dark:bg-[#2a3042]">
                 <div className="flex flex-row items-center gap-2">
                  <div className="rounded-full p-2 bg-primary bg-opacity-5">
                     {data?.copyTrader.length > 0 ? (
