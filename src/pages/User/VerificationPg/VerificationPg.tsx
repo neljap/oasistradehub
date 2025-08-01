@@ -25,7 +25,7 @@ const {data} = useContext(AuthContext);
 
   
 
-  console.log("idValue", idValue);
+  // console.log("idValue", idValue);
 
     // const [frontFile, setFrontFile] = useState<any>("");
 
@@ -70,7 +70,7 @@ const {data} = useContext(AuthContext);
     try {
       setLoading(true)
       const kycinfo = await preFile('image');
-      console.log(kycinfo, "kycinfo")
+      // console.log(kycinfo, "kycinfo")
       if(street == "" || dob == "" || country == "" || state == "" || city == "" || number == ""){
         toast.success("Please fill all required fields", {position: "bottom-left", className: "font-[Jost]"})
       }

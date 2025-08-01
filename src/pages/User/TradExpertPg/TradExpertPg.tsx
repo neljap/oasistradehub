@@ -221,7 +221,7 @@ const TradExpertPg = () => {
     // setIsOpen(f); 
 try {
 
-  console.log(singleTrader, "id")
+  // console.log(singleTrader, "id")
   let res =  await axios.post("https://oaserver.onrender.com/api/user/copytrader", {userid: data?._id, copyTrader: singleTrader})
   if(res) {
   toast.success("Trader copied successfully", {position: "bottom-left", className: "font-[Jost]"})

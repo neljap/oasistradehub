@@ -25,7 +25,7 @@ const CryptComp = () => {
   const { data } = useContext(AuthContext);
   // const {allStakings, setAllStakings} = useContext(StakeContext);
   // const dispatch = useAppDispatch()
-  console.log("staking", stakingSetNum);
+  // console.log("staking", stakingSetNum);
 
   const singleStake = StakingData.find((item) => item.id == stakingSetNum);
 
@@ -35,7 +35,7 @@ const CryptComp = () => {
     let sAmount = inputModal;
     let sImg = singleStake?.icon
     let sSign = singleStake?.sign;
-    let sCoin = singleStake?.coin;
+    // let sCoin = singleStake?.coin;
     let sDuration = stakeNum;
 
     let sRPC =
@@ -63,7 +63,7 @@ const CryptComp = () => {
         ? Math.floor(Number(inputModal) * 1.6 * 100) / 100
         : 0;
 
-    let staked = { sAmount, sSign, sCoin, sDuration, sROI, sRPC };
+    // let staked = { sAmount, sSign, sCoin, sDuration, sROI, sRPC };
     
 
     try {
@@ -74,7 +74,7 @@ const CryptComp = () => {
       let returns = sRPC
       let totalreturn = sROI
       let status = 'locked'
-      console.log("staking", staked)
+      // console.log("staking", staked)
       let tAmount = data?.tAmount
       let startdate = format (new Date(), "dd/MM/yyyy")
       let enddate = format(addDays(new Date(), 30 * sDuration), "dd/MM/yyyy")

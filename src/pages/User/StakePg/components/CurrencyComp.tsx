@@ -24,7 +24,7 @@ const CurrencyComp = () => {
 
     const {inputStkCurrency, handleStkCurrency, filteredStkCurrency} = useContext(StakeContext);
 
-    console.log("staking", stakingSetNum);
+    // console.log("staking", stakingSetNum);
     const { data } = useContext(AuthContext);
     
     const singleStake =  CurrencyStakePg.find((item) => item.id == stakingSetNum);
@@ -35,7 +35,7 @@ const CurrencyComp = () => {
     let sAmount = inputModal;
     let sImg = singleStake?.icon
     let sSign = singleStake?.sign;
-    let sCoin = singleStake?.name;
+    // let sCoin = singleStake?.name;
     let sDuration = stakeNum;
 
     let sRPC =
@@ -63,7 +63,7 @@ const CurrencyComp = () => {
         ? Math.floor(Number(inputModal) * 1.6 * 100) / 100
         : 0;
 
-    let staked = { sAmount, sSign, sCoin, sDuration, sROI, sRPC };
+    // let staked = { sAmount, sSign, sCoin, sDuration, sROI, sRPC };
     
 
     try {
@@ -74,7 +74,7 @@ const CurrencyComp = () => {
       let returns = sRPC
       let totalreturn = sROI
       let status = 'locked'
-      console.log("staking", staked)
+      // console.log("staking", staked)
       let tAmount = data?.tAmount
       let startdate = format(new Date(), "dd/MM/yyyy");
       let enddate = format(addDays(new Date(), sDuration * 30), "dd/MM/yyyy");
@@ -93,7 +93,7 @@ const CurrencyComp = () => {
       }
     } catch (error) {
       toast.error(`staked error: ${error}`, {position: "bottom-left", className: "font-[Jost]"})
-      console.log("error", error);
+      // console.log("error", error);
     } finally {
       setStakeOpen(false);
       setStakeNuLoad(false);

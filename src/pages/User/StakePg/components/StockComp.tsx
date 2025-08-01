@@ -30,7 +30,7 @@ const StockComp = () => {
     let sAmount = inputModal;
     let sImg = singleStake?.icon
     let sSign = singleStake?.sign;
-    let sCoin = singleStake?.stock;
+    // let sCoin = singleStake?.stock;
     let sDuration = stakeNum;
 
     let sRPC =
@@ -58,7 +58,7 @@ const StockComp = () => {
         ? Math.floor(Number(inputModal) * 1.6 * 100) / 100
         : 0;
 
-    let staked = { sAmount, sSign, sCoin, sDuration, sROI, sRPC };
+    // let staked = { sAmount, sSign, sCoin, sDuration, sROI, sRPC };
     
 
     try {
@@ -69,7 +69,7 @@ const StockComp = () => {
       let returns = sRPC
       let totalreturn = sROI
       let status = 'locked'
-      console.log("staking", staked)
+      // console.log("staking", staked)
       let tAmount = data?.tAmount
       let startdate = format(new Date(), "dd/MM/yyyy");
       let enddate = format(addDays(new Date(), sDuration * 30), "dd/MM/yyyy");

@@ -57,7 +57,7 @@ const BuyMarketCard = ({coin, butClass, butext, img}: BuyMarketype) => {
         }
       } catch (error: any) {
         toast.error(`Error: ${error}`, {position: "bottom-left", className: "font-[Jost]"})
-        console.log("error", error)
+        // console.log("error", error)
       }finally{
         setMktInput("");
         setLotsize(0);

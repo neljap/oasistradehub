@@ -22,7 +22,7 @@ const SupportPg = () => {
     setSubLoading(true);
     let userid = data._id
     try {
-      console.log(subject, category, message, userid)
+      // console.log(subject, category, message, userid)
 
       const res = await axios.post("https://oaserver.onrender.com/api/user/support", {userid, subject, category, message})
       if(res){

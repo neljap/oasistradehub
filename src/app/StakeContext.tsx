@@ -19,7 +19,7 @@ export const StakeProvider = ({ children }: any) => {
         .indexOf(inputStkCrypto.toLocaleLowerCase()) !== -1
   );
 
-  console.log("allstaked", allStakings);
+  // console.log("allstaked", allStakings);
 
   // Staking (Stock);
   const [inputStkStock, setInputStkStock] = useState("");

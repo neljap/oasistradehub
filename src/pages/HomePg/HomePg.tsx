@@ -49,6 +49,7 @@ import { GetStarted } from "../User/ui";
 import { FaAngleDown, FaAngleUp, FaHeart, FaPeopleGroup } from "react-icons/fa6";
 import { FcLineChart } from "react-icons/fc";
 import { HiSpeakerphone } from "react-icons/hi";
+import toast from "react-hot-toast";
 const HomePg = () => {
   // const [changebg, setChangebg] = useState(false);
 
@@ -115,12 +116,15 @@ const HomePg = () => {
     try {
       setIsFmLoading(true);
       // email, fullname, message, subject, phone
-      console.log(fullname, email, phone, message, subject);
+      // console.log(fullname, email, phone, message, subject);
       const res = await axios.post("https://oaserver.onrender.com/api/user/contact", {fullname, email, phone, message, subject});
-      console.log("res", res);
+      if(res){
+        toast.success("Form submitted successfully", {position: "bottom-left", className: "font-[Jost]"})
+      }
+      // console.log("res", res);
       
     } catch (error) {
-      console.log(error);
+      toast.error(`Form Error: ${error}`, {position: "bottom-left", className: "font-[Jost]"})
     } finally {
       setIsFmLoading(false);
       setEmail("");
