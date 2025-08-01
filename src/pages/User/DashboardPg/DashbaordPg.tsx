@@ -96,7 +96,7 @@ const DashbaordPg = () => {
                     </div>
                 </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 gap-4 md:gap-8">
             {DashItems.map((item, index) => (
              <div className="border border-neutral-100 dark:border-neutral-700 rounded-xl bg-primary bg-opacity-5 p-4 flex flex-row justify-between items-start dark:bg-[#2a3042]" key={index}>
                 <div>

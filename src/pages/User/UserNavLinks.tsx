@@ -291,7 +291,7 @@ const UserNavLinks = ({ children }: any) => {
           {children}
           <footer className="bg-gray-600 text-white font-[Jost]">
             <div className="container">
-            <div className="border-t border-gray-800 md:py-6 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div className="border-t border-gray-800 md:py-6 py-2 flex flex-col md:flex-row justify-between items-center">
       <p className="text-white font-[Jost] text-sm mb-4 md:mb-0">© 2010 Oasis Trade Hub. All rights reserved.</p>
       <div className="flex space-x-6">
         <a href="#" className="hover:text-gray-500 text-white text-sm transition">Privacy Policy</a>

@@ -274,21 +274,21 @@ try {
                       </div>
                     </div> */}
                     <div className="grid grid-cols-2 gap-2 pt-4 px-2 ">
-                      <div className="bg-neutral-100 rounded-md py-1 px-2 flex flex-row justify-between items-center">
+                      <div className="bg-neutral-100 dark:bg-neutral-700 rounded-md py-1 px-2 flex flex-row justify-between items-center">
                         <p className="font-[600]">Profit share</p>
                         <p>{item.pshare}</p>
                       </div>
-                      <div className="bg-neutral-100 rounded-md py-1 px-2 flex flex-row justify-between items-center">
+                      <div className="bg-neutral-100 dark:bg-neutral-700 rounded-md py-1 px-2 flex flex-row justify-between items-center">
                         <p className="font-[600]">Win rate</p>
                         <p>{item.winrate}</p>
                       </div>
                     </div>
                     <div className="grid grid-cols-2 gap-2 pt-4 px-2">
-                      <div className="bg-neutral-100 rounded-md py-1 px-2 flex flex-row justify-between items-center">
+                      <div className="bg-neutral-100 dark:bg-neutral-700 rounded-md py-1 px-2 flex flex-row justify-between items-center">
                         <p className="font-[600]">Amount</p>
                         <p>$1,500</p>
                       </div>
-                      <div className="bg-neutral-100 rounded-md py-1 px-2 flex flex-row justify-between items-center">
+                      <div className="bg-neutral-100 dark:bg-neutral-700 rounded-md py-1 px-2 flex flex-row justify-between items-center">
                         <p className="font-[600]">Total trades</p>
                         <p>{item.totaltrade}</p>
                       </div>

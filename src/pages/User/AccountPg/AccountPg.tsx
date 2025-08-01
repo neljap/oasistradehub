@@ -43,15 +43,15 @@ const AccountPg = () => {
             <h3>Account Information</h3>
             <div className="flex items-center justify-center gap-4">
                 <img src={profilebar} alt="" className="size-20" />
-                <div className="flex items-center gap-3">
-                    <button className="py-1 px-3 border shadow border-neutral-700 dark:border-neutral-100 text-neutral-700 dark:text-neutral-100 font-[500] font-[Jost] rounded">Change Picture</button>
-                    <button className="py-1 px-3 border shadow border-red-500 text-red-800 font-[500] font-[Jost] rounded">Remove Picture</button>
+                <div className="flex md:flex-row flex-col items-center gap-3">
+                    <button className="md:py-1 py-0.5 px-1.5 md:px-3 text-sm md:text-md border shadow border-neutral-700 dark:border-neutral-100 text-neutral-700 dark:text-neutral-100 font-[500] font-[Jost] rounded">Change Picture</button>
+                    <button className="md:py-1 py-0.5 px-1.5 md:px-3 text-sm md:text-md border shadow border-red-500 text-red-800 font-[500] font-[Jost] rounded">Remove Picture</button>
                 </div>
             </div>
             <div className="flex items-center justify-between w-full border-b border-neutral-200 dark:border-neutral-700 pb-3">
                 <div>
                     <h3>Full Name</h3>
-                    <p className="text-neutral-700 dark:text-neutral-100">{data?.dob ? new Date(data?.dob).toLocaleDateString() : "Not set"}</p>
+                    <p className="text-neutral-700 dark:text-neutral-100">{data ? data?.fullname : "Not set"}</p>
                 </div>
                 <div>
                     <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowFNModal(true)}>Edit</button>
@@ -60,7 +60,7 @@ const AccountPg = () => {
             <div className="flex items-center justify-between w-full border-b border-neutral-200 dark:border-neutral-700 pb-3">
                 <div>
                     <h3>Email Address</h3>
-                    <p className="text-neutral-700 dark:text-neutral-100">{data?.dob ? new Date(data?.dob).toLocaleDateString() : "Not set"}</p>
+                    <p className="text-neutral-700 dark:text-neutral-100">{data ? data?.email : "Not set"}</p>
                 </div>
                 <div>
                     <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowEmailModal(true)}>Edit</button>
@@ -97,7 +97,7 @@ const AccountPg = () => {
             <div className="flex items-center justify-between w-full border-b border-neutral-200 dark:border-neutral-700 pb-3">
                 <div>
                     <h3>Phone Number</h3>   
-                    <p className="text-neutral-700 dark:text-neutral-100">{data?.phone ? data?.phone : "Not set"}</p>
+                    <p className="text-neutral-700 dark:text-neutral-100">{data?.number == "" ? "Not set" : data?.number}</p>
                 </div>
                 <div>
                     <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowPhoneModal(true)}>Edit</button>
@@ -106,7 +106,7 @@ const AccountPg = () => {
             <div className="flex items-center justify-between w-full border-b border-neutral-200 dark:border-neutral-700 pb-3">
                 <div>
                     <h3>Country</h3>
-                    <p className="text-neutral-700 dark:text-neutral-100">{data ? data?.country : "Not set"}</p>
+                    <p className="text-neutral-700 dark:text-neutral-100">{data?.country == "" ? "Not set" : data?.country}</p>
                 </div>
                 <div>
                     <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowCountryModal(true)}>Edit</button>
@@ -115,7 +115,7 @@ const AccountPg = () => {
             <div className="flex items-center justify-between w-full border-b border-neutral-200 dark:border-neutral-700 pb-3">
                 <div>
                     <h3>State/Province/Area</h3>
-                    <p className="text-neutral-700 dark:text-neutral-100">{data?.address ? data?.address : "Not set"}</p>
+                    <p className="text-neutral-700 dark:text-neutral-100">{data?.state == "" ? "Not set" : data?.state}</p>
                 </div>
                 <div>
                     <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowStateModal(true)}>Edit</button>
@@ -124,7 +124,7 @@ const AccountPg = () => {
             <div className="flex items-center justify-between w-full pb-3">
                 <div>
                     <h3>City</h3>
-                    <p className="text-neutral-700 dark:text-neutral-100">{data?.address ? data?.address : "Not set"}</p>
+                    <p className="text-neutral-700 dark:text-neutral-100">{data?.city == "" ? "Not set" : data?.city}</p>
                 </div>
                 <div>
                     <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowCityModal(true)}>Edit</button>

@@ -195,11 +195,11 @@ const {data} = useContext(AuthContext);
               <h3 className="font-[Jost] font-[600] pt-2 text-xl">Personal Details</h3>
               <div className="flex flex-col gap-0.5 py-0.5">
                 <label className="font-[Jost] text-lg md:text-xl">Phone Number</label>
-                <input type="text" placeholder="Enter your email address" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border border-neutral-100 dark:border-neutral-700" required value={number} onChange={(e) => setNumber(e.target.value)}/>
+                <input type="text" placeholder="Enter your Phone Number" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border border-neutral-100 dark:border-neutral-700" required value={number} onChange={(e) => setNumber(e.target.value)}/>
               </div>
               <div className="flex flex-col gap-0.5 py-0.5">
                 <label className="font-[Jost] text-lg md:text-xl">Date of Birth</label>
-                <input type="text" placeholder="Enter your email address" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border border-neutral-100 dark:border-neutral-700" required value={dob} onChange={(e) => setDob(e.target.value)}/>
+                <input type="text" placeholder="Enter your Date of Birth" className="w-full py-2 px-3 dark:text-gray-50 outline-none shadow appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border border-neutral-100 dark:border-neutral-700" required value={dob} onChange={(e) => setDob(e.target.value)}/>
               </div>
               </div>
               <div>

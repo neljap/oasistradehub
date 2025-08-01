@@ -1,11 +1,12 @@
-import { AiOutlineGlobal } from "react-icons/ai";
-import { FaCommentAlt, FaShoppingBag, FaTh, FaUserAlt } from "react-icons/fa";
+import { BiSolidDashboard } from "react-icons/bi";
+import { FaCommentAlt } from "react-icons/fa";
 import { FaPeopleGroup, FaPowerOff } from "react-icons/fa6";
-import { HiCash } from "react-icons/hi";
+import { GrMoney } from "react-icons/gr";
 import { HiMiniClipboardDocumentList } from "react-icons/hi2";
 import { IoIosCash } from "react-icons/io";
-import { MdVerified } from "react-icons/md";
-import { SiBitcoincash } from "react-icons/si";
+import { MdOutlineSupervisorAccount, MdVerified } from "react-icons/md";
+import { RiExchangeBoxLine } from "react-icons/ri";
+import { SiBitcoincash, SiMarketo } from "react-icons/si";
 import { NavLink } from "react-router-dom";
 
 interface navMenuTypes {
@@ -26,57 +27,57 @@ const UserRespNav = ({showNavMenu, setShowNavMenu, setLogoutModal}: navMenuTypes
         {
           path: "/user/dashboard",
           name: "Dashboard",
-          icon: <FaTh size={24} />,
+          icon: <BiSolidDashboard size={24} color="#0252ff"/>,
         },
         {
-          path: "/user/markets",
+          path: "/user/markets/crypto",
           name: "Live Markets",
-          icon: <AiOutlineGlobal size={24}  />
+          icon: <SiMarketo size={24} color="#097031" />
         },
         {
           path: "/user/stake",
           name: "Stake",
-          icon: <FaShoppingBag size={24} />,
+          icon: <RiExchangeBoxLine size={24} color="#3c39aa" />,
         },
         {
           path: "/user/deposit",
           name: "Deposit",
-          icon: <IoIosCash size={24} />
+          icon: <IoIosCash size={24} color="#f49419"/>
         },
         {
           path: "/user/experts",
           name: "Trading Experts",
-          icon: <HiMiniClipboardDocumentList size={24} />
+          icon: <HiMiniClipboardDocumentList size={24} color="#e84242" />
         },
         {
           path: "/user/withdraw",
           name: "Withdraw",
-          icon: <HiCash size={24}  />
+          icon: <GrMoney size={24}  color="#86b144"/>
         },
         {
           path: "/user/subscriptions",
           name: "Subscriptions",
-          icon: <FaCommentAlt size={24} />,
+          icon: <FaCommentAlt size={24} color="#fcdeff" />,
         },
         {
           path: "/user/purchase-crypto",
           name: "Purchase Crypto",
-          icon: <SiBitcoincash size={24} />
+          icon: <SiBitcoincash size={24} color="#ffdc08"/>
         },
         {
           path: "/user/account",
           name: "Account",
-          icon: <FaUserAlt size={24} />,
+          icon: <MdOutlineSupervisorAccount size={24} color="#0252ff"/>,
         },
         {
           path: "/user/verification",
           name: "Verification",
-          icon: <MdVerified size={24}  />
+          icon: <MdVerified size={24}  color="#007f02"/>
         },
         {
           path: "/user/support",
           name: "Support",
-          icon: <FaPeopleGroup size={24}  />
+          icon: <FaPeopleGroup size={24} color="#f16719" />
         },
       ];
 

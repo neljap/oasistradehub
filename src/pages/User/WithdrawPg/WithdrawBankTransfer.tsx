@@ -73,7 +73,7 @@ const WithdrawBankTransfer = () => {
                       Enter OTP
                   </label>    
                   <div>
-                      <button type="button" className="rounded py-1 font-[Jost] px-3 bg-[#0052FF] text-gray-50" onClick={() => toast.success("Contact Support for OTP", {position: "bottom-left", className: "font-[Jost]"})}>Request OTP</button>
+                      <button type="button" className="rounded py-1 font-[Jost] px-3 bg-neutral-700 dark:bg-neutral-100 text-gray-50" onClick={() => toast.success("Contact Support for OTP", {position: "bottom-left", className: "font-[Jost]"})}>Request OTP</button>
                   </div>
                   </div>
                   
