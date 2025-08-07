@@ -58,57 +58,57 @@ const WithdrawBankTransfer = () => {
     <div className="text-xl py-4 px-6 bg-[#86b144] text-white text-center font-bold uppercase">
         Withdraw Through Bank Transfer
     </div>
-    <form className="py-4 px-6" onSubmit={handleSubmit}>
+    <form className="py-4 px-6 dark:bg-[#2a3042]" onSubmit={handleSubmit}>
       <div className="mb-4">
-                  <label className="block text-gray-700 font-bold mb-2" >
+                  <label className="block text-neutral-700 dark:text-neutral-100 font-bold mb-2" >
                       Enter Amount to Withdraw ($)
                   </label>
                   <input
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-neutral-700 dark:text-neutral-100 leading-tight focus:outline-none focus:shadow-outline"
                       id="name" type="number" required placeholder="Enter Amount" value={amount} onChange={(e: any) => setAmount(e.target.value)}/>
               </div>
               <div className="mb-4">
                   <div className="flex gap-4 items-center py-1">
-                  <label className="block text-gray-700 font-bold mb-2" >
+                  <label className="block text-neutral-700 dark:text-neutral-100 font-bold mb-2" >
                       Enter OTP
                   </label>    
                   <div>
-                      <button type="button" className="rounded py-1 font-[Jost] px-3 bg-neutral-700 dark:bg-neutral-100 text-gray-50" onClick={() => toast.success("Contact Support for OTP", {position: "bottom-left", className: "font-[Jost]"})}>Request OTP</button>
+                      <button type="button" className="rounded py-1 font-[Jost] px-3 bg-neutral-700 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-700" onClick={() => toast.success("Contact Support for OTP", {position: "bottom-left", className: "font-[Jost]"})}>Request OTP</button>
                   </div>
                   </div>
                   
                   <input
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-neutral-700 dark:text-neutral-100 leading-tight focus:outline-none focus:shadow-outline"
                       id="text" type="text" required placeholder="Enter OTP" value={otp} onChange={(e:any) => setOtp(e.target.value)}/>
               </div>
         <div className="mb-4">
-            <label className="block text-gray-700 font-bold mb-2" >
+            <label className="block text-neutral-700 dark:text-neutral-100 font-bold mb-2" >
               Bank Name
             </label>
             <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-neutral-700 dark:text-neutral-100 leading-tight focus:outline-none focus:shadow-outline"
                 id="name" type="text"  required placeholder="Enter your Bank Name" value={bankname} onChange={(e:any) => setBankname(e.target.value)} />
         </div>
         <div className="mb-4">
-            <label className="block text-gray-700 font-bold mb-2" >
+            <label className="block text-neutral-700 dark:text-neutral-100 font-bold mb-2" >
                 Account Number
             </label>
             <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-neutral-700 dark:text-neutral-100 leading-tight focus:outline-none focus:shadow-outline"
                 id="text" type="text" placeholder="Enter your Account Number" required value={accnumber} onChange={(e:any) => setAccnumber(e.target.value)}/>
         </div>
 
         <div className="mb-4">
-            <label className="block text-gray-700 font-bold mb-2"  >
+            <label className="block text-neutral-700 dark:text-neutral-100 font-bold mb-2"  >
               Bank Account Information
             </label>
             <textarea
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-neutral-700 dark:text-neutral-100 leading-tight focus:outline-none focus:shadow-outline"
                 id="message" value={other} onChange={(e:any) => setOther(e.target.value)}  rows={4} placeholder="Enter any additional information"></textarea>
         </div>
         <div className="flex items-center justify-center mb-4">
             <button
-                className="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline"
+                className="bg-neutral-900 dark:bg-neutral-200 text-neutral-100 dark:text-neutral-700 py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline"
                 type="submit">
                   {withLoading ? "Processing..." : "Submit Withdraw Request"}
             </button>

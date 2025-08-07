@@ -25,8 +25,8 @@ const LiveReading = () => {
       
       </div>
       <div className="border border-neutral-100 dark:border-neutral-700 dark:bg-[#2a3042] rounded-xl bg-neutral-100 p-4">
-        <p className="font-[500]">Current Plan</p>
-        <p className="font-[600] text-xl py-2">0</p>
+        <p className="font-[500]">Total Profit</p>
+        <p className="font-[600] text-xl py-2">${Number(data?.tProfit).toLocaleString()}</p>
       
       </div>
       <div className="border border-neutral-100 dark:border-neutral-700 dark:bg-[#2a3042] rounded-xl bg-neutral-100 p-4">

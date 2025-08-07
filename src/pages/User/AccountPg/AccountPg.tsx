@@ -3,7 +3,7 @@ import { AuthContext } from "../../../app/AuthContext"
 import { profilebar } from "../../../assets"
 import axios from "axios";
 import toast from "react-hot-toast";
-import { ChangeCity, ChangeCountry, ChangeDob, ChangeEmail, ChangeFullName, ChangePhone, ChangeState } from "./components";
+import { ChangeCity, ChangeCountry, ChangeDob, ChangeEmail, ChangeFullName, ChangePhone, ChangeProfilePicture, ChangeState, RemoveProfilePicture } from "./components";
 
 
 const AccountPg = () => {
@@ -16,7 +16,8 @@ const AccountPg = () => {
     const [showCountryModal, setShowCountryModal] = useState(false);
     const [showStateModal, setShowStateModal] = useState(false);
     const [showCityModal, setShowCityModal] = useState(false);
-
+    const [showRemovePPModal, setShowRemovePPModal] = useState(false);
+    const [showChangePPModal, setShowChangePPModal] = useState(false);
 
     useEffect(() => {
         document.title = "Oasis Trade Home | Account"
@@ -44,8 +45,8 @@ const AccountPg = () => {
             <div className="flex items-center justify-center gap-4">
                 <img src={profilebar} alt="" className="size-20" />
                 <div className="flex md:flex-row flex-col items-center gap-3">
-                    <button className="md:py-1 py-0.5 px-1.5 md:px-3 text-sm md:text-md border shadow border-neutral-700 dark:border-neutral-100 text-neutral-700 dark:text-neutral-100 font-[500] font-[Jost] rounded">Change Picture</button>
-                    <button className="md:py-1 py-0.5 px-1.5 md:px-3 text-sm md:text-md border shadow border-red-500 text-red-800 font-[500] font-[Jost] rounded">Remove Picture</button>
+                    <button className="md:py-1 py-0.5 px-1.5 md:px-3 text-sm md:text-md border shadow border-neutral-700 dark:border-neutral-100 text-neutral-700 dark:text-neutral-100 font-[500] font-[Jost] rounded" onClick={() => setShowChangePPModal(true)}>Change Picture</button>
+                    <button className="md:py-1 py-0.5 px-1.5 md:px-3 text-sm md:text-md border shadow border-red-500 text-red-800 font-[500] font-[Jost] rounded" onClick={() => setShowRemovePPModal(true)}>Remove Picture</button>
                 </div>
             </div>
             <div className="flex items-center justify-between w-full border-b border-neutral-200 dark:border-neutral-700 pb-3">
@@ -139,7 +140,8 @@ const AccountPg = () => {
     {showCountryModal && <ChangeCountry setShowCountryModal={setShowCountryModal}/>}
     {showStateModal && <ChangeState setShowStateModal={setShowStateModal}/>}
     {showCityModal && <ChangeCity setShowCityModal={setShowCityModal}/>}
-
+    {showRemovePPModal && <RemoveProfilePicture setShowRemovePPModal={setShowRemovePPModal} />}
+    {showChangePPModal && <ChangeProfilePicture setShowChangePPModal={setShowChangePPModal} />}
     </div>
     
   )
