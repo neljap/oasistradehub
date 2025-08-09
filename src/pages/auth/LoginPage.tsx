@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { authImag, authImg, HomeLogo } from "../../assets"
 import { useContext, useEffect, useState } from "react"
-// import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -15,7 +15,7 @@ import LogoText from "../components/LogoText";
 const LoginPage = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  // const [recapState, setRecapState] = useState(null);
+  const [recapState, setRecapState] = useState(null);
   const [eyeVisiblePass, setEyeVisiblePass] = useState(true);
   const [formLoading, setFormLoading] = useState(false);
 
@@ -28,10 +28,10 @@ const LoginPage = () => {
 
   const handleLogin = async(e: any) => {
     e.preventDefault()
-    // if(recapState == null){
-    //   toast.info("Confirm that you're not a robot", {position: "bottom-left"})
-    //   return;
-    // }
+    if(recapState == null){
+      toast.error("Confirm that you're not a robot", {position: "bottom-left"})
+      return;
+    }
 
     const formData = {email, password}
 
@@ -103,7 +103,7 @@ const LoginPage = () => {
                 <Link to="/register">Register</Link>
               </div> */}
               <div className="py-2 mx-auto">
-              {/* <ReCAPTCHA sitekey="6LfSrWIqAAAAAAl5wjTLViZc_d0cDrHb9_V92smx" onChange={(val : any) => setRecapState(val)} /> */}
+              <ReCAPTCHA sitekey="6Ld0eJ8rAAAAADUUC_gy1tmnwLo6zPVEKMKYhx8K" onChange={(val : any) => setRecapState(val)} />
               </div>
               <button className="bg-primary transition-all ease-in-out duration-[1s] hover:text-primary hover:bg-white  py-2 w-full text-white rounded border-2 font-[500] border-primary">{formLoading ? "Logging...":"Login"}</button>        
               </form>
