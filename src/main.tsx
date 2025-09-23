@@ -8,7 +8,6 @@ import {ThemeProvider} from 'next-themes';
 import {Provider} from "react-redux";
 import { DarkLightProvider } from './app/DarkLightTheme.tsx'
 import { AuthProvider } from './app/AuthContext.tsx';
-import { LiveMarketProvider } from './app/LiveMarketContext.tsx';
 import { StakeProvider } from './app/StakeContext.tsx';
 import { store } from './app/Store.ts';
 createRoot(document.getElementById('root')!).render(
@@ -17,12 +16,9 @@ createRoot(document.getElementById('root')!).render(
     <DarkLightProvider>
       <Provider store={store}>
       <AuthProvider>
-        <LiveMarketProvider>
           <StakeProvider>
             <App />  
           </StakeProvider>
-          
-        </LiveMarketProvider>
        
       </AuthProvider>   
       </Provider>

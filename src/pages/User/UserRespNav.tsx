@@ -6,7 +6,7 @@ import { HiMiniClipboardDocumentList } from "react-icons/hi2";
 import { IoIosCash } from "react-icons/io";
 import { MdOutlineSupervisorAccount, MdVerified } from "react-icons/md";
 import { RiExchangeBoxLine } from "react-icons/ri";
-import { SiBitcoincash, SiMarketo } from "react-icons/si";
+import { SiBitcoincash } from "react-icons/si";
 import { NavLink } from "react-router-dom";
 
 interface navMenuTypes {
@@ -28,11 +28,6 @@ const UserRespNav = ({showNavMenu, setShowNavMenu, setLogoutModal}: navMenuTypes
           path: "/user/dashboard",
           name: "Dashboard",
           icon: <BiSolidDashboard size={24} color="#0252ff"/>,
-        },
-        {
-          path: "/user/markets/crypto",
-          name: "Live Markets",
-          icon: <SiMarketo size={24} color="#097031" />
         },
         {
           path: "/user/stake",

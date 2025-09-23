@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import {BiBellPlus, BiPowerOff, BiSolidDashboard } from "react-icons/bi";
+import { BiPowerOff, BiSolidDashboard } from "react-icons/bi";
 import {
   FaCommentAlt,
   FaTh,
@@ -19,13 +19,15 @@ import {
   veraccount,
   walletbar,
   withdrawbar,
+  // LTCimg
+  // XPR
 } from "../../assets";
 import { DarkLightContext } from "../../app/DarkLightTheme";
 import LogoText from "../components/LogoText";
 import {  HiMiniClipboardDocumentList } from "react-icons/hi2";
 import { GrMoney } from "react-icons/gr";
 import { IoIosCash } from "react-icons/io";
-import { SiBitcoincash, SiMarketo } from "react-icons/si";
+import { SiBitcoincash} from "react-icons/si";
 import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
 import { MdAccountBalanceWallet, MdOutlineSupervisorAccount, MdVerified } from "react-icons/md";
 import Cookies from 'js-cookie';
@@ -70,11 +72,6 @@ const UserNavLinks = ({ children }: any) => {
       path: "/user/dashboard",
       name: "Dashboard",
       icon: <BiSolidDashboard size={24} color="#0252ff"/>,
-    },
-    {
-      path: "/user/markets/crypto",
-      name: "Live Markets",
-      icon: <SiMarketo size={24} color="#097031" />
     },
     {
       path: "/user/stake",
@@ -222,17 +219,6 @@ const UserNavLinks = ({ children }: any) => {
               <MdAccountBalanceWallet size={24}/>
             </div>
             <p className="font-[600] font-[Jost] flex items-center gap-1"><span className="hidden md:block">Account Balance:</span> ${data ? Number(data?.tAmount).toLocaleString() : 0}</p>
-          </div>
-          <div className="relative">
-            <div className="absolute right-0 top-0">
-              <span className="relative flex size-3">
-  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#0052FF] opacity-75"></span>
-  <span className="relative inline-flex size-3 rounded-full bg-[#0052FF]"></span>
-</span>
-            </div>
-          <div className="flex flex-row gap-2 items-center transition-all duration-[1s] ease-in-out   px-2 md:px-3 py-1 md:py-2 shadow rounded-md md:rounded-xl cursor-pointer text-primary bg-primary bg-opacity-5 dark:bg-neutral-400 hover:bg-opacity-95 hover:text-white">
-            <BiBellPlus size={22} /> <p className="font-[500] hidden md:block">Notifications</p>
-          </div>  
           </div>
           
           <div

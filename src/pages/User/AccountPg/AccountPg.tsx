@@ -3,19 +3,13 @@ import { AuthContext } from "../../../app/AuthContext"
 import { profilebar } from "../../../assets"
 import axios from "axios";
 import toast from "react-hot-toast";
-import { ChangeCity, ChangeCountry, ChangeDob, ChangeEmail, ChangeFullName, ChangePhone, ChangeProfilePicture, ChangeState, RemoveProfilePicture } from "./components";
+import {  ChangeFullName,  ChangeProfilePicture,  RemoveProfilePicture } from "./components";
 
 
 const AccountPg = () => {
     const {data} = useContext(AuthContext);
     const [resetLoading, setResetLoading] = useState(false);
     const [showFNModal, setShowFNModal] = useState(false);
-    const [showEmailModal, setShowEmailModal] = useState(false);
-    const [showDOBModal, setShowDOBModal] = useState(false);
-    const [showPhoneModal, setShowPhoneModal] = useState(false);
-    const [showCountryModal, setShowCountryModal] = useState(false);
-    const [showStateModal, setShowStateModal] = useState(false);
-    const [showCityModal, setShowCityModal] = useState(false);
     const [showRemovePPModal, setShowRemovePPModal] = useState(false);
     const [showChangePPModal, setShowChangePPModal] = useState(false);
 
@@ -64,7 +58,7 @@ const AccountPg = () => {
                     <p className="text-neutral-700 dark:text-neutral-100">{data ? data?.email : "Not set"}</p>
                 </div>
                 <div>
-                    <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowEmailModal(true)}>Edit</button>
+                    <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowFNModal(true)}>Edit</button>
                 </div>
             </div>
             <div className="flex items-center justify-between w-full border-b border-neutral-200 dark:border-neutral-700 pb-3">
@@ -92,7 +86,7 @@ const AccountPg = () => {
                     <p className="text-neutral-700 dark:text-neutral-100">{data?.dob ? new Date(data?.dob).toLocaleDateString() : "Not set"}</p>
                 </div>
                 <div>
-                    <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowDOBModal(true)}>Edit</button>
+                    <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowFNModal(true)}>Edit</button>
                 </div>
             </div>
             <div className="flex items-center justify-between w-full border-b border-neutral-200 dark:border-neutral-700 pb-3">
@@ -101,7 +95,7 @@ const AccountPg = () => {
                     <p className="text-neutral-700 dark:text-neutral-100">{data?.number == "" ? "Not set" : data?.number}</p>
                 </div>
                 <div>
-                    <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowPhoneModal(true)}>Edit</button>
+                    <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowFNModal(true)}>Edit</button>
                 </div>
             </div>
             <div className="flex items-center justify-between w-full border-b border-neutral-200 dark:border-neutral-700 pb-3">
@@ -110,7 +104,7 @@ const AccountPg = () => {
                     <p className="text-neutral-700 dark:text-neutral-100">{data?.country == "" ? "Not set" : data?.country}</p>
                 </div>
                 <div>
-                    <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowCountryModal(true)}>Edit</button>
+                    <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowFNModal(true)}>Edit</button>
                 </div>
             </div>
             <div className="flex items-center justify-between w-full border-b border-neutral-200 dark:border-neutral-700 pb-3">
@@ -119,7 +113,7 @@ const AccountPg = () => {
                     <p className="text-neutral-700 dark:text-neutral-100">{data?.state == "" ? "Not set" : data?.state}</p>
                 </div>
                 <div>
-                    <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowStateModal(true)}>Edit</button>
+                    <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowFNModal(true)}>Edit</button>
                 </div>
             </div>
             <div className="flex items-center justify-between w-full pb-3">
@@ -128,18 +122,12 @@ const AccountPg = () => {
                     <p className="text-neutral-700 dark:text-neutral-100">{data?.city == "" ? "Not set" : data?.city}</p>
                 </div>
                 <div>
-                    <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowCityModal(true)}>Edit</button>
+                    <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => setShowFNModal(true)}>Edit</button>
                 </div>
             </div>          
         </div>
     </div>  
     {showFNModal && <ChangeFullName setShowFNModal={setShowFNModal}/>} 
-    {showEmailModal && <ChangeEmail setShowEmailModal={setShowEmailModal}/>}
-    {showDOBModal && <ChangeDob setShowDOBModal={setShowDOBModal}/>}
-    {showPhoneModal && <ChangePhone setShowPhoneModal={setShowPhoneModal}/>}
-    {showCountryModal && <ChangeCountry setShowCountryModal={setShowCountryModal}/>}
-    {showStateModal && <ChangeState setShowStateModal={setShowStateModal}/>}
-    {showCityModal && <ChangeCity setShowCityModal={setShowCityModal}/>}
     {showRemovePPModal && <RemoveProfilePicture setShowRemovePPModal={setShowRemovePPModal} />}
     {showChangePPModal && <ChangeProfilePicture setShowChangePPModal={setShowChangePPModal} />}
     </div>
