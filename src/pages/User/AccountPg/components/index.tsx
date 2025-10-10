@@ -28,19 +28,24 @@ export const ChangeFullName = ({ setShowFNModal}: ChangeFNTypes) => {
     setShowFNModal(true);
     setLoading(true); 
     try {
-      // Simulate an API call
-      let resp = await axios.post(`https://oaserver.onrender.com/api/user/update/${data?._id}`, {
+      let newdetail = {
         fullname,
-      });
+        email,
+        dob, number, country, state, city
+      }
+      console.log("new", newdetail)
+
+      // Simulate an API call
+      let resp = await axios.patch(`https://oaserver.onrender.com/api/user/update/${data?._id}`, newdetail);
       if(resp){
         setTimeout(() => {
       // setLoading(false);
-      toast.success("Full name changed successfully!", {position: "bottom-left", className: "font-[Jost]"});
+      toast.success("Account Updated successfully!", {position: "bottom-left", className: "font-[Jost]"});
     }, 2000);
       }
     
     } catch (error) {
-      toast.error(`An error occurred while changing the full name: ${error}`, {position: "bottom-left", className: "font-[Jost]"});
+      toast.error(`An error occurred: ${error}`, {position: "bottom-left", className: "font-[Jost]"});
     }finally {
       // Cleanup or final actions if needed
       setLoading(false);
@@ -52,38 +57,38 @@ export const ChangeFullName = ({ setShowFNModal}: ChangeFNTypes) => {
 
     return(
         <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
-          <div className="w-[500px] relative rounded-xL h-fit px-4 bg-[#f1f1f1] dark:bg-[#1f2937] flex flex-col justify-start items-center gap-1">
+          <div className="md:w-[500px] w-[300px] py-2 relative rounded-xl h-fit px-2 md:px-4 bg-[#f1f1f1] dark:bg-[#1f2937] flex flex-col justify-start items-center gap-1">
             <div className="absolute top-4 right-4 text-xl cursor-pointer" onClick={() => setShowFNModal(false)}><FaTimes /></div>
-            <p className="pt-1 text-lg md:text-2xl font-[Jost]">Change Full Name</p>
-            <div className="w-full flex flex-col gap-1 px-4">
-              <label className="font-[500] font-[Jost] text-xl">Full Name</label>
+            <p className="pt-1 text-lg md:text-2xl font-[Jost]">Change Account</p>
+            <div className="w-full flex flex-col gap-0 md:gap-1 px-2 md:px-4">
+              <label className="font-[500] font-[Jost] text-lg md:text-xl">Full Name</label>
               <input type="text" placeholder="Enter your Full Name" className="w-full py-2 px-3 outline-none shadow dark:text-gray-50 appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" value={fullname} onChange={(e: any) => setFullname(e.target.value)} />
             </div>
-            <div className="w-full flex flex-col gap-1 px-4">
-              <label className="font-[500] font-[Jost] text-xl">Email Address</label>
+            <div className="w-full flex flex-col gap-0 md:gap-1 px-4">
+              <label className="font-[500] font-[Jost] text-lg md:text-xl">Email Address</label>
               <input type="text" placeholder="Enter your Email Address" className="w-full py-2 px-3 outline-none shadow dark:text-gray-50 appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" value={email} onChange={(e: any) => setEmail(e.target.value)} />
             </div>
-            <div className="w-full flex flex-col gap-1 px-4">
-              <label className="font-[500] font-[Jost] text-xl">Phone Number</label>
+            <div className="w-full flex flex-col gap-0 md:gap-1 px-4">
+              <label className="font-[500] font-[Jost] text-lg md:text-xl">Phone Number</label>
               <input type="text" placeholder="Enter your Full Name" className="w-full py-2 px-3 outline-none shadow dark:text-gray-50 appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" value={number} onChange={(e: any) => setNumber(e.target.value)} />
             </div>
-            <div className="w-full flex flex-col gap-1 px-4">
-              <label className="font-[500] font-[Jost] text-xl">Date of Birth (D.O.B)</label>
+            <div className="w-full flex flex-col gap-0 md:gap-1 px-4">
+              <label className="font-[500] font-[Jost] text-lg md:text-xl">Date of Birth (D.O.B)</label>
               <input type="text" placeholder="Enter your Full Name" className="w-full py-2 px-3 outline-none shadow dark:text-gray-50 appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" value={dob} onChange={(e: any) => setDob(e.target.value)} />
             </div>
-            <div className="w-full flex flex-col gap-1 px-4">
-              <label className="font-[500] font-[Jost] text-xl">City</label>
+            <div className="w-full flex flex-col gap-0 md:gap-1 px-4">
+              <label className="font-[500] font-[Jost] text-lg md:text-xl">City</label>
               <input type="text" placeholder="Enter your Full Name" className="w-full py-2 px-3 outline-none shadow dark:text-gray-50 appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" value={city} onChange={(e: any) => setCity(e.target.value)} />
             </div>
-            <div className="w-full flex flex-col gap-1 px-4">
-              <label className="font-[500] font-[Jost] text-xl">State</label>
+            <div className="w-full flex flex-col gap-0 md:gap-1 px-4">
+              <label className="font-[500] font-[Jost] text-lg md:text-xl">State</label>
               <input type="text" placeholder="Enter your Full Name" className="w-full py-2 px-3 outline-none shadow dark:text-gray-50 appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" value={state} onChange={(e: any) => setState(e.target.value)} />
             </div>
-            <div className="w-full flex flex-col gap-1 px-4">
-              <label className="font-[500] font-[Jost] text-xl">Country</label>
+            <div className="w-full flex flex-col gap-0 md:gap-1 px-4">
+              <label className="font-[500] font-[Jost] text-lg md:text-xl">Country</label>
               <input type="text" placeholder="Enter your Full Name" className="w-full py-2 px-3 outline-none shadow dark:text-gray-50 appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg  border" value={country} onChange={(e: any) => setCountry(e.target.value)} />
             </div>
-            <div className="flex justify-between items-center w-full px-4">
+            <div className="flex justify-between items-center w-full px-4 py-1">
               <div></div>
               <button
                 className="bg-neutral-800 text-neutral-100 px-4 py-2 rounded-xl"
@@ -160,8 +165,8 @@ export const RemoveProfilePicture = ({ setShowRemovePPModal }: any) => {
 export const ChangeProfilePicture = ({ setShowChangePPModal }: any) => {
   const {data} = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
-  const [ setProfilePicture] = useState(data?.profilePicture || "");  
-  const [kycFile, setKycFile] = useState("")
+  const [profilePics, setProfilePicture] = useState("");  
+  // const [kycFile, setKycFile] = useState("")
 
   // let inputRef = useRef<any | null>(null) 
   
@@ -171,7 +176,7 @@ export const ChangeProfilePicture = ({ setShowChangePPModal }: any) => {
 
   const preFile = async (type : any) => {
     const data = new FormData();
-    data.append("file", kycFile);
+    data.append("file", profilePics);
     data.append("upload_preset", "kyc_preset");
 
     try {
@@ -189,7 +194,7 @@ export const ChangeProfilePicture = ({ setShowChangePPModal }: any) => {
 
    async(e : any) => {
     e.preventDefault();
-    if (!kycFile) {
+    if (!profilePics) {
       toast.error("Please Upload a file", {
         position: "bottom-left",
         className: "font-[Jost]"
@@ -199,10 +204,12 @@ export const ChangeProfilePicture = ({ setShowChangePPModal }: any) => {
 
     try {
       setLoading(true)
-      const profilePics = await preFile('image');
+      const profilePic = await preFile('image');
+
+      console.log("ppics", profilePics);
 
       await axios.patch(`https://oaserver.onrender.com/api/user/update/${data?._id}`, {
-        profilePics,
+        profilePics: profilePic,
       });
 
       toast.success("Kyc Data Uploaded Successfully", {position: "bottom-left", className: "font-[Jost]"})
@@ -212,7 +219,7 @@ export const ChangeProfilePicture = ({ setShowChangePPModal }: any) => {
       toast.error(error.code, { position: "bottom-left", className: "font-[Jost]" });
     } finally{
       setLoading(false)
-      setKycFile("")
+      setProfilePicture("")
     }
   };
 
@@ -242,7 +249,7 @@ export const ChangeProfilePicture = ({ setShowChangePPModal }: any) => {
             <p className="pt-2 text-lg md:text-2xl font-[Jost]">Change Profile Picture</p>
             <div className="w-full flex flex-col gap-2 px-4">
               <label className="font-[500] font-[Jost] text-xl">Profile Picture</label>
-              <input type="file" accept="image/*" className="w-full py-2 px-3 outline-none shadow dark:text-gray-50 appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg border" onChange={(e: any) => setProfilePicture(URL.createObjectURL(e.target.files[0]))} />
+              <input type="file" accept="image/*" className="w-full py-2 px-3 outline-none shadow dark:text-gray-50 appearance-none text-gray-700 leading-tight focus:outline-none rounded-lg border" onChange={(e: any) => setProfilePicture(e.target.files[0])} />
             </div>
             <div className="flex justify-between items-center w-full px-4">
               <div></div>
