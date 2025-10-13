@@ -20,7 +20,7 @@ const WithdrawCrypto = () => {
     e.preventDefault()
     setWithLoading(true);
     try {
-      if(amount  < 50000){
+      if(amount  < 20000){
         toast.error("Amount is too Low", {position: "bottom-left", className: "font-[Jost]"})
         return;
       }else if(otp == 340845 || 230457 || 659265 || 973270 ){

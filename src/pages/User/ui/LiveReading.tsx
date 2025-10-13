@@ -8,7 +8,7 @@ const LiveReading = () => {
 
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
       <div className="border border-neutral-100 rounded-xl bg-neutral-100 p-4 dark:border-neutral-700 dark:bg-[#2a3042]">
       <div className="flex flex-col justify-start items-start gap-1">
         <p className=" font-[500]">Live Market</p>
@@ -29,21 +29,21 @@ const LiveReading = () => {
         <p className="font-[600] text-xl py-2">${Number(data?.tProfit).toLocaleString()}</p>
       
       </div>
-      <div className="border border-neutral-100 dark:border-neutral-700 dark:bg-[#2a3042] rounded-xl bg-neutral-100 p-4">
+      {/* <div className="border border-neutral-100 dark:border-neutral-700 dark:bg-[#2a3042] rounded-xl bg-neutral-100 p-4">
         <p className="font-[Jost] font-[600]">Total Trades</p>
         <p className="font-[600] text-xl py-2">{data?.market.length}</p>
       
-      </div>
+      </div> */}
       <div className="border border-neutral-100 dark:border-neutral-700 dark:bg-[#2a3042] rounded-xl bg-neutral-100 p-4">
         <p className="font-[Jost] font-[600]">Total Stakes</p>
         <p className="font-[600] text-xl py-2">{data?.staked.length}</p>
       
       </div>
-      <div className="border border-neutral-100 dark:border-neutral-700 dark:bg-[#2a3042] rounded-xl bg-neutral-100 p-4">
+      {/* <div className="border border-neutral-100 dark:border-neutral-700 dark:bg-[#2a3042] rounded-xl bg-neutral-100 p-4">
         <p className="font-[Jost] font-[600]">Bonus</p>
         <p className="font-[600] text-xl py-2">${Number(data?.tBonus).toLocaleString()}</p>
       
-      </div>
+      </div> */}
     </div>
   );
 };

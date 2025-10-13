@@ -114,9 +114,7 @@ const DashbaordPg = () => {
         <CurrentPlanCard />
         <div className="flex flex-row justify-between items-center mt-4">
             <p className="font-[Jost] font-[600]">My Assets</p>
-            <Link to="/user/deposit">
-            <button className="bg-primary font-[Jost] text-white px-4 py-2 rounded-xl flex flex-row items-center gap-2 font-[500]"><PiHandDepositFill size={24}/> Deposit</button>
-            </Link>
+            <div></div>
             
         </div>
         {/* <div className="h-[600px]">

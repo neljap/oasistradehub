@@ -16,11 +16,14 @@ const WithdrawProcessing = () => {
   ariaLabel="hourglass-loading"
             colors={['#86b144', '#ddf1c1']} />
           </div>
-          <p className="font-[Jost] text-lg md:text2xl font-[600] text-center">Please wait while we securely process your payment</p>
+          <div className="w-2/3 mx-auto">
+          <p className="font-[Jost] text-lg md:text2xl font-[600] text-center">We are currently processing your request to withdraw your investment profits. <br /> Please feel free to check back later, and once the process is complete, <br /> we will send you an email notification. <br /> Thank you for your patience!</p>
       <div className="py-4 font-[Jost] flex items-center justify-center gap-2" onClick={() => navigate("/user/dashboard")}>
         <FaLongArrowAltLeft />
         <p>Back to Dashboard</p>
       </div>
+          </div>
+          
             
           </div>
         </div>
