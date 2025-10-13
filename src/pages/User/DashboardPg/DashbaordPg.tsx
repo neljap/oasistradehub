@@ -35,7 +35,7 @@ const DashbaordPg = () => {
         },
         {
             id:4,
-            title: "Total Trade",
+            title: "Total Profit",
             icon: FaTrademark,
             amount: data?.market.length
         }
