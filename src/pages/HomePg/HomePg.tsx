@@ -617,7 +617,7 @@ const HomePg = () => {
       {/* FAQ */}
       <div className="container" id="faq">
      <div
-    className="relative w-full bg-white pt-10 pb-8 mt-4 ">
+    className="relative w-full bg-white dark:bg-gray-800 rounded-lg pt-10 pb-8 mt-4 ">
     <div className="mx-auto w-full px-0 md:px-12">
         <div className="flex flex-col items-center w-full md:w-1/2 mx-auto">
             <h2 className="mt-5 text-center text-3xl font-bold tracking-tight md:text-5xl font-[Jost]">FAQ</h2>

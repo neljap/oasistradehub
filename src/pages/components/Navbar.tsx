@@ -152,9 +152,9 @@ const Navbar = ({
                 // className={activeLink === sectionId  ? "active" : ""}
                 to="/"
                 onClick={() => scrollToSection(sectionId)}
-                className={`${activeLink === sectionId  ? "active" : ""} text-md hover:text-primary capitalize transition-all ease-in-out duration-[1s] dark:text-white py-3`}
+                className={`${activeLink === sectionId  ? "active" : sectionId == "faq" ? "uppercase" :""} text-md hover:text-primary capitalize transition-all ease-in-out duration-[1s] dark:text-white py-3`}
               >
-                <p className={`${activeLink === sectionId ? "text-primary border-b-2 pb-1 border-primary" : ""}`}>{sectionId}</p>
+                <p className={`${activeLink === sectionId ? "text-primary border-b-2 pb-1 border-primary" : sectionId == "faq" ? "uppercase": ""}`}>{sectionId}</p>
               </Link>
               ))}
             </nav>
