@@ -1,14 +1,12 @@
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../../app/AuthContext"
 import { profilebar } from "../../../assets"
-import axios from "axios";
 import toast from "react-hot-toast";
 import {  ChangeFullName,  ChangeProfilePicture,  RemoveProfilePicture } from "./components";
 
 
 const AccountPg = () => {
     const {data} = useContext(AuthContext);
-    const [resetLoading, setResetLoading] = useState(false);
     const [showFNModal, setShowFNModal] = useState(false);
     const [showRemovePPModal, setShowRemovePPModal] = useState(false);
     const [showChangePPModal, setShowChangePPModal] = useState(false);
@@ -16,20 +14,6 @@ const AccountPg = () => {
     useEffect(() => {
         document.title = "Oasis Trade Home | Account"
     }, [])
-    const sendResetLink = async() => {
-        // Logic to send password reset link
-        setResetLoading(true)
-        try {
-            const response = await axios.post("https://oaserver.onrender.com/forgot-password", {email: data?.email})
-            if(response){
-                toast.success("Reset Password Link Sent", {position: "bottom-left", className: "font-[Jost]"})
-            }
-        } catch (error) {
-            toast.error("An Error Occured", {position: "bottom-left", className: "font-[Jost]"})
-        }finally{
-            setResetLoading(false)
-        }
-    }
   return (
     <div>
 
@@ -37,7 +21,7 @@ const AccountPg = () => {
         <div className="rounded-xl flex flex-col gap-3 items-start border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-[#2a2f42] px-4 py-6 my-4 md:mt-2 md:mb-4 mb-2">
             <h3>Account Information</h3>
             <div className="flex items-center justify-center gap-4">
-                <img src={profilebar} alt="" className="size-20" />
+                <img src={data?.profilePics == "" ? profilebar : data?.profilePics} alt="" className="size-20 rounded-full" />
                 <div className="flex md:flex-row flex-col items-center gap-3">
                     <button className="md:py-1 py-0.5 px-1.5 md:px-3 text-sm md:text-md border shadow border-neutral-700 dark:border-neutral-100 text-neutral-700 dark:text-neutral-100 font-[500] font-[Jost] rounded" onClick={() => setShowChangePPModal(true)}>Change Picture</button>
                     <button className="md:py-1 py-0.5 px-1.5 md:px-3 text-sm md:text-md border shadow border-red-500 text-red-800 font-[500] font-[Jost] rounded" onClick={() => setShowRemovePPModal(true)}>Remove Picture</button>
@@ -67,8 +51,8 @@ const AccountPg = () => {
                     <p className="text-neutral-700 dark:text-neutral-100">******</p>
                 </div>
                 <div>
-                    <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={sendResetLink}>
-                        {resetLoading ? (
+                    <button className="font-[Jost] font-[500] border border-neutral-700 dark:border-neutral-100 rounded px-4 py-1" onClick={() => toast.success("Please Contact Support", {position: "bottom-left", className: "font-[Jost]"})}>Edit</button>
+                        {/* {resetLoading ? (
                             <div className="flex justify-center items-center">
                     <svg
                       className="animate-spin h-5 w-5 mr-3 border-t-2 border-b-2 border-white rounded-full"
@@ -77,7 +61,7 @@ const AccountPg = () => {
                     Sending Reset Link...
                   </div>
                         ): "Send Password Reset Link"}
-                    </button>
+                    </button> */}
                 </div>
             </div>
             <div className="flex items-center justify-between w-full border-b border-neutral-200 dark:border-neutral-700 pb-3">

@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { useContext } from "react";
 import { AuthContext } from "../../../app/AuthContext";
-import { GrMoney } from "react-icons/gr";
 
 interface Wdctypes {
 minWd: String,
@@ -38,10 +37,8 @@ const WithdrawCard = ({minWd, maxWd, wMode, chgWd, duraWd, msign}: Wdctypes) => 
   return (
     <div className="w-full shadow-xl px-4 pb-6 rounded-lg border border-neutral-200 font-[Jost]">
         <div className="bg-neutral-50 rounded-bl-lg rounded-br-lg">
-         <div className="bg-[#86b144] px-16 py-1 text-white rounded-bl-lg rounded-br-lg w-fit mx-auto"><p className="font-[500] font-[Jost] text-xl md:text-3xl">{wMode}</p></div>
-         <div className="flex justify-center py-8 items-center">
-          <GrMoney size={80}  color="#86b144"/>
-         </div>
+         <div className="bg-[#86b144] p-1 text-white rounded-bl-lg rounded-br-lg w-fit mx-auto"><p className="font-[500] font-[Jost] text-xl md:text-3xl">{wMode}</p></div>
+         
          
         {/* <img src={bankwithdrawalImg} alt="" className="size-32 md:size-52 py-4 mx-auto" />    */}
         </div>

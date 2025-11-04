@@ -14,7 +14,7 @@ const WithdrawPg = () => {
       <div className="container">
         <p className="font-[500] py-4 font-[Jost] text-lg md:text-2xl">WITHDRAWAL</p>
         <div className="rounded-lg shadow ">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-center items-center p-8 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 justify-center items-center p-8 px-0 md:px-24 w-full">
         {withdrawProcess.map((item: any) => (
           <WithdrawCard key={item.id} wMode={item.mode} minWd={item.minwithdraw} maxWd={item.maxwithdraw} chgWd={item.charges} duraWd={item.duration} msign={item.msign}/>
         ))}

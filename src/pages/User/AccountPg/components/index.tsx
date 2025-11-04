@@ -103,14 +103,17 @@ export const ChangeFullName = ({ setShowFNModal}: ChangeFNTypes) => {
 }
 
 export const RemoveProfilePicture = ({ setShowRemovePPModal }: any) => {
-  // const {data} = useContext(AuthContext);
+  const {data} = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
-  const removePPFunction = () => {
+  const removePPFunction = async() => {
    // Logic to remove profile picture
     setShowRemovePPModal(true);
     setLoading(true);
     try {
       // Simulate an API call
+      await axios.patch(`https://oaserver.onrender.com/api/user/update/${data?._id}`, {
+        profilePics: "",
+      });
     setTimeout(() => {  
       // setLoading(false);
       toast.success("Profile picture removed successfully!", {position: "bottom-left", className: "font-[Jost]"});
@@ -119,7 +122,7 @@ export const RemoveProfilePicture = ({ setShowRemovePPModal }: any) => {
     }
 
     catch (error) {
-      
+      toast.error(`An error occurred: ${error}`, {position: "bottom-left", className: "font-[Jost]"});
     }
     finally {
       // Cleanup or final actions if needed
@@ -186,13 +189,14 @@ export const ChangeProfilePicture = ({ setShowChangePPModal }: any) => {
 
       const res = await axios.post(api, data);
       const { secure_url } = res.data;
+      console.log("secure", secure_url);
       return secure_url;
     } catch (error :any) {
       toast.error(error.code, { position: "bottom-left", className: "font-[Jost]" });
     }
   };
 
-   async(e : any) => {
+  const changePPFunction = async(e : any) => {
     e.preventDefault();
     if (!profilePics) {
       toast.error("Please Upload a file", {
@@ -223,25 +227,25 @@ export const ChangeProfilePicture = ({ setShowChangePPModal }: any) => {
     }
   };
 
-  const changePPFunction = () => {
-   // Logic to change profile picture
-    setShowChangePPModal(true);
-    setLoading(true);
-    try {
-      // Simulate an API call
-    setTimeout(() => {
-      // setLoading(false);
-      toast.success("Profile picture changed successfully!", {position: "bottom-left", className: "font-[Jost]"});
-    }
-    , 2000);
-    } catch (error) {
-    }
-    finally {
-      // Cleanup or final actions if needed
-      setLoading(false);
-      setShowChangePPModal(false);
-    }
-  }
+  // const changePPFunction = () => {
+  //  // Logic to change profile picture
+  //   setShowChangePPModal(true);
+  //   setLoading(true);
+  //   try {
+  //     // Simulate an API call
+  //   setTimeout(() => {
+  //     // setLoading(false);
+  //     toast.success("Profile picture changed successfully!", {position: "bottom-left", className: "font-[Jost]"});
+  //   }
+  //   , 2000);
+  //   } catch (error) {
+  //   }
+  //   finally {
+  //     // Cleanup or final actions if needed
+  //     setLoading(false);
+  //     setShowChangePPModal(false);
+  //   }
+  // }
     return(
         <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
           <div className="w-[500px] relative rounded-xl h-52 px-4 bg-[#f1f1f1] dark:bg-[#1f2937] flex flex-col justify-start items-center gap-4"> 
