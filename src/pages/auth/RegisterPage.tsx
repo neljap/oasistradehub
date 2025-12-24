@@ -89,7 +89,7 @@ const RegisterPage = () => {
                   <div className="p-1.5 shadow rounded-full bg-primary bg-opacity-5 cursor-pointer" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>{themeBox()}</div>
                 <Link to="/login" className="text-lg font-[500] text-black">Login</Link>
               </div>
-              <h3 className="font-[600] text-lg md:text-2xl py-2 font-[Jost]">Sign Up Now</h3>
+              <h3 className="font-[600] text-lg md:text-2xl py-1 font-[Jost]">Sign Up Now</h3>
               <p className="text-sm font-[500]">Experience the freedom and incredible benefits that come with your new account. It’s quick, easy, and hassle-free!</p>
               <form onSubmit={handleRegister}>
               <div className="flex flex-col gap-1 py-1">
@@ -116,13 +116,19 @@ const RegisterPage = () => {
                 </div>
               </div>
               <div>
-                <div className="py-2">
+                <div className="py-1">
               <ReCAPTCHA sitekey="6Ld0eJ8rAAAAADUUC_gy1tmnwLo6zPVEKMKYhx8K" onChange={(val : any) => setRecapState(val)} />
                 </div>
             </div>
               <button className="bg-primary transition-all ease-in-out duration-[1s] hover:text-primary hover:bg-white  py-2 w-full text-white rounded border-2 font-[500] border-primary">{formLoading ? "Registering..." : "Register"}</button>
               </form>
-              
+              <div>
+                  <p className="font-[Jost] font-[600] cursor-pointer ">
+                    <div onClick={() => toast.success("Please contact support", {position: "bottom-left"})}>
+                    Forgot Password
+                    </div>
+                    </p>
+                </div>
             </div>
             <div className="col-span-2 bg-[#3c39aa] py-12 hidden md:block">
               <div className="w-1/2 mx-auto text-white text-center flex flex-col gap-3">

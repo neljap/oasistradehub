@@ -109,10 +109,10 @@ const LoginPage = () => {
               </form>
 
                 <div>
-                  <p className="font-[Jost] font-[600] pt-3">
-                    <Link to="/forgot-password">
+                  <p className="font-[Jost] font-[600] pt-3 cursor-pointer">
+                    <div onClick={() => toast.success("Please contact support", {position: "bottom-left"})}>
                     Forgot Password
-                    </Link>
+                    </div>
                     </p>
                 </div>
               {/* <div className="flex flex-row items-center">
