@@ -3,7 +3,6 @@ import {  czechflag, elonmuskimg, franceflag, germanyflag, jbravoimg,
   rosscameron, singaporeflag, swingmasterimg, 
   tradereight, 
   traderfive, 
-  traderfour, 
   tradernine, 
   traderone, 
   traderseven, 
@@ -115,7 +114,7 @@ const TradExpertPg = () => {
       img: traderone,
       pshare: "20%",
       winrate: "88%",
-      totaltrade: 413
+      totaltrade: 289
     },
     {
       id: 8,
@@ -126,7 +125,7 @@ const TradExpertPg = () => {
       img: tradersix,
       pshare: "20%",
       winrate: "90%",
-      totaltrade: 413
+      totaltrade: 320
     },
     {
       id: 9,
@@ -137,18 +136,18 @@ const TradExpertPg = () => {
       img: tradertwo,
       pshare: "20%",
       winrate: "87%",
-      totaltrade: 413
+      totaltrade: 399
     },
     {
       id: 10,
-      name: "Hakan Atesler",
+      name: "Marie Lynn Katrine",
       names: "",
-      title: "Turkey",
-      sym: UAEFlag,
-      img: traderfour,
+      title: "USA",
+      sym: UsaFlag,
+      img: "https://res.cloudinary.com/dr6a80sph/image/upload/v1770325612/IMG-20260205-WA0040_bc5d9s.jpg",
       pshare: "20%",
       winrate: "90%",
-      totaltrade: 413
+      totaltrade: 401
     },
     {
       id: 11,
@@ -159,7 +158,7 @@ const TradExpertPg = () => {
       img: traderfive,
       pshare: "20%",
       winrate: "90%",
-      totaltrade: 413
+      totaltrade: 311
     },
     {
       id: 12,
@@ -170,7 +169,7 @@ const TradExpertPg = () => {
       img: traderthree,
       pshare: "20%",
       winrate: "90%",
-      totaltrade: 413
+      totaltrade: 442
     },
     {
       id: 13,
@@ -181,7 +180,7 @@ const TradExpertPg = () => {
       img: traderseven,
       pshare: "20%",
       winrate: "92%",
-      totaltrade: 413
+      totaltrade: 386
     },
     {
       id: 14,
