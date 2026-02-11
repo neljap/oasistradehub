@@ -37,7 +37,7 @@ const DashbaordPg = () => {
             id:4,
             title: "Total Profit",
             icon: FaTrademark,
-            amount: data?.tProfit
+            amount: `$ ${Number(data?.tProfit).toLocaleString()}`
         }
     ]
     useEffect(() => {
